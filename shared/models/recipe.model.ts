@@ -6,7 +6,6 @@ export interface Recipe {
 }
 
 
-
 export interface Unit {
   id: number;
   name: string;
@@ -33,7 +32,7 @@ export interface RecipeNew {
   name: string;
   description: string; 
   steps: Step[];
-  ingredients: { ingredientId: number; quantity: string }[]; 
+  ingredients: { ingredientId: number; quantity: number }[]; 
 }
 
 

@@ -1,11 +1,11 @@
 {
-	"name": "API_recette",
+	"name": "api_recette",
 	"version": "1.0.0",
 	"description": "",
 	"main": "index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"dev": "nodemon --watch 'API_recette/**/*.ts' --exec ts-node index.ts"
+		"dev": "nodemon --watch 'api_recette/**/*.ts' --exec ts-node index.ts"
 	},
 	"keywords": [],
 	"author": "",

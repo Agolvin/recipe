@@ -1,4 +1,22 @@
 //interface = structure
+
+
+
+// Recipe,RecipeNew,Unit,Ingredient,Step
+//
+//
+
+
+
+
+export interface Bdd {
+  recipes: Recipe[];
+  ingredients: Ingredient[];
+}
+
+
+
+
 export interface Recipe {
   id: number;
   name: string;
@@ -6,11 +24,26 @@ export interface Recipe {
 }
 
 
+
+
+
+
+
+export interface RecipeNew {
+  id: number;
+  name: string;
+  description: string; 
+  steps: Step[];
+  ingredients: { ingredientId: number; quantity: number }[]; 
+}
+
+
+
+
 export interface Unit {
   id: number;
   name: string;
 }
-
 
 export interface Ingredient {
   id: number;
@@ -26,19 +59,5 @@ export interface Step {
   name: string;         // optionnel??
   description: string; 
 }
-
-export interface RecipeNew {
-  id: number;
-  name: string;
-  description: string; 
-  steps: Step[];
-  ingredients: { ingredientId: number; quantity: number }[]; 
-}
-
-
-
-
-
-
 
 

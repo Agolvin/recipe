@@ -1,8 +1,8 @@
 import fs from "fs";
 import { Request as req, Response as res } from "express";
-import { Bdd } from "../../models";
+//import { Bdd } from "../../models";
 //import { Recipe } from "../../models/recipe.model";
-import { Recipe } from "../../../../shared/models/recipe.model";
+import { Bdd,Recipe } from "../../../../shared/models/recipe.model";
 //import { Recipe } from "@models/recipe.model";
 import { getBDD, saveBDD } from "../../lib/utils";
 
@@ -27,22 +27,15 @@ const getAllRecipes = (req: req, res: res) => {
 
   res.status(200).json(bdd.recipes);
 };
- 
-/*
 
-  res.status(200).json([
-    { id: 1, name: "Recette 7" },
-    { id: 2, name: "Recette 2" },
-  ]);
-  
-  */
+
 
 const deleteRecipe = (req: req, res: res) => {
   console.log("debut deleteRecipe");
   const data = fs.readFileSync("../bdd.json", "utf8"); //recuperation données depuis bdd.json
   let bdd = JSON.parse(data) as Bdd; //transfert en json dans variable
 
-  if (!bdd.recipes.find((recipe) => recipe.id === Number(req.params.id))) {
+  if (!bdd.recipes.find((recipe: Recipe) => recipe.id === Number(req.params.id))) {
     //si recette inexistante (id)
     return res.status(404).json({ message: "Recette introuvable" }); //message d'erreur
   }
@@ -51,7 +44,7 @@ const deleteRecipe = (req: req, res: res) => {
 
   bdd.recipes = bdd.recipes.filter(
     //recipe est un objet du tableau recipes parcouru (equivalent for each)
-    (recipe) => recipe.id !== Number(req.params.id) //copie dans lui meme de tt les elts dont ID different du parametre.
+    (recipe: Recipe) => recipe.id !== Number(req.params.id) //copie dans lui meme de tt les elts dont ID different du parametre.
   );
 
   console.log("bdd.recipes apres delete:", bdd.recipes);
@@ -69,8 +62,7 @@ const addRecipe = (req: req, res: res) => {
   bdd.recipes;
 
   const maxId = bdd.recipes.reduce(
-    (max, item) => Math.max(max, item.id),
-    -Infinity
+    (max, item) => Math.max(max, item.id),0
   );
 
   recipe.id = maxId + 1;

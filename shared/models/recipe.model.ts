@@ -17,6 +17,14 @@ export interface Bdd {
 
 
 
+
+
+
+
+
+
+
+
 export interface Recipe {
   id: number;
   name: string;
@@ -40,10 +48,35 @@ export interface RecipeNew {
 
 
 
+
+
+
+
 export interface Unit {
   id: number;
   name: string;
 }
+export function isUnit (obj: any) : obj is Ingredient {
+  return(
+    typeof obj === "object" &&
+    obj !== null &&
+    typeof obj.id === "number" &&
+    typeof obj.name === "string"
+  );
+}
+
+/* exemple utilisation
+function processIngredient(obj: any) {
+  if (isIngredient(obj)) {
+    console.log(obj.name); // TypeScript sait que obj est un Ingredient ici
+  }
+}
+*/
+
+
+
+
+
 
 export interface Ingredient {
   id: number;

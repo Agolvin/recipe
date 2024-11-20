@@ -3,16 +3,13 @@
 
 import fs from "fs";
 import { Request as req, Response as res } from "express";
-// import { Bdd } from "../../models";
-//import { Recipe } from "../../models/recipe.model";
 import { Bdd,Recipe,RecipeNew,Unit,Ingredient,Step } from "../../../../shared/models/recipe.model";
-//import { Recipe } from "@models/recipe.model";
 import { getBDD, saveBDD } from "../../lib/utils";
 
 
 
 //delete un ingredient => maj des recettes qui l'utilise??
-
+//passage en inactif pour histo? sans creation de nouvelle recette avec possible?
 
 const getIngredient = (req: req, res: res) => {
 
@@ -33,7 +30,124 @@ const getIngredient = (req: req, res: res) => {
 
 
 
-export { getIngredient };
+
+const addIngredient = (req: req, res: res) => {
+
+  const data = fs.readFileSync("../bdd.json", "utf8"); //recuperation données depuis bdd.json
+  let bdd = JSON.parse(data) as Bdd; //transfert en json dans variable
+  const { ingredient }: { ingredient: Ingredient } = req.body; //copie de la recipe du body dans variable locale typé en recipe, parametre vers variable locale
+
+  const maxId = bdd.ingredients.reduce(
+    (max, item) => Math.max(max, item.id),0
+  );
+
+  ingredient.id = maxId + 1;
+  if (ingredient == undefined) {
+    return res.status(418).json({ message: "Paramètre ingredient incorrect" });
+  }
+
+  bdd.ingredients.push(ingredient); //ajout dans la copie de bdd, la recipe copie du body de la req
+  fs.writeFileSync("../bdd.json", JSON.stringify(bdd)); //enregistrement dde tte la variable bbd qui est une copie tmp du fichier bdd.jdon
+  res.status(201).json({ message: "Ingredient ajouté" });
+};
+
+
+
+
+
+
+
+//Objectif: Id = 0 => Add, sinon update
+
+const saveIngredient = (req: req, res: res) => {
+
+
+  //const data = fs.readFileSync("../bdd.json", "utf8"); //recuperation données depuis bdd.json
+ // let bdd = JSON.parse(data) as Bdd; //transfert en json dans variable
+
+  let bdd = getBDD();
+
+saveBDD
+
+
+
+
+  const { ingredient }: { ingredient: Ingredient } = req.body; //copie de la recipe du body dans variable locale typé en recipe, parametre vers variable locale
+
+//Nouvel ingredient
+if (  ingredient.id == 0) {
+  
+  console.log("ADD ingredient");
+  const maxId = bdd.ingredients.reduce(
+    (max, item) => Math.max(max, item.id),0
+  );
+  ingredient.id = maxId + 1;
+  if (ingredient == undefined) {
+    return res.status(418).json({ message: "Paramètre ingredient incorrect" });
+  }
+  bdd.ingredients.push(ingredient); //ajout dans la copie de bdd, la recipe copie du body de la req
+  saveBDD(bdd);
+  res.status(201).json({ message: "Ingredient ajouté" });
+}
+
+
+
+
+//MAJ ingredient existant
+else {
+
+  console.log("MAJ ingredient: " + ingredient.id);
+  let bdd = getBDD();
+
+  let index = bdd.recipes.findIndex(
+    (recipe) => recipe.id == Number(req.params.id)
+  );
+
+  if(index == -1) return res.status(404).json({ message: "Recette introuvable: " + req.params.id });
+  
+  bdd.recipes[index] = req.body.recipe;
+  saveBDD(bdd);
+  res.status(200).json({ message: "Recette modifié" });
+
+}
+
+
+
+
+
+
+
+
+/*
+  const data = fs.readFileSync("../bdd.json", "utf8"); //recuperation données depuis bdd.json
+  let bdd = JSON.parse(data) as Bdd; //transfert en json dans variable
+  const { ingredient }: { ingredient: Ingredient } = req.body; //copie de la recipe du body dans variable locale typé en recipe, parametre vers variable locale
+
+  //bdd.recipes;
+
+  const maxId = bdd.ingredients.reduce(
+    (max, item) => Math.max(max, item.id),0
+  );
+
+  ingredient.id = maxId + 1;
+  if (ingredient == undefined) {
+    return res.status(418).json({ message: "Paramètre ingredient incorrect" });
+  }
+
+  bdd.ingredients.push(ingredient); //ajout dans la copie de bdd, la recipe copie du body de la req
+  fs.writeFileSync("../bdd.json", JSON.stringify(bdd)); //enregistrement dde tte la variable bbd qui est une copie tmp du fichier bdd.jdon
+  res.status(200).json({ message: "Ingredient ajouté" });*/
+
+
+
+
+
+};
+
+
+
+
+export { getIngredient,addIngredient,saveIngredient};
 //export { getAllIngredients, getIngredient,        deleteRecipe, addRecipe, saveRecipe, getRecipe };
 
 /*
@@ -86,8 +200,7 @@ const addRecipe = (req: req, res: res) => {
   bdd.recipes;
 
   const maxId = bdd.recipes.reduce(
-    (max, item) => Math.max(max, item.id),
-    -Infinity
+    (max, item) => Math.max(max, item.id),0
   );
 
   recipe.id = maxId + 1;

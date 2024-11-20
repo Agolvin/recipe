@@ -19,52 +19,25 @@ const getIngredient = (req: req, res: res) => {
   console.log("getIngredient id:",req.params.id);
   let bdd = getBDD();
 
-
   if (!bdd.ingredients) {
     return res
       .status(500)
       .json({ message: "Données de ingredients inexistantes" });
   }
 
-
-
-
-/*
-
-
-
-  if (!bdd.recipes) {
-    return res
-      .status(500)
-      .json({ message: "Données de recettes inexistantes" });
-  }
-  let index = bdd.recipes.findIndex(
-    (recipe) => recipe.id == Number(req.params.id)
+  let index = bdd.ingredients.findIndex(
+    (ingredient) => ingredient.id == Number(req.params.id)
   );
-  if (index == -1) {
-    return res.status(404).json({ message: "Recette introuvable" }); //message d'erreur
-  }
-  return res.status(200).json(bdd.recipes[index]);
-
-
-*/
-
-
-
 
 };
+
 
 
 export { getIngredient };
 //export { getAllIngredients, getIngredient,        deleteRecipe, addRecipe, saveRecipe, getRecipe };
 
 /*
-const getAllRecipesOld = (req: req, res: res) => {
-  res.status(200).json([
-    { id: 1, name: "Recette 1" },
-    { id: 2, name: "Recette 2" },
-  ]);
-};
+
 
 const getAllRecipes = (req: req, res: res) => {
   const data = fs.readFileSync("../bdd.json", "utf8"); //recuperation données depuis bdd.json

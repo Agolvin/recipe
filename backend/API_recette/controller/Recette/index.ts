@@ -37,7 +37,7 @@ const deleteRecipe = (req: req, res: res) => {
 
   if (!bdd.recipes.find((recipe: Recipe) => recipe.id === Number(req.params.id))) {
     //si recette inexistante (id)
-    return res.status(404).json({ message: "Recette introuvable" }); //message d'erreur
+    return res.status(404).json({ message: "Recette introuvable: " + req.params.id }); //message d'erreur
   }
 
   console.log("bdd.recipes avant delete:", bdd.recipes);

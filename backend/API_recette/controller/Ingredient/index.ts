@@ -3,7 +3,7 @@
 
 import fs from "fs";
 import { Request as req, Response as res } from "express";
-import { Bdd,Recipe,RecipeNew,Unit,Ingredient,Step } from "../../../../shared/models/recipe.model";
+import { Bdd, Recipe, RecipeNew, Unit, Ingredient, Step, isIngredient } from "../../../../shared/models/recipe.model";
 import { getBDD, saveBDD } from "../../lib/utils";
 
 
@@ -13,7 +13,7 @@ import { getBDD, saveBDD } from "../../lib/utils";
 
 const getIngredient = (req: req, res: res) => {
 
-  console.log("getIngredient id:",req.params.id);
+  console.log("getIngredient id:", req.params.id);
   let bdd = getBDD();
 
   if (!bdd.ingredients) {
@@ -38,7 +38,7 @@ const addIngredient = (req: req, res: res) => {
   const { ingredient }: { ingredient: Ingredient } = req.body; //copie de la recipe du body dans variable locale typé en recipe, parametre vers variable locale
 
   const maxId = bdd.ingredients.reduce(
-    (max, item) => Math.max(max, item.id),0
+    (max, item) => Math.max(max, item.id), 0
   );
 
   ingredient.id = maxId + 1;
@@ -57,86 +57,90 @@ const addIngredient = (req: req, res: res) => {
 
 
 
-//Objectif: Id = 0 => Add, sinon update
+//Id = 0 => Add, sinon update
 
 const saveIngredient = (req: req, res: res) => {
 
 
   //const data = fs.readFileSync("../bdd.json", "utf8"); //recuperation données depuis bdd.json
- // let bdd = JSON.parse(data) as Bdd; //transfert en json dans variable
+  // let bdd = JSON.parse(data) as Bdd; //transfert en json dans variable
 
   let bdd = getBDD();
 
-saveBDD
+  saveBDD
 
 
 
 
   const { ingredient }: { ingredient: Ingredient } = req.body; //copie de la recipe du body dans variable locale typé en recipe, parametre vers variable locale
 
-//Nouvel ingredient
-if (  ingredient.id == 0) {
-  
-  console.log("ADD ingredient");
-  const maxId = bdd.ingredients.reduce(
-    (max, item) => Math.max(max, item.id),0
-  );
-  ingredient.id = maxId + 1;
-  if (ingredient == undefined) {
-    return res.status(418).json({ message: "Paramètre ingredient incorrect" });
-  }
-  bdd.ingredients.push(ingredient); //ajout dans la copie de bdd, la recipe copie du body de la req
-  saveBDD(bdd);
-  res.status(201).json({ message: "Ingredient ajouté" });
-}
+  //Nouvel ingredient
+  if (ingredient.id == 0) {
 
-
-
-
-//MAJ ingredient existant
-else {
-
-  console.log("MAJ ingredient: " + ingredient.id);
-  let bdd = getBDD();
-
-  let index = bdd.recipes.findIndex(
-    (recipe) => recipe.id == Number(req.params.id)
-  );
-
-  if(index == -1) return res.status(404).json({ message: "Recette introuvable: " + req.params.id });
-  
-  bdd.recipes[index] = req.body.recipe;
-  saveBDD(bdd);
-  res.status(200).json({ message: "Recette modifié" });
-
-}
-
-
-
-
-
-
-
-
-/*
-  const data = fs.readFileSync("../bdd.json", "utf8"); //recuperation données depuis bdd.json
-  let bdd = JSON.parse(data) as Bdd; //transfert en json dans variable
-  const { ingredient }: { ingredient: Ingredient } = req.body; //copie de la recipe du body dans variable locale typé en recipe, parametre vers variable locale
-
-  //bdd.recipes;
-
-  const maxId = bdd.ingredients.reduce(
-    (max, item) => Math.max(max, item.id),0
-  );
-
-  ingredient.id = maxId + 1;
-  if (ingredient == undefined) {
-    return res.status(418).json({ message: "Paramètre ingredient incorrect" });
+    console.log("ADD ingredient");
+    const maxId = bdd.ingredients.reduce(
+      (max, item) => Math.max(max, item.id), 0
+    );
+    ingredient.id = maxId + 1;
+    //if (ingredient == undefined) {
+    if (!isIngredient(ingredient)) {
+      return res.status(418).json({ message: "Paramètre ingredient incorrect" });
+    }
+    if (ingredient.name == 'Caffé') {
+      return res.status(418).json({ message: "No cofffee here." });
+    }
+    bdd.ingredients.push(ingredient); //ajout dans la copie de bdd, la recipe copie du body de la req
+    saveBDD(bdd);
+    res.status(201).json({ message: "Ingredient ajouté" });
   }
 
-  bdd.ingredients.push(ingredient); //ajout dans la copie de bdd, la recipe copie du body de la req
-  fs.writeFileSync("../bdd.json", JSON.stringify(bdd)); //enregistrement dde tte la variable bbd qui est une copie tmp du fichier bdd.jdon
-  res.status(200).json({ message: "Ingredient ajouté" });*/
+
+
+
+  //MAJ ingredient existant
+  else {
+
+    console.log("MAJ ingredient: " + ingredient.id);
+    let bdd = getBDD();
+
+    let index = bdd.ingredients.findIndex(
+      (ingredient) => ingredient.id == Number(req.params.id)
+    );
+
+    if (index == -1) return res.status(404).json({ message: "Ingredient introuvable: " + req.params.id + " " + ingredient.name});
+
+    bdd.ingredients[index] = req.body.ingredient;
+    saveBDD(bdd);
+    res.status(200).json({ message: "Ingredient modifié" });
+
+  }
+
+
+
+
+
+
+
+
+  /*
+    const data = fs.readFileSync("../bdd.json", "utf8"); //recuperation données depuis bdd.json
+    let bdd = JSON.parse(data) as Bdd; //transfert en json dans variable
+    const { ingredient }: { ingredient: Ingredient } = req.body; //copie de la recipe du body dans variable locale typé en recipe, parametre vers variable locale
+  
+    //bdd.recipes;
+  
+    const maxId = bdd.ingredients.reduce(
+      (max, item) => Math.max(max, item.id),0
+    );
+  
+    ingredient.id = maxId + 1;
+    if (ingredient == undefined) {
+      return res.status(418).json({ message: "Paramètre ingredient incorrect" });
+    }
+  
+    bdd.ingredients.push(ingredient); //ajout dans la copie de bdd, la recipe copie du body de la req
+    fs.writeFileSync("../bdd.json", JSON.stringify(bdd)); //enregistrement dde tte la variable bbd qui est une copie tmp du fichier bdd.jdon
+    res.status(200).json({ message: "Ingredient ajouté" });*/
 
 
 
@@ -147,7 +151,7 @@ else {
 
 
 
-export { getIngredient,addIngredient,saveIngredient};
+export { getIngredient, addIngredient, saveIngredient };
 //export { getAllIngredients, getIngredient,        deleteRecipe, addRecipe, saveRecipe, getRecipe };
 
 /*

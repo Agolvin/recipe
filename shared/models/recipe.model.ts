@@ -15,26 +15,21 @@ export interface Bdd {
 }
 
 
-
-
-
-
-
-
-
-
-
-
 export interface Recipe {
   id: number;
   name: string;
   description: string;
 }
 
-
-
-
-
+export function isRecipe (obj: any) : obj is Recipe {
+  return(
+    typeof obj === "object" &&
+    obj !== null &&
+    typeof obj.id=== "number" &&
+    typeof obj. name=== "string" &&
+    typeof obj.description=== "string"
+  );
+}
 
 
 export interface RecipeNew {
@@ -42,25 +37,35 @@ export interface RecipeNew {
   name: string;
   description: string; 
   steps: Step[];
-  ingredients: { ingredientId: number; quantity: number }[]; 
+  ingredientsQte: { ingredient: Ingredient; quantity: number }[]; 
 }
 
-
-
-
-
-
-
-
-export interface Unit {
-  id: number;
-  name: string;
-}
-export function isUnit (obj: any) : obj is Ingredient {
+export function isRecipeNew (obj: any) : obj is RecipeNew {
   return(
     typeof obj === "object" &&
     obj !== null &&
     typeof obj.id === "number" &&
+    typeof obj.name === "string" &&
+    typeof obj.description === "string" &&
+    Array.isArray(obj.steps) &&
+    obj.steps.every(isStep) &&
+    Array.isArray(obj.ingredients) &&
+    
+    obj.ingredientsQte.every((elm: { ingredient: Ingredient }) => isIngredient(elm.ingredient)) 
+    //Indique que chaque élément du tableau obj.ingredients est un objet contenant une propriété ingredient de type Ingredient.
+  );
+}
+
+
+export interface Unit {
+  //id: number;
+  name: string;
+}
+
+export function isUnit (obj: any) : obj is Unit {
+  return(
+    typeof obj === "object" &&
+    obj !== null &&
     typeof obj.name === "string"
   );
 }
@@ -75,17 +80,29 @@ function processIngredient(obj: any) {
 
 
 
-
-
-
 export interface Ingredient {
   id: number;
-  unitId: number;
+  //unitId: number;
+  unit: Unit;
   unitName: string;
   name: string;
   description: string; 
   price: number;
 }
+
+export function isIngredient (obj: any) : obj is Ingredient {
+  return(
+    typeof obj === "object" &&
+    obj !== null &&
+    typeof obj.id === "number" &&
+    isUnit(obj.unit) &&
+    typeof obj.unitName === "string" &&
+    typeof obj.name === "string" &&
+    typeof obj.description === "string" &&
+    typeof obj.price === "number"
+  );
+}
+
 
 export interface Step {
   // id: number;        // pour passage un jour sur une vrai bdd
@@ -94,3 +111,11 @@ export interface Step {
 }
 
 
+export function isStep (obj: any) : obj is Step {
+  return(
+    typeof obj === "object" &&
+    obj !== null &&
+    typeof obj.name === "string" &&
+    typeof obj.description === "string"
+  );
+}

@@ -6,14 +6,16 @@ import { Bdd,Recipe } from "../../../../shared/models/recipe.model";
 //import { Recipe } from "@models/recipe.model";
 import { getBDD, saveBDD } from "../../lib/utils";
 
-//test pull
 
+/*
 const getAllRecipesOld = (req: req, res: res) => {
   res.status(200).json([
     { id: 1, name: "Recette 1" },
     { id: 2, name: "Recette 2" },
   ]);
 };
+*/
+
 
 const getAllRecipes = (req: req, res: res) => {
   const data = fs.readFileSync("../bdd.json", "utf8"); //recuperation données depuis bdd.json

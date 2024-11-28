@@ -1,4 +1,12 @@
-//Recipe,RecipeNew,Unit,Ingredient,Step
+
+
+//VIRER index.ts une fois repartit dans les3 autres fichiers
+//
+
+
+//router appel le controler
+//controler interface entre route et service  en controllant les données (isUnit etc....) et gere les code d'erreur http
+//service fait toute la logique (connexion/recup/tri...)
 
 
 import fs from "fs";
@@ -67,7 +75,7 @@ const saveIngredient = (req: req, res: res) => {
 
   //if (ingredient == undefined) {
   if (!isIngredient(ingredient)) {
-    return res.status(418).json({ message: "Paramètre ingredient incorrect" });
+    return res.status(400).json({ message: "Paramètre ingredient incorrect" });
   }
   if (ingredient.name == 'Caffé') {
     return res.status(418).json({ message: "No cofffee here." });

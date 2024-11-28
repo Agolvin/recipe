@@ -1,12 +1,12 @@
 
 
 //VIRER index.ts une fois repartit dans les3 autres fichiers
-//
+
 
 
 //router appel le controler
 //controler interface entre route et service  en controllant les données (isUnit etc....) et gere les code d'erreur http
-//service fait toute la logique (connexion/recup/tri...)
+//service fait toute la logique (connexion/recup/tri...) et peut envoyer des erreurs au  controler qui try/catch
 
 
 import fs from "fs";

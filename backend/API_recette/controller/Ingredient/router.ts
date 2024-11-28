@@ -1,7 +1,7 @@
 
 
 import { Router } from 'express';
-import { getAllIngredients} from './controller';
+import { addIngredient,getAllIngredients} from './controller';
 
 
 // import { getAllIngredients, addIngredient } from './controller';
@@ -9,7 +9,7 @@ import { getAllIngredients} from './controller';
 const router = Router();
 
 router.get('/', getAllIngredients); // GET /ingredients
-// router.post('/', addIngredient);    // POST /ingredients
+router.post('/', addIngredient);    // POST /ingredients
 
 export default router;
 

@@ -43,11 +43,8 @@ export const addIngredientSv = async (newIngredient:Ingredient) => {
 
 
 
-
-
-
-
   
+
 
   if (!bdd.ingredients) {
     throw new Error("Données ingrédients inexistantes en base");

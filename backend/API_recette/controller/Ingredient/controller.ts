@@ -25,11 +25,11 @@ export const addIngredient = async (req: req, res: res) => {
   const newIngredient:Ingredient = req.body;
 
   try {
-    const ingredients = await addIngredientSv(newIngredient);
+    const ingredient = await addIngredientSv(newIngredient);
     //uniquement la ligne suivante si pas besoin de récupérer les données ajoutées en base
     //ex: l'ID peut etre utile à retourner lors d'un ajout, ou tout l'obj pour trace de debug coté server
     //await addIngredientSv(newIngredient);
-    res.status(201).json({ message: "Ingrédient ajouté", ingredients });
+    res.status(201).json({ message: "Ingrédient ajouté", ingredient });
   } 
   catch (error) {
     res.status(500).json({ message: "Erreur lors de l'ajout d'un ingredient" });
@@ -39,12 +39,7 @@ export const addIngredient = async (req: req, res: res) => {
 
 
 
-
-
-
-
 /*
-
 //export const getAllIngredients = async (req: req, res: res) => {
   export const getAllIngredients = async (res: res) => {
     try {
@@ -58,7 +53,6 @@ export const addIngredient = async (req: req, res: res) => {
 
     }
   };
-
 */
   
   
@@ -66,7 +60,6 @@ export const addIngredient = async (req: req, res: res) => {
 
 
 /*
-
 export const addIngredient = async (req: Request, res: Response) => {
   const { name, quantity } = req.body;
   if (!name || !quantity) {
@@ -75,5 +68,4 @@ export const addIngredient = async (req: Request, res: Response) => {
   const newIngredient = await addIngredientSv({ name, quantity });
   res.status(201).json(newIngredient);
 };
-
 */

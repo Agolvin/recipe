@@ -3,12 +3,12 @@
 import { Router } from 'express';
 import { addIngredient,getAllIngredients} from './controller';
 
-const router = Router();
+const ingredientRouter = Router();
 
-router.get('/', getAllIngredients); // GET /ingredients
-router.post('/', addIngredient);    // POST /ingredients
+ingredientRouter.get('/getall', getAllIngredients); // GET /ingredients
+ingredientRouter.post('/add', addIngredient);    // POST /ingredients
 
-export default router;
+export default ingredientRouter;
 
 /*
 const express = require("express");

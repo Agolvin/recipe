@@ -3,9 +3,6 @@
 import { Router } from 'express';
 import { addIngredient,getAllIngredients} from './controller';
 
-
-// import { getAllIngredients, addIngredient } from './controller';
-
 const router = Router();
 
 router.get('/', getAllIngredients); // GET /ingredients

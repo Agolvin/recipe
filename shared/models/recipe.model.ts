@@ -44,13 +44,15 @@ export function isRecipeNew (obj: any) : obj is RecipeNew {
   return(
     typeof obj === "object" &&
     obj !== null &&
+    
     typeof obj.id === "number" &&
     typeof obj.name === "string" &&
     typeof obj.description === "string" &&
-    Array.isArray(obj.steps) &&
+
+    Array.isArray(obj.steps) && 
     obj.steps.every(isStep) &&
-    Array.isArray(obj.ingredients) &&
-    
+
+    Array.isArray(obj.ingredients) && 
     obj.ingredientsQte.every((elm: { ingredient: Ingredient }) => isIngredient(elm.ingredient)) 
     //Indique que chaque élément du tableau obj.ingredients est un objet contenant une propriété ingredient de type Ingredient.
   );

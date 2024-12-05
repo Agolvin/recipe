@@ -1,13 +1,16 @@
 
 
-import fs from "fs";
+//import fs from "fs";
 import { Bdd,Recipe,Ingredient, isIngredient } from "../../../../shared/models/recipe.model";
+import { getBDD, saveBDD } from "../../lib/utils";
   
 //const ingredients: Ingredient[] = [];
 
 export const getAllIngredientsSv = async () => {
-  const data = fs.readFileSync("../bdd.json", "utf8");    //recuperation données depuis bdd.json
-  let bdd = JSON.parse(data) as Bdd;                      //transfert en json dans variable
+
+  console.log("getAllIngredientsSv");
+  let bdd = getBDD();
+
 
   if (!bdd.ingredients) {
     throw new Error("Données ingrédients inexistantes en base");
@@ -19,32 +22,16 @@ export const getAllIngredientsSv = async () => {
 
   return bdd.ingredients
 };
-
-
-
-
-
-
 
 
 export const addIngredientSv = async (newIngredient:Ingredient) => {
 
-
-
-
-
-
-
-
-
-
-  const data = fs.readFileSync("../bdd.json", "utf8");    //recuperation données depuis bdd.json
-  let bdd = JSON.parse(data) as Bdd;                      //transfert en json dans variable
-
-
-
+  //type du parametre deja controllé par le controller
+  //=> le service n'a plus qu'a l'ajouter en base sans vérifier ce qu'il reçoit
   
+  console.log("addIngredientSv",newIngredient);
 
+  let bdd = getBDD();
 
   if (!bdd.ingredients) {
     throw new Error("Données ingrédients inexistantes en base");
@@ -54,111 +41,15 @@ export const addIngredientSv = async (newIngredient:Ingredient) => {
     throw new Error("Type de données ingrédients incohérent entre la base et la description");
   }
 
-  return bdd.ingredients
+  const maxId = bdd.ingredients.reduce(       //calcul du nouvel ID à inserer en base
+    (max, item) => Math.max(max, item.id), 0
+  );
+  newIngredient.id = maxId + 1;
 
-
-
-
-
-
-
-
-
-
+  bdd.ingredients.push(newIngredient);        //ajout dans la copie de bdd, du nouvel ingredient
+  saveBDD(bdd);                               //sauvegarde de la bdd
+  
+  return newIngredient 
 
 };
-
-
-
-
-
-
-
-
-
-/*
-  if (!bdd.ingredients) {
-    return res
-      .status(500)
-      .json({ message: "Données de recettes inexistantes" });
-  }
-*/
-
-/*
-  if (!bdd.ingredients) {
-    return res
-      .status(500)
-      .json({ message: "Données de recettes inexistantes" });
-  }
-  return ingredients;
-  */
-
-
-
-
-
-
-
-
-
-
-//import fs from "fs";
-//import { Request as req, Response as res } from "express";
-//import { Bdd,Recipe } from "../../../../shared/models/recipe.model";
-//import { getBDD, saveBDD } from "../../lib/utils";
-
-/*
-const getAllRecipes = (req: req, res: res) => {
-  const data = fs.readFileSync("../bdd.json", "utf8"); //recuperation données depuis bdd.json
-  let bdd = JSON.parse(data) as Bdd;      //transfert en json dans variable
-
-  if (!bdd.recipes) {
-    return res
-      .status(500)
-      .json({ message: "Données de recettes inexistantes" });
-  }
-
-  res.status(200).json(bdd.recipes);
-};
-
-*/
-
-
-/*
-export const addIngredientService = async (ingredient: Partial<Ingredient>): Promise<Ingredient> => {
-  const newIngredient = { id: Date.now(), ...ingredient } as Ingredient;
-  ingredients.push(newIngredient);
-  return newIngredient;
-};
-*/
-
-
-
-
-  /*
-  export const getAllIngredientsService = async (): Promise<Ingredient[]> => {
-    return ingredients;
-  };
-  */
-
-  /*
-  export const addIngredientService = async (ingredient: Partial<Ingredient>): Promise<Ingredient> => {
-    const newIngredient = { id: Date.now(), ...ingredient } as Ingredient;
-    ingredients.push(newIngredient);
-    return newIngredient;
-  };
-*/
-
-
-
-
-/*
-  exports.getAllIngredientsService = async (): Promise<Ingredient[]> => {
-    return ingredients;
-  };*/
-
-
-
-
-
 

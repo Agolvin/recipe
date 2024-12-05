@@ -6,7 +6,7 @@ import { addIngredientSv,getAllIngredientsSv } from './service';
 import { Bdd,Recipe,Ingredient, isIngredient } from "../../../../shared/models/recipe.model";
 
 
-export const getAllIngredients = async (res: res) => {
+export const getAllIngredients = async (req: req, res: res) => {
   try {
     const ingredients:Ingredient[] = await getAllIngredientsSv();
     res.status(200).json(ingredients);

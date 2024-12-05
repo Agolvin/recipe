@@ -12,7 +12,7 @@ app.use(json());
 // import { Request as req, Response as res, Express } from "express";
 
 app.use("/recette", recetteRouter);
-app.use("/ingrdient", ingredientRouter);
+app.use("/ingredient", ingredientRouter);
 
 const port = 3000;
 app.listen(port, () => {

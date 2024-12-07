@@ -16,8 +16,8 @@ export const getAllIngredients = async (req: req, res: res) => {
 };
 
 
-export const addIngredient = async (req: req, res: res) => {
 
+export const addIngredient = async (req: req, res: res) => {
   if (!isIngredient(req.body)) {
     return res.status(400).json({ message: "Format paramètre ingrédient incorrect" });
   }

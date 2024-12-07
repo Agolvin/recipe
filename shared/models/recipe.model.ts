@@ -1,14 +1,5 @@
 //interface = structure
 
-
-
-// Recipe,RecipeNew,Unit,Ingredient,Step
-//
-//
-
-
-
-
 export interface Bdd {
   recipes: Recipe[];
   ingredients: Ingredient[];
@@ -44,7 +35,7 @@ export function isRecipeNew (obj: any) : obj is RecipeNew {
   return(
     typeof obj === "object" &&
     obj !== null &&
-    
+
     typeof obj.id === "number" &&
     typeof obj.name === "string" &&
     typeof obj.description === "string" &&

@@ -27,5 +27,28 @@
         }
     ]
     ,
-    "ingredients":[]
+    "ingredients":[
+        {
+            "id": 1,
+            "unit": {
+              "name": "kilogram"
+            },
+            "unitName": "kg",
+            "name": "Sugar",
+            "description": "Fine granulated white sugar",
+            "price": 2.5
+        },
+
+        {
+            "id": 2,
+            "unit": {
+              "name": "litre"
+            },
+            "unitName": "L",
+            "name": "lait",
+            "description": "meuh",
+            "price": 3.14
+          }
+          
+    ]
 }

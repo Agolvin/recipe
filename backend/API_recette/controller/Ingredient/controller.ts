@@ -1,9 +1,7 @@
 
-
-
 import { Request as req, Response as res } from "express";
-import { getAllIngredientsSv,getIngredientSv,addIngredientSv } from './service';
-import { Bdd,Recipe,Ingredient, isIngredient } from "../../../../shared/models/recipe.model";
+import { getAllIngredientsSv,getIngredientSv,addIngredientSv,updateIngredientSv,saveIngredientSv } from './service';
+import { Ingredient, isIngredient } from "../../../../shared/models/recipe.model";
 
 
 export const getAllIngredients = async (req: req, res: res) => {
@@ -50,35 +48,32 @@ export const addIngredient = async (req: req, res: res) => {
 };
 
 
-
-
-/*
-//export const getAllIngredients = async (req: req, res: res) => {
-  export const getAllIngredients = async (res: res) => {
-    try {
-      const ingredients = await getAllIngredientsSv();
-      res.status(200).json(ingredients);
-    } catch (error: any) {
-      
-      const statusCode = error.statusCode || 500;
-      const message = error.message || "Erreur lors de la récupération des ingrédients";
-      res.status(statusCode).json({ message });
-
-    }
-  };
-*/
-  
-  
-
-
-
-/*
-export const addIngredient = async (req: Request, res: Response) => {
-  const { name, quantity } = req.body;
-  if (!name || !quantity) {
-    return res.status(400).json({ message: "Name and quantity are required" });
+export const updateIngredient = async (req: req, res: res) => {
+  if(!isIngredient(req.body)){
+      return res.status(400).json({ message: "Format paramètre ingredient incorrect" });
   }
-  const newIngredient = await addIngredientSv({ name, quantity });
-  res.status(201).json(newIngredient);
-};
-*/
+  try {
+      const ingredient = await updateIngredientSv(req.body);
+      res.status(201).json({ message: "Ingredient enregistré", ingredient });
+  }
+  catch (error) {
+      res.status(500).json({ message: "Erreur lors de l'enregistrement de l'ingredient" });
+  }
+}
+
+
+export const saveIngredient = async (req: req, res: res) => {
+  if(!isIngredient(req.body)){
+      return res.status(400).json({ message: "Format paramètre ingredient incorrect" });
+  }
+  try {
+      const ingredient = await saveIngredientSv(req.body);
+      res.status(201).json({ message: "Ingredient enregistré", ingredient });
+  }
+  catch (error) {
+      res.status(500).json({ message: "Erreur lors de l'enregistrement de l'ingredient" });
+  }
+}
+
+
+

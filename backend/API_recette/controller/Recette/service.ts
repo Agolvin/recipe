@@ -10,10 +10,10 @@ export const getAllRecipesSv = async () => {
     if (!bdd.recipes) {
         throw new Error("Données recttes inexistantes en base");
     }
-    if (!bdd.ingredients.every(isRecipe)) {
+    if (!bdd.recipes.every(isRecipe)) {
         throw new Error("Type de données recttes incohérent entre la base et la description");
     }
-    return bdd.ingredients
+    return bdd.recipes
 }
 
 

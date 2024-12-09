@@ -5,7 +5,7 @@ export interface Bdd {
   ingredients: Ingredient[];
 }
 
-
+/*
 export interface Recipe {
   id: number;
   name: string;
@@ -17,13 +17,13 @@ export function isRecipe (obj: any) : obj is Recipe {
     typeof obj === "object" &&
     obj !== null &&
     typeof obj.id=== "number" &&
-    typeof obj. name=== "string" &&
+    typeof obj.name=== "string" &&
     typeof obj.description=== "string"
   );
 }
+*/
 
-
-export interface RecipeNew {
+export interface Recipe {
   id: number;
   name: string;
   description: string; 
@@ -31,7 +31,7 @@ export interface RecipeNew {
   ingredientsQte: { ingredient: Ingredient; quantity: number }[]; 
 }
 
-export function isRecipeNew (obj: any) : obj is RecipeNew {
+export function isRecipe (obj: any) : obj is Recipe {
   return(
     typeof obj === "object" &&
     obj !== null &&
@@ -71,7 +71,7 @@ export interface Ingredient {
   unitName: string;
   name: string;
   description: string; 
-  price: number;
+  price: number;        //à l'unité
 }
 
 export function isIngredient (obj: any) : obj is Ingredient {

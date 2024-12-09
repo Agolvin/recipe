@@ -1,11 +1,12 @@
 
 
 import { Router } from 'express';
-import { addIngredient,getAllIngredients} from './controller';
+import { getAllIngredients,getIngredient,addIngredient} from './controller';
 
 const ingredientRouter = Router();
 
 ingredientRouter.get('/getall', getAllIngredients); // GET /ingredients
+ingredientRouter.get('/get', getIngredient); // GET /ingredients
 ingredientRouter.post('/add', addIngredient);    // POST /ingredients
 
 export default ingredientRouter;

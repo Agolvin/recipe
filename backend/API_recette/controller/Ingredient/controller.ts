@@ -2,7 +2,7 @@
 
 
 import { Request as req, Response as res } from "express";
-import { addIngredientSv,getAllIngredientsSv } from './service';
+import { getAllIngredientsSv,getIngredientSv,addIngredientSv } from './service';
 import { Bdd,Recipe,Ingredient, isIngredient } from "../../../../shared/models/recipe.model";
 
 
@@ -15,6 +15,19 @@ export const getAllIngredients = async (req: req, res: res) => {
   }
 };
 
+
+export const getIngredient = async (req: req, res: res) => {
+  try {
+    if (typeof req.body !== "number") {
+      return res.status(400).json({ message: "Format paramètre id incorrect" });
+    }
+    const idIngredient:number = req.body;
+    const ingredient:Ingredient = await getIngredientSv(idIngredient);
+    res.status(200).json(ingredient);
+  } catch (error) {
+    res.status(500).json({ message: "Erreur lors de la récupération de l'ingredient" });
+  }
+};
 
 
 export const addIngredient = async (req: req, res: res) => {

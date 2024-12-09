@@ -30,7 +30,7 @@ const getAllRecipes = (req: req, res: res) => {
   res.status(200).json(bdd.recipes);
 };
 
-//res
+
 
 const deleteRecipe = (req: req, res: res) => {
   console.log("debut deleteRecipe");
@@ -59,7 +59,7 @@ const deleteRecipe = (req: req, res: res) => {
 const addRecipe = (req: req, res: res) => {
   const data = fs.readFileSync("../bdd.json", "utf8"); //recuperation données depuis bdd.json
   let bdd = JSON.parse(data) as Bdd; //transfert en json dans variable
-  const { recipe }: { recipe: Recipe } = req.body; //copie de la recipe du boy dans variable locale typé en recipe
+  const { recipe }: { recipe: Recipe } = req.body; //copie de la recipe du body dans variable locale typé en recipe
 
   bdd.recipes;
 

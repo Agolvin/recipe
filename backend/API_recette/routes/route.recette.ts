@@ -1,4 +1,11 @@
+
+//obsolete
+//remplacé index.ts général qui fait appel aux rooter specifiques
+//à virer une fois le reste testé
+
+
 import { Router } from "express";
+
 import {
   addRecipe,
   deleteRecipe,

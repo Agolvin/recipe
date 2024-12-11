@@ -1,3 +1,7 @@
+
+/*
+
+
 import fs from "fs";
 import { Request as req, Response as res } from "express";
 //import { Bdd } from "../../models";
@@ -5,16 +9,6 @@ import { Request as req, Response as res } from "express";
 import { Bdd,Recipe } from "../../../../shared/models/recipe.model";
 //import { Recipe } from "@models/recipe.model";
 import { getBDD, saveBDD } from "../../lib/utils";
-
-
-/*
-const getAllRecipesOld = (req: req, res: res) => {
-  res.status(200).json([
-    { id: 1, name: "Recette 1" },
-    { id: 2, name: "Recette 2" },
-  ]);
-};
-*/
 
 
 const getAllRecipes = (req: req, res: res) => {
@@ -86,13 +80,14 @@ const saveRecipe = (req: req, res: res) => {
     // (parametres fonctions) => corp de la fonction
     // =>: separateur entre param et corp de la fonction
     //(recipe): nommage de l'element du tableau parcouru pour utilisation dans la fonction de comparaison 
-    //
+    console.log("recipe not found");
     return res.status(404).json({ message: "Recette introuvable" }); //message d'erreur
   }
 
   let index = bdd.recipes.findIndex(
     (recipe) => recipe.id == Number(req.params.id)
   );
+  console.log("sauvegarde de: ", req.body)
   bdd.recipes[index] = req.body.recipe;
   saveBDD(bdd);
   res.status(200).json({ message: "Recette modifié" });
@@ -119,3 +114,8 @@ const getRecipe = (req: req, res: res) => {
 };
 
 export { getAllRecipes, deleteRecipe, addRecipe, saveRecipe, getRecipe };
+
+
+
+
+*/

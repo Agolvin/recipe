@@ -5,10 +5,18 @@
 // import { Link, Outlet, useLocation, useParams } from "react-router-dom";
 // import Button from "./components/Button/Button";
 
-import { Link, Outlet, useParams } from "react-router-dom";
+//import { Link, Outlet, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
-import { recette } from "../../data";
-import { tab_ingredients } from "../../data";
+//import { recette } from "../../data";
+import { getRecipe } from "./api";
+import { Recipe } from "../../../../../shared/models/recipe.model";
+
+//import { ListeRecipe } from "./utils";
+
+//import { tab_ingredients } from "../../data";
+
+
 
 // type formSchema = {
 //   email: string;
@@ -16,7 +24,49 @@ import { tab_ingredients } from "../../data";
 // };
 
 function Recette() {
+  
+  console.log("fonction recette");
+
   const { id } = useParams();
+
+  
+
+
+
+
+  if (!id) return;
+
+  
+
+
+const curr_recette = getRecipe(Number(id)) ;
+
+
+console.log(curr_recette);
+
+
+
+/*  const curr_recette = getRecipe(Number(id)) ;
+  if (!curr_recette) return;
+
+*/
+
+
+
+
+  return (
+    <>
+      <h1>Titre id:{id}</h1>
+      <p>Paragraphe</p>
+    </>
+  );
+
+
+/*
+
+  console.log("fonction recette");
+  const { id } = useParams();
+  
   if (!id) return;
 
   const curr_recette = recette.find((recette) => recette.id === id);
@@ -56,6 +106,36 @@ function Recette() {
       </div>
     </>
   );
+
+
+*/
+
+
+}
+export default Recette;
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   // const {
   //   register,
@@ -122,6 +202,6 @@ function Recette() {
   //     <Outlet />
   //   </form>
   // );
-}
+//}
 
-export default Recette;
+//export default Recette;

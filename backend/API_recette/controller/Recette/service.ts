@@ -5,20 +5,24 @@ import { getBDD, saveBDD } from "../../lib/utils";
 
 
 export const getAllRecipesSv = async () => {
-    console.log("getAllRecipesSv");
+    console.log("getAllRecipesSv start");
+
     let bdd = getBDD();
+    
+
+    console.log("getAllRecipesSv getBDD ok");  
     if (!bdd.recipes) {
-        throw new Error("Données recttes inexistantes en base");
+        throw new Error("Données recettes inexistantes en base");
     }
-    if (!bdd.recipes.every(isRecipe)) {
-        throw new Error("Type de données recttes incohérent entre la base et la description");
-    }
+    
+    console.log("getAllRecipesSv données base existantes",bdd.recipes);
+
     return bdd.recipes
 }
 
 
 export const getRecipeSv = async (idRecipe: number) => {
-    console.log("getRecipeSv");
+    console.log("getRecipeSv id=", idRecipe);
     let bdd = getBDD();
     if (!bdd.recipes) {
         throw new Error("Données recette inexistantes en base");
@@ -31,10 +35,11 @@ export const getRecipeSv = async (idRecipe: number) => {
         (recette) => recette.id == idRecipe
     );
 
-    if (index == -1) {     //verifier doc val retour de findIndex
+    if (index == -1) {     
         throw new Error("Recette inexistante");
     }
     else {
+        console.log("retour getRecipeSv:",bdd.recipes[index])
         return bdd.recipes[index]
     }
 };

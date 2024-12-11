@@ -1,5 +1,8 @@
 import { json } from "express";
-import { recetteRouter } from "./routes/route.recette";
+//import { recetteRouter } from "./routes/route.recette";
+
+
+import recetteRouter from "./controller/Recette/router";
 import ingredientRouter from "./controller/Ingredient/router";
 
 const express = require("express");

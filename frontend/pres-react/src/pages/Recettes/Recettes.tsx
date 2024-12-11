@@ -7,7 +7,7 @@
 
 import { Link, Outlet } from "react-router-dom";
 
-import { recette } from "../../data";
+//import { recette } from "../../data";
 //import React, { useEffect } from "react";
 
 import { getRecipes } from "./api";
@@ -16,6 +16,11 @@ import { ListeRecipe } from "./utils";
 import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { deleteRecipe } from "../Recette/api";
+
+import { Recipe } from "../../../../../shared/models/recipe.model";
+
+
+
 
 // type formSchema = {
 //   email: string;
@@ -45,15 +50,23 @@ function Recettes() {
     );
   }
   if (!data) return;
+
+console.log("Données recipes retournées par l'API: ", data);
+
+
+
+
   return (
     <>
       <Link to="./add">Nouvelle recette </Link>
 
       <ul>
-        {data.map((r) => {
+
+      {data.map((r) => {
+        //{data.map((r) => {
           return (
             <li key={r.id}>
-              <Link to={`./${r.id}`}>Titre : {r.title}</Link>{" "}
+              <Link to={`./${r.id}`}>Titre : {r.name}</Link>{" "}
               <Link to={`./update/${r.id}`}> modifier </Link>
               <button onClick={() => deleteRecipe(r.id)}>Delete</button>
             </li>
@@ -62,7 +75,9 @@ function Recettes() {
       </ul>
     </>
   );
+}
 
+export default Recettes;
   // const {
   //   register,
   //   handleSubmit,
@@ -128,6 +143,4 @@ function Recettes() {
   //     <Outlet />
   //   </form>
   // );
-}
 
-export default Recettes;

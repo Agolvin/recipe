@@ -1,8 +1,7 @@
-interface Recipe {
-  id: number;
-  title: string;
-  description: string;
-}
+
+
+import { Recipe } from "../../../../../shared/models/recipe.model";
+
 const getRecipes = async () => {
   console.log("debut getRecipes");
   try {

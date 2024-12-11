@@ -7,7 +7,7 @@
 
 import { Link, Outlet } from "react-router-dom";
 
-import { recette } from "../../data";
+//import { recette } from "../../data";
 //import React, { useEffect } from "react";
 
 import { ListeRecipe } from "./utils";

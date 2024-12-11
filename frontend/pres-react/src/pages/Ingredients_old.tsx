@@ -7,7 +7,7 @@
 
 import { Link, Outlet } from "react-router-dom";
 
-import { tab_ingredients } from "../data";
+//import { tab_ingredients } from "../data";
 
 // type formSchema = {
 //   email: string;
@@ -15,6 +15,19 @@ import { tab_ingredients } from "../data";
 // };
 
 function Tab_ingredients() {
+  return (
+    <ul>
+     
+            <li>
+              Ingredient X
+            </li>
+            <li>Prix au kg: 17€</li>
+          
+    </ul>
+  );
+
+
+  /*
   return (
     <ul>
       {tab_ingredients.map((ingredient) => {
@@ -29,6 +42,10 @@ function Tab_ingredients() {
       })}
     </ul>
   );
+*/
+
+
+
 }
 
 export default Tab_ingredients;

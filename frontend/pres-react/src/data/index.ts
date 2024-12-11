@@ -1,3 +1,7 @@
+
+//base locale front remplacée par API
+
+/*
 const recette = [
   {
     id: "1",
@@ -41,3 +45,7 @@ const tab_ingredients = [
 ];
 
 export { tab_ingredients };
+*/
+
+
+

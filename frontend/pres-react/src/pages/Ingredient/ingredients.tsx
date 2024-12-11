@@ -1,19 +1,68 @@
-// import { useState } from "react";
-// import Input from "./components/Input/Input";
-// import "./App.css";
-// import { useForm } from "react-hook-form";
-// import { Link, Outlet, useLocation, useParams } from "react-router-dom";
-// import Button from "./components/Button/Button";
+
 
 import { Link, Outlet } from "react-router-dom";
 
-import { tab_ingredients } from "../../data";
-import { Ingredient } from "../../../../../shared/models/recipe.model";
 
-// type formSchema = {
-//   email: string;
-//   password: string;
-// };
+import { getIngredients } from "./api";
+
+import { ListeIngredient } from "./utils";
+import { useQuery } from "@tanstack/react-query";
+//import { deleteRecipe } from "../Recette/api";
+
+
+function Ingredients() {
+  const RELOAD_QUERY_OPTIONS = {
+    cacheTime: 0,
+  } as const;
+
+  const { isLoading, data, isError, error, refetch } = useQuery({
+    queryKey: ["ingredients"],
+    queryFn: getIngredients,
+    ...RELOAD_QUERY_OPTIONS,
+  });
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+  if (isError) {
+    return (
+      <div>
+        <p>{error.message}</p>
+        <button onClick={() => refetch()}>Recharger</button>
+      </div>
+    );
+  }
+  if (!data) return;
+  return (
+    <>
+
+      <Link to="./add">New ingredient</Link>
+
+      <ul>
+        {data.map((r) => {
+          return (
+            <li key={r.id}>
+              <Link to={`./${r.id}`}>Titre : {r.name}</Link>{" "}
+              <Link to={`./update/${r.id}`}> modifier </Link>
+              <button>Delete?? (non codé)</button>
+            </li>
+          );
+        })}
+      </ul>
+    </>
+  );
+}
+
+export default Ingredients;
+
+
+// <button onClick={() => deleteIngredient(r.id)}>Delete</button>
+
+
+//Ancienne version
+/*
+import { Link, Outlet } from "react-router-dom";
+import { tab_ingredients } from "../../data";
 
 function Tab_ingredients() {
   return (
@@ -33,3 +82,7 @@ function Tab_ingredients() {
 }
 
 export default Tab_ingredients;
+*/
+
+
+

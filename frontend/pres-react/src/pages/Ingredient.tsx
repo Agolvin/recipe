@@ -7,25 +7,40 @@
 
 import { Link, Outlet, useParams } from "react-router-dom";
 
-import { tab_ingredients } from "../data";
-
-// type formSchema = {
-//   email: string;
-//   password: string;
-// };
+//import { tab_ingredients } from "../data";
 
 function Ingredient() {
   const { id } = useParams();
   if (!id) return;
 
   const Int_ID: number | null = id ? parseInt(id, 10) : null;
+
+
+  const curr_ingredient = null;
+/*
   const curr_ingredient = tab_ingredients.find(
     (tab_ingredients) => tab_ingredients.id === Int_ID
   );
+*/
+
   if (!curr_ingredient) return;
 
   console.log(Int_ID);
 
+
+  return (
+    <>
+      <h1>TITRE</h1>
+      <img
+        src="https://cdn.futura-sciences.com/sources/images/dossier/2038/06-2038.jpg"
+        alt="image de l'ingrédient"
+      />
+      <p>Description</p>
+    </>
+  );
+
+
+/*
   return (
     <>
       <h1>{curr_ingredient.title}</h1>
@@ -36,6 +51,9 @@ function Ingredient() {
       <p>{curr_ingredient.description}</p>
     </>
   );
+*/
+
+
 
   // const {
   //   register,

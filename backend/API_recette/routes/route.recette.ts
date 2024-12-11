@@ -12,7 +12,9 @@ import {
   getAllRecipes,
   saveRecipe,
   getRecipe,
-} from "../controller/Recette";
+} from "../controller/Recette/";
+
+
 
 const express = require("express");
 const router: Router = express.Router();

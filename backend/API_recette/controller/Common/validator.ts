@@ -231,12 +231,6 @@ module.exports = { validateIngredient };
     Modularité : Les validators et types spécifiques restent dans leur thème, tandis que les parties communes sont centralisées.
 
 
-
-
-
-
-
-
 */
 
 

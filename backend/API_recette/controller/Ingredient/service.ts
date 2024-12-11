@@ -1,6 +1,6 @@
 
 
-import { Bdd, Recipe, Ingredient, isIngredient, isRecipe } from "../../../../shared/models/recipe.model";
+import { Ingredient, isIngredient, isRecipe } from "../../../../shared/models/recipe.model";
 import { getBDD, saveBDD } from "../../lib/utils";
 
 
@@ -15,7 +15,6 @@ export const getAllIngredientsSv = async () => {
   }
   return bdd.ingredients
 };
-
 
 
 export const getIngredientSv = async (idIngredient: number) => {
@@ -110,4 +109,9 @@ export const saveIngredientSv = async (pinIngredient: Ingredient) => {
     return updateIngredientSv(pinIngredient)
   }
 };
+
+
+
+
+
 

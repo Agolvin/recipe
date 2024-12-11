@@ -11,7 +11,7 @@
 
 import fs from "fs";
 import { Request as req, Response as res } from "express";
-import { Bdd, Recipe, RecipeNew, Unit, Ingredient, Step, isIngredient } from "../../../../shared/models/recipe.model";
+import { Bdd, Recipe, Unit, Ingredient, Step, isIngredient } from "../../../../shared/models/recipe.model";
 import { getBDD, saveBDD } from "../../lib/utils";
 
 

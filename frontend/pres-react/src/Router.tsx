@@ -4,7 +4,7 @@ import Page_test from "./pages/Page_test";
 import App from "./App";
 import Recettes from "./pages/Recettes/Recettes";
 import { Recette } from "@pages";
-import Tab_ingredients from "./pages/Ingredients";
+import Tab_ingredients from "./pages/Ingredient/ingredients";
 import Ingredient from "./pages/Ingredient";
 import RecetteForm, { FormSchema } from "./pages/RecetteForm/RecetteForm";
 import { addRecipe, saveRecipe } from "./pages/RecetteForm/api";

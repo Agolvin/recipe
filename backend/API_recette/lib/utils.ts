@@ -1,6 +1,6 @@
 //import { Bdd } from "../models";
 
-import { Bdd,Recipe,RecipeNew,Unit,Ingredient,Step } from "../../../shared/models/recipe.model";
+import { Bdd,Recipe,Unit,Ingredient,Step } from "../../../shared/models/recipe.model";
 
 
 import fs from "fs";

@@ -16,9 +16,11 @@ import { useEffect, useState } from "react";
 import { addRecipe } from "./api";
 import Input from "../../components/Input/Input";
 */
-import { useForm } from "react-hook-form";
 //import { RecetteFormProps } from "./RecetteForm.types";
 import { Recipe } from "../../../../../shared/models/recipe.model";
+
+
+import { useForm, useFieldArray, Controller } from "react-hook-form";
 
 import React from "react";
 
@@ -31,6 +33,7 @@ const RecetteForm: React.FC<{ fn: (data: Recipe) => Promise<void>; defaultValues
       : defaultValues;
 
   const {
+    control,
     register,
     handleSubmit,
     setValue,
@@ -62,8 +65,18 @@ const RecetteForm: React.FC<{ fn: (data: Recipe) => Promise<void>; defaultValues
     }
   };
 
+
+/*
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: "steps", // Le nom du champ dans le formulaire
+  });
+*/
+
+
   return (
     <form className="grid gap-2" onSubmit={handleSubmit(onSubmit)}>
+      <h1>Name</h1>
       <input
         {...register("name", {
           required: {
@@ -82,6 +95,11 @@ const RecetteForm: React.FC<{ fn: (data: Recipe) => Promise<void>; defaultValues
         placeholder="Titre"
       />
       {errors.name && <p>{errors.name.message}</p>}
+
+
+
+
+      <h1>Description</h1>
       <input
         {...register("description", {
           required: true,
@@ -89,6 +107,19 @@ const RecetteForm: React.FC<{ fn: (data: Recipe) => Promise<void>; defaultValues
         placeholder="Description"
       />
       {errors.description && <p>{errors.description.message}</p>}
+
+      <h1>Steps (soon)</h1>
+
+
+
+
+
+      <h1>Ingredients (soon)</h1>
+
+
+
+
+
       <button type="submit">Soumettre</button>
       {errors.root && <p>{errors.root.message}</p>}
     </form>

@@ -43,6 +43,12 @@ function Accueil() {
     </tr>
     <tr>
       <th scope="row">Recette</th>
+      <td>Delete</td>
+      <td>BUG, à definir</td>
+      <td>??</td>
+    </tr>
+    <tr>
+      <th scope="row">Recette</th>
       <td>Liste etapes</td>
       <td>Incomplet</td>
       <td>??</td>

@@ -6,7 +6,7 @@ const NavBar: React.FC = ({ ...props }) => {
     <header className="fixed top-0 left-0 border-b w-full h-24">
       <ul className="flex justify-evenly items-center h-full">
         <li>
-          <Link to="/">Accueil</Link>
+          <Link to="/accueil">Accueil</Link>
         </li>
         <li>
           <Link to="/recettes">Liste recettes</Link>

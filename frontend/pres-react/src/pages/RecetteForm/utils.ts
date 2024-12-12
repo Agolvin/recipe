@@ -1,3 +1,6 @@
+
+/*
+
 import { getRecipes } from "./api";
 
 const ListeRecipe = getRecipes();
@@ -9,3 +12,8 @@ ListeRecipe.then((data) => {
 });
 
 export { ListeRecipe };
+
+*/
+
+
+

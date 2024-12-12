@@ -87,7 +87,42 @@ console.log("Données recipes retournées par l'API: ", data);
   return (
     <>
       <h1>Titre:{data.name} id:{id}</h1>
-      <p>Paragraphe</p>
+      <p>Description: {data.description}</p>
+
+
+
+
+      {data.ingredientsQte && data.ingredientsQte.length > 0 && (
+      <div>
+        <h1>Ingrédients :</h1>
+        <ol>
+          {data.ingredientsQte.map((ingr, index) => (
+            <li key={index}>
+              <h3>Ingrédient {index + 1}:</h3>
+              <p>{ingr.ingredient.name}: {ingr.quantity} {ingr.ingredient.unitName}</p>
+            </li>
+          ))}
+        </ol>
+      </div>)}
+
+
+
+
+      {data.steps && data.steps.length > 0 && (
+      <div>
+        <h1>Étapes :</h1>
+        <ol>
+          {data.steps.map((step, index) => (
+            <li key={index}>
+              <h3>Étape {index + 1}: {step.name}</h3>
+              <p>{step.description}</p>
+            </li>
+          ))}
+        </ol>
+      </div>)}
+
+
+
     </>
   );
 

@@ -54,11 +54,7 @@ function RecetteUpdate() {
 
 }
 
-
-
-
 export default RecetteUpdate;
-
 
 
 

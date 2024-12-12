@@ -41,10 +41,13 @@ const RecetteForm: React.FC<{ fn: (data: Recipe) => Promise<void>; defaultValues
       id: 0,
       name: "",
       description: "",
-      steps: [],
+      steps: [{ name: "Etape 1", description: "Commencer la rectte" }],
       ingredientsQte: [],
     },
   });
+
+
+
 
   const onSubmit = async (data: Recipe) => {
     console.log(data);

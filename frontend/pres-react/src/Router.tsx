@@ -6,9 +6,11 @@ import Recettes from "./pages/Recettes/Recettes";
 import { Recette } from "@pages";
 //import Tab_ingredients from "./pages/Ingredients";
 import Ingredient from "./pages/Ingredient";
-import RecetteForm, { FormSchema } from "./pages/RecetteForm/RecetteForm";
-import { addRecipe, saveRecipe } from "./pages/RecetteForm/api";
-import RecetteUpdtate from "./pages/RecetteUpdate/RecetteUpdate";
+// import RecetteForm, { FormSchema } from "./pages/RecetteForm/RecetteForm";
+import RecetteForm from "./pages/RecetteForm/RecetteForm";
+import { addRecipe } from "./pages/RecetteForm/api";
+import RecetteUpdate from "./pages/RecetteUpdate/RecetteUpdate";
+import Accueil from "./pages/Accueil/Accueil";
 
 const router = createBrowserRouter([
   {
@@ -35,18 +37,23 @@ const router = createBrowserRouter([
       },
 
       {
+        path: "/accueil",
+        element: <Accueil />,
+      },
+
+      {
         path: "/recettes/add",
         element: <RecetteForm fn={addRecipe} defaultValues={undefined} />,
       },
 
       {
         path: "/recettes/update/:id",
-        element: <RecetteUpdtate />,
+        element: <RecetteUpdate />,
       },
 
       {
         path: "/recettes/:id",
-        element: <Recette id={0} />,
+        element: <Recette />,
       },
 /*
       {

@@ -27,13 +27,20 @@ export const getRecipeSv = async (idRecipe: number) => {
     if (!bdd.recipes) {
         throw new Error("Données recette inexistantes en base");
     }
+    console.log("getRecipeSv base OK");
+
+    // verif bloquante ??
+    /*
     if (!bdd.recipes.every(isRecipe)) {
         throw new Error("Type de données recetttes incohérent entre la base et la description");
     }
+    console.log("getRecipeSv type base OK");
+    */
 
     let index = bdd.recipes.findIndex(
         (recette) => recette.id == idRecipe
     );
+    console.log("getRecipeSv index: ",index);
 
     if (index == -1) {     
         throw new Error("Recette inexistante");

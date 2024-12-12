@@ -8,14 +8,13 @@ import {Recipe} from '../../../../../shared/models/recipe.model'
 
 
 
-export const getRecipe = async (id: number) => {
-  console.log("debut getRecipe api.ts");  
+export const getRecipe = async (id: number): Promise<Recipe> => {
+  console.log("debut getRecipe api.ts pour id:", id);  
+  console.log("type de id: ", typeof id)
+
+
 
   try {
-
-
-    //queryClient.setQueryData(["recipes"], updatedData);
-
     const response = await fetch(`http://localhost:3000/recette/get/${id}`, {
       method: "GET",
     });
@@ -25,15 +24,16 @@ export const getRecipe = async (id: number) => {
     }
 
     const data = await response.json();
-    console.log(getRecipe,data)
+    console.log("getRecipe data:",data)
     return data as Recipe;
   } catch (err) {
     const error = err as Error;
+    console.error("Erreur dans getRecipe:", error.message);
     throw error;
   }
 
-
 };
+
 
 
 

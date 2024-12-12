@@ -33,7 +33,7 @@ function Recettes() {
   } as const;
 
   const { isLoading, data, isError, error, refetch } = useQuery({
-    queryKey: ["recipes"],
+    queryKey: ["recipes"],//remplacer cette clé par l'id de l'utilisateur??
     queryFn: getRecipes,
     ...RELOAD_QUERY_OPTIONS,
   });
@@ -62,11 +62,13 @@ console.log("Données recipes retournées par l'API: ", data);
 
       <ul>
 
+      
+
       {data.map((r) => {
         //{data.map((r) => {
           return (
             <li key={r.id}>
-              <Link to={`./${r.id}`}>Titre : {r.name}</Link>{" "}
+              <Link to={`./${r.id}`}>Titre : {r.name} id: {r.id}</Link>{" "}
               <Link to={`./update/${r.id}`}> modifier </Link>
               <button onClick={() => deleteRecipe(r.id)}>Delete</button>
             </li>

@@ -1,6 +1,12 @@
-import { FormSchema } from "./RecetteForm";
+//import { Recipe } from "../../../../../shared/models/recipe.model";
+//import { FormSchema } from "./RecetteForm";
 
-export const addRecipe = async (newRecipe: FormSchema) => {
+import { Recipe } from "../../../../../shared/models/recipe.model";
+
+
+
+
+export const addRecipe = async (newRecipe: Recipe) => {
   try {
     // const response = await fetch("http://localhost:3000/recette/addRecipe");
 
@@ -21,22 +27,29 @@ export const addRecipe = async (newRecipe: FormSchema) => {
   }
 };
 
+
+
+
+export const saveRecipe = async (data: Recipe): Promise<void> => {
+/*
 export const saveRecipe = async (Recipe: {
   id: string;
   description: string;
   title: string;
 }) => {
+
+  */
   try {
     // const response = await fetch("http://localhost:3000/recette/addRecipe");
 
     const response = await fetch(
-      `http://localhost:3000/recette/update/${Recipe.id}`,
+      `http://localhost:3000/recette/update/${data.id}`,
       {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ recipe: Recipe }), // Enveloppez les données dans un objet `recipe`
+        body: JSON.stringify({ recipe: data }), // Enveloppez les données dans un objet `recipe`
       }
     );
 

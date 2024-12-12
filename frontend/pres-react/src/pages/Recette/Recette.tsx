@@ -10,7 +10,9 @@ import { Link, useParams } from "react-router-dom";
 
 //import { recette } from "../../data";
 import { getRecipe } from "./api";
-import { Recipe } from "../../../../../shared/models/recipe.model";
+import { Recipe,isRecipe } from "../../../../../shared/models/recipe.model";
+import { useQuery } from "@tanstack/react-query";
+
 
 //import { ListeRecipe } from "./utils";
 
@@ -23,43 +25,96 @@ import { Recipe } from "../../../../../shared/models/recipe.model";
 //   password: string;
 // };
 
-function Recette() {
-  
-  console.log("fonction recette");
-
-  const { id } = useParams();
-
+function Recette(){//{ id }: { id: number }) {
   
 
 
+  const { id: idParam } = useParams(); // Récupère l'id depuis l'URL
+  const id = Number(idParam); // Convertir en nombre
 
 
-  if (!id) return;
+  if (isNaN(id)) {
+    return <p>ID invalide dans l'URL.</p>;
+  }
 
   
+  console.log("Id récupéré depuis l'URL:", id);
+
+  console.log("fonction recette id:", id);
+
+  const RELOAD_QUERY_OPTIONS = {
+    cacheTime: 0,
+  } as const;
+
+  const { isLoading, data, isError, error, refetch } = useQuery({
+    queryKey: ["recipe", id], // Inclure l'ID dans la clé
+    queryFn: () => getRecipe(id)//, // Appeler l'API avec l'ID
+    //cacheTime: 0, // Optionnel : empêche la mise en cache
+  });
 
 
-const curr_recette = getRecipe(Number(id)) ;
-
-
-console.log(curr_recette);
-
-
-
-/*  const curr_recette = getRecipe(Number(id)) ;
-  if (!curr_recette) return;
-
+/*
+  const { isLoading, data, isError, error, refetch } = useQuery({
+    queryKey: ["recipe", id], 
+    queryFn: ({ queryKey }) => {
+      const [, recipeId] = queryKey; 
+      return getRecipe(recipeId as number);
+    }
+    //,cacheTime: 0, // Supprime le cache si nécessaire
+  });
 */
 
 
 
 
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+  if (isError) {
+    return (
+      <div>
+        <p>{(error as Error).message}</p>
+        <button onClick={() => refetch()}>Recharger</button>
+      </div>
+    );
+  }
+  if (!data) {
+    return <p>Pas de données disponibles</p>;
+  }
+console.log("Données recipes retournées par l'API: ", data);
+
   return (
     <>
-      <h1>Titre id:{id}</h1>
+      <h1>Titre:{data.name} id:{id}</h1>
       <p>Paragraphe</p>
     </>
   );
+
+}
+export default Recette;
+ 
+
+
+
+
+
+
+
+
+
+/*
+  const { id } = useParams();
+  if (!id) return;
+const curr_recette:Recipe = getRecipe(Number(id));
+console.log("reoutr de l'API: ", curr_recette);
+  if (!curr_recette) return;
+*/
+
+
+
+
+
 
 
 /*
@@ -109,12 +164,6 @@ console.log(curr_recette);
 
 
 */
-
-
-}
-export default Recette;
- 
-
 
 
 

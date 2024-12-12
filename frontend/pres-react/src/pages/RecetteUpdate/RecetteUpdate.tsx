@@ -5,20 +5,15 @@ import { useParams } from "react-router-dom";
 import RecetteForm from "../RecetteForm/RecetteForm";
 import { saveRecipe } from "../RecetteForm/api";
 
-function RecetteUpdtate() {
-  const { id } = useParams();
-  /*
-  const QueryOptions = {
-    cacheTime: 0, // Spécifier que les données ne sont pas mises en cache
-    staleTime: 0, // Marquer les données comme obsolètes immédiatement
-    refetchOnMount: "always",
-  };
+import { Recipe } from "../../../../../shared/models/recipe.model";
 
-  const COMMON_QUERY_OPTIONS = {
-    retry: false,
-    refetchOnWindowFocus: false,
-    refetchOnMount: false,
-  } as const;*/
+
+
+
+function RecetteUpdate() {
+  const { id } = useParams();
+
+
 
   const RELOAD_QUERY_OPTIONS = {
     cacheTime: 0,
@@ -45,7 +40,59 @@ function RecetteUpdtate() {
   }
 
   if (!data) return;
-  return <RecetteForm defaultValues={data} fn={saveRecipe} />;
+
+  const processedDefaults: Recipe = {
+    id: data.id,
+    name: data.name || '',
+    description: data.description || '',
+    steps: data.steps || [],
+    ingredientsQte: data.ingredientsQte || [],
+  };
+
+  return <RecetteForm defaultValues={processedDefaults} fn={saveRecipe} />;
+
+
 }
 
-export default RecetteUpdtate;
+
+
+
+export default RecetteUpdate;
+
+
+
+
+/*
+
+import { useForm } from "react-hook-form";
+import { isRecipe, Recipe } from "../../../../../shared/models/recipe.model";
+
+
+function RecetteUpdate2() {
+  const { id } = useParams();
+  const recipeId = id ? Number(id) : null;
+
+  if (recipeId === null) return <p>Invalid ID</p>;
+
+  const { isLoading, data, isError, error, refetch } = useQuery({
+    queryKey: ["recipe", recipeId],
+    queryFn: () => getRecipe(recipeId),
+    cacheTime: 0,
+  });
+
+  if (isLoading) return <p>Loading...</p>;
+  if (isError) return <div><p>{error.message}</p><button onClick={() => refetch()}>Recharger</button></div>;
+  if (!data) return <p>Pas de recette trouvée.</p>;
+
+  // Assurez-vous que `data` contient toutes les propriétés nécessaires ou fournissez des valeurs par défaut
+  const processedDefaults: Recipe = {
+    id: data.id,
+    name: data.name || '',
+    description: data.description || '',
+    steps: data.steps || [],
+    ingredientsQte: data.ingredientsQte || [],
+  };
+
+  return <RecetteForm defaultValues={processedDefaults} fn={saveRecipe} />;
+}
+*/

@@ -11,6 +11,7 @@ import RecetteForm from "./pages/RecetteForm/RecetteForm";
 import { addRecipe } from "./pages/RecetteForm/api";
 import RecetteUpdate from "./pages/RecetteUpdate/RecetteUpdate";
 import Accueil from "./pages/Accueil/Accueil";
+import Ingredients from "./pages/Ingredients/ingredients";
 
 const router = createBrowserRouter([
   {
@@ -55,12 +56,12 @@ const router = createBrowserRouter([
         path: "/recettes/:id",
         element: <Recette />,
       },
-/*
+
       {
         path: "/ingredients",
-        element: <Tab_ingredients />,
+        element: <Ingredients />,
       },
-*/
+
       {
         path: "/ingredients/:id",
         element: <Ingredient />,

@@ -23,12 +23,26 @@ export function isRecipe (obj: any) : obj is Recipe {
 }
 */
 
+
+//ajout duplication de recette
+//systemes de mesure
+//poid: kg ou gr
+//volume: Litre uniquement
+//unité
+
+
+//impression de'une recette: inclure optionnelement impression des sous recette
+
 export interface Recipe {
+  //bPeutEtreIngredient
+  //unité + qté
+  //bTestée à cocher qui  puisse servir de filtre à la selection des ingredients
+  //commentaire libre  
   id: number;
   name: string;
   description: string; 
   steps: Step[];
-  ingredientsQte: { ingredient: Ingredient; quantity: number }[]; 
+  ingredientsQte: { ingredient: Ingredient; quantity: number }[]; //gerer l'ordre des ingredients
 }
 
 export function isRecipe (obj: any) : obj is Recipe {

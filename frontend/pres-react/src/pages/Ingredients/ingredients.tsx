@@ -1,13 +1,10 @@
 
-
 import { Link, Outlet } from "react-router-dom";
-
-
 import { getIngredients } from "./api";
-
-import { ListeIngredient } from "./utils";
 import { useQuery } from "@tanstack/react-query";
 //import { deleteRecipe } from "../Recette/api";
+//import { ListeIngredient } from "./utils";
+
 
 
 function Ingredients() {
@@ -15,6 +12,7 @@ function Ingredients() {
     cacheTime: 0,
   } as const;
 
+  
   const { isLoading, data, isError, error, refetch } = useQuery({
     queryKey: ["ingredients"],
     queryFn: getIngredients,

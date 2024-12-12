@@ -29,6 +29,7 @@ export const getRecipe = async (req: req, res: res) => {
 };
 */
 export const getRecipe = async (req: req, res: res) => {
+    console.log("getRecipe", req);
     try {
         const id = parseInt(req.params.id, 10);
         console.log("getRecipe id=", id)
@@ -52,6 +53,7 @@ export const getRecipe = async (req: req, res: res) => {
 
 
 export const addRecipe = async (req: req, res: res) => {
+    console.log("addRecipe", req);
     if (!isRecipe(req.body)) {
         return res.status(400).json({ message: "Format paramètre recette incorrect" });
     }
@@ -69,17 +71,21 @@ export const addRecipe = async (req: req, res: res) => {
 
 
 export const updateRecipe = async (req: req, res: res) => {
+    console.log("updateRecipe");
 
-    if(!isRecipe(req.body)){
+    if(!isRecipe(req.body.data)){
+        console.log("updateRecipe Format paramètre recette incorrect", req.body.data);
         return res.status(400).json({ message: "Format paramètre recette incorrect" });
     }
     
-    const recipe: Recipe = req.body;
+    const recipe: Recipe = req.body.data;
     try {
         const recette = await updateRecipeSv(recipe);
+        console.log("Recette enregistrée", req.body.data);
         res.status(201).json({ message: "Recette enregistrée", recette });
     }
     catch (error) {
+        console.log("Erreur lors de l'enregistrement de la recette");
         res.status(500).json({ message: "Erreur lors de l'enregistrement de la recette" });
     }
 

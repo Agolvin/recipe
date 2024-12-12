@@ -9,16 +9,16 @@ import { Link, Outlet } from "react-router-dom";
 
 //import { recette } from "../../data";
 //import React, { useEffect } from "react";
-
+/*
 import { ListeRecipe } from "./utils";
 import { useEffect, useState } from "react";
 
 import { addRecipe } from "./api";
 import Input from "../../components/Input/Input";
-
+*/
 import { useForm } from "react-hook-form";
-import { RecetteFormProps } from "./RecetteForm.types";
-import { Recipe,Step,Ingredient } from "../../../../../shared/models/recipe.model";
+//import { RecetteFormProps } from "./RecetteForm.types";
+import { Recipe } from "../../../../../shared/models/recipe.model";
 
 import React from "react";
 

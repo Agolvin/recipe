@@ -29,8 +29,6 @@ export const addRecipe = async (newRecipe: Recipe) => {
 
 
 
-
-export const saveRecipe = async (data: Recipe): Promise<void> => {
 /*
 export const saveRecipe = async (Recipe: {
   id: string;
@@ -39,6 +37,9 @@ export const saveRecipe = async (Recipe: {
 }) => {
 
   */
+
+export const saveRecipe = async (data: Recipe): Promise<void> => {
+
   try {
     // const response = await fetch("http://localhost:3000/recette/addRecipe");
 
@@ -49,7 +50,7 @@ export const saveRecipe = async (Recipe: {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ recipe: data }), // Enveloppez les données dans un objet `recipe`
+        body: JSON.stringify({ data }), // Enveloppez les données dans un objet `recipe`
       }
     );
 

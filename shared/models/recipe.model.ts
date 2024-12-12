@@ -41,11 +41,22 @@ export function isRecipe (obj: any) : obj is Recipe {
     typeof obj.description === "string" &&
 
     Array.isArray(obj.steps) && 
-    obj.steps.every(isStep) &&
+    obj.steps.every(isStep) //&&
 
-    Array.isArray(obj.ingredients) && 
-    obj.ingredientsQte.every((elm: { ingredient: Ingredient }) => isIngredient(elm.ingredient)) 
-    //Indique que chaque élément du tableau obj.ingredients est un objet contenant une propriété ingredient de type Ingredient.
+    /*
+    Array.isArray(obj.ingredientsQte) && 
+    obj.ingredientsQte.every((elm: any) => {
+      return (
+        typeof elm === "object" &&
+        elm !== null &&
+        typeof elm.quantity === "number" && 
+        typeof elm.ingredient === "object" &&
+        isIngredient(elm.ingredient)
+      );
+    })
+*/
+
+
   );
 }
 

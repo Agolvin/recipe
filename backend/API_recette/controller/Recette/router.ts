@@ -8,7 +8,7 @@ const recetteRouter = Router();
 recetteRouter.get('/getall', getAllRecipes); 
 recetteRouter.get('/get/:id', getRecipe); 
 recetteRouter.post('/add', addRecipe);
-recetteRouter.post('/update', updateRecipe);
+recetteRouter.post('/update/:id', updateRecipe);
 
 export default recetteRouter;
 

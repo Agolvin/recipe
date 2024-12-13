@@ -6,7 +6,7 @@ import { getAllIngredients,getIngredient,addIngredient,updateIngredient,saveIngr
 const ingredientRouter = Router();
 
 ingredientRouter.get('/getall', getAllIngredients); 
-ingredientRouter.get('/get', getIngredient); 
+ingredientRouter.get('/get/:id', getIngredient); 
 ingredientRouter.post('/add', addIngredient); 
 ingredientRouter.post('/update', updateIngredient);
 ingredientRouter.post('/save', saveIngredient);

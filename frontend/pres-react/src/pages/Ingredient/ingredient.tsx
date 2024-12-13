@@ -7,6 +7,9 @@ import { useQuery } from "@tanstack/react-query";
 
 function Ingredient(){
 
+    
+  console.log("composant Ingredient()", );
+
   const { id: idParam } = useParams(); 
   const id = Number(idParam); 
 
@@ -29,7 +32,7 @@ function Ingredient(){
 
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <p>Loading ingredient {id}...</p>;
   }
   if (isError) {
     return (

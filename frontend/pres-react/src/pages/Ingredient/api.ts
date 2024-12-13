@@ -8,7 +8,7 @@ import {Ingredient} from '../../../../../shared/models/recipe.model'
 
 
 
-export const getIngredient = async (id: number): Promise<Ingredient> => {
+const getIngredient = async (id: number): Promise<Ingredient> => {
   console.log("debut getIngredient api.ts pour id:", id);  
   console.log("type de id: ", typeof id)
 
@@ -32,3 +32,5 @@ export const getIngredient = async (id: number): Promise<Ingredient> => {
 
 };
 
+
+export { getIngredient };

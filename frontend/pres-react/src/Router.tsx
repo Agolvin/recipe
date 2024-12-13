@@ -2,16 +2,19 @@ import { createBrowserRouter } from "react-router-dom";
 import Root from "./pages/Root";
 import Page_test from "./pages/Page_test";
 import App from "./App";
-import Recettes from "./pages/Recettes/Recettes";
-import { Recette } from "@pages";
 //import Tab_ingredients from "./pages/Ingredients";
-import Ingredient from "./pages/Ingredient";
 // import RecetteForm, { FormSchema } from "./pages/RecetteForm/RecetteForm";
-import RecetteForm from "./pages/RecetteForm/RecetteForm";
-import { addRecipe } from "./pages/RecetteForm/api";
 import RecetteUpdate from "./pages/RecetteUpdate/RecetteUpdate";
 import Accueil from "./pages/Accueil/Accueil";
+
+
+import Recettes from "./pages/Recettes/Recettes";
+import { Recette } from "@pages";
+import RecetteForm from "./pages/RecetteForm/RecetteForm";
+import { addRecipe } from "./pages/RecetteForm/api";
+
 import Ingredients from "./pages/Ingredients/ingredients";
+import Ingredient from "./pages/Ingredient/ingredient";
 
 const router = createBrowserRouter([
   {

@@ -16,16 +16,24 @@ export const getAllIngredients = async (req: req, res: res) => {
 
 export const getIngredient = async (req: req, res: res) => {
   try {
-    if (typeof req.body !== "number") {
-      return res.status(400).json({ message: "Format paramètre id incorrect" });
+    console.log("getIngredient");
+
+    const id = parseInt(req.params.id, 10);
+    console.log("getIngredient id=", id)
+    if (isNaN(id)) {
+        return res.status(400).json({ message: "Format paramètre id incorrect" });
     }
-    const idIngredient:number = req.body;
-    const ingredient:Ingredient = await getIngredientSv(idIngredient);
+    const ingredient = await getIngredientSv(id);
+    console.log("ingredient getIngredient ",ingredient);
     res.status(200).json(ingredient);
   } catch (error) {
     res.status(500).json({ message: "Erreur lors de la récupération de l'ingredient" });
   }
 };
+
+
+
+
 
 
 export const addIngredient = async (req: req, res: res) => {

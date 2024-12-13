@@ -37,7 +37,7 @@ export const getRecipe = async (req: req, res: res) => {
             return res.status(400).json({ message: "Format paramètre id incorrect" });
         }
         const recette = await getRecipeSv(id);
-        console.log("retour controller", recette);
+        console.log("retour controller recipe", recette);
         res.status(200).json(recette);
     } catch (error) {
         res.status(500).json({ message: "Erreur lors de la récupération de la recette" });

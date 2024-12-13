@@ -6,26 +6,25 @@
 // import Button from "./components/Button/Button";
 
 //import { Link, Outlet, useParams } from "react-router-dom";
-import { Link, useParams } from "react-router-dom";
-
 //import { recette } from "../../data";
-import { getRecipe } from "./api";
-import { Recipe,isRecipe } from "../../../../../shared/models/recipe.model";
-import { useQuery } from "@tanstack/react-query";
-
 
 //import { ListeRecipe } from "./utils";
-
 //import { tab_ingredients } from "../../data";
-
-
 
 // type formSchema = {
 //   email: string;
 //   password: string;
 // };
 
-function Recette(){//{ id }: { id: number }) {
+import { Recipe,isRecipe } from "../../../../../shared/models/recipe.model";
+
+
+import { Link, useParams } from "react-router-dom";
+
+import { getRecipe } from "./api";
+import { useQuery } from "@tanstack/react-query";
+
+function RecettePage(){//{ id }: { id: number }) {
   
 
 
@@ -127,7 +126,7 @@ console.log("Données recipes retournées par l'API: ", data);
   );
 
 }
-export default Recette;
+export default RecettePage;
  
 
 

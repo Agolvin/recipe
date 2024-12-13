@@ -9,13 +9,15 @@ import AccueilPage from "./pages/Accueil/Accueil";
 
 
 import Recettes from "./pages/Recettes/Recettes";
-import { Recette } from "@pages";
+import RecettePage from "./pages/Recette/Recette";
+//import { Recette } from "@pages";
 import RecetteForm from "./pages/RecetteForm/RecetteForm";
 import { addRecipe } from "./pages/RecetteForm/api";
 
 
 
-import IngredientsPage from "./pages/Ingredients/";
+import IngredientsPage from "./pages/Ingredients/ingredients";
+import IngredientPage from "./pages/Ingredient/Ingredient";
 //import { Ingredient } from "@pages";
 //import Ingredient  from "./pages/Ingredient/Ingredient";
 import IngredientForm from "./pages/IngredientForm/IngredientForm";
@@ -58,12 +60,12 @@ const router = createBrowserRouter([
         path: "/ingredients",
         element: <IngredientsPage />,
       },
-/*
+
       {
         path: "/ingredients/:id",
-        element: <Ingredient />,
+        element: <IngredientPage />,
       },
-*/
+
 
 
 

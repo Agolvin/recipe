@@ -27,7 +27,7 @@ import { Recipe } from "../../../../../shared/models/recipe.model";
 //   password: string;
 // };
 
-function Recettes() {
+function RecettesPage() {
   const RELOAD_QUERY_OPTIONS = {
     cacheTime: 0,
   } as const;
@@ -79,7 +79,7 @@ console.log("Données recipes retournées par l'API: ", data);
   );
 }
 
-export default Recettes;
+export default RecettesPage;
   // const {
   //   register,
   //   handleSubmit,

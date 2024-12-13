@@ -24,14 +24,6 @@ export function isRecipe (obj: any) : obj is Recipe {
 */
 
 
-//ajout duplication de recette
-//systemes de mesure
-//poid: kg ou gr
-//volume: Litre uniquement
-//unité
-
-
-//impression de'une recette: inclure optionnelement impression des sous recette
 
 export interface Recipe {
   //bPeutEtreIngredient
@@ -92,7 +84,7 @@ export function isUnit (obj: any) : obj is Unit {
 export interface Ingredient {
   id: number;
   //unitId: number;
-  unit: Unit;
+  unit: String;
   unitName: string;
   name: string;
   description: string; 

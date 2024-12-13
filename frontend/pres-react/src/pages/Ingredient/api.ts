@@ -1,12 +1,5 @@
-import { queryClient } from "../../providers/QueryClientProvider";
-
-
 
 import {Ingredient} from '../../../../../shared/models/recipe.model'
-
-
-
-
 
 const getIngredient = async (id: number): Promise<Ingredient> => {
   console.log("debut getIngredient api.ts pour id:", id);  

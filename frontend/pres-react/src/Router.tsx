@@ -11,7 +11,9 @@ import Accueil from "./pages/Accueil/Accueil";
 import Recettes from "./pages/Recettes/Recettes";
 import { Recette } from "@pages";
 import RecetteForm from "./pages/RecetteForm/RecetteForm";
+import IngredientForm from "./pages/RecetteForm/RecetteForm";
 import { addRecipe } from "./pages/RecetteForm/api";
+import { addIngredient } from "./pages/IngredientForm/api";
 
 import Ingredients from "./pages/Ingredients/ingredients";
 import Ingredient from "./pages/Ingredient/ingredient";
@@ -36,13 +38,50 @@ const router = createBrowserRouter([
       },
 
       {
+        path: "/accueil",
+        element: <Accueil />,
+      },
+
+
+
+
+
+
+
+
+
+      {
+        path: "/ingredients",
+        element: <Ingredients />,
+      },
+
+      {
+        path: "/ingredients/:id",
+        element: <Ingredient />,
+      },
+      
+
+      {
+        path: "/ingredients/add",
+        element: <IngredientForm fn={addIngredient} defaultValues={undefined} />,
+      },
+
+
+
+
+
+
+      
+
+
+      {
         path: "/recettes",
         element: <Recettes />,
       },
 
       {
-        path: "/accueil",
-        element: <Accueil />,
+        path: "/recettes/:id",
+        element: <Recette />,
       },
 
       {
@@ -55,20 +94,18 @@ const router = createBrowserRouter([
         element: <RecetteUpdate />,
       },
 
-      {
-        path: "/recettes/:id",
-        element: <Recette />,
-      },
 
-      {
-        path: "/ingredients",
-        element: <Ingredients />,
-      },
 
-      {
-        path: "/ingredients/:id",
-        element: <Ingredient />,
-      },
+
+
+
+
+   
+
+
+
+
+
 
       {
         path: "/2/:id",

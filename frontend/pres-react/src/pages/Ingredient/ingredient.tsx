@@ -5,9 +5,8 @@ import { useQuery } from "@tanstack/react-query";
 
 
 
-function Ingredient(){
+function IngredientPage(){
 
-    
   console.log("composant Ingredient()", );
 
   const { id: idParam } = useParams(); 
@@ -56,7 +55,7 @@ console.log("Données recipes retournées par l'API: ", data);
   );
 
 }
-export default Ingredient;
+export default IngredientPage;
  
 
 

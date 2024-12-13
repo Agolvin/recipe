@@ -26,7 +26,7 @@ import React from "react";
 
 type DefaultValuesType = Recipe | { recette: Recipe };
 
-const RecetteForm: React.FC<{ fn: (data: Recipe) => Promise<void>; defaultValues?: DefaultValuesType }> = ({ fn, defaultValues }) => {
+const RecetteForm: React.FC<{ fn_recipe: (data: Recipe) => Promise<void>; defaultValues?: DefaultValuesType }> = ({ fn_recipe, defaultValues }) => {
   const processedDefaults: Recipe | undefined =
     defaultValues && "recette" in defaultValues
       ? (defaultValues as { recette: Recipe }).recette
@@ -50,13 +50,11 @@ const RecetteForm: React.FC<{ fn: (data: Recipe) => Promise<void>; defaultValues
   });
 
 
-
-
   const onSubmit = async (data: Recipe) => {
     console.log(data);
     try {
       const id = processedDefaults?.id || 0;
-      await fn({ ...data, id });
+      await fn_recipe({ ...data, id });
       setValue("name", "");
       setValue("description", "");
     } catch (error) {
@@ -110,15 +108,7 @@ const RecetteForm: React.FC<{ fn: (data: Recipe) => Promise<void>; defaultValues
 
       <h1>Steps (soon)</h1>
 
-
-
-
-
       <h1>Ingredients (soon)</h1>
-
-
-
-
 
       <button type="submit">Soumettre</button>
       {errors.root && <p>{errors.root.message}</p>}

@@ -21,4 +21,3 @@ export const addIngredient = async (newIngredient: Ingredient) => {
   }
 };
 
-

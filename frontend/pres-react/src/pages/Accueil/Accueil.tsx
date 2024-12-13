@@ -1,7 +1,7 @@
 
 
 
-function Accueil() {
+function AccueilPage() {
     
   
 
@@ -262,5 +262,5 @@ virer cette table de merde??
     );
   }
   
-  export default Accueil;
+  export default AccueilPage;
   

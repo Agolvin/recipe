@@ -5,18 +5,22 @@ import App from "./App";
 //import Tab_ingredients from "./pages/Ingredients";
 // import RecetteForm, { FormSchema } from "./pages/RecetteForm/RecetteForm";
 import RecetteUpdate from "./pages/RecetteUpdate/RecetteUpdate";
-import Accueil from "./pages/Accueil/Accueil";
+import AccueilPage from "./pages/Accueil/Accueil";
 
 
 import Recettes from "./pages/Recettes/Recettes";
 import { Recette } from "@pages";
 import RecetteForm from "./pages/RecetteForm/RecetteForm";
-import IngredientForm from "./pages/RecetteForm/RecetteForm";
 import { addRecipe } from "./pages/RecetteForm/api";
+
+
+
+import IngredientsPage from "./pages/Ingredients/";
+//import { Ingredient } from "@pages";
+//import Ingredient  from "./pages/Ingredient/Ingredient";
+import IngredientForm from "./pages/IngredientForm/IngredientForm";
 import { addIngredient } from "./pages/IngredientForm/api";
 
-import Ingredients from "./pages/Ingredients/ingredients";
-import Ingredient from "./pages/Ingredient/ingredient";
 
 const router = createBrowserRouter([
   {
@@ -39,7 +43,7 @@ const router = createBrowserRouter([
 
       {
         path: "/accueil",
-        element: <Accueil />,
+        element: <AccueilPage />,
       },
 
 
@@ -52,20 +56,24 @@ const router = createBrowserRouter([
 
       {
         path: "/ingredients",
-        element: <Ingredients />,
+        element: <IngredientsPage />,
       },
-
+/*
       {
         path: "/ingredients/:id",
         element: <Ingredient />,
       },
-      
+*/
 
+
+
+
+      /*
       {
         path: "/ingredients/add",
-        element: <IngredientForm fn={addIngredient} defaultValues={undefined} />,
+        element: <IngredientForm fn ={addIngredient} defaultValues={undefined} />,
       },
-
+      */
 
 
 
@@ -86,7 +94,7 @@ const router = createBrowserRouter([
 
       {
         path: "/recettes/add",
-        element: <RecetteForm fn={addRecipe} defaultValues={undefined} />,
+        element: <RecetteForm fn_recipe={addRecipe} defaultValues={undefined} />,
       },
 
       {

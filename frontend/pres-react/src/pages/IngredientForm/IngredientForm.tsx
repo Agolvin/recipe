@@ -72,8 +72,6 @@ const IngredientForm: React.FC<{ fn: (data: Ingredient) => Promise<void>; defaul
       {errors.name && <p>{errors.name.message}</p>}
 
 
-
-
       <h1>Description</h1>
       <input
         {...register("description", {
@@ -82,8 +80,6 @@ const IngredientForm: React.FC<{ fn: (data: Ingredient) => Promise<void>; defaul
         placeholder="Description"
       />
       {errors.description && <p>{errors.description.message}</p>}
-
-
 
 
       <button type="submit">Soumettre</button>

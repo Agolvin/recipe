@@ -1,7 +1,7 @@
 import { Recipe } from "../../../../../shared/models/recipe.model";
 //import { FormSchema } from "./RecetteForm";
 
-
+/*
 
 export interface RecetteFormProps {
   fn: (data: {
@@ -13,7 +13,7 @@ export interface RecetteFormProps {
       }
     | undefined; // | = OU donc le type est soit FormSchema soit undefined ce qui fait que le param est optionnel pour le formulaire
 }
-
+*/
 
 /*
 export interface RecetteFormProps {

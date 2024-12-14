@@ -5,6 +5,7 @@ import { Ingredient, isIngredient } from "../../../../shared/models/recipe.model
 
 
 export const getAllIngredients = async (req: req, res: res) => {
+  console.log("getAllIngredients");
   try {
     const ingredients:Ingredient[] = await getAllIngredientsSv();
     res.status(200).json(ingredients);
@@ -37,10 +38,14 @@ export const getIngredient = async (req: req, res: res) => {
 
 
 export const addIngredient = async (req: req, res: res) => {
+
+  console.log("addIngredient");
+  /*
   if (!isIngredient(req.body)) {
+    console.log("Format paramètre ingrédient incorrect");
     return res.status(400).json({ message: "Format paramètre ingrédient incorrect" });
   }
-
+*/
   const newIngredient:Ingredient = req.body;
 
   try {
@@ -48,9 +53,11 @@ export const addIngredient = async (req: req, res: res) => {
     //uniquement la ligne suivante si pas besoin de récupérer les données ajoutées en base
     //ex: l'ID peut etre utile à retourner lors d'un ajout, ou tout l'obj pour trace de debug coté server
     //await addIngredientSv(newIngredient);
+    console.log("Ingrédient ajouté");
     res.status(201).json({ message: "Ingrédient ajouté", ingredient });
   } 
   catch (error) {
+    console.log("Erreur lors de l'ajout d'un ingredient");
     res.status(500).json({ message: "Erreur lors de l'ajout d'un ingredient" });
   }
 };

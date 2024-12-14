@@ -10,7 +10,7 @@ import React from "react";
 
 type DefaultValuesType = Ingredient | { ingredient: Ingredient };
 
-const IngredientForm: React.FC<{ fn: (data: Ingredient) => Promise<void>; defaultValues?: DefaultValuesType }> = ({ fn, defaultValues }) => {
+const IngredientForm: React.FC<{ fn_ingredient: (data: Ingredient) => Promise<void>; defaultValues?: DefaultValuesType }> = ({ fn_ingredient, defaultValues }) => {
   const processedDefaults: Ingredient | undefined =
     defaultValues && "ingredient" in defaultValues
       ? (defaultValues as { ingredient: Ingredient }).ingredient
@@ -39,7 +39,7 @@ const IngredientForm: React.FC<{ fn: (data: Ingredient) => Promise<void>; defaul
     console.log(data);
     try {
       const id = processedDefaults?.id || 0;
-      await fn({ ...data, id });
+      await fn_ingredient({ ...data, id });
       setValue("name", "");
       setValue("description", "");
     } catch (error) {

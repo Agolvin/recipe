@@ -96,7 +96,8 @@ export function isIngredient (obj: any) : obj is Ingredient {
     typeof obj === "object" &&
     obj !== null &&
     typeof obj.id === "number" &&
-    isUnit(obj.unit) &&
+    //isUnit(obj.unit) &&
+    typeof obj.unit === "string" &&
     typeof obj.unitName === "string" &&
     typeof obj.name === "string" &&
     typeof obj.description === "string" &&

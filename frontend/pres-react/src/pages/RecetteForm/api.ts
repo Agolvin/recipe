@@ -10,7 +10,7 @@ export const addRecipe = async (newRecipe: Recipe) => {
   try {
     // const response = await fetch("http://localhost:3000/recette/addRecipe");
 
-    const response = await fetch("http://localhost:3000/recette/addRecipe", {
+    const response = await fetch("http://localhost:3000/recette/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

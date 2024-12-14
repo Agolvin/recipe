@@ -8,11 +8,15 @@ export const getAllIngredientsSv = async () => {
   console.log("getAllIngredientsSv");
   let bdd = getBDD();
   if (!bdd.ingredients) {
-    throw new Error("Données ingrédients inexistantes en base");
+    console.log("getAllIngredientsSv Données ingrédients inexistantes en base");
+    throw new Error("getAllIngredientsSv Données ingrédients inexistantes en base");
   }
+  /*
   if (!bdd.ingredients.every(isIngredient)) {
-    throw new Error("Type de données ingrédients incohérent entre la base et la description");
+    console.log("getAllIngredientsSv Type de données ingrédients incohérent entre la base et la description");
+    throw new Error("getAllIngredientsSv Type de données ingrédients incohérent entre la base et la description");
   }
+  */
   return bdd.ingredients
 };
 
@@ -21,9 +25,12 @@ export const getIngredientSv = async (idIngredient: number) => {
   console.log("getIngredientsSv");
   let bdd = getBDD();
   if (!bdd.ingredients) {
+    console.log("Données ingrédients inexistantes en base");
     throw new Error("Données ingrédients inexistantes en base");
   }
+
   if (!bdd.ingredients.every(isIngredient)) {
+    console.log("Type de données ingrédients incohérent entre la base et la description");
     throw new Error("Type de données ingrédients incohérent entre la base et la description");
   }
 
@@ -43,17 +50,24 @@ export const getIngredientSv = async (idIngredient: number) => {
 
 export const addIngredientSv = async (newIngredient: Ingredient) => {
   console.log("addIngredientSv", newIngredient);
+  if (!isIngredient(newIngredient)) {
+    console.log("Format parametre ingredent incorrect");
+    throw new Error("Format parametre ingredent incorrect");
+  }
   let bdd = getBDD();
   if (!bdd.ingredients) {
+    console.log("Données ingrédients inexistantes en base");
     throw new Error("Données ingrédients inexistantes en base");
   }
   if (!bdd.ingredients.every(isIngredient)) {
+    console.log("Type de données ingrédients incohérent entre la base et la description");
     throw new Error("Type de données ingrédients incohérent entre la base et la description");
   }
   const maxId = bdd.ingredients.reduce(       
     (max, item) => Math.max(max, item.id), 0
   );
   newIngredient.id = maxId + 1;
+  console.log(newIngredient);
   bdd.ingredients.push(newIngredient);       
   saveBDD(bdd);                              
   return newIngredient

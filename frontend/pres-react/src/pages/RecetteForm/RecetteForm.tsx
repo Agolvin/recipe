@@ -44,7 +44,7 @@ const RecetteForm: React.FC<{ fn_recipe: (data: Recipe) => Promise<void>; defaul
       id: 0,
       name: "",
       description: "",
-      steps: [{ name: "Etape 1", description: "Commencer la rectte" }],
+      steps: [{ name: "Etape 1", description: "Commencer la rectte" }],//une etape minimum?
       ingredientsQte: [],
     },
   });

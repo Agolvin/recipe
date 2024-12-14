@@ -8,7 +8,8 @@ import RecetteUpdate from "./pages/RecetteUpdate/RecetteUpdate";
 import AccueilPage from "./pages/Accueil/Accueil";
 
 
-import Recettes from "./pages/Recettes/Recettes";
+//import Recettes from "./pages/Recettes/Recettes";
+import RecettesPage from "./pages/Recettes/Recettes";
 import RecettePage from "./pages/Recette/Recette";
 //import { Recette } from "@pages";
 import RecetteForm from "./pages/RecetteForm/RecetteForm";
@@ -16,12 +17,12 @@ import { addRecipe } from "./pages/RecetteForm/api";
 
 
 
-import IngredientsPage from "./pages/Ingredients/ingredients";
+import IngredientsPage from "./pages/Ingredients/Ingredients";
 import IngredientPage from "./pages/Ingredient/Ingredient";
 //import { Ingredient } from "@pages";
 //import Ingredient  from "./pages/Ingredient/Ingredient";
 import IngredientForm from "./pages/IngredientForm/IngredientForm";
-import { addIngredient } from "./pages/IngredientForm/api";
+import { addIngredient,saveIngredient } from "./pages/IngredientForm/api";
 
 
 const router = createBrowserRouter([
@@ -66,16 +67,24 @@ const router = createBrowserRouter([
         element: <IngredientPage />,
       },
 
+/*
+      {
+        path: "/ingredients/update/:id",
+        element: <IngredientForm fn_ingredient={saveIngredient} defaultValues={undefined} />,
+      },
+*/
 
+     
+      {
+        path: "/ingredients/update/:id",
+        element: <IngredientUpdate />,
+      }, 
 
-
-
-      /*
       {
         path: "/ingredients/add",
-        element: <IngredientForm fn ={addIngredient} defaultValues={undefined} />,
+        element: <IngredientForm fn_ingredient={addIngredient} defaultValues={undefined} />,
       },
-      */
+      
 
 
 
@@ -86,12 +95,12 @@ const router = createBrowserRouter([
 
       {
         path: "/recettes",
-        element: <Recettes />,
+        element: <RecettesPage />,
       },
 
       {
         path: "/recettes/:id",
-        element: <Recette />,
+        element: <RecettePage />,
       },
 
       {

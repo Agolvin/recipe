@@ -23,7 +23,7 @@ import IngredientPage from "./pages/Ingredient/Ingredient";
 //import Ingredient  from "./pages/Ingredient/Ingredient";
 import IngredientForm from "./pages/IngredientForm/IngredientForm";
 import { addIngredient,saveIngredient } from "./pages/IngredientForm/api";
-
+import IngredientUpdate from "./pages/IngredientUpdate/IngredientUpdate";
 
 const router = createBrowserRouter([
   {
@@ -84,10 +84,7 @@ const router = createBrowserRouter([
         path: "/ingredients/add",
         element: <IngredientForm fn_ingredient={addIngredient} defaultValues={undefined} />,
       },
-      
-
-
-
+    
 
 
       

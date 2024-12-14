@@ -8,10 +8,10 @@ import { useForm, useFieldArray, Controller } from "react-hook-form";
 
 import React from "react";
 
-type DefaultValuesType = Ingredient | { ingredient: Ingredient };
+type DefaultValuesIngredient = Ingredient | { ingredient: Ingredient };
 
-const IngredientForm: React.FC<{ fn_ingredient: (data: Ingredient) => Promise<void>; defaultValues?: DefaultValuesType }> = ({ fn_ingredient, defaultValues }) => {
-  const processedDefaults: Ingredient | undefined =
+const IngredientForm: React.FC<{ fn_ingredient: (data: Ingredient) => Promise<void>; defaultValues?: DefaultValuesIngredient }> = ({ fn_ingredient, defaultValues }) => {
+  const processedDefaultsIngredient: Ingredient | undefined =
     defaultValues && "ingredient" in defaultValues
       ? (defaultValues as { ingredient: Ingredient }).ingredient
       : defaultValues;
@@ -24,7 +24,7 @@ const IngredientForm: React.FC<{ fn_ingredient: (data: Ingredient) => Promise<vo
     setError,
     formState: { errors },
   } = useForm<Ingredient>({
-    defaultValues: processedDefaults || {
+    defaultValues: processedDefaultsIngredient || {
         id: 0,
         unit: "",
         unitName: "",
@@ -38,7 +38,7 @@ const IngredientForm: React.FC<{ fn_ingredient: (data: Ingredient) => Promise<vo
   const onSubmit = async (data: Ingredient) => {
     console.log(data);
     try {
-      const id = processedDefaults?.id || 0;
+      const id = processedDefaultsIngredient?.id || 0;
       await fn_ingredient({ ...data, id });
       setValue("name", "");
       setValue("description", "");

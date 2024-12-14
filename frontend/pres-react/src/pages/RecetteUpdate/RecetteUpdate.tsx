@@ -41,7 +41,7 @@ function RecetteUpdate() {
 
   if (!data) return;
 
-  const processedDefaults: Recipe = {
+  const processedDefaultsRecipe: Recipe = {
     id: data.id,
     name: data.name || '',
     description: data.description || '',
@@ -49,7 +49,7 @@ function RecetteUpdate() {
     ingredientsQte: data.ingredientsQte || [],
   };
 
-  return <RecetteForm defaultValues={processedDefaults} fn={saveRecipe} />;
+  return <RecetteForm defaultValues={processedDefaultsRecipe} fn_recipe={saveRecipe} />;
 
 
 }

@@ -24,9 +24,9 @@ import { useForm, useFieldArray, Controller } from "react-hook-form";
 
 import React from "react";
 
-type DefaultValuesType = Recipe | { recette: Recipe };
+type DefaultValuesRecipe = Recipe | { recette: Recipe };
 
-const RecetteForm: React.FC<{ fn_recipe: (data: Recipe) => Promise<void>; defaultValues?: DefaultValuesType }> = ({ fn_recipe, defaultValues }) => {
+const RecetteForm: React.FC<{ fn_recipe: (data: Recipe) => Promise<void>; defaultValues?: DefaultValuesRecipe }> = ({ fn_recipe, defaultValues }) => {
   const processedDefaults: Recipe | undefined =
     defaultValues && "recette" in defaultValues
       ? (defaultValues as { recette: Recipe }).recette

@@ -50,9 +50,6 @@ export const addIngredient = async (req: req, res: res) => {
 
   try {
     const ingredient = await addIngredientSv(newIngredient);
-    //uniquement la ligne suivante si pas besoin de récupérer les données ajoutées en base
-    //ex: l'ID peut etre utile à retourner lors d'un ajout, ou tout l'obj pour trace de debug coté server
-    //await addIngredientSv(newIngredient);
     console.log("Ingrédient ajouté");
     res.status(201).json({ message: "Ingrédient ajouté", ingredient });
   } 
@@ -64,14 +61,20 @@ export const addIngredient = async (req: req, res: res) => {
 
 
 export const updateIngredient = async (req: req, res: res) => {
+  console.log("updateIngredient");
+/*
   if(!isIngredient(req.body)){
+      console.log("Format paramètre ingredient incorrect",req.body);
       return res.status(400).json({ message: "Format paramètre ingredient incorrect" });
   }
+*/
   try {
-      const ingredient = await updateIngredientSv(req.body);
+      const ingredient = await updateIngredientSv(req.body.data);
+      console.log("Ingredient enregistré");
       res.status(201).json({ message: "Ingredient enregistré", ingredient });
   }
   catch (error) {
+    console.log("Erreur lors de l'enregistrement de l'ingredient");
       res.status(500).json({ message: "Erreur lors de l'enregistrement de l'ingredient" });
   }
 }

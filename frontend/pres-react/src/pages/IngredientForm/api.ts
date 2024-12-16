@@ -28,7 +28,7 @@ export const addIngredient = async (newIngredient: Ingredient) => {
 
 
 export const saveIngredient = async (data: Ingredient): Promise<void> => {
-
+  console.log(saveIngredient, data);
   try {
     const response = await fetch(
       `http://localhost:3000/ingredient/update/${data.id}`,

@@ -80,20 +80,27 @@ export const updateIngredientSv = async (pinIngredient: Ingredient) => {
   if (!bdd.ingredients) {
     throw new Error("Données ingrédients inexistantes en base");
   }
+  /*
   if (!bdd.ingredients.every(isIngredient)) {
     throw new Error("Type de données ingrédients incohérent entre la base et la description");
   }
-
+*/
   if (!bdd.recipes) {
     throw new Error("Données recettes inexistantes en base");
   }
+  
+  console.log("updateIngredientSv base OK");
+  console.log("updateIngredientSv pinIngredient.id: ",pinIngredient.id);
+  /*
   if (!bdd.recipes.every(isRecipe)) {
     throw new Error("Type de données recette incohérent entre la base et la description");
   }
-
+*/
   let index = bdd.ingredients.findIndex(
     (ingredient) => ingredient.id == pinIngredient.id
   );
+  
+  console.log("updateIngredientSv index: ",index);
 
   if (index == -1) {
     throw new Error("Ingrdient inexistant");
@@ -102,6 +109,7 @@ export const updateIngredientSv = async (pinIngredient: Ingredient) => {
   bdd.ingredients[index] = pinIngredient
 
   //maj de toute les recettes en base (prix, desc...)
+  /*
   bdd.recipes.forEach((recette) => {
     recette.ingredientsQte.forEach((ingQte) => {
       if (ingQte.ingredient.id == pinIngredient.id) {
@@ -109,6 +117,9 @@ export const updateIngredientSv = async (pinIngredient: Ingredient) => {
       }
     })
   })
+  */
+
+
   saveBDD(bdd);
   return pinIngredient
 };

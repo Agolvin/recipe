@@ -7,7 +7,7 @@ import { useQuery } from "@tanstack/react-query";
 
 
 
-function Ingredients() {
+function IngredientsPage() {
   const RELOAD_QUERY_OPTIONS = {
     cacheTime: 0,
   } as const;
@@ -51,7 +51,7 @@ function Ingredients() {
   );
 }
 
-export default Ingredients;
+export default IngredientsPage;
 
 
 // <button onClick={() => deleteIngredient(r.id)}>Delete</button>

@@ -24,9 +24,9 @@ Closed Alpha <br />
 Janvier 2025 (samedi 25/1/2025?) <br />
 <h3>Ingrédients</h3>
 Liste ok<br/>
-Détail ok(nom, description)<br/>
-Ajout<br/>
-Modification<br/>
+Détail ok incomplet (nom, description)<br/>
+Ajout ok incomplet<br/>
+Modification ok incomplet<br/>
 <h3>Recettes</h3>
 <h3>Autres</h3>
 hébergement API + Site React<br/>
@@ -44,6 +44,7 @@ Ajout sélection unité <br />
 Ajout coût/prix ingrédient <br />
 <h3>Recettes</h3>
 <h3>Autres</h3>
+gestion de branches pour dev/preprod/prod(s) <br />
 Unité de mesure(g/kg/L/Unité)<br/>
 
 

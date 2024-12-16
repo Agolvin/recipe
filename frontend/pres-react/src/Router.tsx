@@ -66,14 +66,6 @@ const router = createBrowserRouter([
         path: "/ingredients/:id",
         element: <IngredientPage />,
       },
-
-/*
-      {
-        path: "/ingredients/update/:id",
-        element: <IngredientForm fn_ingredient={saveIngredient} defaultValues={undefined} />,
-      },
-*/
-
      
       {
         path: "/ingredients/update/:id",
@@ -109,18 +101,6 @@ const router = createBrowserRouter([
         path: "/recettes/update/:id",
         element: <RecetteUpdate />,
       },
-
-
-
-
-
-
-
-   
-
-
-
-
 
 
       {

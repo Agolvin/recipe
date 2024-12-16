@@ -6,6 +6,7 @@ import App from "./App";
 // import RecetteForm, { FormSchema } from "./pages/RecetteForm/RecetteForm";
 import RecetteUpdate from "./pages/RecetteUpdate/RecetteUpdate";
 import AccueilPage from "./pages/Accueil/Accueil";
+import ToolsPage from "./pages/Tools/Tools";
 
 
 //import Recettes from "./pages/Recettes/Recettes";
@@ -101,6 +102,20 @@ const router = createBrowserRouter([
         path: "/recettes/update/:id",
         element: <RecetteUpdate />,
       },
+
+
+
+
+
+
+
+      {
+        path: "/tools",
+        element: <ToolsPage />,
+      },
+
+
+
 
 
       {

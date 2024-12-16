@@ -15,6 +15,9 @@ const NavBar: React.FC = ({ ...props }) => {
           <Link to="/ingredients">Liste ingredients</Link>
         </li>
         <li>
+          <Link to="/tools">outils</Link>
+        </li>
+        <li>
           <Link to="/2">page de test</Link>
         </li>
       </ul>

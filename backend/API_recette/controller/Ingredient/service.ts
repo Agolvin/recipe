@@ -28,12 +28,12 @@ export const getIngredientSv = async (idIngredient: number) => {
     console.log("Données ingrédients inexistantes en base");
     throw new Error("Données ingrédients inexistantes en base");
   }
-
+/*
   if (!bdd.ingredients.every(isIngredient)) {
     console.log("Type de données ingrédients incohérent entre la base et la description");
     throw new Error("Type de données ingrédients incohérent entre la base et la description");
   }
-
+*/
   let index = bdd.ingredients.findIndex(
     (ingredient) => ingredient.id == idIngredient
   );

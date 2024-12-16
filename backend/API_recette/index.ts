@@ -4,6 +4,7 @@ import { json } from "express";
 
 import recetteRouter from "./controller/Recette/router";
 import ingredientRouter from "./controller/Ingredient/router";
+import toolsRouter from "./controller/Tools/router";
 
 const express = require("express");
 
@@ -16,6 +17,7 @@ app.use(json());
 
 app.use("/recette", recetteRouter);
 app.use("/ingredient", ingredientRouter);
+app.use("/tools", toolsRouter);
 
 const port = 3000;
 app.listen(port, () => {

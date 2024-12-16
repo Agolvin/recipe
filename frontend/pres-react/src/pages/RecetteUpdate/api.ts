@@ -7,9 +7,6 @@
 
 import { Recipe } from "../../../../../shared/models/recipe.model";
 
-
-
-
 const getRecipe = async (id: string) => {
   try {
     const response = await fetch(`http://localhost:3000/recette/get/${id}`);

@@ -29,6 +29,7 @@ Ajout ok incomplet<br/>
 Modification ok incomplet<br/>
 <h3>Recettes</h3>
 <h3>Autres</h3>
+integration Units en model <br />
 hébergement API + Site React<br/>
 mode local pour test? <br />
 branche de test avec VSCode? <br />

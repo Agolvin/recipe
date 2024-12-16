@@ -5,6 +5,46 @@ export interface Bdd {
   ingredients: Ingredient[];
 }
 
+
+
+export interface testInterface{
+  nom: string,
+  unite: Unit
+}
+
+export enum testEnum{
+  Test1,
+  test2,
+}
+
+
+export enum eFormMode{
+  ADD = "add",
+  UPDATE = "update",
+}
+
+
+
+export type Unit = {
+  name: string;
+  symbol: string;
+};
+
+//sorte de tableau asso avec string en clé (LITRE/GRAM...) et variable de type Unit en valeur
+export const Units: Record<string, Unit> = {       
+  LITRE: { name: "litre", symbol: "L" },
+  KILOGRAM: { name: "kilogramme", symbol: "kg" },
+  GRAM: { name: "gramme", symbol: "g" },
+  PIECE: { name: "pièce", symbol: "pcs" },
+};
+
+/*PARCOURS
+Object.entries(Units).forEach(([key, unit]) => {
+  console.log(`${key}: ${unit.name} (${unit.abbreviation})`);
+});
+*/
+
+
 /*
 export interface Recipe {
   id: number;
@@ -37,11 +77,13 @@ export interface Recipe {
   ingredientsQte: { ingredient: Ingredient; quantity: number }[]; //gerer l'ordre des ingredients
 }
 
+
+
+
 export function isRecipe (obj: any) : obj is Recipe {
   return(
     typeof obj === "object" &&
     obj !== null &&
-
     typeof obj.id === "number" &&
     typeof obj.name === "string" &&
     typeof obj.description === "string" &&
@@ -66,11 +108,12 @@ export function isRecipe (obj: any) : obj is Recipe {
   );
 }
 
-
+/*
 export interface Unit {
   //id: number;
   name: string;
 }
+
 
 export function isUnit (obj: any) : obj is Unit {
   return(
@@ -79,6 +122,7 @@ export function isUnit (obj: any) : obj is Unit {
     typeof obj.name === "string"
   );
 }
+*/
 
 
 export interface Ingredient {
@@ -90,6 +134,11 @@ export interface Ingredient {
   description: string; 
   price: number;        //à l'unité
 }
+
+
+
+
+
 
 export function isIngredient (obj: any) : obj is Ingredient {
   return(

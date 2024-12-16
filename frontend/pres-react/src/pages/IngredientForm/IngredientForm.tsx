@@ -2,7 +2,8 @@
 import { Ingredient } from "../../../../../shared/models/recipe.model";
 
 
-import { useForm, useFieldArray, Controller } from "react-hook-form";
+//import { useForm, useFieldArray, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 
 
 
@@ -42,6 +43,7 @@ const IngredientForm: React.FC<{ fn_ingredient: (data: Ingredient) => Promise<vo
       await fn_ingredient({ ...data, id });
       setValue("name", "");
       setValue("description", "");
+      setValue("price", 0);
     } catch (error) {
       const err = error as Error;
       setError("root", { message: err.message });
@@ -51,7 +53,8 @@ const IngredientForm: React.FC<{ fn_ingredient: (data: Ingredient) => Promise<vo
 
   return (
     <form className="grid gap-2" onSubmit={handleSubmit(onSubmit)}>
-      <h1>Name</h1>
+      
+      <h2>Name:</h2>
       <input
         {...register("name", {
           required: {
@@ -67,12 +70,12 @@ const IngredientForm: React.FC<{ fn_ingredient: (data: Ingredient) => Promise<vo
             message: "Trop court. 5 caractères minimum",
           },
         })}
-        placeholder="Titre"
+        placeholder="Nom"
       />
       {errors.name && <p>{errors.name.message}</p>}
 
 
-      <h1>Description</h1>
+      <h2>Description:</h2>
       <input
         {...register("description", {
           required: true,
@@ -80,6 +83,16 @@ const IngredientForm: React.FC<{ fn_ingredient: (data: Ingredient) => Promise<vo
         placeholder="Description"
       />
       {errors.description && <p>{errors.description.message}</p>}
+
+
+      <h2>Prix:</h2>
+      <input
+        {...register("price", {
+          required: true,
+        })}
+        placeholder="Prix"
+      />
+      {errors.price && <p>{errors.price.message}</p>}
 
 
       <button type="submit">Soumettre</button>

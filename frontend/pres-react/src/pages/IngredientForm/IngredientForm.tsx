@@ -1,5 +1,5 @@
 
-import { Ingredient } from "../../../../../shared/models/recipe.model";
+import { Ingredient, UnitEnum, Units } from "../../../../../shared/models/recipe.model";
 
 
 //import { useForm, useFieldArray, Controller } from "react-hook-form";
@@ -27,8 +27,7 @@ const IngredientForm: React.FC<{ fn_ingredient: (data: Ingredient) => Promise<vo
   } = useForm<Ingredient>({
     defaultValues: processedDefaultsIngredient || {
         id: 0,
-        unit: "",
-        unitName: "",
+        unit: UnitEnum.GRAM,
         name: "",
         description: "", 
         price: 0  
@@ -37,13 +36,14 @@ const IngredientForm: React.FC<{ fn_ingredient: (data: Ingredient) => Promise<vo
 
 
   const onSubmit = async (data: Ingredient) => {
-    console.log(data);
+    console.log("onSubmit",data);
     try {
       const id = processedDefaultsIngredient?.id || 0;
       await fn_ingredient({ ...data, id });
       setValue("name", "");
       setValue("description", "");
       setValue("price", 0);
+      setValue("unit", UnitEnum.GRAM);
     } catch (error) {
       const err = error as Error;
       setError("root", { message: err.message });
@@ -85,15 +85,38 @@ const IngredientForm: React.FC<{ fn_ingredient: (data: Ingredient) => Promise<vo
       {errors.description && <p>{errors.description.message}</p>}
 
 
+
+
       <h2>Prix:</h2>
       <input
+        type="number"
         {...register("price", {
           required: true,
+          valueAsNumber: true, 
         })}
         placeholder="Prix"
+        step="0.01"  // Autoriser entiers ou décimaux mais précision limitée au centime 
       />
       {errors.price && <p>{errors.price.message}</p>}
 
+
+
+
+      <h2>Unité de mesure:</h2>
+
+      <select
+    {...register("unit", {
+      required: "Please select a unit.",
+    })}
+  >
+    <option value="">Select a unit</option>
+    {Object.values(UnitEnum).map((unitKey) => (
+      <option key={unitKey} value={unitKey}>
+        {Units[unitKey].name} ({Units[unitKey].symbol})
+      </option>
+    ))}
+  </select>
+  {errors.unit && <p>{errors.unit.message}</p>}
 
       <button type="submit">Soumettre</button>
       {errors.root && <p>{errors.root.message}</p>}

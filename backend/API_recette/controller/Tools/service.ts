@@ -1,6 +1,6 @@
 
 
-import { Ingredient, isIngredient, isRecipe } from "../../../../shared/models/recipe.model";
+import { Ingredient,Ingredient2, isIngredient, isRecipe, UnitEnum } from "../../../../shared/models/recipe.model";
 import { getBDD, saveBDD } from "../../lib/utils";
 
 
@@ -8,41 +8,7 @@ import { getBDD, saveBDD } from "../../lib/utils";
 
 export const testToolsSv = async () => {
     console.log("testToolsSv");
-
-/*
-  console.log("updateIngredientSv", pinIngredient);
-  let bdd = getBDD();
-  if (!bdd.ingredients) {
-    throw new Error("Données ingrédients inexistantes en base");
-  }
-  if (!bdd.recipes) {
-    throw new Error("Données recettes inexistantes en base");
-  }
-  
-  console.log("updateIngredientSv base OK");
-  console.log("updateIngredientSv pinIngredient.id: ",pinIngredient.id);
-
-  let index = bdd.ingredients.findIndex(
-    (ingredient) => ingredient.id == pinIngredient.id
-  );
-  
-  console.log("updateIngredientSv index: ",index);
-
-  if (index == -1) {
-    throw new Error("Ingrdient inexistant");
-  }
-
-  bdd.ingredients[index] = pinIngredient
-
-
-
-  saveBDD(bdd);
-  return pinIngredient
-
-  */
 };
-
-
 
 
 export const migrationToolsSv = async () => {
@@ -50,9 +16,52 @@ export const migrationToolsSv = async () => {
 
   console.log("migrationToolsSv");
 
-    let bdd = getBDD();
+  let bdd = getBDD();
+
+  bdd.ingredientstmp.length = 0;    //suppression de toutes les données
 
 
 
+
+
+/*
+
+  bdd.ingredients.forEach((ing_old) => {
+    const ing_new:Ingredient2 = {
+      id: ing_old.id,
+      unit: UnitEnum.GRAM,           
+      name: ing_old.name,
+      description: ing_old.description, 
+      price: ing_old.price,       
+    };
+    switch(ing_old.id) {
+      case 1:
+        ing_new.unit = UnitEnum.GRAM
+        break;
+      case 2:
+        ing_new.unit = Units.LITRE
+        break;
+      case 3:
+        ing_new.unit = Units.KILOGRAM
+        break;
+      case 4:
+        ing_new.unit = Units.KILOGRAM
+        break;
+      case 5:
+        ing_new.unit = Units.LITRE
+        break;
+      case 6:
+        ing_new.unit = Units.PIECE
+        break;
+      default:
+        ing_new.unit = Units.GRAM
+    } 
+    bdd.ingredientstmp.push(ing_new);
+    console.log(ing_old);
+    console.log(ing_new);
+  });
+*/
+
+  saveBDD(bdd);         
 
 };

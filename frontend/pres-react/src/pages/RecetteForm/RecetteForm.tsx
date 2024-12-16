@@ -86,8 +86,8 @@ const RecetteForm: React.FC<{ fn_recipe: (data: Recipe) => Promise<void>; defaul
             message: "Le nom ne doit pas dépasser 100 caractères",
           },
           minLength: {
-            value: 5,
-            message: "Trop court. 5 caractères minimum",
+            value: 3,
+            message: "Trop court. 3 caractères minimum",
           },
         })}
         placeholder="Titre"

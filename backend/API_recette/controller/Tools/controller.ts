@@ -10,11 +10,11 @@ import {  Recipe, isRecipe } from "../../../../shared/models/recipe.model";
 
 export const testTools = async (req: req, res: res) => {
     try {
-        const recette = await testCommonSv();
-        res.status(201).json({ message: "testCommonSv OK" });
+        const recette = await testToolsSv();
+        res.status(201).json({ message: "testToolsSv OK" });
     }
     catch (error) {
-        res.status(500).json({ message: "Erreur lors de testCommonSv" });
+        res.status(500).json({ message: "Erreur lors de testToolsSv" });
     }
     /*
     console.log("addRecipe", req);
@@ -37,14 +37,14 @@ export const testTools = async (req: req, res: res) => {
 
 export const migrationTools = async (req: req, res: res) => {
     
-    console.log("migrationCommon");
+    console.log("migrationTools");
 
     try {
-        const recette = await migrationCommonSv();
-        res.status(201).json({ message: "migrationCommonSv OK" });
+        const recette = await migrationToolsSv();
+        res.status(201).json({ message: "migrationToolsSv OK" });
     }
     catch (error) {
-        res.status(500).json({ message: "Erreur lors de migrationCommonSv" });
+        res.status(500).json({ message: "Erreur lors de migrationToolsSv" });
     }
     
 

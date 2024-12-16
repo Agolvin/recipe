@@ -50,19 +50,23 @@ export const getIngredientSv = async (idIngredient: number) => {
 
 export const addIngredientSv = async (newIngredient: Ingredient) => {
   console.log("addIngredientSv", newIngredient);
+  /*
   if (!isIngredient(newIngredient)) {
     console.log("Format parametre ingredent incorrect");
     throw new Error("Format parametre ingredent incorrect");
-  }
+  }*/
   let bdd = getBDD();
+  /*
   if (!bdd.ingredients) {
     console.log("Données ingrédients inexistantes en base");
     throw new Error("Données ingrédients inexistantes en base");
-  }
+  }*/
+  /*
   if (!bdd.ingredients.every(isIngredient)) {
     console.log("Type de données ingrédients incohérent entre la base et la description");
     throw new Error("Type de données ingrédients incohérent entre la base et la description");
   }
+    */
   const maxId = bdd.ingredients.reduce(       
     (max, item) => Math.max(max, item.id), 0
   );

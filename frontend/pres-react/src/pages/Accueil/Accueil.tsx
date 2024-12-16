@@ -136,12 +136,15 @@ sécuriser API par tockens <br />
 <br/>
 <br/>
 <h2>V2.0</h2>
-mySQL update <br />
+mySQL update ?? <br />
+invisble pour user (sauf performances?) <br />
 Dans longtemps <br />
 <h3>Ingrédients</h3>
 <h3>Recettes</h3>
 <h3>Autres</h3>
 Migration BDD JSON vers MySQL? <br />
+Classes typeScript pour recette/ingredients?<br />
+Liaisons entre front et MySQL par methodes de classe??<br />
 
 
 <br/>
@@ -172,29 +175,48 @@ Android update <br />
 <br/>
 <br/>
 <h1>idées et questions en vrac</h1>
+autoriser suprression d'ingredient?? (inactivation?) <br />
 ajouter indication de temps de travail dans les étapes/recettes?<br/>
 autoriser un unique niveau de sous recette? plusieurs? <br />
 comment situer les sous recette dans une recette principale? dans des étapes spécifiques? <br />
 Trouver un nom au site? <br />
 Version mobile android? (tablette?) (V4)<br />
 Systeme de suivi de réalisation pour cocher ce qui est fait au fur et à mesure? (V3)<br />
+Gestionde stock/inventaire des ingredients? liste des recette faisable avec le stock actuel? <br />
+Note de difficulté sur les recette? <br />
+Gestion materiel necessaire pour une recette? <br />
+Taille min/max de chaque champ? min 5 trop petit (ex: Lait), passé à 3 ok?<br />
 <br/>
 <br/>
 <br/>
 <br/>
 <br/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <h1>Fonctionnalitées</h1>
-virer cette table de merde??
+
 <table>
   <thead>
     <tr>
       <th scope="col">Type</th>
       <th scope="col">Détail</th>
       <th scope="col">Etat</th>
-      <th scope="col">Date</th>
+      <th scope="col">Date livraison</th>
     </tr>
   </thead>
   <tbody>
@@ -202,20 +224,26 @@ virer cette table de merde??
   <tr>
       <th scope="row">Ingrédients</th>
       <td>Liste</td>
-      <td>BUG</td>
-      <td>**</td>
+      <td>OK</td>
+      <td>25/1/2025?</td>
     </tr>
     <tr>
       <th scope="row">Ingrédients</th>
       <td>Ajout</td>
       <td>Inexistant</td>
-      <td>**</td>
+      <td>25/1/2025?</td>
+    </tr>
+    <tr>
+      <th scope="row">Ingrédients</th>
+      <td>Modif</td>
+      <td>OK bug de refresh</td>
+      <td>25/1/2025?</td>
     </tr>
     <tr>
       <th scope="row">Ingrédients</th>
       <td>Delete</td>
       <td>/!\ A definir</td>
-      <td>**</td>
+      <td>25/1/2025?</td>
     </tr>
 
 
@@ -223,7 +251,7 @@ virer cette table de merde??
       <th scope="row">Recette</th>
       <td>Liste</td>
       <td>En test</td>
-      <td>**</td>
+      <td>25/1/2025?</td>
     </tr>
     <tr>
       <th scope="row">Recette</th>
@@ -234,8 +262,8 @@ virer cette table de merde??
     <tr>
       <th scope="row">Recette</th>
       <td>Modif</td>
-      <td>Incomplet, pb de refresh?</td>
-      <td>??</td>
+      <td>OK Incomplet pb de refresh?</td>
+      <td>25/1/2025?</td>
     </tr>
     <tr>
       <th scope="row">Recette</th>
@@ -246,19 +274,20 @@ virer cette table de merde??
     <tr>
       <th scope="row">Recette</th>
       <td>Liste etapes</td>
-      <td>Incomplet</td>
-      <td>??</td>
+      <td>Base OK, front inexistant</td>
+      <td>2/25</td>
     </tr>
     <tr>
       <th scope="row">Recette</th>
       <td>Liste ingrédients</td>
-      <td>Inexistant</td>
-      <td>??</td>
+      <td>Base OK, front inexistant</td>
+      <td>2/25</td>
     </tr>
-
-
   </tbody>
 </table>
+
+
+
 
       </>
     );

@@ -2,7 +2,7 @@
     "recipes": [
         {
             "id": 1,
-            "name": "Salade César2",
+            "name": "Salade César",
             "description": "Une salade classique avec de la laitue, du poulet et une sauce crémeuse.",
             "steps": [
                 {
@@ -183,62 +183,64 @@
             ]
         }
     ],
+    "recipestmp": [],
+    "ingredientstmp": [],
     "ingredients": [
         {
             "id": 1,
-            "unit": "kg",
-            "unitName": "kilogram",
+            "unit": "GRAM",
             "name": "Sucre",
             "description": "Fine granulated white sugar",
-            "price": "2.7"
+            "price": 2.7
         },
         {
             "id": 2,
-            "unit": "L",
-            "unitName": "litre",
-            "name": "lait",
+            "unit": "LITRE",
+            "name": "Lait.",
             "description": "meuh",
             "price": 3.14
         },
         {
             "id": 3,
-            "unit": "g",
-            "unitName": "gramme",
+            "unit": "GRAM",
             "name": "Ingrdient N°3",
             "description": "test ajout",
             "price": 1
         },
         {
-            "id": 0,
-            "unit": "",
-            "unitName": "",
-            "name": "test ajout",
-            "description": "ajout",
-            "price": 0
-        },
-        {
             "id": 4,
-            "unit": "",
-            "unitName": "",
+            "unit": "GRAM",
             "name": "rsfsvxscxv",
             "description": "xvsrfvdsfsvfscd",
             "price": 0
         },
         {
             "id": 5,
-            "unit": "",
-            "unitName": "",
-            "name": "ajout 123",
-            "description": "desc 123",
-            "price": 0
+            "unit": "PIECE",
+            "name": "ajout 1234",
+            "description": "desc 1234",
+            "price": 45
         },
         {
             "id": 6,
-            "unit": "",
-            "unitName": "",
+            "unit": "GRAM",
             "name": "ajoutajout",
             "description": "descriptiona jout",
             "price": 0
+        },
+        {
+            "id": 7,
+            "unit": "KILOGRAM",
+            "name": "lkjhgfd",
+            "description": "glkjhgf",
+            "price": 123
+        },
+        {
+            "id": 8,
+            "unit": "GRAM",
+            "name": "kjhgf",
+            "description": "lkjhgfd",
+            "price": 15.36
         }
     ]
 }

@@ -16,7 +16,7 @@
 //   password: string;
 // };
 
-import { Recipe,isRecipe } from "../../../../../shared/models/recipe.model";
+import { Recipe,isRecipe,Units,UnitEnum } from "../../../../../shared/models/recipe.model";
 
 
 import { Link, useParams } from "react-router-dom";
@@ -98,7 +98,7 @@ console.log("Données recipes retournées par l'API: ", data);
           {data.ingredientsQte.map((ingr, index) => (
             <li key={index}>
               <h3>Ingrédient {index + 1}:</h3>
-              <p>{ingr.ingredient.name}: {ingr.quantity} {ingr.ingredient.unitName}</p>
+              <p>{ingr.ingredient.name}: {ingr.quantity} {Units[ingr.ingredient.unit].symbol}</p>
             </li>
           ))}
         </ol>
@@ -129,21 +129,6 @@ console.log("Données recipes retournées par l'API: ", data);
 export default RecettePage;
  
 
-
-
-
-
-
-
-
-
-/*
-  const { id } = useParams();
-  if (!id) return;
-const curr_recette:Recipe = getRecipe(Number(id));
-console.log("reoutr de l'API: ", curr_recette);
-  if (!curr_recette) return;
-*/
 
 
 

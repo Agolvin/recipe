@@ -3,12 +3,12 @@
 import { Router } from 'express';
 import { testTools,migrationTools } from './controller';
 
-const commonRouter = Router();
+const toolsRouter = Router();
 
-commonRouter.post('/test',testTools);
-commonRouter.post('/migration',migrationTools);
+toolsRouter.post('/test',testTools);
+toolsRouter.post('/migration',migrationTools);
 
-export default commonRouter;
+export default toolsRouter;
 
 
 

@@ -3,7 +3,7 @@ import { getIngredient } from "./api";
 import { useParams } from "react-router-dom";
 import IngredientForm from "../IngredientForm/IngredientForm";
 
-import { Ingredient } from "../../../../../shared/models/recipe.model";
+import { Ingredient, Units } from "../../../../../shared/models/recipe.model";
 import { saveIngredient } from "../IngredientForm/api";
 
 
@@ -45,8 +45,8 @@ function IngredientUpdate() {
 
   const processedDefaultsIngredient: Ingredient = {
     id: data.id,
-    unit: data.unit || "",
-    unitName: data.unitName || "",
+    unit: data.unit || Units.GRAM,
+    // unitName: data.unitName || "",
     name: data.name || "",
     description: data.description || "",
     price: data.price || 0,

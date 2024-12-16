@@ -2,7 +2,9 @@
 
 export interface Bdd {
   recipes: Recipe[];
+  recipestmp: Recipe2[];           //pour migration
   ingredients: Ingredient[];
+  ingredientstmp: Ingredient2[];   //pour migration
 }
 
 
@@ -30,6 +32,35 @@ export type Unit = {
   symbol: string;
 };
 
+
+
+
+
+export enum UnitEnum {
+  GRAM = "GRAM",
+  LITRE = "LITRE",
+  KILOGRAM = "KILOGRAM",
+  PIECE = "PIECE",
+}
+
+export const Units: Record<UnitEnum, { name: string; symbol: string }> = {
+  [UnitEnum.GRAM]: { name: "gramme", symbol: "g" },
+  [UnitEnum.LITRE]: { name: "litre", symbol: "L" },
+  [UnitEnum.KILOGRAM]: { name: "kilogramme", symbol: "kg" },
+  [UnitEnum.PIECE]: { name: "pièce", symbol: "pc" },
+};
+
+
+/*PARCOURS
+Object.entries(Units).forEach(([key, unit]) => {
+  console.log(`${key}: ${unit.name} (${unit.abbreviation})`);
+});
+*/
+
+
+
+
+/*
 //sorte de tableau asso avec string en clé (LITRE/GRAM...) et variable de type Unit en valeur
 export const Units: Record<string, Unit> = {       
   LITRE: { name: "litre", symbol: "L" },
@@ -37,11 +68,6 @@ export const Units: Record<string, Unit> = {
   GRAM: { name: "gramme", symbol: "g" },
   PIECE: { name: "pièce", symbol: "pcs" },
 };
-
-/*PARCOURS
-Object.entries(Units).forEach(([key, unit]) => {
-  console.log(`${key}: ${unit.name} (${unit.abbreviation})`);
-});
 */
 
 
@@ -78,6 +104,8 @@ export interface Recipe {
 }
 
 
+export interface Recipe2 {
+}
 
 
 export function isRecipe (obj: any) : obj is Recipe {
@@ -125,19 +153,26 @@ export function isUnit (obj: any) : obj is Unit {
 */
 
 
+export interface Ingredient2 {      //A utiliser pour MAJ de structure / reprise de données
+/*
+
+  id: number;
+  unit: Unit;           //objet Unit mappé avec records 
+  name: string;
+  description: string; 
+  price: number;        //à l'unité
+
+*/
+}
+
+
 export interface Ingredient {
   id: number;
-  //unitId: number;
-  unit: String;
-  unitName: string;
+  unit: UnitEnum;           //énumération des clé possibles pour les unités
   name: string;
   description: string; 
   price: number;        //à l'unité
 }
-
-
-
-
 
 
 export function isIngredient (obj: any) : obj is Ingredient {
@@ -145,9 +180,7 @@ export function isIngredient (obj: any) : obj is Ingredient {
     typeof obj === "object" &&
     obj !== null &&
     typeof obj.id === "number" &&
-    //isUnit(obj.unit) &&
-    typeof obj.unit === "string" &&
-    typeof obj.unitName === "string" &&
+    typeof obj.unit === 'string' && Object.values(UnitEnum).includes(obj.unit as UnitEnum) &&
     typeof obj.name === "string" &&
     typeof obj.description === "string" &&
     typeof obj.price === "number"
@@ -170,3 +203,4 @@ export function isStep (obj: any) : obj is Step {
     typeof obj.description === "string"
   );
 }
+

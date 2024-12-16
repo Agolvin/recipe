@@ -2,6 +2,7 @@
 import { Link, useParams } from "react-router-dom";
 import { getIngredient } from "./api";
 import { useQuery } from "@tanstack/react-query";
+import { UnitEnum,Units } from "../../../../../shared/models/recipe.model";
 
 
 
@@ -51,13 +52,10 @@ console.log("Données recipes retournées par l'API: ", data);
       <h1>Titre:{data.name} id:{id}</h1>
       <p>Description: {data.description}</p>
       <p>Prix: {data.price}</p>
-      <p>Unité: {data.unitName} ({data.unit})</p>
+      <p>Unité: {Units[data.unit].name} ({Units[data.unit].symbol})</p>
     </>
   );
 
 }
 export default IngredientPage;
  
-
-
-

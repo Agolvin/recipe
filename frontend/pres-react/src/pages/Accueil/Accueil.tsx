@@ -23,13 +23,16 @@ Cela n'engage en RIEN le dévelopeur <br />
 Closed Alpha <br />
 Janvier 2025 (samedi 25/1/2025?) <br />
 <h3>Ingrédients</h3>
+Ajout sélection unité ok<br />
+Ajout coût/prix ingrédient ok<br />
 Liste ok<br/>
-Détail ok incomplet (nom, description)<br/>
-Ajout ok incomplet<br/>
-Modification ok incomplet<br/>
+Détail ok <br/>
+Ajout ok <br/>
+Modification ok <br/>
+Unité de mesure(g/kg/L/Unité)<br/>
 <h3>Recettes</h3>
 <h3>Autres</h3>
-integration Units en model <br />
+integration Units en model ok enum + tableau associatif<br />
 hébergement API + Site React<br/>
 mode local pour test? <br />
 branche de test avec VSCode? <br />
@@ -41,12 +44,9 @@ branche de test avec VSCode? <br />
 <h2>V0.2</h2>
 Février 2025
 <h3>Ingrédients</h3>
-Ajout sélection unité <br />
-Ajout coût/prix ingrédient <br />
 <h3>Recettes</h3>
 <h3>Autres</h3>
 gestion de branches pour dev/preprod/prod(s) <br />
-Unité de mesure(g/kg/L/Unité)<br/>
 
 
 <br/>
@@ -230,7 +230,7 @@ Taille min/max de chaque champ? min 5 trop petit (ex: Lait), passé à 3 ok?<br 
     <tr>
       <th scope="row">Ingrédients</th>
       <td>Ajout</td>
-      <td>Inexistant</td>
+      <td>OK</td>
       <td>25/1/2025?</td>
     </tr>
     <tr>
@@ -268,7 +268,7 @@ Taille min/max de chaque champ? min 5 trop petit (ex: Lait), passé à 3 ok?<br 
     <tr>
       <th scope="row">Recette</th>
       <td>Delete</td>
-      <td>BUG, à definir</td>
+      <td>BUG, à definir, ajouter message de confirmation</td>
       <td>??</td>
     </tr>
     <tr>

@@ -29,13 +29,10 @@ Liste ok<br/>
 Détail ok <br/>
 Ajout ok <br/>
 Modification ok <br/>
-Unité de mesure(g/kg/L/Unité)<br/>
+Unité de mesure(g/kg/L/Unité) ok<br/>
 <h3>Recettes</h3>
 <h3>Autres</h3>
-integration Units en model ok enum + tableau associatif<br />
-hébergement API + Site React<br/>
-mode local pour test? <br />
-branche de test avec VSCode? <br />
+integration Units en model ok enum + tableau associatif ok<br />
 
 
 
@@ -47,6 +44,9 @@ Février 2025
 <h3>Recettes</h3>
 <h3>Autres</h3>
 gestion de branches pour dev/preprod/prod(s) <br />
+branche de test avec VSCode? <br />
+hébergement API + Site React<br/>
+mode local pour test? <br />
 
 
 <br/>
@@ -56,7 +56,7 @@ Closed Beta <br />
 Mars 2025
 <h3>Ingrédients</h3>
 <h3>Recettes</h3>
-Liste<br/>
+Liste ok?<br/>
 Détails (titre,descrition,étapes)<br/>
 Ajout<br/>
 <h3>Autres</h3>

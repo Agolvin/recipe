@@ -21,13 +21,16 @@ function IngredientPage(){
   console.log("fonction recette id:", id);
 
   const RELOAD_QUERY_OPTIONS = {
-    cacheTime: 0,
+    cacheTime: 0, // Supprimer les données immédiatement après le démontage
+    staleTime: 0, // Considérer les données comme périmées immédiatement
+    refetchOnWindowFocus: true, // Recharger les données si la fenêtre est focalisée
+    refetchOnMount: true, // Force la requête à chaque montage
   } as const;
 
   const { isLoading, data, isError, error, refetch } = useQuery({
     queryKey: ["ingredient", id], // Inclure l'ID dans la clé
-    queryFn: () => getIngredient(id)//, // Appeler l'API avec l'ID
-    //cacheTime: 0, // Optionnel : empêche la mise en cache
+    queryFn: () => getIngredient(id),//, // Appeler l'API avec l'ID
+    ...RELOAD_QUERY_OPTIONS,
   });
 
 

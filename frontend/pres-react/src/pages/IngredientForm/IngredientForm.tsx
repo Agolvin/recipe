@@ -1,17 +1,13 @@
-
 import { Ingredient, UnitEnum, Units } from "../../../../../shared/models/recipe.model";
-
-
-//import { useForm, useFieldArray, Controller } from "react-hook-form";
 import { useForm } from "react-hook-form";
-
-
-
 import React from "react";
 
-type DefaultValuesIngredient = Ingredient | { ingredient: Ingredient };
+type IngredientFormProps = {
+  fn_ingredient : any;
+  defaultValues : any;
+}
 
-const IngredientForm: React.FC<{ fn_ingredient: (data: Ingredient) => Promise<void>; defaultValues?: DefaultValuesIngredient }> = ({ fn_ingredient, defaultValues }) => {
+const IngredientForm = ({ fn_ingredient, defaultValues }:IngredientFormProps):React.JSX.Element => {
   const processedDefaultsIngredient: Ingredient | undefined =
     defaultValues && "ingredient" in defaultValues
       ? (defaultValues as { ingredient: Ingredient }).ingredient
@@ -92,7 +88,8 @@ const IngredientForm: React.FC<{ fn_ingredient: (data: Ingredient) => Promise<vo
         type="number"
         {...register("price", {
           required: true,
-          valueAsNumber: true, 
+          valueAsNumber: true,
+          //value : data.price
         })}
         placeholder="Prix"
         step="0.01"  // Autoriser entiers ou décimaux mais précision limitée au centime 

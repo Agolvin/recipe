@@ -3,7 +3,6 @@ import {Ingredient} from '../../../../../shared/models/recipe.model'
 
 const getIngredient = async (id: number): Promise<Ingredient> => {
   console.log("debut getIngredient api.ts pour id:", id);  
-  console.log("type de id: ", typeof id)
 
   try {
     const response = await fetch(`http://localhost:3000/ingredient/get/${id}`, {

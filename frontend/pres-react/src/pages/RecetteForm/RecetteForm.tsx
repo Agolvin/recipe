@@ -51,7 +51,7 @@ const RecetteForm: React.FC<{ fn_recipe: (data: Recipe) => Promise<void>; defaul
 
 
   const onSubmit = async (data: Recipe) => {
-    console.log(data);
+    console.log("aze",data);
     try {
       const id = processedDefaultsRecipe?.id || 0;
       await fn_recipe({ ...data, id });

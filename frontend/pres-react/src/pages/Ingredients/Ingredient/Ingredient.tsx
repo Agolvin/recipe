@@ -5,6 +5,19 @@ import { useQuery } from "@tanstack/react-query";
 import { UnitEnum,Units } from "../../../../../../shared/models/recipe.model";
 
 
+import { useIngredientContext } from "../context/IngredientContext";
+
+
+//import { useIngredientContext } from "../context/IngredientContext";
+
+
+
+/*
+const SomeComponent: React.FC = () => { const { ingredient_test, cpt } = useIngredientContext();
+*/
+
+
+
 
 function IngredientPage(){
 
@@ -12,6 +25,7 @@ function IngredientPage(){
 
   const { id: idParam } = useParams(); 
   const id = Number(idParam); 
+
 
   if (isNaN(id)) {
     return <p>ID invalide dans l'URL.</p>;
@@ -50,12 +64,15 @@ function IngredientPage(){
   }
 console.log("Données recipes retournées par l'API: ", data);
 
+  const { cpt, incrementCpt } = useIngredientContext();
   return (
     <>
       <h1>Titre:{data.name} id:{id}</h1>
       <p>Description: {data.description}</p>
       <p>Prix: {data.price}</p>
       <p>Unité: {Units[data.unit].name} ({Units[data.unit].symbol})</p>
+      
+      <button onClick={incrementCpt}>Incrémenter {cpt}</button>
     </>
   );
 

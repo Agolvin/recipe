@@ -1,6 +1,7 @@
 import { Ingredient, UnitEnum, Units } from "../../../../../../shared/models/recipe.model";
 import { useForm } from "react-hook-form";
 import React from "react";
+import { useIngredientContext } from "../context/IngredientContext";
 
 type IngredientFormProps = {
   fn_ingredient : any;
@@ -47,7 +48,10 @@ const IngredientForm = ({ fn_ingredient, defaultValues }:IngredientFormProps):Re
   };
 
 
+  const { cpt, incrementCpt } = useIngredientContext();
+
   return (
+    <>
     <form className="grid gap-2" onSubmit={handleSubmit(onSubmit)}>
       
       <h2>Name:</h2>
@@ -117,8 +121,12 @@ const IngredientForm = ({ fn_ingredient, defaultValues }:IngredientFormProps):Re
       <button type="submit">Soumettre</button>
       {errors.root && <p>{errors.root.message}</p>}
     </form>
+    
+    <button onClick={incrementCpt}>Incrémenter {cpt}</button>
+    </>
   );
 };
 
 export default IngredientForm;
+
 

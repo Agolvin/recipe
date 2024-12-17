@@ -2,6 +2,7 @@
 import { Link, Outlet } from "react-router-dom";
 import { getIngredients } from "./api";
 import { useQuery } from "@tanstack/react-query";
+
 //import { deleteRecipe } from "../Recette/api";
 //import { ListeIngredient } from "./utils";
 
@@ -34,6 +35,7 @@ function IngredientsPage() {
     );
   }
   if (!data) return;
+
   return (
     <>
 
@@ -50,6 +52,7 @@ function IngredientsPage() {
           );
         })}
       </ul>
+     
     </>
   );
 }

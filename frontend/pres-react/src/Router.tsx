@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Outlet } from "react-router-dom";
 import Root from "./pages/Root";
 import Page_test from "./pages/Page_test";
 import App from "./App";
@@ -17,7 +17,6 @@ import RecetteForm from "./pages/Recettes/RecetteForm/RecetteForm";
 import { addRecipe } from "./pages/Recettes/RecetteForm/api";
 
 
-
 import IngredientsPage from "./pages/Ingredients/Ingredients/Ingredients";
 import IngredientPage from "./pages/Ingredients/Ingredient/Ingredient";
 //import { Ingredient } from "@pages";
@@ -25,6 +24,9 @@ import IngredientPage from "./pages/Ingredients/Ingredient/Ingredient";
 import IngredientForm from "./pages/Ingredients/IngredientForm/IngredientForm";
 import { addIngredient,saveIngredient } from "./pages/Ingredients/IngredientForm/api";
 import IngredientUpdate from "./pages/Ingredients/IngredientUpdate/IngredientUpdate";
+import {IngredientProviderTEST} from "./pages/Ingredients/context/IngredientContext"
+
+
 
 const router = createBrowserRouter([
   {
@@ -35,6 +37,92 @@ const router = createBrowserRouter([
     path: "/",
     element: <Root />,
     children: [
+
+      {
+        path: "/accueil",
+        element: <AccueilPage />,
+      },
+
+      {
+        path: "/tools",
+        element: <ToolsPage />,
+      },
+
+
+
+
+
+
+
+      //provider spécifique ingrédients pour contexte spécifique
+      {
+        path: "/ingredients",
+        element: (
+          <IngredientProviderTEST>
+            <Outlet />
+          </IngredientProviderTEST>
+        ),
+        children: [
+          {
+            index: true,              // "/ingredients"
+            element: <IngredientsPage />,
+          },
+          {
+            path: ":id",              // "/ingredients/:id"
+            element: <IngredientPage />,
+          },
+          {
+            path: "update/:id",       // "/ingredients/update/:id"
+            element: <IngredientUpdate />,
+          },
+          {
+            path: "add",              // "/ingredients/add"
+            element: <IngredientForm fn_ingredient={addIngredient} defaultValues={undefined} />,
+          },
+        ],
+      },
+
+
+
+      //provider spécifique recttes pour contexte spécifique
+      {
+        path: "/recettes",
+        element: (
+          //<RecetteProviderTEST>
+            <Outlet />
+          //</RecetteProviderTEST>
+        ),
+        children: [
+          {
+            index: true,              // "/recettes"
+            element: <RecettesPage />,
+          },
+          {
+            path: ":id",              // "/recettes/:id"
+            element: <RecettePage />,
+          },
+          {
+            path: "update/:id",       // "/recettes/update/:id"
+            element: <RecetteUpdate />,
+          },
+          {
+            path: "add",              // "/recettes/add"
+            element: <RecetteForm fn_recipe={addRecipe} defaultValues={undefined} />,
+          },
+        ],
+      },
+
+
+
+
+
+
+
+
+
+
+
+
       {
         path: "/dashboard",
         element: <Page_test />,
@@ -46,79 +134,6 @@ const router = createBrowserRouter([
       },
 
       {
-        path: "/accueil",
-        element: <AccueilPage />,
-      },
-
-
-
-
-
-
-
-
-
-      {
-        path: "/ingredients",
-        element: <IngredientsPage />,
-      },
-
-      {
-        path: "/ingredients/:id",
-        element: <IngredientPage />,
-      },
-     
-      {
-        path: "/ingredients/update/:id",
-        element: <IngredientUpdate />,
-      }, 
-
-      {
-        path: "/ingredients/add",
-        element: <IngredientForm fn_ingredient={addIngredient} defaultValues={undefined} />,
-      },
-    
-
-
-      
-
-
-      {
-        path: "/recettes",
-        element: <RecettesPage />,
-      },
-
-      {
-        path: "/recettes/:id",
-        element: <RecettePage />,
-      },
-
-      {
-        path: "/recettes/add",
-        element: <RecetteForm fn_recipe={addRecipe} defaultValues={undefined} />,
-      },
-
-      {
-        path: "/recettes/update/:id",
-        element: <RecetteUpdate />,
-      },
-
-
-
-
-
-
-
-      {
-        path: "/tools",
-        element: <ToolsPage />,
-      },
-
-
-
-
-
-      {
         path: "/2/:id",
         element: <App />,
         children: [
@@ -128,6 +143,7 @@ const router = createBrowserRouter([
           },
         ],
       },
+
     ],
   },
 ]);

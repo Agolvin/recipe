@@ -3,15 +3,8 @@
 
 function AccueilPage() {
     
-  
-
-   
     return (
       <>
-
-
- 
-
 
 <h1>Updates planifiées</h1>
 Les dates et fonctionnalités présentées ci-dessous sont purement spéculative. <br />
@@ -33,6 +26,8 @@ Unité de mesure(g/kg/L/Unité) ok<br/>
 <h3>Recettes</h3>
 <h3>Autres</h3>
 integration Units en model ok enum + tableau associatif ok<br />
+ajout de context EC <br />
+
 
 
 
@@ -47,7 +42,12 @@ gestion de branches pour dev/preprod/prod(s) <br />
 branche de test avec VSCode? <br />
 hébergement API + Site React<br/>
 mode local pour test? <br />
-
+ajout de context user pour simuler utilisateurs? <br />
+context global?? <br />
+combo sur page d'accueil pour choisir utilisateur? <br />
+ajout filtre id sur les recettte/ing?? <br />
+backend sur Railway?? Render?? <br />
+Railway: tout intégré (front + back) + synchro github + propose des bases MySQL <br />
 
 <br/>
 <br/>
@@ -101,7 +101,7 @@ Juillet 2025
 <h3>Ingrédients</h3>
 <h3>Recettes</h3>
 <h3>Autres</h3>
-Refonte graphique parceque oui pour l'instant c'est moche <br />
+Refonte graphique parceque oui pour l'instant c'est moche (tailwind)<br />
 
 <br/>
 <br/>
@@ -186,6 +186,7 @@ Gestionde stock/inventaire des ingredients? liste des recette faisable avec le s
 Note de difficulté sur les recette? <br />
 Gestion materiel necessaire pour une recette? <br />
 Taille min/max de chaque champ? min 5 trop petit (ex: Lait), passé à 3 ok?<br />
+ajouter gestion de session utilisateur <br />
 <br/>
 <br/>
 <br/>

@@ -1,4 +1,4 @@
-import { Ingredient } from "../../../../../shared/models/recipe.model";
+import { Ingredient } from "../../../../../../shared/models/recipe.model";
 
 
 export interface IngredientFormProps {

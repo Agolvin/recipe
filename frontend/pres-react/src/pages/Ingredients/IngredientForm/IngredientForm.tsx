@@ -1,4 +1,4 @@
-import { Ingredient, UnitEnum, Units } from "../../../../../shared/models/recipe.model";
+import { Ingredient, UnitEnum, Units } from "../../../../../../shared/models/recipe.model";
 import { useForm } from "react-hook-form";
 import React from "react";
 
@@ -79,7 +79,6 @@ const IngredientForm = ({ fn_ingredient, defaultValues }:IngredientFormProps):Re
         placeholder="Description"
       />
       {errors.description && <p>{errors.description.message}</p>}
-
 
 
 

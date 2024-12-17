@@ -16,7 +16,7 @@
 //   password: string;
 // };
 
-import { Recipe,isRecipe,Units,UnitEnum } from "../../../../../shared/models/recipe.model";
+import { Recipe,isRecipe,Units,UnitEnum } from "../../../../../../shared/models/recipe.model";
 
 
 import { Link, useParams } from "react-router-dom";

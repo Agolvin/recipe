@@ -1,8 +1,8 @@
-import { queryClient } from "../../providers/QueryClientProvider";
+import { queryClient } from "../../../providers/QueryClientProvider";
 
 
 
-import {Recipe} from '../../../../../shared/models/recipe.model'
+import {Recipe} from '../../../../../../shared/models/recipe.model'
 
 
 

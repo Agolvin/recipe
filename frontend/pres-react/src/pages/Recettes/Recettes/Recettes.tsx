@@ -17,7 +17,7 @@ import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { deleteRecipe } from "../Recette/api";
 
-import { Recipe } from "../../../../../shared/models/recipe.model";
+import { Recipe } from "../../../../../../shared/models/recipe.model";
 
 
 

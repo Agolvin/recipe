@@ -1,6 +1,6 @@
 
 
-import { Ingredient } from "../../../../../shared/models/recipe.model";
+import { Ingredient } from "../../../../../../shared/models/recipe.model";
 
 
 export const addIngredient = async (newIngredient: Ingredient) => {

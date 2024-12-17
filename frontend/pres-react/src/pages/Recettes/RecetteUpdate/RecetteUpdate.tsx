@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import RecetteForm from "../RecetteForm/RecetteForm";
 import { saveRecipe } from "../RecetteForm/api";
 
-import { Recipe } from "../../../../../shared/models/recipe.model";
+import { Recipe } from "../../../../../../shared/models/recipe.model";
 
 
 
@@ -34,7 +34,7 @@ function RecetteUpdate() {
   if (isError) {
     return (
       <div>
-        <p>lalala:{error.message}</p>
+        <p>{error.message}</p>
         <button onClick={() => refetch()}>Recharger</button>
       </div>
     );

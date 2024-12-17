@@ -1,5 +1,5 @@
 
-import {Ingredient} from '../../../../../shared/models/recipe.model'
+import {Ingredient} from '../../../../../../shared/models/recipe.model'
 
   const getIngredients = async () => {
     console.log("debut getIngredients");

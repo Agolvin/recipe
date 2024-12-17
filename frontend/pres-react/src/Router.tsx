@@ -4,27 +4,27 @@ import Page_test from "./pages/Page_test";
 import App from "./App";
 //import Tab_ingredients from "./pages/Ingredients";
 // import RecetteForm, { FormSchema } from "./pages/RecetteForm/RecetteForm";
-import RecetteUpdate from "./pages/RecetteUpdate/RecetteUpdate";
+import RecetteUpdate from "./pages/Recettes/RecetteUpdate/RecetteUpdate";
 import AccueilPage from "./pages/Accueil/Accueil";
 import ToolsPage from "./pages/Tools/Tools";
 
 
 //import Recettes from "./pages/Recettes/Recettes";
-import RecettesPage from "./pages/Recettes/Recettes";
-import RecettePage from "./pages/Recette/Recette";
+import RecettesPage from "./pages/Recettes/Recettes/Recettes";
+import RecettePage from "./pages/Recettes/Recette/Recette";
 //import { Recette } from "@pages";
-import RecetteForm from "./pages/RecetteForm/RecetteForm";
-import { addRecipe } from "./pages/RecetteForm/api";
+import RecetteForm from "./pages/Recettes/RecetteForm/RecetteForm";
+import { addRecipe } from "./pages/Recettes/RecetteForm/api";
 
 
 
-import IngredientsPage from "./pages/Ingredients/Ingredients";
-import IngredientPage from "./pages/Ingredient/Ingredient";
+import IngredientsPage from "./pages/Ingredients/Ingredients/Ingredients";
+import IngredientPage from "./pages/Ingredients/Ingredient/Ingredient";
 //import { Ingredient } from "@pages";
 //import Ingredient  from "./pages/Ingredient/Ingredient";
-import IngredientForm from "./pages/IngredientForm/IngredientForm";
-import { addIngredient,saveIngredient } from "./pages/IngredientForm/api";
-import IngredientUpdate from "./pages/IngredientUpdate/IngredientUpdate";
+import IngredientForm from "./pages/Ingredients/IngredientForm/IngredientForm";
+import { addIngredient,saveIngredient } from "./pages/Ingredients/IngredientForm/api";
+import IngredientUpdate from "./pages/Ingredients/IngredientUpdate/IngredientUpdate";
 
 const router = createBrowserRouter([
   {

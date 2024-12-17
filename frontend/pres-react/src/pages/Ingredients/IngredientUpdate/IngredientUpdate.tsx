@@ -3,7 +3,7 @@ import { getIngredient } from "./api";
 import { useParams } from "react-router-dom";
 import IngredientForm from "../IngredientForm/IngredientForm";
 
-import { Ingredient, Units } from "../../../../../shared/models/recipe.model";
+import { Ingredient, Units } from "../../../../../../shared/models/recipe.model";
 import { saveIngredient } from "../IngredientForm/api";
 
 

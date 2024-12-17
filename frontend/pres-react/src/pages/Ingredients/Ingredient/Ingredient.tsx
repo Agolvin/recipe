@@ -2,7 +2,7 @@
 import { Link, useParams } from "react-router-dom";
 import { getIngredient } from "./api";
 import { useQuery } from "@tanstack/react-query";
-import { UnitEnum,Units } from "../../../../../shared/models/recipe.model";
+import { UnitEnum,Units } from "../../../../../../shared/models/recipe.model";
 
 
 

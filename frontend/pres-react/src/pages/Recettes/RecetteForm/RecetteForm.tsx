@@ -74,7 +74,9 @@ const RecetteForm: React.FC<{ fn_recipe: (data: Recipe) => Promise<void>; defaul
 
   return (
     <form className="grid gap-2" onSubmit={handleSubmit(onSubmit)}>
-      <h1>Name</h1>
+      <h1>Formulaire recette</h1>
+      Même bug de MAJ que ingrédients <br />
+      <h2>Name</h2>
       <input
         {...register("name", {
           required: {

@@ -61,7 +61,11 @@ console.log("Données recipes retournées par l'API: ", data);
 
   return (
     <>
-      <Link to="./add">Nouvelle recette </Link>
+
+
+      <h1>Liste des recettes</h1>
+      Fonctionnel incomplet <br />
+      <Link to="./add">Nouvelle recette(HS) </Link>
 
       <ul>
 
@@ -72,8 +76,8 @@ console.log("Données recipes retournées par l'API: ", data);
           return (
             <li key={r.id}>
               <Link to={`./${r.id}`}>Titre : {r.name} id: {r.id}</Link>{" "}
-              <Link to={`./update/${r.id}`}> modifier </Link>
-              <button onClick={() => deleteRecipe(r.id)}>Delete (HS)</button>
+              |<Link to={`./update/${r.id}`}> modifier </Link>
+              |<button onClick={() => deleteRecipe(r.id)}>Delete (HS)</button>
             </li>
           );
         })}

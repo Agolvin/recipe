@@ -12,13 +12,13 @@ function ToolsPage() {
 
         <h1>DEV TOOLS</h1>
         <h3>NE PAS TOUCHER!!!!</h3>
-
+        désactivés en prod <br />
         <ul>
           <li>
-            <button onClick={() => testTools()}>Test</button>
+            <button>Test</button>
           </li>
           <li>
-            <button onClick={() => migrationTools()}>/!\ Migration BDD</button>
+            <button >Migration BDD</button>
           </li>
         </ul>
 
@@ -26,5 +26,11 @@ function ToolsPage() {
     );
   }
   
+
+  // <button onClick={() => testTools()}>Test</button>
+//<button onClick={() => migrationTools()}>/!\ Migration BDD</button>
+
+
+
   export default ToolsPage;
   

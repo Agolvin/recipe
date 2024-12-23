@@ -67,12 +67,13 @@ console.log("Données recipes retournées par l'API: ", data);
   const { cpt, incrementCpt } = useIngredientContext();
   return (
     <>
-      <h1>Titre:{data.name} id:{id}</h1>
+      <h1>Détail de l'ingrédient (id: {id})</h1>
+      <h2>Titre:{data.name}</h2>
       <p>Description: {data.description}</p>
       <p>Prix: {data.price}</p>
       <p>Unité: {Units[data.unit].name} ({Units[data.unit].symbol})</p>
       
-      <button onClick={incrementCpt}>Incrémenter {cpt}</button>
+      <button onClick={incrementCpt}>Btn test context cpt: {cpt}</button>
     </>
   );
 

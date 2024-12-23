@@ -39,6 +39,9 @@ function IngredientsPage() {
   return (
     <>
 
+      <h1>Liste des ingrédients</h1>
+      Fonctionnel <br />
+
       <Link to="./add">New ingredient</Link>
 
       <ul>
@@ -46,8 +49,8 @@ function IngredientsPage() {
           return (
             <li key={r.id}>
               <Link to={`./${r.id}`}>Titre : {r.name}</Link>{" "}
-              <Link to={`./update/${r.id}`}> modifier </Link>
-              <button>Delete?? (non codé)</button>
+              |<Link to={`./update/${r.id}`}> modifier </Link>
+              |<button>Delete?? (non codé)</button>
             </li>
           );
         })}

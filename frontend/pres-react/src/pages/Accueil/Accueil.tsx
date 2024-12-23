@@ -6,29 +6,44 @@ function AccueilPage() {
     return (
       <>
 
-<h1>Updates planifiées</h1>
-Les dates et fonctionnalités présentées ci-dessous sont purement spéculative. <br />
-Cela n'engage en RIEN le dévelopeur <br />
+
+<h1>V0.1: Bienvenue </h1>
+Etat global actuel: <br />
+Ingrédient: OK sauf bug MAJ <br />
+Recettes: EC <br />
+<br />
+
+
+<h1>Versions</h1>
 
 <br/>
 <br/>
 <h2>V0.1</h2>
 Closed Alpha <br />
-Janvier 2025 (samedi 25/1/2025?) <br />
+Janvier 2025<br />
 <h3>Ingrédients</h3>
 Ajout sélection unité ok<br />
 Ajout coût/prix ingrédient ok<br />
 Liste ok<br/>
 Détail ok <br/>
 Ajout ok <br/>
-Modification ok <br/>
-Unité de mesure(g/kg/L/Unité) ok<br/>
+Suppression HS <br />
+Modification BUG maj affichage<br/>
+Unité de mesure(g/kg/L/Unité) ok (en dur)<br/>
 <h3>Recettes</h3>
+liste incomplet <br />
+modif incomplet <br />
+ajout HS <br />
+suprreson HS <br />
 <h3>Autres</h3>
 integration Units en model ok enum + tableau associatif ok<br />
 ajout de context EC <br />
+hebergement vercel EC <br />
 
 
+<h1>Updates planifiées</h1>
+Les dates et fonctionnalités présentées ci-dessous sont purement spéculative. <br />
+Cela n'engage en RIEN le dévelopeur <br />
 
 
 <br/>
@@ -38,16 +53,14 @@ Février 2025
 <h3>Ingrédients</h3>
 <h3>Recettes</h3>
 <h3>Autres</h3>
-gestion de branches pour dev/preprod/prod(s) <br />
+gestion de branches pour dev/test/preprod/prod(s)?? <br />
 branche de test avec VSCode? <br />
 hébergement API + Site React<br/>
-mode local pour test? <br />
 ajout de context user pour simuler utilisateurs? <br />
 context global?? <br />
 combo sur page d'accueil pour choisir utilisateur? <br />
 ajout filtre id sur les recettte/ing?? <br />
-backend sur Railway?? Render?? <br />
-Railway: tout intégré (front + back) + synchro github + propose des bases MySQL <br />
+
 
 <br/>
 <br/>
@@ -226,25 +239,25 @@ ajouter gestion de session utilisateur <br />
       <th scope="row">Ingrédients</th>
       <td>Liste</td>
       <td>OK</td>
-      <td>25/1/2025?</td>
+      <td>01/2025</td>
     </tr>
     <tr>
       <th scope="row">Ingrédients</th>
       <td>Ajout</td>
       <td>OK</td>
-      <td>25/1/2025?</td>
+      <td>01/2025</td>
     </tr>
     <tr>
       <th scope="row">Ingrédients</th>
       <td>Modif</td>
       <td>OK bug de refresh</td>
-      <td>25/1/2025?</td>
+      <td>01/2025</td>
     </tr>
     <tr>
       <th scope="row">Ingrédients</th>
       <td>Delete</td>
       <td>/!\ A definir</td>
-      <td>25/1/2025?</td>
+      <td>XX</td>
     </tr>
 
 
@@ -252,19 +265,19 @@ ajouter gestion de session utilisateur <br />
       <th scope="row">Recette</th>
       <td>Liste</td>
       <td>En test</td>
-      <td>25/1/2025?</td>
+      <td>01/2025</td>
     </tr>
     <tr>
       <th scope="row">Recette</th>
       <td>Ajout</td>
       <td>Inexistant</td>
-      <td>??</td>
+      <td>XX</td>
     </tr>
     <tr>
       <th scope="row">Recette</th>
       <td>Modif</td>
       <td>OK Incomplet pb de refresh?</td>
-      <td>25/1/2025?</td>
+      <td>XX</td>
     </tr>
     <tr>
       <th scope="row">Recette</th>
@@ -276,16 +289,23 @@ ajouter gestion de session utilisateur <br />
       <th scope="row">Recette</th>
       <td>Liste etapes</td>
       <td>Base OK, front inexistant</td>
-      <td>2/25</td>
+      <td>02/25?</td>
     </tr>
     <tr>
       <th scope="row">Recette</th>
       <td>Liste ingrédients</td>
       <td>Base OK, front inexistant</td>
-      <td>2/25</td>
+      <td>02/25?</td>
     </tr>
   </tbody>
 </table>
+
+
+
+
+
+
+
 
 
 

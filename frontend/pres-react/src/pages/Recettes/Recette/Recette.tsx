@@ -88,7 +88,10 @@ console.log("Données recipes retournées par l'API: ", data);
 
   return (
     <>
-      <h1>Titre:{data.name} id:{id}</h1>
+
+
+      <h1>Détail de la rectte (id: {id})</h1>
+      <h2>Titre:{data.name}</h2>
       <p>Description: {data.description}</p>
 
 

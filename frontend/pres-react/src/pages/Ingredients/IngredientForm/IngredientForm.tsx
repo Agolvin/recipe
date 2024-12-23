@@ -53,7 +53,12 @@ const IngredientForm = ({ fn_ingredient, defaultValues }:IngredientFormProps):Re
   return (
     <>
     <form className="grid gap-2" onSubmit={handleSubmit(onSubmit)}>
-      
+      <h2>Formulaire ingrédient:</h2>
+      Problème de mise à jour des données en affichage (MAJ): <br />
+      La sauvegarde en base fonctionnne <br />
+      Revenir sur le formulaire affiche les anciennes données <br />
+      puis les bonnes en revenant encore une fois... <br />
+      En cours de résolution <br />
       <h2>Name:</h2>
       <input
         {...register("name", {
@@ -122,7 +127,7 @@ const IngredientForm = ({ fn_ingredient, defaultValues }:IngredientFormProps):Re
       {errors.root && <p>{errors.root.message}</p>}
     </form>
     
-    <button onClick={incrementCpt}>Incrémenter {cpt}</button>
+    <button onClick={incrementCpt}>Btn test context cpt: {cpt}</button>
     </>
   );
 };

@@ -6,21 +6,32 @@ function AccueilPage() {
     return (
       <>
 
-
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
 <h1>V0.1: Bienvenue </h1>
 Etat global actuel: <br />
-Ingrédient: OK sauf bug MAJ <br />
+Ingrédient: OK sauf bug refresh MAJ <br />
 Recettes: EC <br />
-<br />
+Les suggestions sont les bienvenues, mais elles n'engagent en RIEN le dévelopeur. <br />
 
 
-<h1>Versions</h1>
+
+<br/>
+<br/>
+<br/>
+<br/>
+<h1>Historique versions</h1>
 
 <br/>
 <br/>
 <h2>V0.1</h2>
-Closed Alpha <br />
-Janvier 2025<br />
+Closed Alpha perso<br />
+Décebre 2024<br />
 <h3>Ingrédients</h3>
 Ajout sélection unité ok<br />
 Ajout coût/prix ingrédient ok<br />
@@ -40,10 +51,12 @@ integration Units en model ok enum + tableau associatif ok<br />
 ajout de context EC <br />
 hebergement vercel EC <br />
 
-
+<br />
+<br />
+<br />
+<br />
 <h1>Updates planifiées</h1>
-Les dates et fonctionnalités présentées ci-dessous sont purement spéculative. <br />
-Cela n'engage en RIEN le dévelopeur <br />
+Les dates et fonctionnalités présentées ci-dessous sont purement spéculatives. <br />
 
 
 <br/>
@@ -59,7 +72,7 @@ hébergement API + Site React<br/>
 ajout de context user pour simuler utilisateurs? <br />
 context global?? <br />
 combo sur page d'accueil pour choisir utilisateur? <br />
-ajout filtre id sur les recettte/ing?? <br />
+ajout filtre id user sur les recettte/ing?? <br />
 
 
 <br/>
@@ -104,7 +117,7 @@ Juin 2025
 <h3>Ingrédients</h3>
 <h3>Recettes</h3>
 Export pdf/word des recettes pour impressions <br />
-impression d'une recette: inclure optionnellement  impression des sous recette <br />
+impression d'une recette: inclure optionnellement impression des sous recette <br />
 <h3>Autres</h3>
 
 <br/>
@@ -134,7 +147,7 @@ Refonte graphique parceque oui pour l'instant c'est moche (tailwind)<br />
 <br/>
 <h2>V1.0</h2>
 Mise en prod! <br />
-étét 2025? <br />
+été 2025? <br />
 <h3>Ingrédients</h3>
 full privé <br />
 <h3>Recettes</h3>
@@ -299,14 +312,6 @@ ajouter gestion de session utilisateur <br />
     </tr>
   </tbody>
 </table>
-
-
-
-
-
-
-
-
 
 
 

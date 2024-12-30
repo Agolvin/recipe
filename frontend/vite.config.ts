@@ -8,7 +8,7 @@ export default defineConfig({
     alias: {
       "@pages": path.resolve(__dirname, "./src/pages"),
       "@components": path.resolve(__dirname, "./src/components"),
-      "@shared": path.resolve(__dirname, "./src/shared"), 
+      //"@shared": path.resolve(__dirname, "./src/shared"), 
     },
   },
 });

@@ -7,6 +7,10 @@ import { getBDD, saveBDD } from "../../lib/utils";
 export const getAllIngredientsSv = async () => {
   console.log("getAllIngredientsSv");
   let bdd = getBDD();
+  if (bdd == undefined) {
+    throw new Error("BDD not found" );
+  }
+
   if (!bdd.ingredients) {
     console.log("getAllIngredientsSv Données ingrédients inexistantes en base");
     throw new Error("getAllIngredientsSv Données ingrédients inexistantes en base");
@@ -24,6 +28,11 @@ export const getAllIngredientsSv = async () => {
 export const getIngredientSv = async (idIngredient: number) => {
   console.log("getIngredientsSv");
   let bdd = getBDD();
+
+  if (bdd == undefined) {
+    throw new Error("BDD not found" );
+  }
+
   if (!bdd.ingredients) {
     console.log("Données ingrédients inexistantes en base");
     throw new Error("Données ingrédients inexistantes en base");
@@ -56,6 +65,11 @@ export const addIngredientSv = async (newIngredient: Ingredient) => {
     throw new Error("Format parametre ingredent incorrect");
   }*/
   let bdd = getBDD();
+
+  if (bdd == undefined) {
+    throw new Error("BDD not found" );
+  }
+
   /*
   if (!bdd.ingredients) {
     console.log("Données ingrédients inexistantes en base");
@@ -81,6 +95,11 @@ export const addIngredientSv = async (newIngredient: Ingredient) => {
 export const updateIngredientSv = async (pinIngredient: Ingredient) => {
   console.log("updateIngredientSv", pinIngredient);
   let bdd = getBDD();
+
+  if (bdd == undefined) {
+    throw new Error("BDD not found" );
+  }
+
   if (!bdd.ingredients) {
     throw new Error("Données ingrédients inexistantes en base");
   }

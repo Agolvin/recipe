@@ -15,7 +15,7 @@ export const getBDD = () => {
     else
     {
       const data = fs.readFileSync(pathBDD, "utf8"); //recuperation données depuis bdd.json
-      let bdd = JSON.parse(data) as Bdd; //transfert en json dans variable
+      let bdd:Bdd = JSON.parse(data) as Bdd; //transfert en json dans variable
       return bdd;
     }
 };

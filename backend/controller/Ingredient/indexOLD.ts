@@ -26,7 +26,10 @@ const getIngredient = (req: req, res: res) => {
   console.log("getIngredient id:", req.params.id);
   let bdd = getBDD();
 
-
+  if (bdd == undefined) {
+    return res.status(404).json({ message: "BDD not found" });
+  }
+ 
   if (!bdd.ingredients) {
     return res
       .status(500)
@@ -71,6 +74,10 @@ const saveIngredient = (req: req, res: res) => {
 
   let bdd = getBDD();
 
+  if (bdd == undefined) {
+    return res.status(404).json({ message: "BDD not found" });
+  }
+
   const { ingredient }: { ingredient: Ingredient } = req.body; //copie de la recipe du body dans variable locale typé en recipe, parametre vers variable locale
 
   //if (ingredient == undefined) {
@@ -102,8 +109,9 @@ const saveIngredient = (req: req, res: res) => {
   else {
 
     console.log("MAJ ingredient: " + ingredient.id);
-    let bdd = getBDD();
+    //let bdd = getBDD();
 
+ 
     let index = bdd.ingredients.findIndex(
       (ingredient) => ingredient.id == Number(req.params.id)
     );

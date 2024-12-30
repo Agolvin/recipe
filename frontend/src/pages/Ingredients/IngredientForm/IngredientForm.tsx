@@ -59,7 +59,8 @@ const IngredientForm = ({ fn_ingredient, defaultValues }:IngredientFormProps):Re
       Revenir sur le formulaire affiche les anciennes données <br />
       puis les bonnes en revenant encore une fois... <br />
       En cours de résolution <br />
-      ERREUR: backend créé un new bdd.json a la save: pathBDD corrigé <br />
+      ERREUR: backend créé un new bdd.json a la save: corrigé <br />
+      (pathBDD, à mettre en global dans fichier de conf?) <br />
       <h2>Name:</h2>
       <input
         {...register("name", {

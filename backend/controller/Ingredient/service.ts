@@ -67,7 +67,7 @@ export const addIngredientSv = async (newIngredient: Ingredient) => {
   let bdd = getBDD();
 
   if (bdd == undefined) {
-    throw new Error("BDD not found" );
+    throw new Error("BDD not found." );
   }
 
   /*

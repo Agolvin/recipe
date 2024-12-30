@@ -58,9 +58,23 @@
         {
             "id": 1,
             "unit": "LITRE",
-            "name": "preprod ",
-            "description": "preprod",
+            "name": "Sucre ",
+            "description": "Fine granulated white sugar",
             "price": 3
+        },
+        {
+            "id": 4,
+            "unit": "LITRE",
+            "name": "rsfsvxscxv",
+            "description": "xvsrfvdsfsvfscd",
+            "price": 0
+        },
+        {
+            "id": 5,
+            "unit": "LITRE",
+            "name": "Ajout master",
+            "description": "master",
+            "price": 0
         }
     ]
 }

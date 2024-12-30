@@ -1,8 +1,8 @@
 
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getIngredient } from "./api";
 import { useQuery } from "@tanstack/react-query";
-import { UnitEnum,Units } from "../../../../../shared/models/recipe.model";
+import { Units } from "../../../shared/front.model";
 
 
 import { useIngredientContext } from "../context/IngredientContext";

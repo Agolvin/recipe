@@ -1,5 +1,5 @@
 
-import { Link, Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { getIngredients } from "./api";
 import { useQuery } from "@tanstack/react-query";
 

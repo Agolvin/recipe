@@ -1,15 +1,19 @@
+/*
 import { useState } from "react";
 import Input from "./components/Input/Input";
-import "./App.css";
 import { useForm } from "react-hook-form";
 import { Link, Outlet, useLocation, useParams } from "react-router-dom";
 import Button from "./components/Button/Button";
+*/
 
+
+import "./App.css";
+/*
 type formSchema = {
   email: string;
   password: string;
 };
-
+*/
 function App() {
   return <p>App</p>;
 

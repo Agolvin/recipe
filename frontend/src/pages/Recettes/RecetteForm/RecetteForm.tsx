@@ -5,7 +5,7 @@
 // import { Link, Outlet, useLocation, useParams } from "react-router-dom";
 // import Button from "./components/Button/Button";
 
-import { Link, Outlet } from "react-router-dom";
+//import { Link, Outlet } from "react-router-dom";
 
 //import { recette } from "../../data";
 //import React, { useEffect } from "react";
@@ -17,10 +17,11 @@ import { addRecipe } from "./api";
 import Input from "../../components/Input/Input";
 */
 //import { RecetteFormProps } from "./RecetteForm.types";
-import { Recipe } from "../../../../../../shared/models/recipe.model";
+import { Recipe } from "../../../shared/front.model";
 
 
-import { useForm, useFieldArray, Controller } from "react-hook-form";
+//import { useForm, useFieldArray, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 
 import React from "react";
 
@@ -33,7 +34,6 @@ const RecetteForm: React.FC<{ fn_recipe: (data: Recipe) => Promise<void>; defaul
       : defaultValues;
 
   const {
-    control,
     register,
     handleSubmit,
     setValue,

@@ -5,19 +5,20 @@
 // import { Link, Outlet, useLocation, useParams } from "react-router-dom";
 // import Button from "./components/Button/Button";
 
-import { Link, Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 //import { recette } from "../../data";
 //import React, { useEffect } from "react";
 
 import { getRecipes } from "./api";
 
-import { ListeRecipe } from "./utils";
-import { useEffect, useState } from "react";
+//import { ListeRecipe } from "./utils";
+//import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { deleteRecipe } from "../Recette/api";
 
-import { Recipe } from "../../../../../shared/models/recipe.model";
+//import { Recipe } from "../../../../../shared/models/recipe.model";
+
 
 
 

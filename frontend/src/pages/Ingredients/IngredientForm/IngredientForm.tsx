@@ -1,4 +1,4 @@
-import { Ingredient, UnitEnum, Units } from "../../../../../shared/models/recipe.model";
+import { Ingredient, UnitEnum, Units } from "../../../shared/front.model";
 import { useForm } from "react-hook-form";
 import React from "react";
 import { useIngredientContext } from "../context/IngredientContext";
@@ -15,6 +15,22 @@ const IngredientForm = ({ fn_ingredient, defaultValues }:IngredientFormProps):Re
       : defaultValues;
 
   const {
+    register,
+    handleSubmit,
+    setValue,
+    setError,
+    formState: { errors },
+  } = useForm<Ingredient>({
+    defaultValues: processedDefaultsIngredient || {
+        id: 0,
+        unit: UnitEnum.GRAM,
+        name: "",
+        description: "", 
+        price: 0  
+    },
+  });
+/*
+  const {
     control,
     register,
     handleSubmit,
@@ -30,7 +46,7 @@ const IngredientForm = ({ fn_ingredient, defaultValues }:IngredientFormProps):Re
         price: 0  
     },
   });
-
+*/
 
   const onSubmit = async (data: Ingredient) => {
     console.log("onSubmit",data);

@@ -22,7 +22,7 @@ import IngredientPage from "./pages/Ingredients/Ingredient/Ingredient";
 //import { Ingredient } from "@pages";
 //import Ingredient  from "./pages/Ingredient/Ingredient";
 import IngredientForm from "./pages/Ingredients/IngredientForm/IngredientForm";
-import { addIngredient,saveIngredient } from "./pages/Ingredients/IngredientForm/api";
+import { addIngredient } from "./pages/Ingredients/IngredientForm/api";
 import IngredientUpdate from "./pages/Ingredients/IngredientUpdate/IngredientUpdate";
 import {IngredientProviderTEST} from "./pages/Ingredients/context/IngredientContext"
 

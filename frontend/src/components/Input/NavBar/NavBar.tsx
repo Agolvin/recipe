@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const NavBar: React.FC = ({ ...props }) => {
+//const NavBar: React.FC = ({ ...props }) => {
+const NavBar: React.FC = () => {
   return (
     <header className="fixed top-0 left-0 border-b w-full h-24">
       <ul className="flex justify-evenly items-center h-full">

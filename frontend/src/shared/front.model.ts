@@ -100,7 +100,7 @@ export interface Recipe {
   name: string;
   description: string; 
   steps: Step[];
-  ingredientsQte: { ingredient: Ingredient; quantity: number }[]; //gerer l'ordre des ingredients
+  ingredientsQte: { ingredient: Ingredient; quantity: number }[]; //gerer l'ordre des ingredients?
 }
 
 
@@ -173,6 +173,16 @@ export interface Ingredient {
   description: string; 
   price: number;        //à l'unité
 }
+
+export interface IngredientQte {
+  ingredient: Ingredient;
+  quantity: number;
+}
+
+
+
+
+
 
 
 export function isIngredient (obj: any) : obj is Ingredient {

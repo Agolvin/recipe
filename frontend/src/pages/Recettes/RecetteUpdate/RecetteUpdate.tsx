@@ -1,11 +1,12 @@
-import { QueryOptions, useQuery } from "@tanstack/react-query";
-import { UseQueryOptions } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
+//import { QueryOptions, useQuery } from "@tanstack/react-query";
+//import { UseQueryOptions } from "@tanstack/react-query";
 import { getRecipe } from "./api";
 import { useParams } from "react-router-dom";
 import RecetteForm from "../RecetteForm/RecetteForm";
 import { saveRecipe } from "../RecetteForm/api";
 
-import { Recipe } from "../../../../../shared/models/recipe.model";
+import { Recipe } from "../../../shared/front.model";
 
 
 

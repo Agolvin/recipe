@@ -16,10 +16,12 @@
 //   password: string;
 // };
 
-import { Recipe,isRecipe,Units,UnitEnum } from "../../../../../shared/models/recipe.model";
+//import { Recipe,isRecipe,Units,UnitEnum, Ingredient, Step,IngredientQte } from "../../../shared/front.model";
+import { Units,Step,IngredientQte } from "../../../shared/front.model";
 
 
-import { Link, useParams } from "react-router-dom";
+//import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import { getRecipe } from "./api";
 import { useQuery } from "@tanstack/react-query";
@@ -40,13 +42,15 @@ function RecettePage(){//{ id }: { id: number }) {
   console.log("Id récupéré depuis l'URL:", id);
 
   console.log("fonction recette id:", id);
-
+/*
   const RELOAD_QUERY_OPTIONS = {
     cacheTime: 0, // Supprimer les données immédiatement après le démontage
     staleTime: 0, // Considérer les données comme périmées immédiatement
     refetchOnWindowFocus: true, // Recharger les données si la fenêtre est focalisée
     refetchOnMount: true, // Force la requête à chaque montage
   } as const;
+*/
+
 
   const { isLoading, data, isError, error, refetch } = useQuery({
     queryKey: ["recipe", id], // Inclure l'ID dans la clé
@@ -101,7 +105,7 @@ console.log("Données recipes retournées par l'API: ", data);
       <div>
         <h1>Ingrédients :</h1>
         <ol>
-          {data.ingredientsQte.map((ingr, index) => (
+          {data.ingredientsQte.map((ingr:IngredientQte, index:any) => (
             <li key={index}>
               <h3>Ingrédient {index + 1}:</h3>
               <p>{ingr.ingredient.name}: {ingr.quantity} {Units[ingr.ingredient.unit].symbol}</p>
@@ -117,7 +121,7 @@ console.log("Données recipes retournées par l'API: ", data);
       <div>
         <h1>Étapes :</h1>
         <ol>
-          {data.steps.map((step, index) => (
+          {data.steps.map((step:Step, index:any) => (
             <li key={index}>
               <h3>Étape {index + 1}: {step.name}</h3>
               <p>{step.description}</p>

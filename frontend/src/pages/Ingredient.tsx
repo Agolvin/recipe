@@ -5,7 +5,8 @@
 // import { Link, Outlet, useLocation, useParams } from "react-router-dom";
 // import Button from "./components/Button/Button";
 
-import { Link, Outlet, useParams } from "react-router-dom";
+//import { Link, Outlet, useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 
 //import { tab_ingredients } from "../data";
 

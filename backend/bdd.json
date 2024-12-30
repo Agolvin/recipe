@@ -58,8 +58,8 @@
         {
             "id": 1,
             "unit": "LITRE",
-            "name": "Sucre ",
-            "description": "Fine granulated white sugar",
+            "name": "preprod ",
+            "description": "preprod",
             "price": 3
         }
     ]

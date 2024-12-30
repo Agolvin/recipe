@@ -2,7 +2,7 @@
 
 import { Request as req, Response as res } from "express";
 import { migrationToolsSv, testToolsSv } from './service';
-import {  Recipe, isRecipe } from "../../../shared/models/recipe.model";
+import {  Recipe, isRecipe } from "../../shared/back.model";
 
 
 

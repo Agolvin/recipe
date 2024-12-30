@@ -1,0 +1,66 @@
+{
+    "recipes": [
+        {
+            "id": 1,
+            "name": "Salade César  6 6",
+            "description": "Une salade classique avec de la laitue, du poulet et une sauce crémeuse.",
+            "steps": [
+                {
+                    "name": "Préparer la laitue",
+                    "description": "Lavez et coupez la laitue en morceaux."
+                },
+                {
+                    "name": "Griller le poulet",
+                    "description": "Faites griller le poulet avec un peu d'huile d'olive jusqu'à ce qu'il soit doré."
+                },
+                {
+                    "name": "Assembler la salade",
+                    "description": "Ajoutez la laitue, le poulet, les croûtons et la sauce César dans un saladier."
+                }
+            ],
+            "ingredientsQte": [
+                {
+                    "ingredient": {
+                        "id": 1,
+                        "unit": "KILOGRAM",
+                        "name": "Laitue",
+                        "description": "Laitue verte fraîche.",
+                        "price": 1.5
+                    },
+                    "quantity": 0.5
+                },
+                {
+                    "ingredient": {
+                        "id": 2,
+                        "unit": "KILOGRAM",
+                        "name": "Poulet",
+                        "description": "Filets de poulet frais.",
+                        "price": 10
+                    },
+                    "quantity": 0.3
+                },
+                {
+                    "ingredient": {
+                        "id": 3,
+                        "unit": "GRAM",
+                        "name": "Croûtons",
+                        "description": "Croûtons dorés au beurre.",
+                        "price": 0.02
+                    },
+                    "quantity": 50
+                }
+            ]
+        }
+    ],
+    "recipestmp": [],
+    "ingredientstmp": [],
+    "ingredients": [
+        {
+            "id": 1,
+            "unit": "LITRE",
+            "name": "preprod ",
+            "description": "preprod",
+            "price": 3
+        }
+    ]
+}

@@ -18,7 +18,7 @@ function AccueilPage() {
 Première version à utiliser/tester sans la moindre garantie <br />
 Pas d'utilisateur pour l'instant donc merci d'utiliser la base de production avec raison et parcimonie <br />
 <br />
-2 environnements dispo pour vous: <br />
+2 environnements (bientot) dispo pour vous: <br />
 <ul>
 <li>- Prod: les données seront conservées et migrées au fur et à mesure des dev (sauf bug majeur...)</li>
 <li>- Preprod: copie de la prod pour test, si vous voulez tout casser/poluer c'est ici qu'il faut le faire</li>

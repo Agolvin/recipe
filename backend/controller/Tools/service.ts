@@ -1,6 +1,6 @@
 
 
-import { Ingredient,Ingredient2, isIngredient, isRecipe, UnitEnum } from "../../../shared/models/recipe.model";
+import { Ingredient,Ingredient2, isIngredient, isRecipe, UnitEnum } from "../../shared/back.model";
 import { getBDD, saveBDD } from "../../lib/utils";
 
 

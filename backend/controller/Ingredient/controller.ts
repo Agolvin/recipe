@@ -1,7 +1,7 @@
 
 import { Request as req, Response as res } from "express";
 import { getAllIngredientsSv,getIngredientSv,addIngredientSv,updateIngredientSv,saveIngredientSv } from './service';
-import { Ingredient, isIngredient } from "../../../shared/models/recipe.model";
+import { Ingredient, isIngredient } from "../../shared/back.model";
 
 
 export const getAllIngredients = async (req: req, res: res) => {

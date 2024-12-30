@@ -1,6 +1,6 @@
 
 
-import { Ingredient, isIngredient, isRecipe } from "../../../shared/models/recipe.model";
+import { Ingredient, isIngredient, isRecipe } from "../../shared/back.model";
 import { getBDD, saveBDD } from "../../lib/utils";
 
 

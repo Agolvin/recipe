@@ -1,7 +1,7 @@
 
 
 //import { Bdd,Recipe,Unit,Ingredient,Step } from "../../shared/models/recipe.model";
-import { Bdd } from "../../shared/models/recipe.model";
+import { Bdd } from "../shared/back.model";
 import fs from "fs";
 
 const pathBDD = "./bdd.json";

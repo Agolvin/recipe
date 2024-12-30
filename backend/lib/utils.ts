@@ -11,6 +11,7 @@ export const getBDD = () => {
   if(!fs.existsSync(pathBDD))
     {
       console.error(`File not found at path: ${pathBDD}`);      //renvoyer une erreur au front??
+      throw new Error(`La base de données n'est pas initialisée: ${pathBDD}`);
     }
     else
     {

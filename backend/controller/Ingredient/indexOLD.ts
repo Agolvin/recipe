@@ -25,10 +25,6 @@ const getIngredient = (req: req, res: res) => {
 
   console.log("getIngredient id:", req.params.id);
   let bdd = getBDD();
-
-  if (bdd == undefined) {
-    return res.status(404).json({ message: "BDD not found" });
-  }
  
   if (!bdd.ingredients) {
     return res
@@ -56,9 +52,6 @@ const addIngredient = (req: req, res: res) => {
   );
 
   ingredient.id = maxId + 1;
-  if (ingredient == undefined) {
-    return res.status(418).json({ message: "Paramètre ingredient incorrect" });
-  }
 
   bdd.ingredients.push(ingredient); //ajout dans la copie de bdd, la recipe copie du body de la req
   fs.writeFileSync("../bdd.json", JSON.stringify(bdd)); //enregistrement dde tte la variable bbd qui est une copie tmp du fichier bdd.jdon
@@ -73,10 +66,6 @@ const addIngredient = (req: req, res: res) => {
 const saveIngredient = (req: req, res: res) => {
 
   let bdd = getBDD();
-
-  if (bdd == undefined) {
-    return res.status(404).json({ message: "BDD not found" });
-  }
 
   const { ingredient }: { ingredient: Ingredient } = req.body; //copie de la recipe du body dans variable locale typé en recipe, parametre vers variable locale
 

@@ -81,6 +81,7 @@ export const updateRecipeSv = async (upRecipe : Recipe) => {
     console.log("updateRecipeSv",upRecipe);
 
     let bdd = getBDD();
+
     if (!bdd.recipes) {
       throw new Error("Données recettes inexistantes en base");
     }

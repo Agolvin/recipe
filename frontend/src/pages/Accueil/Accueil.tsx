@@ -13,11 +13,28 @@ function AccueilPage() {
 <br />
 <br />
 <br />
+<h1>Attention!</h1>
+<br />
+Première version à utiliser/tester sans la moindre garantie <br />
+Pas d'utilisateur pour l'instant donc merci d'utiliser la base de production avec raison et parcimonie <br />
+<br />
+2 environnements dispo pour vous: <br />
+<ul>
+<li>- Prod: les données seront conservées et migrées au fur et à mesure des dev (sauf bug majeur...)</li>
+<li>- Preprod: copie de la prod pour test, si vous voulez tout casser/poluer c'est ici qu'il faut le faire</li>
+</ul>
+<br />
+
+
+<b>Perte de données possible! Mais j'essayerai de ne pas perdre les données de prod.</b>  <br /> 
+<b>Les données de preprod seront écrasées par celle de prod à la demande ou quand j'aurai besoin</b> <br /> 
+<br />
 <h1>V0.1: Bienvenue </h1>
 Etat global actuel: <br />
 Ingrédient: OK sauf bug refresh MAJ <br />
 Recettes: EC <br />
-Les suggestions sont les bienvenues, mais elles n'engagent en RIEN le dévelopeur. <br />
+
+
 
 
 
@@ -29,16 +46,16 @@ Les suggestions sont les bienvenues, mais elles n'engagent en RIEN le dévelopeu
 
 <br/>
 <br/>
-<h2>V0.1</h2>
-Closed Alpha perso<br />
-Décebre 2024<br />
+<h2>V0.1 (version actuelle)</h2>
+Janvier 2025<br />
+toute première version de test <br />
 <h3>Ingrédients</h3>
 Ajout sélection unité ok<br />
 Ajout coût/prix ingrédient ok<br />
 Liste ok<br/>
 Détail ok <br/>
 Ajout ok <br/>
-Suppression HS <br />
+Suppression HS (à mettre ou pas?)<br />
 Modification BUG maj affichage<br/>
 Unité de mesure(g/kg/L/Unité) ok (en dur)<br/>
 <h3>Recettes</h3>
@@ -48,8 +65,9 @@ ajout HS <br />
 suprreson HS <br />
 <h3>Autres</h3>
 integration Units en model ok enum + tableau associatif ok<br />
-ajout de context EC <br />
+ajout de context en test sur ingredients <br />
 hebergement vercel EC <br />
+creation branches (master/preprod/dev) ok <br />
 
 <br />
 <br />
@@ -66,8 +84,6 @@ Février 2025
 <h3>Ingrédients</h3>
 <h3>Recettes</h3>
 <h3>Autres</h3>
-gestion de branches pour dev/test/preprod/prod(s)?? <br />
-branche de test avec VSCode? <br />
 hébergement API + Site React<br/>
 ajout de context user pour simuler utilisateurs? <br />
 context global?? <br />

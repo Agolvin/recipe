@@ -69,11 +69,8 @@ console.log("Données recipes retournées par l'API: ", data);
       <Link to="./add">Nouvelle recette(HS) </Link>
 
       <ul>
-
-      
-
+        
       {data.map((r) => {
-        //{data.map((r) => {
           return (
             <li key={r.id}>
               <Link to={`./${r.id}`}>Titre : {r.name} id: {r.id}</Link>{" "}

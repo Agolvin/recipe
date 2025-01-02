@@ -1,4 +1,7 @@
 
+//const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+const API_BASE_URL = 'http://localhost:3000';
+
 
 
 export const testTools = async () => {
@@ -20,12 +23,10 @@ export const testTools = async () => {
   }
 };
 
-
-
 export const migrationTools = async () => {
     try {
       console.log("testTools");
-      const response = await fetch("http://localhost:3000/tools/migration", {
+      const response = await fetch(`${API_BASE_URL}/tools/migration`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

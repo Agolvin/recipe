@@ -31,7 +31,8 @@ Pas d'utilisateur pour l'instant donc merci d'utiliser la base de production ave
 <br />
 <h1>V0.1: Bienvenue </h1>
 Etat global actuel: <br />
-Ingrédient: OK sauf bug refresh MAJ <br />
+FrontEnd OK, BackEnd HS <br />
+En test local: Ingrédient: OK sauf bug refresh MAJ <br />
 Recettes: EC <br />
 
 

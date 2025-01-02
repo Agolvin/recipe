@@ -10,8 +10,8 @@ import { Link } from "react-router-dom";
 //import { recette } from "../../data";
 //import React, { useEffect } from "react";
 
-import { getRecipes,getUserRecipes } from "./api";
-
+//import { getRecipes } from "./api";
+import { getUserRecipes } from "./api";
 import { useQuery } from "@tanstack/react-query";
 import { deleteRecipe } from "../Recette/api";
 

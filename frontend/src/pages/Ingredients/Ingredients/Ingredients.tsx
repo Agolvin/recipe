@@ -1,6 +1,6 @@
 
 import { Link } from "react-router-dom";
-import { getIngredients } from "./api";
+//import { getIngredients } from "./api";
 import { getUserIngredients } from "./api";
 import { useQuery } from "@tanstack/react-query";
 

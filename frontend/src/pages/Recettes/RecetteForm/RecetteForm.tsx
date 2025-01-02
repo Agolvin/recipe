@@ -17,7 +17,7 @@ import { addRecipe } from "./api";
 import Input from "../../components/Input/Input";
 */
 //import { RecetteFormProps } from "./RecetteForm.types";
-import { Recipe } from "../../../shared/front.model";
+import { Recipe } from "../../../../shared/front.model";
 
 
 //import { useForm, useFieldArray, Controller } from "react-hook-form";

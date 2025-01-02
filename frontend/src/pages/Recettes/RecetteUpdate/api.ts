@@ -5,7 +5,7 @@
 }
 */
 
-import { Recipe } from "../../../shared/front.model";
+import { Recipe } from "../../../../shared/front.model";
 
 const getRecipe = async (id: string) => {
   try {

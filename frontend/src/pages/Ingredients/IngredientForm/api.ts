@@ -1,6 +1,6 @@
 
 
-import { Ingredient } from "../../../shared/front.model";
+import { Ingredient } from "../../../../shared/front.model";
 
 
 export const addIngredient = async (newIngredient: Ingredient) => {

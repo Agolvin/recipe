@@ -1,7 +1,7 @@
 
 import { Request as req, Response as res } from "express";
 import { getAllIngredientsSv,getIngredientSv,addIngredientSv,updateIngredientSv,saveIngredientSv } from './service';
-import { Ingredient, isIngredient } from "../../shared/back.model";
+import { Ingredient } from "../../shared/back.model";
 
 
 export const getAllIngredients = async (req: req, res: res) => {
@@ -81,9 +81,11 @@ export const updateIngredient = async (req: req, res: res) => {
 
 
 export const saveIngredient = async (req: req, res: res) => {
+ /*
   if(!isIngredient(req.body)){
       return res.status(400).json({ message: "Format paramètre ingredient incorrect" });
   }
+*/
   try {
       const ingredient = await saveIngredientSv(req.body);
       res.status(201).json({ message: "Ingredient enregistré", ingredient });

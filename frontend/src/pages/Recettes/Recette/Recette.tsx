@@ -17,7 +17,7 @@
 // };
 
 //import { Recipe,isRecipe,Units,UnitEnum, Ingredient, Step,IngredientQte } from "../../../shared/front.model";
-import { Units,Step,IngredientQte } from "../../../shared/front.model";
+import { Units,Step,IngredientQte } from "../../../../shared/front.model";
 
 
 //import { Link, useParams } from "react-router-dom";

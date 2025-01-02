@@ -1,7 +1,7 @@
 //import { Recipe } from "../../../../../shared/models/recipe.model";
 //import { FormSchema } from "./RecetteForm";
 
-import { Recipe } from "../../../shared/front.model";
+import { Recipe } from "../../../../shared/front.model";
 
 
 

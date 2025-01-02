@@ -1,7 +1,7 @@
 
 
 //import { Link } from "react-router-dom";
-//import { testTools,migrationTools } from "./api";
+import { testTools,migrationTools } from "./api";
 
 
 
@@ -17,10 +17,11 @@ function ToolsPage() {
         désactivés en prod <br />
         <ul>
           <li>
-            <button>Test</button>
+          <button onClick={() => testTools()}>Test</button>
           </li>
           <li>
             <button >Migration BDD</button>
+            <button onClick={() => migrationTools()}>/!\ Migration BDD</button>
           </li>
         </ul>
 

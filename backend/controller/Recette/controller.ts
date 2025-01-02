@@ -2,7 +2,7 @@
 
 import { Request as req, Response as res } from "express";
 import { getAllRecipesSv, getRecipeSv, addRecipeSv,updateRecipeSv } from './service';
-import {  Recipe, isRecipe } from "../../shared/back.model";
+import {  Recipe } from "../../shared/back.model";
 
 
 export const getAllRecipes = async (req: req, res: res) => {
@@ -50,9 +50,9 @@ export const getRecipe = async (req: req, res: res) => {
 
 export const addRecipe = async (req: req, res: res) => {
     console.log("addRecipe", req);
-    if (!isRecipe(req.body)) {
-        return res.status(400).json({ message: "Format paramètre recette incorrect" });
-    }
+  //  if (!isRecipe(req.body)) {
+  //      return res.status(400).json({ message: "Format paramètre recette incorrect" });
+  //  }
     const newRecipe: Recipe = req.body;
     try {
         const recette = await addRecipeSv(newRecipe);
@@ -69,11 +69,14 @@ export const addRecipe = async (req: req, res: res) => {
 export const updateRecipe = async (req: req, res: res) => {
     console.log("updateRecipe");
 
+
+    /*
     if(!isRecipe(req.body.data)){
         console.log("updateRecipe Format paramètre recette incorrect", req.body.data);
         return res.status(400).json({ message: "Format paramètre recette incorrect" });
     }
-    
+    */
+   
     const recipe: Recipe = req.body.data;
     try {
         const recette = await updateRecipeSv(recipe);

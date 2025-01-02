@@ -7,8 +7,6 @@ export interface Bdd {
   ingredientstmp: Ingredient2[];   //pour migration
 }
 
-
-
 export interface testInterface{
   nom: string,
   unite: Unit
@@ -24,8 +22,6 @@ export enum eFormMode{
   ADD = "add",
   UPDATE = "update",
 }
-
-
 
 export type Unit = {
   name: string;
@@ -58,26 +54,7 @@ Object.entries(Units).forEach(([key, unit]) => {
 */
 
 
-
-
 /*
-//sorte de tableau asso avec string en clé (LITRE/GRAM...) et variable de type Unit en valeur
-export const Units: Record<string, Unit> = {       
-  LITRE: { name: "litre", symbol: "L" },
-  KILOGRAM: { name: "kilogramme", symbol: "kg" },
-  GRAM: { name: "gramme", symbol: "g" },
-  PIECE: { name: "pièce", symbol: "pcs" },
-};
-*/
-
-
-/*
-export interface Recipe {
-  id: number;
-  name: string;
-  description: string;
-}
-
 export function isRecipe (obj: any) : obj is Recipe {
   return(
     typeof obj === "object" &&
@@ -92,10 +69,6 @@ export function isRecipe (obj: any) : obj is Recipe {
 
 
 export interface Recipe {
-  //bPeutEtreIngredient
-  //unité + qté
-  //bTestée à cocher qui  puisse servir de filtre à la selection des ingredients
-  //commentaire libre  
   id: number;
   name: string;
   description: string; 
@@ -103,11 +76,45 @@ export interface Recipe {
   ingredientsQte: { ingredient: Ingredient; quantity: number }[]; //gerer l'ordre des ingredients?
 }
 
-
 export interface Recipe2 {
+  id: number;
+  idUser: number;         //NEW 
+  test: boolean;          //NEW a été etestée et validée
+  ingredient: boolean;    //NEW peut etre utilisé en tant qu'ingrédient d'une autre rectte 
+  commentaire: string;    //NEW commentaire pour ajuster lors des tests         
+  name: string;
+  description: string; 
+  steps: Step[];
+  ingredientsQte: { ingredient: Ingredient; quantity: number }[]; //gerer l'ordre des ingredients?
 }
 
 
+export interface Ingredient {
+  id: number;
+  unit: UnitEnum;           //énumération des clé possibles pour les unités
+  name: string;
+  description: string; 
+  price: number;            //à l'unité
+}
+
+export interface Ingredient2 {      //A utiliser pour MAJ de structure / reprise de données
+  id: number;
+  idUser: number;           //NEW
+  unit: UnitEnum;           //énumération des clé possibles pour les unités
+  name: string;
+  description: string; 
+  price: number;            //à l'unité
+}
+
+
+export interface IngredientQte {
+  ingredient: Ingredient;
+  quantity: number;
+}
+
+
+
+/*
 export function isRecipe (obj: any) : obj is Recipe {
   return(
     typeof obj === "object" &&
@@ -119,7 +126,7 @@ export function isRecipe (obj: any) : obj is Recipe {
     Array.isArray(obj.steps) && 
     obj.steps.every(isStep) //&&
 
-    /*
+    
     Array.isArray(obj.ingredientsQte) && 
     obj.ingredientsQte.every((elm: any) => {
       return (
@@ -130,11 +137,14 @@ export function isRecipe (obj: any) : obj is Recipe {
         isIngredient(elm.ingredient)
       );
     })
+  )
+  ;
+}
 */
 
 
-  );
-}
+
+
 
 /*
 export interface Unit {
@@ -153,38 +163,7 @@ export function isUnit (obj: any) : obj is Unit {
 */
 
 
-export interface Ingredient2 {      //A utiliser pour MAJ de structure / reprise de données
 /*
-
-  id: number;
-  unit: Unit;           //objet Unit mappé avec records 
-  name: string;
-  description: string; 
-  price: number;        //à l'unité
-
-*/
-}
-
-
-export interface Ingredient {
-  id: number;
-  unit: UnitEnum;           //énumération des clé possibles pour les unités
-  name: string;
-  description: string; 
-  price: number;        //à l'unité
-}
-
-export interface IngredientQte {
-  ingredient: Ingredient;
-  quantity: number;
-}
-
-
-
-
-
-
-
 export function isIngredient (obj: any) : obj is Ingredient {
   return(
     typeof obj === "object" &&
@@ -196,7 +175,7 @@ export function isIngredient (obj: any) : obj is Ingredient {
     typeof obj.price === "number"
   );
 }
-
+*/
 
 export interface Step {
   // id: number;        // pour passage un jour sur une vrai bdd
@@ -205,6 +184,7 @@ export interface Step {
 }
 
 
+/*
 export function isStep (obj: any) : obj is Step {
   return(
     typeof obj === "object" &&
@@ -213,4 +193,4 @@ export function isStep (obj: any) : obj is Step {
     typeof obj.description === "string"
   );
 }
-
+*/

@@ -1,7 +1,12 @@
 {
+    "recipestmp": [],
     "recipes": [
         {
             "id": 1,
+            "idUser": 1,
+            "test": false,
+            "ingredient": false,
+            "commentaire": "",
             "name": "Salade César  6 6",
             "description": "Une salade classique avec de la laitue, du poulet et une sauce crémeuse.",
             "steps": [
@@ -22,6 +27,7 @@
                 {
                     "ingredient": {
                         "id": 1,
+                        "idUser": 1,
                         "unit": "KILOGRAM",
                         "name": "Laitue",
                         "description": "Laitue verte fraîche.",
@@ -32,6 +38,7 @@
                 {
                     "ingredient": {
                         "id": 2,
+                        "idUser": 1,
                         "unit": "KILOGRAM",
                         "name": "Poulet",
                         "description": "Filets de poulet frais.",
@@ -42,6 +49,7 @@
                 {
                     "ingredient": {
                         "id": 3,
+                        "idUser": 1,
                         "unit": "GRAM",
                         "name": "Croûtons",
                         "description": "Croûtons dorés au beurre.",
@@ -52,8 +60,6 @@
             ]
         }
     ],
-    "recipestmp": [],
-    "ingredientstmp": [],
     "ingredients": [
         {
             "id": 1,
@@ -62,5 +68,6 @@
             "description": "preprod",
             "price": 3
         }
-    ]
+    ],
+    "ingredientstmp": []
 }

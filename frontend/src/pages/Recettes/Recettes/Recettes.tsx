@@ -75,7 +75,7 @@ console.log("Données recipes retournées par l'API: ", data);
     <>
 
 
-      <h1>Liste des recettes de: {getUserName()}</h1>
+      <h1>Liste des recettes de {getUserName()}</h1>
       Fonctionnel incomplet <br />
       <Link to="./add">Nouvelle recette(HS) </Link>
 

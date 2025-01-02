@@ -1,6 +1,6 @@
 
 
-import { Bdd, Recipe, isRecipe } from "../../shared/back.model";
+import { Bdd, Recipe} from "../../shared/back.model";
 import { getBDD, saveBDD } from "../../lib/utils";
 
 
@@ -61,9 +61,11 @@ export const addRecipeSv = async (newRecipe : Recipe) => {
         if (!bdd.recipes) {
           throw new Error("Données recettes inexistantes en base");
         }
+        /*
         if(!bdd.recipes.every(isRecipe)){
           throw new Error("Type de données recette incohérent entre la base et la description");
         }
+          */
         const maxId = bdd.recipes.reduce(      
           (max:number, item:Recipe) => Math.max(max, item.id), 0
         );
@@ -85,10 +87,11 @@ export const updateRecipeSv = async (upRecipe : Recipe) => {
     if (!bdd.recipes) {
       throw new Error("Données recettes inexistantes en base");
     }
+    /*
     if(!bdd.recipes.every(isRecipe)){
       throw new Error("Type de données recette incohérent entre la base et la description");
     }
-    
+    */
     let index = bdd.recipes.findIndex(
         (recette:Recipe) => recette.id == upRecipe.id
     );

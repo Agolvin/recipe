@@ -1,5 +1,4 @@
 {
-    "recipestmp": [],
     "recipes": [
         {
             "id": 1,
@@ -60,14 +59,16 @@
             ]
         }
     ],
+    "recipestmp": [],
+    "ingredientstmp": [],
     "ingredients": [
         {
             "id": 1,
-            "unit": "LITRE",
+            "idUser": 1,
+            "unit": "GRAM",
             "name": "preprod ",
             "description": "preprod",
             "price": 3
         }
-    ],
-    "ingredientstmp": []
+    ]
 }

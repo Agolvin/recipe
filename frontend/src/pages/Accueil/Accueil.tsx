@@ -1,8 +1,53 @@
 
+import { useGlobalContext } from "../GloblaContext";
+
+
+//import { useIngredientContext } from "../Ingredients/context/IngredientContext";
 
 
 function AccueilPage() {
     
+/*
+
+  const CurrentUser = ({Pin_userID}) => {
+    const renderUserInfo = () => {
+      switch (Pin_userID) {
+        case 1:
+          return "Admin";
+        case 2:
+          return "Moderator";
+        case 3:
+          return "Guest";
+        default:
+          return "Unknown User";
+      }
+    };
+
+*/
+
+const UserName = (Pin_userID:number) => {
+  switch (Pin_userID) {
+    case 1:
+      return "TEST";
+    case 2:
+      return "Adrien";
+    case 3:
+      return "Alex";
+    case 4:
+      return "Akis";
+    default:
+      return "Unknown User";
+  }
+};
+
+
+
+
+
+
+const { userID,initUser,getUserName } = useGlobalContext();
+//const { cpt, incrementCpt } = useIngredientContext();
+//<button onClick={incrementCpt}>Btn test context cpt: {cpt}</button>
     return (
       <>
 
@@ -13,12 +58,31 @@ function AccueilPage() {
 <br />
 <br />
 <br />
+
+<h1>Sélectionner un utilisateur:</h1>
+
+<button onClick={() => initUser(1)}>{UserName(1)}</button>
+<button onClick={() => initUser(2)}>{UserName(2)}</button>
+<button onClick={() => initUser(3)}>{UserName(3)}</button>
+<button onClick={() => initUser(4)}>{UserName(4)}</button>
+
+<h1>Utilisateur actuel: {getUserName()}({userID})</h1>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+
 <h1>Attention!</h1>
 <br />
 Première version à utiliser/tester sans la moindre garantie <br />
 Pas d'utilisateur pour l'instant donc merci d'utiliser la base de production avec raison et parcimonie <br />
 <br />
-2 environnements (bientot) dispo pour vous: <br />
+2 environnements (bientot?) dispo pour vous: (pour l'instant un seul environnement)<br />
 <ul>
 <li>- Prod: les données seront conservées et migrées au fur et à mesure des dev (sauf bug majeur...)</li>
 <li>- Preprod: copie de la prod pour test, si vous voulez tout casser/poluer c'est ici qu'il faut le faire</li>
@@ -31,10 +95,9 @@ Pas d'utilisateur pour l'instant donc merci d'utiliser la base de production ave
 <br />
 <h1>V0.1: Bienvenue </h1>
 Etat global actuel: <br />
-Ingrédient: OK sauf bug refresh MAJ <br />
+FrontEnd OK, BackEnd HS <br />
+En test local: Ingrédient: OK sauf bug refresh MAJ <br />
 Recettes: EC <br />
-
-
 
 
 
@@ -49,6 +112,8 @@ Recettes: EC <br />
 <h2>V0.1 (version actuelle)</h2>
 Janvier 2025<br />
 toute première version de test <br />
+FrontEnd OK, BackEnd HS <br />
+A peu près rien de fonctionnel en prod<br />
 <h3>Ingrédients</h3>
 Ajout sélection unité ok<br />
 Ajout coût/prix ingrédient ok<br />
@@ -64,6 +129,7 @@ modif incomplet <br />
 ajout HS <br />
 suprreson HS <br />
 <h3>Autres</h3>
+hébergement Site React vercel OK <br />
 integration Units en model ok enum + tableau associatif ok<br />
 ajout de context en test sur ingredients <br />
 hebergement vercel EC <br />
@@ -84,12 +150,13 @@ Février 2025
 <h3>Ingrédients</h3>
 <h3>Recettes</h3>
 <h3>Autres</h3>
-hébergement API + Site React<br/>
-ajout de context user pour simuler utilisateurs? <br />
-context global?? <br />
+hébergement API!!!<br/>
+ajout de context user pour simuler utilisateurs EC <br />
+context global pour users ok<br />
 combo sur page d'accueil pour choisir utilisateur? <br />
 ajout filtre id user sur les recettte/ing?? <br />
-
+ajout UserID dans les données <br />
+gestion filtre pour données user <br />
 
 <br/>
 <br/>

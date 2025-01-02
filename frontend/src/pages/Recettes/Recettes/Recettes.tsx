@@ -19,6 +19,7 @@ import { deleteRecipe } from "../Recette/api";
 
 //import { Recipe } from "../../../../../shared/models/recipe.model";
 
+import { useGlobalContext } from "../../GloblaContext";
 
 
 
@@ -29,6 +30,16 @@ import { deleteRecipe } from "../Recette/api";
 // };
 
 function RecettesPage() {
+
+
+  const { userID,getUserName } = useGlobalContext();
+  if (userID == 0) {
+    return <p>Veuiller Sélectionner un utilisateurs sur la page d'accueil.</p>;
+  }
+  
+  
+
+
   const RELOAD_QUERY_OPTIONS = {
     cacheTime: 0, // Supprimer les données immédiatement après le démontage
     staleTime: 0, // Considérer les données comme périmées immédiatement
@@ -64,7 +75,7 @@ console.log("Données recipes retournées par l'API: ", data);
     <>
 
 
-      <h1>Liste des recettes</h1>
+      <h1>Liste des recettes de: {getUserName()}</h1>
       Fonctionnel incomplet <br />
       <Link to="./add">Nouvelle recette(HS) </Link>
 

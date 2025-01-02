@@ -2,10 +2,6 @@
 
 import { Request as req, Response as res } from "express";
 import { migrationToolsSv, testToolsSv } from './service';
-import {  Recipe, isRecipe } from "../../shared/back.model";
-
-
-
 
 
 export const testTools = async (req: req, res: res) => {
@@ -47,8 +43,5 @@ export const migrationTools = async (req: req, res: res) => {
         res.status(500).json({ message: "Erreur lors de migrationToolsSv" });
     }
     
-
-
-
 };
 

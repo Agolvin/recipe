@@ -1,5 +1,5 @@
 
-import { Ingredient } from "../../../shared/front.model";
+import { Ingredient } from "../../../../shared/front.model";
 
 
 export interface IngredientFormProps {

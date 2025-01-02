@@ -1,6 +1,6 @@
 
 
-import { Recipe } from "../../../shared/front.model";
+import { Recipe } from "../../../../shared/front.model";
 
 const getRecipes = async () => {
   console.log("debut getRecipes");

@@ -2,7 +2,7 @@
 import { useParams } from "react-router-dom";
 import { getIngredient } from "./api";
 import { useQuery } from "@tanstack/react-query";
-import { Units } from "../../../shared/front.model";
+import { Units } from "../../../../shared/front.model";
 
 
 import { useIngredientContext } from "../context/IngredientContext";

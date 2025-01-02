@@ -82,7 +82,7 @@ const { userID,initUser,getUserName } = useGlobalContext();
 Première version à utiliser/tester sans la moindre garantie <br />
 Pas d'utilisateur pour l'instant donc merci d'utiliser la base de production avec raison et parcimonie <br />
 <br />
-2 environnements (bientot?) dispo pour vous: (pour l'instant un seul environnement)<br />
+2 environnements (bientot?) dispo pour vous: (pour l'instant un seul environnement dont je vais essayer de garder les données)<br />
 <ul>
 <li>- Prod: les données seront conservées et migrées au fur et à mesure des dev (sauf bug majeur...)</li>
 <li>- Preprod: copie de la prod pour test, si vous voulez tout casser/poluer c'est ici qu'il faut le faire</li>
@@ -285,7 +285,7 @@ Android update <br />
 <br/>
 <h1>idées et questions en vrac</h1>
 autoriser suprression d'ingredient?? (inactivation?) <br />
-ajouter indication de temps de travail dans les étapes/recettes?<br/>
+ajouter indication de temps de travail dans les étapes/recettes? EC bdd<br/>
 autoriser un unique niveau de sous recette? plusieurs? <br />
 comment situer les sous recette dans une recette principale? dans des étapes spécifiques? <br />
 Trouver un nom au site? <br />
@@ -295,7 +295,7 @@ Gestionde stock/inventaire des ingredients? liste des recette faisable avec le s
 Note de difficulté sur les recette? <br />
 Gestion materiel necessaire pour une recette? <br />
 Taille min/max de chaque champ? min 5 trop petit (ex: Lait), passé à 3 ok?<br />
-ajouter gestion de session utilisateur <br />
+ajouter gestion de session utilisateur EC version tmp <br />
 <br/>
 <br/>
 <br/>
@@ -331,6 +331,12 @@ ajouter gestion de session utilisateur <br />
   </thead>
   <tbody>
 
+  <tr>
+      <th scope="row">Users</th>
+      <td>gestion</td>
+      <td>test version temp</td>
+      <td>01/2025</td>
+    </tr>
   <tr>
       <th scope="row">Ingrédients</th>
       <td>Liste</td>

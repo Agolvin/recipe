@@ -1,5 +1,5 @@
 
-import {Ingredient} from '../../../shared/front.model'
+import {Ingredient} from '../../../../shared/front.model'
 
   const getIngredients = async () => {
     console.log("debut getIngredients");

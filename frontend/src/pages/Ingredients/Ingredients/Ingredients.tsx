@@ -1,6 +1,7 @@
 
 import { Link } from "react-router-dom";
 import { getIngredients } from "./api";
+import { getUserIngredients } from "./api";
 import { useQuery } from "@tanstack/react-query";
 
 import { useGlobalContext } from "../../GloblaContext";
@@ -13,6 +14,7 @@ import { useGlobalContext } from "../../GloblaContext";
 
 
 function IngredientsPage() {
+
 
 
   const { userID,getUserName } = useGlobalContext();
@@ -30,12 +32,19 @@ function IngredientsPage() {
 
 
 
-
+/*
   const { isLoading, data, isError, error, refetch } = useQuery({
     queryKey: ["ingredients"],
     queryFn: getIngredients,
     ...RELOAD_QUERY_OPTIONS,
   });
+*/
+
+const { isLoading, data, isError, error, refetch } = useQuery({
+  queryKey: ["ingredients",userID],
+  queryFn: () => getUserIngredients(userID),
+  ...RELOAD_QUERY_OPTIONS,
+});
 
   if (isLoading) {
     return <p>Loading...</p>;
@@ -55,6 +64,9 @@ function IngredientsPage() {
 
       <h1>Liste des ingrédients de {getUserName()}</h1>
       Fonctionnel <br />
+      ajout par user ok <br />
+      bug à la modif: supprime user du json: corrigé? <br />
+
 
       <Link to="./add">New ingredient</Link>
 

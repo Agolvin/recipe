@@ -80,7 +80,8 @@ const { userID,initUser,getUserName } = useGlobalContext();
 <h1>Attention!</h1>
 <br />
 Première version à utiliser/tester sans la moindre garantie <br />
-Pas d'utilisateur pour l'instant donc merci d'utiliser la base de production avec raison et parcimonie <br />
+3 utilisateurs de test et le "TEST" utilisable par tous<br />
+ni mot de passe ni sécurité pour l'instant , ne pas poluer les autre utilisateurs svp <br />
 <br />
 2 environnements (bientot?) dispo pour vous: (pour l'instant un seul environnement dont je vais essayer de garder les données)<br />
 <ul>
@@ -157,6 +158,7 @@ combo sur page d'accueil pour choisir utilisateur? <br />
 ajout filtre id user sur les recettte/ing?? <br />
 ajout UserID dans les données <br />
 gestion filtre pour données user <br />
+.gitattributes ok pour differencier les bases?? A verfier <br />
 
 <br/>
 <br/>
@@ -402,7 +404,23 @@ ajouter gestion de session utilisateur EC version tmp <br />
   </tbody>
 </table>
 
+<br />
+<br />
+<br />
+<br />
+<br />
 
+
+
+
+<h1>Merci</h1>
+À Virtrice pour tes cours et cette fameuse clé usb <br />
+À Florin pour ton aide depuis mon changement de taff <br />
+
+<br />
+<br />
+<br />
+<br />
 
       </>
     );

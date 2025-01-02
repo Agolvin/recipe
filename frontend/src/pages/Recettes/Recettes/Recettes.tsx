@@ -10,24 +10,14 @@ import { Link } from "react-router-dom";
 //import { recette } from "../../data";
 //import React, { useEffect } from "react";
 
-import { getRecipes } from "./api";
+import { getRecipes,getUserRecipes } from "./api";
 
-//import { ListeRecipe } from "./utils";
-//import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { deleteRecipe } from "../Recette/api";
-
-//import { Recipe } from "../../../../../shared/models/recipe.model";
 
 import { useGlobalContext } from "../../GloblaContext";
 
 
-
-
-// type formSchema = {
-//   email: string;
-//   password: string;
-// };
 
 function RecettesPage() {
 
@@ -37,8 +27,6 @@ function RecettesPage() {
     return <p>Veuiller Sélectionner un utilisateurs sur la page d'accueil.</p>;
   }
   
-  
-
 
   const RELOAD_QUERY_OPTIONS = {
     cacheTime: 0, // Supprimer les données immédiatement après le démontage
@@ -48,10 +36,11 @@ function RecettesPage() {
   } as const;
 
   const { isLoading, data, isError, error, refetch } = useQuery({
-    queryKey: ["recipes"],//remplacer cette clé par l'id de l'utilisateur??
-    queryFn: getRecipes,
+    queryKey: ["recipes",userID],
+    queryFn: () => getUserRecipes(userID),
     ...RELOAD_QUERY_OPTIONS,
   });
+
 
   if (isLoading) {
     return <p>Loading...</p>;

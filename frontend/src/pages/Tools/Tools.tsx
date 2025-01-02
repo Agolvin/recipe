@@ -21,7 +21,6 @@ function ToolsPage() {
           </li>
           <li>
             <button >Migration BDD</button>
-            <button onClick={() => migrationTools()}>/!\ Migration BDD</button>
           </li>
         </ul>
 
@@ -31,7 +30,7 @@ function ToolsPage() {
   
 
   // <button onClick={() => testTools()}>Test</button>
-//<button onClick={() => migrationTools()}>/!\ Migration BDD</button>
+  //<button onClick={() => migrationTools()}>/!\ Migration BDD</button>
 
 
 

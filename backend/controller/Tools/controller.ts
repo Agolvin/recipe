@@ -26,8 +26,6 @@ export const testTools = async (req: req, res: res) => {
         res.status(500).json({ message: "Erreur lors de l'ajout de la recette" });
     }
     */
-
-
 };
 
 

@@ -2,7 +2,7 @@ import { queryClient } from "../../../providers/QueryClientProvider";
 
 
 
-import {Recipe} from '../../../shared/front.model'
+import {Recipe} from '../../../../shared/front.model'
 
 
 

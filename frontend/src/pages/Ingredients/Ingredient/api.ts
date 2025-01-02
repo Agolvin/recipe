@@ -1,5 +1,5 @@
 
-import {Ingredient} from '../../../shared/front.model'
+import {Ingredient} from '../../../../shared/front.model'
 
 const getIngredient = async (id: number): Promise<Ingredient> => {
   console.log("debut getIngredient api.ts pour id:", id);  

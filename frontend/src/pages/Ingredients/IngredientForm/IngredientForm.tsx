@@ -1,4 +1,4 @@
-import { Ingredient, UnitEnum, Units } from "../../../shared/front.model";
+import { Ingredient, UnitEnum, Units } from "../../../../shared/front.model";
 import { useForm } from "react-hook-form";
 import React from "react";
 import { useIngredientContext } from "../context/IngredientContext";

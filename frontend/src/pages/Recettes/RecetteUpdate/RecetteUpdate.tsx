@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 import RecetteForm from "../RecetteForm/RecetteForm";
 import { saveRecipe } from "../RecetteForm/api";
 
-import { Recipe } from "../../../shared/front.model";
+import { Recipe } from "../../../../shared/front.model";
 
 
 

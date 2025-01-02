@@ -4,21 +4,21 @@ import NavBar from "../components/Input/NavBar/NavBar";
 
 
 import { IngredientProviderTEST } from "./Ingredients/context/IngredientContext";
-
-
+import { GlobalProvider } from "./GloblaContext";
 
 
 const Root = () => {
   return (
     <>
-    <IngredientProviderTEST>
-      <NavBar />
-      <main>
-        <Outlet />
-      </main>
-      <footer></footer>
-      
-    </IngredientProviderTEST>
+      <GlobalProvider>
+        <IngredientProviderTEST>
+          <NavBar />
+          <main>
+            <Outlet />
+          </main>
+          <footer></footer>
+        </IngredientProviderTEST>
+      </GlobalProvider>
     </>
   );
 };

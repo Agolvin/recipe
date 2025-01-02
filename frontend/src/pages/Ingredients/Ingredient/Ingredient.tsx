@@ -79,4 +79,3 @@ console.log("Données recipes retournées par l'API: ", data);
 
 }
 export default IngredientPage;
- 

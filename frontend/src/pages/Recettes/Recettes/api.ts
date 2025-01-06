@@ -2,12 +2,32 @@
 
 import { Recipe } from "../../../../shared/front.model";
 
-const API_BASE_URL = 'http://localhost:3000';
-//const API_BASE_URL = import.meta.env.BASE_URL;
+//import API_BASE_URL from "../../../../src/utils/config"
+
+import API_BASE_URL from "../../../../src/utils/config";
+
+//import API_BASE_URL from "@pages/";
+
+
+// const API_BASE_URL = 'http://localhost:3000';
+//const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
+//import.meta.env.VITE_API_BASE_URL
+
 
 const getRecipes = async () => {
   console.log("debut getRecipes");
+
+  console.log("import.meta.env.VITE_API_BASE_URL",import.meta.env.VITE_API_BASE_URL);
+  console.log("API_BASE_URL",API_BASE_URL);
+
+
   try {
+
+    //import.meta.env.PROD //booleen
+    //import.meta.env.DEV //booleen <> PROD
+
+
 
     const response = await fetch(`${API_BASE_URL}/recette/getall`);
 
@@ -26,6 +46,8 @@ const getRecipes = async () => {
 
 const getUserRecipes = async (idUser:number) => {
   console.log("debut getUserRecipes");
+  console.log("import.meta.env.VITE_API_BASE_URL",import.meta.env.VITE_API_BASE_URL);
+  console.log("API_BASE_URL",API_BASE_URL);
   try {
     const response = await fetch(`${API_BASE_URL}/recette/getbyuser/${idUser}`);
     if (!response.ok) {

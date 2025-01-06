@@ -1,6 +1,11 @@
 
 import { createContext, useState, useContext, ReactNode } from "react";
 
+import { Recipe } from "../../shared/front.model"
+
+
+
+
 interface GlobalContextType {
     userID: number,
     initUser: (pinUserID:number) => void;

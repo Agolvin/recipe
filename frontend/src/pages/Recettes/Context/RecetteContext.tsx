@@ -1,11 +1,10 @@
 
 //import { createContext, useState, useContext, ReactNode } from "react";
 import { createContext, useContext, ReactNode } from "react";
-import { Recipe } from "../../../../shared/front.model"
+import { Recipe } from "../../../../shared/front.model";
 import API_BASE_URL from "../../../../src/utils/config";
 
 import { useGlobalContext } from "../../GloblaContext"
-
 
 interface RecetteContextType {
     getUserRecipesCt: () => Promise<Recipe[]>;
@@ -23,9 +22,7 @@ export const useRecetteContext = () => {
 
 
 export const RecetteProvider = ({ children }: { children: ReactNode }) => {
-
     const { userID } = useGlobalContext();
-
     const getUserRecipesCt = async () => {
         try {
             const response = await fetch(`${API_BASE_URL}/recette/getbyuser/${userID}`);
@@ -39,15 +36,14 @@ export const RecetteProvider = ({ children }: { children: ReactNode }) => {
             throw error;
         }
     };
-    
-
     return (
         <RecetteContext.Provider value={{ getUserRecipesCt }}>
           {children}
         </RecetteContext.Provider>
       );
-    
 };
+
+
     
     
 

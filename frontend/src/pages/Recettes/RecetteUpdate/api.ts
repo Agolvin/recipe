@@ -1,15 +1,18 @@
-/*interface Recipe {
-  id: string;
-  title: string;
-  description: string;
-}
-*/
 
-import { Recipe } from "../../../../shared/front.model";
+//import { Recipe } from "shared/front.model";
+
+
+//import { Recipe } from "../../../../shared/front.model";
+//import Recipe from "../../../../shared/front.model"
+
+
+import { Ingredient } from "../../../../shared/front.model";
+
+import API_BASE_URL from "../../../../src/utils/config";
 
 const getRecipe = async (id: string) => {
   try {
-    const response = await fetch(`http://localhost:3000/recette/get/${id}`);
+    const response = await fetch(`${API_BASE_URL}/recette/get/${id}`);
 
     if (!response.ok) {
       throw new Error("Network response was not ok");

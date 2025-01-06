@@ -1,11 +1,13 @@
 
 import {Ingredient} from '../../../../shared/front.model'
+import API_BASE_URL from "../../../../src/utils/config";
+
 
   const getIngredients = async () => {
     console.log("debut getIngredients");
     try {
   
-      const response = await fetch("http://localhost:3000/ingredient/getall");
+      const response = await fetch(`${API_BASE_URL}/ingredient/getall`);
   
       if (!response.ok) {
         throw new Error("Network response was not ok");
@@ -22,7 +24,7 @@ import {Ingredient} from '../../../../shared/front.model'
   const getUserIngredients = async (idUser:number) => {
     console.log("debut getUserIngredients");
     try {
-      const response = await fetch(`http://localhost:3000/ingredient/getbyuser/${idUser}`);
+      const response = await fetch(`${API_BASE_URL}/ingredient/getbyuser/${idUser}`);
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }

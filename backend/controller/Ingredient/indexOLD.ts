@@ -12,7 +12,7 @@
 import fs from "fs";
 import { Request as req, Response as res } from "express";
 //import { Bdd, Recipe, Unit, Ingredient, Step, isIngredient } from "../../../shared/models/recipe.model";
-import { Bdd, Recipe, Unit, Ingredient, Step, isIngredient } from "../../shared/back.model"
+import { Bdd, Recipe, Unit, Ingredient, Step } from "../../shared/back.model"
 import { getBDD, saveBDD } from "../../lib/utils";
 
 
@@ -71,9 +71,11 @@ const saveIngredient = (req: req, res: res) => {
   const { ingredient }: { ingredient: Ingredient } = req.body; //copie de la recipe du body dans variable locale typé en recipe, parametre vers variable locale
 
   //if (ingredient == undefined) {
+  /*
   if (!isIngredient(ingredient)) {
     return res.status(400).json({ message: "Paramètre ingredient incorrect" });
   }
+*/
   if (ingredient.name == 'Caffé') {
     return res.status(418).json({ message: "No cofffee here." });
   }

@@ -1,7 +1,5 @@
 import { queryClient } from "../../../providers/QueryClientProvider";
-
-
-
+import API_BASE_URL from "../../../../src/utils/config";
 import {Recipe} from '../../../../shared/front.model'
 
 
@@ -15,7 +13,7 @@ export const getRecipe = async (id: number): Promise<Recipe> => {
 
 
   try {
-    const response = await fetch(`http://localhost:3000/recette/get/${id}`, {
+    const response = await fetch(`${API_BASE_URL}/recette/get/${id}`, {
       method: "GET",
     });
 
@@ -51,7 +49,7 @@ export const deleteRecipe = async (id: number) => {
     const updatedData = prevData.filter((recipe) => recipe.id !== id);
     queryClient.setQueryData(["recipes"], updatedData);
 
-    const response = await fetch(`http://localhost:3000/recette/delete/${id}`, {
+    const response = await fetch(`${API_BASE_URL}/recette/delete/${id}`, {
       method: "DELETE",
     });
 

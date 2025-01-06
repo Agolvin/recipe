@@ -2,15 +2,13 @@
 //import { FormSchema } from "./RecetteForm";
 
 import { Recipe } from "../../../../shared/front.model";
-
-
+import API_BASE_URL from "../../../../src/utils/config";
 
 
 export const addRecipe = async (newRecipe: Recipe) => {
   try {
     // const response = await fetch("http://localhost:3000/recette/addRecipe");
-
-    const response = await fetch("http://localhost:3000/recette/add", {
+    const response = await fetch(`${API_BASE_URL}/recette/add`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -43,7 +41,7 @@ export const saveRecipe = async (data: Recipe): Promise<void> => {
     // const response = await fetch("http://localhost:3000/recette/addRecipe");
 
     const response = await fetch(
-      `http://localhost:3000/recette/update/${data.id}`,
+      `${API_BASE_URL}/recette/update/${data.id}`,
       {
         method: "POST",
         headers: {

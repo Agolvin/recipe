@@ -48,6 +48,7 @@ function IngredientUpdate() {
 
   const processedDefaultsIngredient: Ingredient = {
     id: data.id,
+    idUser: data.idUser || 0,          
     unit: data.unit || Units.GRAM,
     name: data.name || "",
     description: data.description || "",

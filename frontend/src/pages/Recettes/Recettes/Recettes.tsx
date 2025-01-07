@@ -70,7 +70,7 @@ console.log("Données recipes retournées par le context: ", recetteCt.recipesCt
   return (
     <>
       <h1>Liste des recettes de {getUserName()}</h1>
-      Fonctionnel incomplet <br />
+      Fonctionnel incomplet ??<br />
       <Link to="./add">Nouvelle recette(HS) </Link>
 
       <ul>
@@ -85,7 +85,7 @@ console.log("Données recipes retournées par le context: ", recetteCt.recipesCt
           );
         })}
       </ul>
-
+      ok lors du clic de rechargement mais pas initialisé avant... <br />
       <button onClick={recetteCt.getUserRecipesCt}> TEST de context getUserRecipesCt</button>
 
     </>

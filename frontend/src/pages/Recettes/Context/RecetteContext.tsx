@@ -25,10 +25,6 @@ export const RecetteProvider = ({ children }: { children: ReactNode }) => {
     const [errorCt, setError] = useState<Error | null>(null);
 
     const { userID } = useGlobalContext();
-    
-
-
-
 
     
 
@@ -46,24 +42,21 @@ export const RecetteProvider = ({ children }: { children: ReactNode }) => {
         try {
             const response = await fetch(`${API_BASE_URL}/recette/getbyuser/${userID}`);
             if (!response.ok) {
-            throw new Error("Network response was not ok");
-        }
-
-        const data = await response.json();
-        console.log(data);
-        return data as Recipe[];
-        } catch (err) {
-            const error = err as Error;
-            throw error;
-        }
-
-
-
-
-
-
-
+                throw new Error("Network response was not ok");
+            }
         
+            const data = await response.json();
+            setRecipes(data as Recipe[])
+            console.log(data);
+            return data as Recipe[];
+            } catch (err) {
+                setIsError(true)
+                const error = err as Error;
+                setError(error)
+                throw error;
+            } finally {
+                setIsLoading(false);
+            }
 
 
 /*
@@ -82,10 +75,6 @@ export const RecetteProvider = ({ children }: { children: ReactNode }) => {
         }
 */
 
-
-
-
-
     };
 
 /*
@@ -94,8 +83,6 @@ export const RecetteProvider = ({ children }: { children: ReactNode }) => {
     const isLoadingCt =  false;
     const recipesCt =  Promise<[]>;
 */
-
-
 
 
     return (

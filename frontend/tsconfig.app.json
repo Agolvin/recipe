@@ -29,6 +29,15 @@
       "@shared": ["shared"]
     }
   },
-  "include": ["src/**/*"]//,
+  "include": //["src/**/*"]//,
+
+
+  [
+    "src/**/*",
+    "shared/**/*" // Ajoutez cette ligne pour inclure les fichiers dans le répertoire `shared`
+  ],
+
+
+
   //"include": ["src", "shared"]
 }

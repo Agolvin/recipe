@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 import NavBar from "../components/Input/NavBar/NavBar";
 
 
-import { IngredientProviderTEST } from "./Ingredients/context/IngredientContextOld";
+import { IngredientProvider } from "./Ingredients/context/IngredientContext";
 import { GlobalProvider } from "./GloblaContext";
 //import { Recipe } from "../../shared/front.model";
 
@@ -17,13 +17,13 @@ const Root = () => {
     <>
       <GlobalProvider>
         
-          <IngredientProviderTEST>
+          <IngredientProvider>
             <NavBar />
             <main>
               <Outlet />
             </main>
             <footer></footer>
-          </IngredientProviderTEST>
+          </IngredientProvider>
 
       </GlobalProvider>
     </>

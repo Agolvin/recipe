@@ -1,18 +1,21 @@
 
 
 
-
+/*
 function RecettesPage() {return <p>En construction...</p>};
 export default RecettesPage;
-  
+  */
 
-/*
+
 
 import { Link } from "react-router-dom";
 import { getUserRecipes } from "./api";
 import { useQuery } from "@tanstack/react-query";
 import { deleteRecipe } from "../Recette/api";
 import { useGlobalContext } from "../../GloblaContext";
+import { useRecetteContext } from "../Context/RecetteContext";
+
+
 
 function RecettesPage() {
 
@@ -53,6 +56,14 @@ function RecettesPage() {
 console.log("Données recipes retournées par l'API: ", data);
 
 
+
+
+const { getUserRecipesCt } = useRecetteContext();
+
+
+
+
+
   return (
     <>
       <h1>Liste des recettes de {getUserName()}</h1>
@@ -71,6 +82,13 @@ console.log("Données recipes retournées par l'API: ", data);
           );
         })}
       </ul>
+
+
+
+
+
+
+
     </>
   );
 }
@@ -79,8 +97,8 @@ export default RecettesPage;
   
 
 
+//<button onClick={getUserRecipesCt}> TEST de context getUserRecipesCt</button>
 
-*/
 
 
 

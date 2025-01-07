@@ -7,7 +7,6 @@ import { useQuery } from "@tanstack/react-query";
 import { useGlobalContext } from "../../GloblaContext";
 
 
-
 //import { deleteRecipe } from "../Recette/api";
 //import { ListeIngredient } from "./utils";
 
@@ -62,6 +61,9 @@ const { isLoading, data, isError, error, refetch } = useQuery({
   return (
     <>
 
+
+
+
       <h1>Liste des ingrédients de {getUserName()}</h1>
       Fonctionnel <br />
       ajout par user ok <br />
@@ -81,6 +83,12 @@ const { isLoading, data, isError, error, refetch } = useQuery({
           );
         })}
       </ul>
+
+
+
+
+
+
      
     </>
   );

@@ -15,6 +15,7 @@ export const RecetteContext = createContext<RecetteContextType | undefined>(unde
 export const useRecetteContext = () => {
     const context = useContext(RecetteContext);
     if(!context){
+        console.log('Erreur initialisation context recette');
         throw new Error('Erreur initialisation context recette');
     }
     return context;
@@ -23,6 +24,7 @@ export const useRecetteContext = () => {
 
 const RecetteProvider = ({ children }: { children: ReactNode }) => {
     const { userID } = useGlobalContext();
+
     const getUserRecipesCt = async () => {
         try {
             const response = await fetch(`${API_BASE_URL}/recette/getbyuser/${userID}`);
@@ -41,6 +43,8 @@ const RecetteProvider = ({ children }: { children: ReactNode }) => {
           {children}
         </RecetteContext.Provider>
       );
+
+    
 };
 
 

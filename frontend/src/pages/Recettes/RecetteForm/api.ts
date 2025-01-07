@@ -7,7 +7,6 @@ import API_BASE_URL from "../../../../src/utils/config";
 
 export const addRecipe = async (newRecipe: Recipe) => {
   try {
-    // const response = await fetch("http://localhost:3000/recette/addRecipe");
     const response = await fetch(`${API_BASE_URL}/recette/add`, {
       method: "POST",
       headers: {
@@ -38,7 +37,6 @@ export const saveRecipe = async (Recipe: {
 export const saveRecipe = async (data: Recipe): Promise<void> => {
 
   try {
-    // const response = await fetch("http://localhost:3000/recette/addRecipe");
 
     const response = await fetch(
       `${API_BASE_URL}/recette/update/${data.id}`,

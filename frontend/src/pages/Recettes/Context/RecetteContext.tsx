@@ -21,7 +21,7 @@ export const useRecetteContext = () => {
 }
 
 
-export const RecetteProvider = ({ children }: { children: ReactNode }) => {
+const RecetteProvider = ({ children }: { children: ReactNode }) => {
     const { userID } = useGlobalContext();
     const getUserRecipesCt = async () => {
         try {
@@ -44,6 +44,7 @@ export const RecetteProvider = ({ children }: { children: ReactNode }) => {
 };
 
 
+export default RecetteProvider;
     
     
 

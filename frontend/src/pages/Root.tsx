@@ -7,7 +7,8 @@ import { IngredientProviderTEST } from "./Ingredients/context/IngredientContext"
 import { GlobalProvider } from "./GloblaContext";
 //import { Recipe } from "../../shared/front.model";
 
-//import { RecetteProvider } from "./Recettes/Context/RecetteContext";
+//import RecetteProvider from "./Recettes/Context/RecetteContext";
+//
 //<RecetteProvider>
 //</RecetteProvider>
 
@@ -24,7 +25,6 @@ const Root = () => {
             <footer></footer>
           </IngredientProviderTEST>
 
-          
       </GlobalProvider>
     </>
   );

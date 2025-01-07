@@ -1,7 +1,8 @@
 
 import { createContext, useState, useContext, ReactNode } from "react";
-//import {  Ingredient, UnitEnum } from "../../../../../shared/models/recipe.model";
+//import {  Ingredient, UnitEnum } from "../../../../shared/front.model";
 
+//import {  Ingredient, UnitEnum } from "../../../../shared/front.model";
 
 // Définition des types pour le contexte
 interface IngredientsContextType {

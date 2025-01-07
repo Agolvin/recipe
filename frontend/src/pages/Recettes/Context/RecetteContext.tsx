@@ -22,16 +22,18 @@ export const useRecetteContext = () => {
 }
 
 
-const RecetteProvider = ({ children }: { children: ReactNode }) => {
+export const RecetteProvider = ({ children }: { children: ReactNode }) => {
     const { userID } = useGlobalContext();
 
     const getUserRecipesCt = async () => {
+        console.log('getUserRecipesCt')
         try {
             const response = await fetch(`${API_BASE_URL}/recette/getbyuser/${userID}`);
             if (!response.ok) {
             throw new Error("Network response was not ok");
         }
         const data = await response.json();
+        console.log(data);
         return data as Recipe[];
         } catch (err) {
             const error = err as Error;

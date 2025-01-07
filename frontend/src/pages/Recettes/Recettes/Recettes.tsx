@@ -88,6 +88,14 @@ const { getUserRecipesCt } = useRecetteContext();
 
 
 
+      <button onClick={getUserRecipesCt}> TEST de context getUserRecipesCt</button>
+
+
+
+
+
+
+
 
     </>
   );

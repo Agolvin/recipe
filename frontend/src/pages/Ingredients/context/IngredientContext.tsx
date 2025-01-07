@@ -2,48 +2,7 @@
 import { createContext, useState, useContext, ReactNode } from "react";
 //import {  Ingredient, UnitEnum } from "../../../../shared/front.model";
 
-
-
-
-
-
-
-//import {  Ingredient } from "../../../../shared/front.model";
-
-interface Ingredient {      //A utiliser pour MAJ de structure / reprise de données
-    id: number;
-    idUser: number;           //NEW
-    unit: UnitEnum;           //énumération des clé possibles pour les unités
-    name: string;
-    description: string; 
-    price: number;            //à l'unité
-  }
-  
-  
-  enum UnitEnum {
-    GRAM = "GRAM",
-    LITRE = "LITRE",
-    KILOGRAM = "KILOGRAM",
-    PIECE = "PIECE",
-  }
-  
-  const Units: Record<UnitEnum, { name: string; symbol: string }> = {
-    [UnitEnum.GRAM]: { name: "gramme", symbol: "g" },
-    [UnitEnum.LITRE]: { name: "litre", symbol: "L" },
-    [UnitEnum.KILOGRAM]: { name: "kilogramme", symbol: "kg" },
-    [UnitEnum.PIECE]: { name: "pièce", symbol: "pc" },
-  };
-
-
-
-
-
-
-
-  
-
-
-
+import {  Ingredient } from "../../../../shared/front.model";
 
 
 

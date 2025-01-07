@@ -115,6 +115,7 @@ Janvier 2025<br />
 toute première version de test <br />
 FrontEnd OK, BackEnd HS <br />
 A peu près rien de fonctionnel en prod<br />
+Non livrée pour les testeurs <br />
 <h3>Ingrédients</h3>
 Ajout sélection unité ok<br />
 Ajout coût/prix ingrédient ok<br />
@@ -148,16 +149,19 @@ Les dates et fonctionnalités présentées ci-dessous sont purement spéculative
 <br/>
 <h2>V0.2</h2>
 Février 2025
+Première version pour les testeurs?
 <h3>Ingrédients</h3>
+idem v0.1 (sans context)
 <h3>Recettes</h3>
+tout passe par le context?
 <h3>Autres</h3>
 hébergement API!!!<br/>
-ajout de context user pour simuler utilisateurs EC <br />
+ajout de context user pour simuler utilisateurs ok <br />
 context global pour users ok<br />
-combo sur page d'accueil pour choisir utilisateur? <br />
-ajout filtre id user sur les recettte/ing?? <br />
-ajout UserID dans les données <br />
-gestion filtre pour données user <br />
+combo sur page d'accueil pour choisir utilisateur ok <br />
+ajout filtre id user sur les recettte/ing EC <br />
+ajout UserID dans les données ok<br />
+gestion filtre pour données user EC<br />
 .gitattributes ok pour differencier les bases?? A verfier <br />
 
 <br/>
@@ -166,6 +170,7 @@ gestion filtre pour données user <br />
 Closed Beta <br />
 Mars 2025
 <h3>Ingrédients</h3>
+passage en context?
 <h3>Recettes</h3>
 Liste ok?<br/>
 Détails (titre,descrition,étapes)<br/>

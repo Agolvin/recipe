@@ -2,15 +2,16 @@
 import { createContext, useState, useContext, ReactNode } from "react";
 //import {  Ingredient, UnitEnum } from "../../../../shared/front.model";
 
-//import {  Ingredient, UnitEnum } from "../../../../shared/front.model";
+import {  Ingredient } from "../../../../shared/front.model";
 
 // Définition des types pour le contexte
 interface IngredientsContextType {
     //ingredient_test: Ingredient,
     cpt: number,
-    // setCpt: () => void; acces direct sans seter
+   // setCpt: () => void; 
     incrementCpt: () => void;
     //setIngredients: (ingredients: Ingredient[]) => void;
+    ingredients:Ingredient[];
 }
 
 
@@ -26,6 +27,12 @@ export const useIngredientContext = () => {
 
 export const IngredientProviderTEST = ({ children }: { children: ReactNode }) => {
     const [cpt, setCount] = useState<number>(0);
+    const [ingredients, setIngredients] = useState<Ingredient[]>([]); 
+    
+
+
+    //const [ingredients, setIngredients] = useState<Ingredient[]>([]);
+
    /* const ingredient_test:Ingredient = {
         id: 0,
         unit: UnitEnum.GRAM,
@@ -40,14 +47,8 @@ const incrementCpt = () => {
     setCount((prevCount) => prevCount + 1);
 };
 
-    //const [cpt, setCptState] = useState<number>(0);
-/*
-    const incrementCpt = () => {
-        (cpt = cpt + 1); // Incrémente le compteur
-    };
-*/
     return (
-      <IngredientContext.Provider value={{ cpt, incrementCpt }}>
+      <IngredientContext.Provider value={{ cpt, incrementCpt,ingredients }}>
         {children}
       </IngredientContext.Provider>
     );

@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 import NavBar from "../components/Input/NavBar/NavBar";
 
 
-import { IngredientProviderTEST } from "./Ingredients/context/IngredientContext";
+import { IngredientProviderTEST } from "./Ingredients/context/IngredientContextOld";
 import { GlobalProvider } from "./GloblaContext";
 //import { Recipe } from "../../shared/front.model";
 

@@ -2,12 +2,10 @@
 
 
 //import { getUserRecipes } from "./api";
-
-
-
+//import { useQuery } from "@tanstack/react-query";
+import { RecetteContextType } from "../Context/Types"
 
 import { Link } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
 import { deleteRecipe } from "../Recette/api";
 import { useGlobalContext } from "../../GloblaContext";
 import { useRecetteContext } from "../Context/RecetteContext";
@@ -17,7 +15,8 @@ import { useRecetteContext } from "../Context/RecetteContext";
 
 function RecettesPage() {
 
-  const { getUserRecipesCt } = useRecetteContext();
+  const recetteCt :RecetteContextType = useRecetteContext();
+  //const { recipesCt,isLoadingCt,isErrorCt,errorCt,getUserRecipesCt } = useRecetteContext();
   const { userID,getUserName } = useGlobalContext();
 
   if (userID == 0) {
@@ -26,6 +25,14 @@ function RecettesPage() {
 
 
 
+
+  if(recetteCt == undefined) {
+    return <p>Context recette non initialisé.</p>;
+  }
+
+ 
+
+/*
   const RELOAD_QUERY_OPTIONS = {
     cacheTime: 0, // Supprimer les données immédiatement après le démontage
     staleTime: 0, // Considérer les données comme périmées immédiatement
@@ -39,25 +46,25 @@ function RecettesPage() {
     ...RELOAD_QUERY_OPTIONS,
   });
 
+*/
 
 
 
 
-  
-  if (isLoading) {
+  if (recetteCt.isLoadingCt) {
     return <p>Loading...</p>;
   }
-  if (isError) {
+  if (recetteCt.isErrorCt) {
     return (
       <div>
-        <p>{error.message}</p>
-        <button onClick={() => refetch()}>Recharger</button>
+        <p>{recetteCt.errorCt?.message}</p>
+        <button onClick={() => recetteCt.getUserRecipesCt()}>Recharger</button>
       </div>
     );
   }
-  if (!data) return;
+  if (!recetteCt.recipesCt) return;
 
-console.log("Données recipes retournées par le context: ", data);
+console.log("Données recipes retournées par le context: ", recetteCt.recipesCt);
 
 
   return (
@@ -68,7 +75,7 @@ console.log("Données recipes retournées par le context: ", data);
 
       <ul>
         
-      {data.map((r) => {
+      {recetteCt.recipesCt.map((r) => {
           return (
             <li key={r.id}>
               <Link to={`./${r.id}`}>Titre : {r.name} id: {r.id}</Link>{" "}
@@ -79,7 +86,7 @@ console.log("Données recipes retournées par le context: ", data);
         })}
       </ul>
 
-      <button onClick={getUserRecipesCt}> TEST de context getUserRecipesCt</button>
+      <button onClick={recetteCt.getUserRecipesCt}> TEST de context getUserRecipesCt</button>
 
     </>
   );

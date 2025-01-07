@@ -1,14 +1,10 @@
 
 //import { createContext, useState, useContext, ReactNode } from "react";
-import { createContext, useContext, ReactNode } from "react";
+import { createContext, useContext, ReactNode,useState } from "react";
 import { Recipe } from "../../../../shared/front.model";
 import API_BASE_URL from "../../../../src/utils/config";
-
 import { useGlobalContext } from "../../GloblaContext"
-
-interface RecetteContextType {
-    getUserRecipesCt: () => Promise<Recipe[]>;
-}
+import { RecetteContextType } from "./Types"
 
 export const RecetteContext = createContext<RecetteContextType | undefined>(undefined);
 
@@ -21,11 +17,56 @@ export const useRecetteContext = () => {
     return context;
 }
 
-
 export const RecetteProvider = ({ children }: { children: ReactNode }) => {
-    const { userID } = useGlobalContext();
+    
+    const [recipesCt, setRecipes] = useState<Recipe[]>([]);
+    const [isLoadingCt, setIsLoading] = useState<boolean>(false);
+    const [isErrorCt, setIsError] = useState<boolean>(false);
+    const [errorCt, setError] = useState<Error | null>(null);
 
+    const { userID } = useGlobalContext();
+    
+
+
+
+
+    
+
+
+    //remplacer par loadRecipes et ajouter une getRecipe qui renvoir le contextType du context recipe??
     const getUserRecipesCt = async () => {
+
+        console.log('getUserRecipesCt')
+
+        setRecipes([])
+        setIsLoading(true)
+        setIsError(false)
+        setError(null)
+
+        try {
+            const response = await fetch(`${API_BASE_URL}/recette/getbyuser/${userID}`);
+            if (!response.ok) {
+            throw new Error("Network response was not ok");
+        }
+
+        const data = await response.json();
+        console.log(data);
+        return data as Recipe[];
+        } catch (err) {
+            const error = err as Error;
+            throw error;
+        }
+
+
+
+
+
+
+
+        
+
+
+/*
         console.log('getUserRecipesCt')
         try {
             const response = await fetch(`${API_BASE_URL}/recette/getbyuser/${userID}`);
@@ -39,9 +80,26 @@ export const RecetteProvider = ({ children }: { children: ReactNode }) => {
             const error = err as Error;
             throw error;
         }
+*/
+
+
+
+
+
     };
+
+/*
+    const isErrorCt =  false;
+    const errorCt =  "";
+    const isLoadingCt =  false;
+    const recipesCt =  Promise<[]>;
+*/
+
+
+
+
     return (
-        <RecetteContext.Provider value={{ getUserRecipesCt }}>
+        <RecetteContext.Provider value={{ recipesCt,isLoadingCt,isErrorCt,errorCt,getUserRecipesCt }}>
           {children}
         </RecetteContext.Provider>
       );
@@ -53,8 +111,6 @@ export const RecetteProvider = ({ children }: { children: ReactNode }) => {
 export default RecetteProvider;
     
     
-
-
 
 
 

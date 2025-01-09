@@ -7,7 +7,7 @@
             "test": false,
             "ingredient": false,
             "commentaire": "",
-            "name": "Salade César  6 6",
+            "name": "Salade César  6 7",
             "description": "Une salade classique avec de la laitue, du poulet et une sauce crémeuse.",
             "steps": [
                 {
@@ -68,6 +68,27 @@
             "name": "Sucre ",
             "description": "Fine granulated white sugar",
             "price": 3
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+        },
+        {
+            "id": 2,
+            "idUser": 1,
+            "unit": "GRAM",
+            "name": "Lait.03",
+            "description": "meuh",
+            "price": 3.17
+        },
+        {
+            "id": 3,
+            "idUser": 1,
+            "unit": "GRAM",
+            "name": "Ingrdient N°3",
+            "description": "test ajout",
+            "price": 1
+>>>>>>> preprod
         },
         {
             "id": 4,
@@ -81,9 +102,56 @@
             "id": 5,
             "idUser": 1,
             "unit": "GRAM",
+<<<<<<< HEAD
             "name": "Ajout master",
             "description": "master",
             "price": 0
+=======
+            "name": "Ajout dev",
+            "description": "dev",
+            "price": 0
+        },
+        {
+            "id": 6,
+            "idUser": 2,
+            "unit": "LITRE",
+            "name": "test ajout user",
+            "description": "user",
+            "price": 12
+        },
+        {
+            "id": 7,
+            "unit": "GRAM",
+            "name": "test Alex0",
+            "description": "le mien ....",
+            "price": 17,
+            "idUser": 3
+        },
+        {
+            "id": 8,
+            "idUser": 3,
+            "unit": "KILOGRAM",
+            "name": "Farine",
+            "description": "Farine de blé standard",
+            "price": 1.37
+        },
+        {
+            "id": 9,
+            "idUser": 3,
+            "unit": "PIECE",
+            "name": "Oeufs",
+            "description": "oeuf",
+            "price": 0.35
+        },
+        {
+            "id": 10,
+            "idUser": 3,
+            "unit": "KILOGRAM",
+            "name": "Beurre",
+            "description": "beurre",
+            "price": 4.27
+>>>>>>> dev
+>>>>>>> preprod
         }
     ],
     "ingredientstmp": []

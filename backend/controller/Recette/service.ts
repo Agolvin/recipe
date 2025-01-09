@@ -20,6 +20,12 @@ export const getAllRecipesSv = async () => {
     return bdd.recipes
 }
 
+export const getUserRecipeSv = async (pin_idUser: number) => {
+  console.log("getUserRecipeSv");
+  let recipesUser = getAllRecipesSv();
+  return Promise.resolve((await recipesUser).filter(rec => rec.idUser == pin_idUser))
+};
+
 
 export const getRecipeSv = async (idRecipe: number) => {
     console.log("getRecipeSv id=", idRecipe);

@@ -1,11 +1,12 @@
 
+import API_BASE_URL from "../../utils/config";
 
 
 export const testTools = async () => {
   try {
     
     console.log("testTools");
-    const response = await fetch("http://localhost:3000/tools/test", {
+    const response = await fetch(`${API_BASE_URL}/tools/test`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -20,12 +21,10 @@ export const testTools = async () => {
   }
 };
 
-
-
 export const migrationTools = async () => {
     try {
       console.log("testTools");
-      const response = await fetch("http://localhost:3000/tools/migration", {
+      const response = await fetch(`${API_BASE_URL}/tools/migration`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

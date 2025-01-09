@@ -3,18 +3,25 @@ import { useForm } from "react-hook-form";
 import React from "react";
 import { useIngredientContext } from "../context/IngredientContext";
 
+import { useGlobalContext } from "../../GloblaContext";
+
+
 type IngredientFormProps = {
   fn_ingredient : any;
   defaultValues : any;
 }
 
 const IngredientForm = ({ fn_ingredient, defaultValues }:IngredientFormProps):React.JSX.Element => {
+
+  const { userID } = useGlobalContext();
+
   const processedDefaultsIngredient: Ingredient | undefined =
     defaultValues && "ingredient" in defaultValues
       ? (defaultValues as { ingredient: Ingredient }).ingredient
       : defaultValues;
 
   const {
+    //control,
     register,
     handleSubmit,
     setValue,
@@ -23,36 +30,19 @@ const IngredientForm = ({ fn_ingredient, defaultValues }:IngredientFormProps):Re
   } = useForm<Ingredient>({
     defaultValues: processedDefaultsIngredient || {
         id: 0,
+        idUser: userID,
         unit: UnitEnum.GRAM,
         name: "",
         description: "", 
         price: 0  
     },
   });
-/*
-  const {
-    control,
-    register,
-    handleSubmit,
-    setValue,
-    setError,
-    formState: { errors },
-  } = useForm<Ingredient>({
-    defaultValues: processedDefaultsIngredient || {
-        id: 0,
-        unit: UnitEnum.GRAM,
-        name: "",
-        description: "", 
-        price: 0  
-    },
-  });
-*/
 
   const onSubmit = async (data: Ingredient) => {
     console.log("onSubmit",data);
     try {
       const id = processedDefaultsIngredient?.id || 0;
-      await fn_ingredient({ ...data, id });
+      await fn_ingredient({ ...data, id, idUser:userID });
       setValue("name", "");
       setValue("description", "");
       setValue("price", 0);

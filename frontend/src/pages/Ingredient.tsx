@@ -8,6 +8,7 @@
 //import { Link, Outlet, useParams } from "react-router-dom";
 import {  useParams } from "react-router-dom";
 
+
 //import { tab_ingredients } from "../data";
 
 function Ingredient() {

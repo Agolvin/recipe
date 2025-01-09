@@ -3,11 +3,12 @@ import { Ingredient } from "../../../../shared/front.model";
 
 
 
+import API_BASE_URL from "../../../../src/utils/config";
+
 
 const getIngredient = async (id: string):Promise<Ingredient> => {   //typer retour ici
   try {
-    const response = await fetch(`http://localhost:3000/ingredient/get/${id}`); //a virer partout le localhost
-    //const response = await fetch(`/ingredient/get/${id}`);
+    const response = await fetch(`${API_BASE_URL}/ingredient/get/${id}`); 
 
     if (!response.ok) {
       throw new Error("Network response was not ok");

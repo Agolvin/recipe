@@ -15,6 +15,9 @@ export const migrationToolsSv = async () => {
 
   console.log("migrationToolsSv");
 
+
+
+  /*
   let bdd = getBDD();
 
   //suppression de toutes les données tmp qui restent éventuellement des anciennes migrations
@@ -55,6 +58,10 @@ export const migrationToolsSv = async () => {
 
 
 
+
+
+
+
     rec_old.ingredientsQte.forEach((ing_qte_old:IngredientQte) => {
 
       const ing_tmp:Ingredient2 = {
@@ -86,4 +93,8 @@ export const migrationToolsSv = async () => {
 
   saveBDD(bdd);         
 
+
+
+
+  */
 };

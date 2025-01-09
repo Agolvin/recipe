@@ -1,15 +1,21 @@
 
 import { createContext, useState, useContext, ReactNode } from "react";
-//import {  Ingredient, UnitEnum } from "../../../../../shared/models/recipe.model";
+//import {  Ingredient, UnitEnum } from "../../../../shared/front.model";
+
+import {  Ingredient } from "../../../../shared/front.model";
+
 
 
 // Définition des types pour le contexte
 interface IngredientsContextType {
     //ingredient_test: Ingredient,
     cpt: number,
-    // setCpt: () => void; acces direct sans seter
+   // setCpt: () => void; 
     incrementCpt: () => void;
     //setIngredients: (ingredients: Ingredient[]) => void;
+    ingredients:Ingredient[];
+    //loadUserIngredients: () => Promise<void>;
+    loadUserIngredients: () => void;
 }
 
 
@@ -23,8 +29,13 @@ export const useIngredientContext = () => {
     return context;
 }
 
-export const IngredientProviderTEST = ({ children }: { children: ReactNode }) => {
+export const IngredientProvider = ({ children }: { children: ReactNode }) => {
     const [cpt, setCount] = useState<number>(0);
+    const [ingredients] = useState<Ingredient[]>([]); 
+
+    //const [ingredients, setIngredients] = useState<Ingredient[]>([]); 
+
+
    /* const ingredient_test:Ingredient = {
         id: 0,
         unit: UnitEnum.GRAM,
@@ -39,31 +50,19 @@ const incrementCpt = () => {
     setCount((prevCount) => prevCount + 1);
 };
 
-    //const [cpt, setCptState] = useState<number>(0);
-/*
-    const incrementCpt = () => {
-        (cpt = cpt + 1); // Incrémente le compteur
-    };
-*/
+
+
+const loadUserIngredients = () => {
+
+  //setCount((prevCount) => prevCount + 1);
+
+};
+
+
     return (
-      <IngredientContext.Provider value={{ cpt, incrementCpt }}>
+      <IngredientContext.Provider value={{ cpt, incrementCpt,ingredients,loadUserIngredients}}>
         {children}
       </IngredientContext.Provider>
     );
 };
 
-
-
-
-/*
-// Provider pour le contexte
-export const IngredientsProvider = ({ children }: { children: ReactNode }) => {
-  const [ingredients, setIngredients] = useState<Ingredient[]>([]);
-
-  return (
-    <IngredientsContext.Provider value={{ ingredients, setIngredients }}>
-      {children}
-    </IngredientsContext.Provider>
-  );
-};
-*/

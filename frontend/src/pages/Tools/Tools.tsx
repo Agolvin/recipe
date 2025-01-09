@@ -1,7 +1,8 @@
 
 
 //import { Link } from "react-router-dom";
-import { testTools,migrationTools } from "./api";
+import { testTools } from "./api";
+//import { migrationTools } from "./api";
 
 
 
@@ -21,7 +22,6 @@ function ToolsPage() {
           </li>
           <li>
             <button >Migration BDD</button>
-            <button onClick={() => migrationTools()}>/!\ Migration BDD</button>
           </li>
         </ul>
 
@@ -31,7 +31,7 @@ function ToolsPage() {
   
 
   // <button onClick={() => testTools()}>Test</button>
-//<button onClick={() => migrationTools()}>/!\ Migration BDD</button>
+  //<button onClick={() => migrationTools()}>/!\ Migration BDD</button>
 
 
 

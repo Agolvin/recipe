@@ -1,6 +1,8 @@
 
 import { createContext, useState, useContext, ReactNode } from "react";
 
+
+
 interface GlobalContextType {
     userID: number,
     initUser: (pinUserID:number) => void;
@@ -19,9 +21,7 @@ export const useGlobalContext = () => {
 
 export const GlobalProvider = ({ children }: { children: ReactNode }) => {
     const [userID, setUserID] = useState<number>(0);
-
-const initUser = (pinUserID:number) => {
-    setUserID(pinUserID);
+    const initUser = (pinUserID:number) => {setUserID(pinUserID);
 };
 
 const getUserName = () => {

@@ -18,7 +18,7 @@ import Input from "../../components/Input/Input";
 */
 //import { RecetteFormProps } from "./RecetteForm.types";
 import { Recipe } from "../../../../shared/front.model";
-
+import { useGlobalContext } from "../../GloblaContext";
 
 //import { useForm, useFieldArray, Controller } from "react-hook-form";
 import { useForm } from "react-hook-form";
@@ -28,6 +28,9 @@ import React from "react";
 type DefaultValuesRecipe = Recipe | { recette: Recipe };
 
 const RecetteForm: React.FC<{ fn_recipe: (data: Recipe) => Promise<void>; defaultValues?: DefaultValuesRecipe }> = ({ fn_recipe, defaultValues }) => {
+
+  const { userID } = useGlobalContext();
+
   const processedDefaultsRecipe: Recipe | undefined =
     defaultValues && "recette" in defaultValues
       ? (defaultValues as { recette: Recipe }).recette
@@ -42,6 +45,7 @@ const RecetteForm: React.FC<{ fn_recipe: (data: Recipe) => Promise<void>; defaul
   } = useForm<Recipe>({
     defaultValues: processedDefaultsRecipe || {
       id: 0,
+      idUser: userID,
       name: "",
       description: "",
       steps: [{ name: "Etape 1", description: "Commencer la rectte" }],//une etape minimum?
@@ -54,7 +58,7 @@ const RecetteForm: React.FC<{ fn_recipe: (data: Recipe) => Promise<void>; defaul
     console.log("aze",data);
     try {
       const id = processedDefaultsRecipe?.id || 0;
-      await fn_recipe({ ...data, id });
+      await fn_recipe({ ...data, id,idUser:userID  });
       setValue("name", "");
       setValue("description", "");
     } catch (error) {
@@ -62,6 +66,7 @@ const RecetteForm: React.FC<{ fn_recipe: (data: Recipe) => Promise<void>; defaul
       setError("root", { message: err.message });
     }
   };
+
 
 
 /*

@@ -1,8 +1,9 @@
 
 
 import { Request as req, Response as res } from "express";
-import { getAllRecipesSv, getRecipeSv, addRecipeSv,updateRecipeSv } from './service';
+import { getAllRecipesSv, getRecipeSv, addRecipeSv,updateRecipeSv,getUserRecipeSv } from './service';
 import {  Recipe } from "../../shared/back.model";
+import { getUserIngredientsSv } from "../Ingredient/service";
 
 
 export const getAllRecipes = async (req: req, res: res) => {
@@ -13,6 +14,22 @@ export const getAllRecipes = async (req: req, res: res) => {
     } catch (error) {
         res.status(500).json({ message: "Erreur lors de la récupération des recettes" });
     }
+};
+
+
+
+
+
+export const getUserRecipes = async (req: req, res: res) => {
+  console.log("getUserRecipes");
+  try {
+    const idUser = parseInt(req.params.id, 10);
+    console.log("getUserRecipes id=", idUser)
+    const recipes:Recipe[] = await getUserRecipeSv(idUser);
+    res.status(200).json(recipes);
+  } catch (error) {
+    res.status(500).json({ message: "Erreur lors de la récupération des recettes" });
+  }
 };
 
 /*

@@ -1,6 +1,6 @@
 
 import { Request as req, Response as res } from "express";
-import { getAllIngredientsSv,getIngredientSv,addIngredientSv,updateIngredientSv,saveIngredientSv } from './service';
+import { getAllIngredientsSv,getIngredientSv,addIngredientSv,updateIngredientSv,saveIngredientSv,getUserIngredientsSv } from './service';
 import { Ingredient } from "../../shared/back.model";
 
 
@@ -8,6 +8,19 @@ export const getAllIngredients = async (req: req, res: res) => {
   console.log("getAllIngredients");
   try {
     const ingredients:Ingredient[] = await getAllIngredientsSv();
+    res.status(200).json(ingredients);
+  } catch (error) {
+    res.status(500).json({ message: "Erreur lors de la récupération des ingredients" });
+  }
+};
+
+
+export const getUserIngredients = async (req: req, res: res) => {
+  console.log("getUserIngredients");
+  try {
+    const idUser = parseInt(req.params.id, 10);
+    console.log("getUserIngredients id=", idUser)
+    const ingredients:Ingredient[] = await getUserIngredientsSv(idUser);
     res.status(200).json(ingredients);
   } catch (error) {
     res.status(500).json({ message: "Erreur lors de la récupération des ingredients" });

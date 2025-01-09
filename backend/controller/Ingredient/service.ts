@@ -1,6 +1,6 @@
 
 
-import { Ingredient } from "../../shared/back.model";
+import { Bdd, Ingredient } from "../../shared/back.model";
 import { getBDD, saveBDD } from "../../lib/utils";
 
 
@@ -20,6 +20,15 @@ export const getAllIngredientsSv = async () => {
   */
   return bdd.ingredients
 };
+
+
+
+export const getUserIngredientsSv = async (pin_idUser: number) => {
+  console.log("getUserIngredientsSv idUser:",pin_idUser);
+  let ingredientsUser = getAllIngredientsSv();
+  return Promise.resolve((await ingredientsUser).filter(ing => ing.idUser == pin_idUser))
+};
+
 
 
 export const getIngredientSv = async (idIngredient: number) => {

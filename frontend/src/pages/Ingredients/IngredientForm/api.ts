@@ -1,13 +1,13 @@
 
 
 import { Ingredient } from "../../../../shared/front.model";
-
+import API_BASE_URL from "../../../../src/utils/config";
 
 export const addIngredient = async (newIngredient: Ingredient) => {
   try {
     
     console.log("addIngredient: ", newIngredient);
-    const response = await fetch("http://localhost:3000/ingredient/add", {
+    const response = await fetch(`${API_BASE_URL}/ingredient/add`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -31,7 +31,7 @@ export const saveIngredient = async (data: Ingredient): Promise<void> => {
   console.log(saveIngredient, data);
   try {
     const response = await fetch(
-      `http://localhost:3000/ingredient/update/${data.id}`,
+      `${API_BASE_URL}/ingredient/update/${data.id}`,
       {
         method: "POST",
         headers: {

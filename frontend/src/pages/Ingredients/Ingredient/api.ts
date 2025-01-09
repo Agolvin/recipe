@@ -1,11 +1,15 @@
 
 import {Ingredient} from '../../../../shared/front.model'
 
+
+
+import API_BASE_URL from "../../../../src/utils/config";
+
 const getIngredient = async (id: number): Promise<Ingredient> => {
   console.log("debut getIngredient api.ts pour id:", id);  
 
   try {
-    const response = await fetch(`http://localhost:3000/ingredient/get/${id}`, {
+    const response = await fetch(`${API_BASE_URL}/ingredient/get/${id}`, {
       method: "GET",
     });
 

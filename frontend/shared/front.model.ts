@@ -31,7 +31,6 @@ export type Unit = {
 
 
 
-
 export enum UnitEnum {
   GRAM = "GRAM",
   LITRE = "LITRE",
@@ -68,15 +67,10 @@ export function isRecipe (obj: any) : obj is Recipe {
 
 
 
-export interface Recipe {
-  id: number;
-  name: string;
-  description: string; 
-  steps: Step[];
-  ingredientsQte: { ingredient: Ingredient; quantity: number }[]; //gerer l'ordre des ingredients?
+export interface Recipe2 {
 }
 
-export interface Recipe2 {
+export interface Recipe {
   id: number;
   idUser: number;         //NEW 
   test: boolean;          //NEW a été etestée et validée
@@ -88,16 +82,10 @@ export interface Recipe2 {
   ingredientsQte: { ingredient: Ingredient; quantity: number }[]; //gerer l'ordre des ingredients?
 }
 
-
-export interface Ingredient {
-  id: number;
-  unit: UnitEnum;           //énumération des clé possibles pour les unités
-  name: string;
-  description: string; 
-  price: number;            //à l'unité
+export interface Ingredient2 {
 }
 
-export interface Ingredient2 {      //A utiliser pour MAJ de structure / reprise de données
+export interface Ingredient {      //A utiliser pour MAJ de structure / reprise de données
   id: number;
   idUser: number;           //NEW
   unit: UnitEnum;           //énumération des clé possibles pour les unités

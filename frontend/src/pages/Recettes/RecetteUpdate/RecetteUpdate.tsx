@@ -1,14 +1,40 @@
+
+
+
+
+
+
+
+/*
 import { useQuery } from "@tanstack/react-query";
-//import { QueryOptions, useQuery } from "@tanstack/react-query";
-//import { UseQueryOptions } from "@tanstack/react-query";
+import { useParams } from "react-router-dom";
+import RecetteForm from "../RecetteForm/RecetteForm";
+import { saveRecipe } from "../RecetteForm/api";
+import { Recipe } from "../../../../shared/front.model";
+import { getRecipe } from "./api";
+*/
+
+
+
+function RecetteUpdate() {};
+export default RecetteUpdate;
+
+
+
+
+
+
+
+
+/*
+
+import { useQuery } from "@tanstack/react-query";
+//import { getRecipe } from "./api";
 import { getRecipe } from "./api";
 import { useParams } from "react-router-dom";
 import RecetteForm from "../RecetteForm/RecetteForm";
 import { saveRecipe } from "../RecetteForm/api";
-
 import { Recipe } from "../../../../shared/front.model";
-
-
 
 
 function RecetteUpdate() {
@@ -45,6 +71,10 @@ function RecetteUpdate() {
 
   const processedDefaultsRecipe: Recipe = {
     id: data.id,
+    idUser: data.idUser || 0,  
+    test :data.test || false,
+    ingredient: data.ingredient || false,
+    commentaire: data.commentaire || '',
     name: data.name || '',
     description: data.description || '',
     steps: data.steps || [],
@@ -53,17 +83,48 @@ function RecetteUpdate() {
 
   return <RecetteForm defaultValues={processedDefaultsRecipe} fn_recipe={saveRecipe} />;
 
-
 }
 
 export default RecetteUpdate;
 
 
 
+
+
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//OLD
+
+
 /*
 
 import { useForm } from "react-hook-form";
-import { isRecipe, Recipe } from "../../../../../shared/models/recipe.model";
+import { isRecipe, Recipe } from "../../../../shared/front.model";
 
 
 function RecetteUpdate2() {

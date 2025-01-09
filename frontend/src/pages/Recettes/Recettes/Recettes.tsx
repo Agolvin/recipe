@@ -19,6 +19,10 @@ function RecettesPage() {
   //const { recipesCt,isLoadingCt,isErrorCt,errorCt,getUserRecipesCt } = useRecetteContext();
   const { userID,getUserName } = useGlobalContext();
 
+
+  //recetteCt.getUserRecipesCt();
+
+
   if (userID == 0) {
     return <p>Veuiller Sélectionner un utilisateurs sur la page d'accueil.</p>;
   }

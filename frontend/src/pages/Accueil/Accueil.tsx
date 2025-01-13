@@ -419,7 +419,7 @@ ajouter gestion de session utilisateur EC version tmp <br />
 
 
 <h1>Merci</h1>
-À Virtrice pour tes cours et cette fameuse clé usb <br />
+À Virtrice pour tes cours et cette fameuse clé usb https://github.com/Vitrixxl <br /> 
 À Florin pour ton aide depuis mon changement de taff <br />
 
 <br />

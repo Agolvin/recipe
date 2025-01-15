@@ -19,7 +19,7 @@ export default function Home() {
 
 
 
-       <h1> Page d'accueil</h1>
+       <h1> Page de accueil</h1>
        
         
 

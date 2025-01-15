@@ -68,6 +68,15 @@ export interface Bdd {
   
   
   export interface Recipe2 {
+    id: number;
+    idUser: number;         //NEW 
+    test: boolean;          //NEW a été etestée et validée
+    ingredient: boolean;    //NEW peut etre utilisé en tant qu'ingrédient d'une autre rectte 
+    commentaire: string;    //NEW commentaire pour ajuster lors des tests         
+    name: string;
+    description: string; 
+    steps: Step[];
+    ingredientsQte: { ingredient: Ingredient; quantity: number }[]; //gerer l'ordre des ingredients?
   }
   
   export interface Recipe {
@@ -84,13 +93,20 @@ export interface Bdd {
   
   
   export interface Ingredient2 {
+    id: number;
+    idUser: number;           //NEW
+    //unit: UnitEnum;           //énumération des clé possibles pour les unités
+    unit: string;           //énumération des clé possibles pour les unités
+    name: string;
+    description: string; 
+    price: number;            //à l'unité
   }
   
   export interface Ingredient {      //A utiliser pour MAJ de structure / reprise de données
     id: number;
     idUser: number;           //NEW
     //unit: UnitEnum;           //énumération des clé possibles pour les unités
-    unit: String;           //énumération des clé possibles pour les unités
+    unit: string;           //énumération des clé possibles pour les unités
     name: string;
     description: string; 
     price: number;            //à l'unité

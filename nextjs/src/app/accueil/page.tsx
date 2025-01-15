@@ -19,8 +19,8 @@ export default function Home() {
 
 
 
-       <h1> Page de accueil</h1>
        
+       <p> Accueil </p>
         
 
    

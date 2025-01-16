@@ -5,9 +5,9 @@ import recipeData from '@/utils/bdd.json';
 
 
 //const getUserRecipes = async(idUser:number) => {    //A faire: remettre le async et gestion de tempo/erreur
-const getUserRecipes = (idUser:number) => {
-  const usrRecipes:Recipe[] = recipeData.recipes;   //A faire remettre le unit(string) en unitEnum 
-  usrRecipes.filter(rec => rec.idUser == idUser)
+const getUserRecipes = (p_idUser:number) => {
+  const usrRecipes:Recipe[] = recipeData.recipes.filter(rec => rec.idUser == p_idUser);   //A faire remettre le unit(string) en unitEnum 
+  //usrRecipes.filter(rec => rec.idUser == p_idUser)
   return usrRecipes
 };
 

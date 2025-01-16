@@ -18,11 +18,10 @@ export default function Home() {
         />
 
 
-
        
 <p> Page Accueil </p>
 
-<p> Migration Node/React vers NextJS (15.1.4) en cours</p>
+<p> Migration Node/React vers fullstack NextJS (15.1.4) en cours</p>
 
 <p> 
 Fonctionnalités disponnibles: <br />

@@ -25,12 +25,7 @@ export default function Home() {
         {usrIngredient.map((r) => {
             return (
               <li key={r.id}>
-
-                Titre: {r.id}: {r.name}: {r.description} 
-
-                <Link href={`/ingredients/${r.id}`}>Affichage de {r.name}</Link>
-
-
+                <Link href={`/ingredients/${r.id}`}>{r.name}(id:{r.id}): {r.description} </Link>
               </li>
             );
           })}

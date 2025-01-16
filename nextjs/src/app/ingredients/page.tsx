@@ -2,11 +2,18 @@
 
 import { Ingredient } from "@/utils/model";
 import getUserIngredients from "@/app/ingredients/api"
+import Link from "next/link";
 
 const usrIngredient:Ingredient[] = getUserIngredients(1);
 
 
 export default function Home() {
+
+
+
+
+
+
   return (
    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
     <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
@@ -19,7 +26,10 @@ export default function Home() {
             return (
               <li key={r.id}>
 
-                Titre: {r.id}: {r.name}: {r.description} <br />
+                Titre: {r.id}: {r.name}: {r.description} 
+
+                <Link href={`/ingredients/${r.id}`}>Affichage de {r.name}</Link>
+
 
               </li>
             );

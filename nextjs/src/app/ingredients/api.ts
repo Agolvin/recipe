@@ -8,7 +8,7 @@ import recipeData from '@/utils/bdd.json';
 
 const getUserIngredients = (p_idUser:number) => {//remettre async???
   console.log("debut getUserIngredients");
-  var usrIngredient:Ingredient[] = recipeData.ingredients;   //A faire remettre le unit(string) en unitEnum 
+  let usrIngredient:Ingredient[] = recipeData.ingredients;   //A faire remettre le unit(string) en unitEnum 
   console.log("ingredients complet",usrIngredient);
   usrIngredient = usrIngredient.filter(ing => ing.idUser == p_idUser)
   console.log("ingredients filtré",usrIngredient);

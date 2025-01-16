@@ -20,7 +20,26 @@ export default function Home() {
 
 
        
-       <p> Page Accueil </p>
+<p> Page Accueil </p>
+
+<p> Migration Node/React vers NextJS (15.1.4) en cours</p>
+
+<p> 
+Fonctionnalités disponnibles: <br />
+- Ingrédients: Liste <br />
+- Recettes: Liste <br />
+</p> 
+
+<p> 
+A venir rapidement: <br />
+- Ingrédients: Ajout/Modification <br />
+</p> 
+
+<p> 
+Un peu après: <br />
+- Utilisateurs: Sélection <br />
+- Gestion données par utilisateur <br />
+</p>   
         
 
    

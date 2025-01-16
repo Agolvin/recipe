@@ -19,7 +19,7 @@ export default function Home() {
 
 
 
-       <h1> Migration Node/React vers NextJS 15.1.4 en cours</h1>
+       <h1> Migration Node/React vers NextJS (15.1.4) en cours</h1>
        
         
 

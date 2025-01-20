@@ -1,10 +1,8 @@
 
-/*
+
 
 import { Ingredient } from "@/utils/model";
 import recipeData from '@/utils/bdd.json';
-
-
 
 function getIngredient(p_IdIng:number){
     //const ing:Ingredient|undefined;
@@ -18,7 +16,7 @@ function getIngredient(p_IdIng:number){
 export default getIngredient;
 
 
-*/
+
 
 
 
@@ -37,8 +35,8 @@ export default getUserIngredients ;
 
 
 
-
 /*
+
 import { NextResponse } from 'next/server';
 
 import { prisma } from '@/lib/prisma'; // Exemple avec Prisma

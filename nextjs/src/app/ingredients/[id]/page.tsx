@@ -11,7 +11,7 @@ export default async function IngredientPage({ params }: { params: { id: string 
   console.log('IngredientPage');
 
 
-  const unwrappedParams = await params;
+  //const unwrappedParams = await params;
 
 
 
@@ -43,7 +43,7 @@ export default async function IngredientPage({ params }: { params: { id: string 
 
 
 
-    var ingTEST:Ingredient = {
+    let ingTEST:Ingredient = {
         id: 0,
         idUser: 0,
         unit: '',
@@ -133,7 +133,7 @@ export default function IngredientPage({ params }: { params: { id: string } }) {
 
 
 
-    var ingTEST:Recipe = {
+    let ingTEST:Recipe = {
         id: 0,
         idUser: 0,
         test: false,

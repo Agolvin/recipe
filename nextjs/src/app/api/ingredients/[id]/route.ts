@@ -4,12 +4,14 @@ import recipeData from '@/utils/bdd.json';
 
 
 function getIngredient(p_IdIng:number){
-    let ing:Ingredient|undefined;
+    //const ing:Ingredient|undefined;
     const allIngredients:Ingredient[] = recipeData.ingredients;
-    ing = allIngredients.find((elt) => elt.id = p_IdIng);
+
+
+
+    const ing:Ingredient|undefined = allIngredients.find((elt) => elt.id = p_IdIng);
     return ing;
 }
-
 export default getIngredient;
 
 

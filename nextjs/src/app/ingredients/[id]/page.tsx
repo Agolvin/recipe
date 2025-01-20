@@ -6,7 +6,8 @@ import { Ingredient } from '@/utils/model';
 
 //import { use, useEffect, useState } from 'react';
 
-export default async function IngredientPage({ params }: { params: { id: string } }) {
+//export default async function IngredientPage({ params }: { params: { id: string } }) {
+export default async function IngredientPage() {
   //const router = useRouter();
   console.log('IngredientPage');
 
@@ -43,7 +44,7 @@ export default async function IngredientPage({ params }: { params: { id: string 
 
 
 
-    let ingTEST:Ingredient = {
+    const ingTEST:Ingredient = {
         id: 0,
         idUser: 0,
         unit: '',

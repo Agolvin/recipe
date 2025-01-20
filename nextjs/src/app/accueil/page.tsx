@@ -1,12 +1,12 @@
 import Image from "next/image";
 
-
-
 export default function Home() {
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
         
+
+
 
         <Image
           className="dark:invert"
@@ -18,9 +18,27 @@ export default function Home() {
         />
 
 
-
-       <h1> Migration Node/React vers NextJS (15.1.4) en cours</h1>
        
+<p> Page Accueil </p>
+
+<p> Migration Node/React vers fullstack NextJS (15.1.4) en cours</p>
+
+<p> 
+Fonctionnalités disponnibles: <br />
+- Ingrédients: Liste <br />
+- Recettes: Liste <br />
+</p> 
+
+<p> 
+A venir rapidement: <br />
+- Ingrédients: Ajout/Modification <br />
+</p> 
+
+<p> 
+Un peu après: <br />
+- Utilisateurs: Sélection <br />
+- Gestion données par utilisateur <br />
+</p>   
         
 
    

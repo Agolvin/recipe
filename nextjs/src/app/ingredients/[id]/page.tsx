@@ -1,7 +1,7 @@
 
 //'use client';
 
-import { Ingredient } from '@';
+import { Ingredient } from '@/utils/model';
 //import { useRouter } from 'next/navigation';
 
 //import { use, useEffect, useState } from 'react';

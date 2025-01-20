@@ -82,7 +82,7 @@ return(
 
 
        
-            <p> Détails d'un ingrédient standard de test</p>
+            <p> Détails ingrédient standard de test</p>
 
 
             <div>

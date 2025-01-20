@@ -1,3 +1,6 @@
+
+/*
+
 import { Ingredient } from "@/utils/model";
 import recipeData from '@/utils/bdd.json';
 
@@ -15,7 +18,7 @@ function getIngredient(p_IdIng:number){
 export default getIngredient;
 
 
-
+*/
 
 
 

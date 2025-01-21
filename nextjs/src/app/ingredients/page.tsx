@@ -12,7 +12,7 @@ const usrIngredient:Ingredient[] = getUserIngredients(1);
 
 
 
-let IngTEST:Ingredient = {
+const IngTEST:Ingredient = {
   id: 123456,
   idUser: 1,
   name: "test ajout",
@@ -49,6 +49,7 @@ export default function Home() {
             );
           })}
           <li><button onClick={() => addIngredient(IngTEST)}>test ajout</button></li>
+
       </ul>
     </main>
   </div>

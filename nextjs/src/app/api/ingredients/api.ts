@@ -13,7 +13,7 @@ export function getIngredient(p_IdIng:number){
 }
 
 export function addIngredient(p_Ing:Ingredient){
-  let allIngredients:Ingredient[] = recipeData.ingredients;
+  const allIngredients:Ingredient[] = recipeData.ingredients;
   allIngredients.push(p_Ing);
   return p_Ing;
 }

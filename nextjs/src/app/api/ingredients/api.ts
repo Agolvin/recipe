@@ -1,19 +1,28 @@
 
+'use client';
 
 
 import { Ingredient } from "@/utils/model";
 import recipeData from '@/utils/bdd.json';
 
-function getIngredient(p_IdIng:number){
+export function getIngredient(p_IdIng:number){
     //const ing:Ingredient|undefined;
     const allIngredients:Ingredient[] = recipeData.ingredients;
-
-
-
     const ing:Ingredient|undefined = allIngredients.find((elt) => elt.id = p_IdIng);
     return ing;
 }
-export default getIngredient;
+
+export function addIngredient(p_Ing:Ingredient){
+  var allIngredients:Ingredient[] = recipeData.ingredients;
+  allIngredients.push(p_Ing);
+  return p_Ing;
+}
+
+
+
+
+
+//export default getIngredient;addIngredient;
 
 
 

@@ -3,8 +3,25 @@
 import { Ingredient } from "@/utils/model";
 import getUserIngredients from "@/app/ingredients/api"
 import Link from "next/link";
+import { addIngredient } from "../api/ingredients/api";
+
+
 
 const usrIngredient:Ingredient[] = getUserIngredients(1);
+
+
+
+
+let IngTEST:Ingredient = {
+  id: 123456,
+  idUser: 1,
+  name: "test ajout",
+  price: 123,
+  unit: "gram",
+  description: "test d'ajout"
+};
+
+
 
 
 export default function Home() {
@@ -21,6 +38,8 @@ export default function Home() {
 
       
       <h1>Liste de ingerdients de user 1</h1>
+
+
       <ul>
         {usrIngredient.map((r) => {
             return (
@@ -29,11 +48,10 @@ export default function Home() {
               </li>
             );
           })}
-        </ul>
-
-        
-        </main>
-    </div>
+          <li><button onClick={() => addIngredient(IngTEST)}>test ajout</button></li>
+      </ul>
+    </main>
+  </div>
   );
 }
 

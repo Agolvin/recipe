@@ -1,9 +1,6 @@
 import React from "react";
 import Link from "next/link";
 
-//import { Link } from "react-router-dom";
-//import React from "react";
-
 //const NavBar: React.FC = ({ ...props }) => {
 const NavBar: React.FC = () => {
   return (

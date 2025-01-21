@@ -48,7 +48,6 @@ export default function Home() {
               </li>
             );
           })}
-          <li><button onClick={() => addIngredient(IngTEST)}>test ajout</button></li>
 
       </ul>
     </main>
@@ -74,6 +73,7 @@ export default function Home() {
 
 
 
+          <li><button onClick={() => addIngredient(IngTEST)}>test ajout</button></li>
 
 import { Link } from "react-router-dom";
 //import { getIngredients } from "./api";

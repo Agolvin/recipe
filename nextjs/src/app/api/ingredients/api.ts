@@ -1,5 +1,4 @@
 
-'use client';
 
 
 import { Ingredient } from "@/utils/model";

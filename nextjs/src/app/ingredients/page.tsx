@@ -3,14 +3,14 @@
 import { Ingredient } from "@/utils/model";
 import getUserIngredients from "@/app/ingredients/api"
 import Link from "next/link";
-import { addIngredient } from "../api/ingredients/api";
+//import { addIngredient } from "../api/ingredients/api";
 
 
 
 const usrIngredient:Ingredient[] = getUserIngredients(1);
 
 
-
+/*
 
 const IngTEST:Ingredient = {
   id: 123456,
@@ -22,7 +22,7 @@ const IngTEST:Ingredient = {
 };
 
 
-
+*/
 
 export default function Home() {
 

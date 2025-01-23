@@ -19,7 +19,7 @@ const NavBar: React.FC = () => {
           <Link href="/tools">outils</Link>
         </li>
         <li>
-          <Link href="/2">page de test</Link>
+          <Link href="/test">page de test</Link>
         </li>
       </ul>
     </header>

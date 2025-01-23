@@ -1,4 +1,5 @@
 
+'use client';
 
 import { Ingredient } from "@/utils/model";
 import getUserIngredients from "@/app/ingredients/api"

@@ -40,4 +40,4 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-src/utils/data_prod.json
+src/utils/bdd_prod.json

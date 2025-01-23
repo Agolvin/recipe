@@ -1,6 +1,3 @@
-
-
-
 {
     "recipestmp": [],
     "recipes": [
@@ -283,6 +280,14 @@
             "name": "Beurre",
             "description": "beurre",
             "price": 4.27
+        },
+        {
+            "id": 12,
+            "idUser": 1,
+            "unit": "unité ",
+            "name": "test de addIngredient server action",
+            "description": "desc",
+            "price": 137
         }
     ],
     "ingredientstmp": []

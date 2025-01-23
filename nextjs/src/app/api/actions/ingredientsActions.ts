@@ -40,7 +40,7 @@ export async function getAllIngredientsTEST() {
 
 export async function addIngredient(p_ing: Ingredient) {
 
-    let bdd:Bdd = getBDD();
+    const bdd:Bdd = getBDD();
 
     const maxId = bdd.ingredients.reduce(       
       (max, item) => Math.max(max, item.id), 0

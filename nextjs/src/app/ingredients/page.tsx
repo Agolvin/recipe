@@ -1,11 +1,29 @@
 
 
+
 import { Ingredient } from "@/utils/model";
 import getUserIngredients from "@/app/ingredients/api"
 import Link from "next/link";
+//import { addIngredient } from "../api/ingredients/api";
+
+
 
 const usrIngredient:Ingredient[] = getUserIngredients(1);
 
+
+/*
+
+const IngTEST:Ingredient = {
+  id: 123456,
+  idUser: 1,
+  name: "test ajout",
+  price: 123,
+  unit: "gram",
+  description: "test d'ajout"
+};
+
+
+*/
 
 export default function Home() {
 
@@ -20,7 +38,9 @@ export default function Home() {
       
 
       
-      <h1>Liste de ingerdients de user 1</h1>
+      <h1>Liste de ingerdients de user 1.</h1>
+
+
       <ul>
         {usrIngredient.map((r) => {
             return (
@@ -29,11 +49,10 @@ export default function Home() {
               </li>
             );
           })}
-        </ul>
 
-        
-        </main>
-    </div>
+      </ul>
+    </main>
+  </div>
   );
 }
 
@@ -55,6 +74,7 @@ export default function Home() {
 
 
 
+          <li><button onClick={() => addIngredient(IngTEST)}>test ajout</button></li>
 
 import { Link } from "react-router-dom";
 //import { getIngredients } from "./api";

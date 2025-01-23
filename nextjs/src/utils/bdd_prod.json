@@ -285,7 +285,7 @@
             "id": 12,
             "idUser": 1,
             "unit": "unité ",
-            "name": "PROD PROD",
+            "name": "test de addIngredient server action",
             "description": "desc",
             "price": 137
         }

@@ -37,7 +37,7 @@ export default function Home() {
       
 
       
-      <h1>Liste de ingerdients de user 1</h1>
+      <h1>Liste de ingerdients de user 1.</h1>
 
 
       <ul>

@@ -5,9 +5,11 @@ import { Bdd } from "@/models/models";
 import fs from "fs";
 import path from "path";
 
-//onst pathBDD = "@/utils/bdd.json";
+//const pathBDD = "@/utils/bdd.json";
 //const pathBDD = path.resolve(__dirname,'../../utils/bdd.json');
+
 const pathBDD = path.resolve(process.cwd(), 'src/utils/bdd.json'); // Assurez-vous que ce chemin est correct
+//const pathBDD = path.resolve(process.cwd(), 'src/utils/bdd_prod.json'); // Assurez-vous que ce chemin est correct
 
 
 export const getBDD = () => {

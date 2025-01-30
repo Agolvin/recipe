@@ -6,6 +6,7 @@ import getUserIngredients from "@/app/ingredients/api"
 import Link from "next/link";
 //import { addIngredient } from "../api/ingredients/api";
 
+//import { useQuery } from "@tanstack/react-query";
 
 
 const usrIngredient:Ingredient[] = getUserIngredients(1);
@@ -28,7 +29,7 @@ const IngTEST:Ingredient = {
 export default function Home() {
 
 
-
+console.log("usrIngredient: ", usrIngredient);
 
 
 

@@ -10,7 +10,7 @@ import { Bdd } from "@/models/models";
 
 export async function getIngredientsUser(input: { p_idUser: number }) {
         let usrIngredient:Ingredient[] = recipeData.ingredients; 
-        usrIngredient = usrIngredient.filter(ing => ing.idUser == input.p_idUser)
+        usrIngredient = usrIngredient.filter(ing => ing.idUser === input.p_idUser)
         return usrIngredient
   }
 
@@ -33,9 +33,18 @@ export async function addIngredient(p_ing: Ingredient) {
 }
 
 
+export async function getIngredientsByIDold(input: { p_idIng: number }) {
+  //let allIngredient:Ingredient[] = recipeData.ingredients; 
+  //let ingredient:Ingredient|undefined = allIngredient.find(ing => ing.id === input.p_idIng)
+  let ingredient:Ingredient|undefined = recipeData.ingredients.find(ing => ing.id === input.p_idIng)
+  return ingredient
+}
 
 
-
-
-
-
+export async function getIngredientsByID(id: number) {
+  const ingredient = recipeData.ingredients.find(r => r.id === id);
+  if (!ingredient) {
+    return { error: "Ingrédient non trouvé", status: 404 }; // Retourne un objet d'erreur
+  }
+  return { data: ingredient, status: 200 }; // Toujours un objet structuré
+}

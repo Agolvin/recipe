@@ -10,6 +10,9 @@ import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 
+import { getIngredientsByID } from '@/app/api/actions/ingredientsActions';
+
+
 
 
 
@@ -30,7 +33,6 @@ export default function IngredientPage() {
 
     setIsLoading(true);
     
-      
     fetch(`/api/ingredients/${id}`)
       .then((res) => {
         if (!res.ok) throw new Error("Erreur de récupération");
@@ -55,7 +57,7 @@ export default function IngredientPage() {
 
 
 
-
+  //return NextResponse.json({ message: `Hello ${params.id}`,additionalData });
 
 }
 

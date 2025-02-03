@@ -6,6 +6,7 @@ import { getIngredientsUser } from "../api/actions/ingredientsActions";
 import { addIngredient } from "../api/actions/ingredientsActions";
 import { Ingredient } from "@/utils/model";
 import { getAllIngredientsTEST } from "../api/actions/ingredientsActions";
+import Link from "next/link";
 export default function Home() {
 
   const handleSubmit = async () => {
@@ -38,6 +39,7 @@ export default function Home() {
   };
 
 
+
   const handleSubmit4 = async () => {
     const result = await getAllIngredientsTEST(); // Appel à la Server Action
     alert(result); // Affiche le message retourné par le serveur
@@ -47,12 +49,24 @@ export default function Home() {
 
 
 
+
+//http://localhost:3000/api/ingredients/17
+
+
+
   return (
    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
     <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
       
       <h1>PAGE DE TEST</h1>
       <h2>Test des server actions: </h2>
+
+      
+      <Link href={`/api/utils/test`}> TEST API NextJS beta ok</Link>
+      <Link href={`/api/utils/test?category=dessert&userId=1`}> TEST API GET Ingredient avec param</Link>
+      <Link href={`/api/ingredients/17`}> TEST API GET Ingredient</Link>
+
+
       <button onClick={handleSubmit}>Test server action</button>
       <button onClick={handleSubmit2}>Test ingredients user 1</button>
       <button onClick={handleSubmit3}>Test addIngredient (ne pas spamer please), test désactivé</button>
@@ -62,3 +76,5 @@ export default function Home() {
   );
 }
 
+
+//<button onClick={handleSubmit3}>Test addIngredient (ne pas spamer please), test désactivé</button>

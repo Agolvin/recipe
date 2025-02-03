@@ -64,7 +64,8 @@ export default function Home() {
       
       <Link href={`/api/utils/test`}> TEST API NextJS beta ok</Link>
       <Link href={`/api/utils/test?category=dessert&userId=1`}> TEST API GET Ingredient avec param</Link>
-      <Link href={`/api/ingredients/17`}> TEST API GET Ingredient</Link>
+      <Link href={`/api/ingredients/3`}> TEST API GET Ingredient 3</Link>
+      <Link href={`/api/ingredients/17`}> TEST API GET Ingredient 17</Link>
 
 
       <button onClick={handleSubmit}>Test server action</button>

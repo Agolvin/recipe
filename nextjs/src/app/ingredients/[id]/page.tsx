@@ -9,7 +9,7 @@ import { Ingredient } from '@/utils/model';
 //import { use, useEffect, useState } from 'react';
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
-import { getIngredientByID } from '@/app/api/actions/ingredientsActions';
+import { getIngredientByID } from '@/actions/ingredientsActions';
 
 
 
@@ -30,15 +30,15 @@ export default function IngredientPage() {
 
   useEffect(() => {
     async function fetchIngredient() {
-      setLoading(true); // Indique que la requête est en cours
+      setLoading(true);
       const result = await getIngredientByID(id);
 
       if (result.error) {
         setError(result.error);
       } else {
-        setIngredient(result.data?? null);//si undefined, on remplace par null
+        setIngredient(result.data?? null);  //si undefined, on remplace par null
       }
-      setLoading(false); // Fin du chargement
+      setLoading(false); 
     }
 
     fetchIngredient();

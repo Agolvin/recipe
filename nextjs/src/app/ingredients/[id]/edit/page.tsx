@@ -1,9 +1,6 @@
 
 
 
-import { Ingredient } from "@/utils/model";
-import getUserIngredients from "@/app/ingredients/api"
-import Link from "next/link";
 import IngredientForm from "@/components/ingredients/IngredientForm";
 
 
@@ -13,7 +10,7 @@ export default function Home() {
 
   return (
    <div >
-      Update d'un ingrédient:
+      Update ingrédient:
       <IngredientForm/>
   </div>
   );

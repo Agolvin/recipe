@@ -50,7 +50,7 @@ export async function getIngredientByID(id: number) {
 }
 
 
-export async function saveIngredient(formData: FormData) {
+//export async function saveIngredient(formData: FormData) {
 
 /*
   const ingredient = recipeData.ingredients.find(r => r.id === id);
@@ -60,4 +60,4 @@ export async function saveIngredient(formData: FormData) {
   return { data: ingredient, status: 200 }; // Toujours un objet structuré
 */
 
-}
+//}

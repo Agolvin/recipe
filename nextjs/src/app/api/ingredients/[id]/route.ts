@@ -2,14 +2,19 @@
 //pour le reste => api/ingredients avec des filtres (user, categorie, prix,....)
 //OK API accessible depuis http://localhost:3000/api/ingredients/[id]  
 
-
+//import type { NextApiRequest, NextApiResponse } from 'next'
+//import { request } from "http";
 //import { NextRequest, NextResponse } from "next/server";
 //import { NextResponse } from "next/server";
+
+
+
+
+/*
 import recipeData from '@/utils/bdd.json';
 import { Ingredient } from "@/utils/model";
 
-//import type { NextApiRequest, NextApiResponse } from 'next'
-//import { request } from "http";
+
 
 const allIngredients:Ingredient[] = recipeData.ingredients;
 
@@ -20,6 +25,11 @@ type ResponseData = {
   ingredient:Ingredient|undefined
 }
  
+*/
+
+
+
+
 
 /*
 //export const GET = async (request: Request, context: { params: Promise<{ id: number }> }) => {

@@ -1,3 +1,4 @@
+"use client";
 
 import { createContext, useState, useContext, ReactNode } from "react";
 
@@ -6,6 +7,7 @@ import { createContext, useState, useContext, ReactNode } from "react";
 interface GlobalContextType {
     userID: number,
     initUser: (pinUserID:number) => void;
+    getUserNameByID: (ID_User:number) => string;
     getUserName: () => string;
 }
 
@@ -39,8 +41,28 @@ const getUserName = () => {
     }
 };
 
+const getUserNameByID = (ID_User:number) => {
+    switch (ID_User) {
+        case 1:
+            return "TEST";
+        case 2:
+            return "Adrien";
+        case 3:
+            return "Alex";
+        case 4:
+            return "Akis";
+        default:
+            return "Unknown User";
+    }
+};
+
+
+
+
+
+
     return (
-      <GlobalContext.Provider value={{ userID, initUser,getUserName }}>
+      <GlobalContext.Provider value={{ userID, initUser,getUserName,getUserNameByID }}>
         {children}
       </GlobalContext.Provider>
     );

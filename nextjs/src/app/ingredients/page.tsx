@@ -1,52 +1,32 @@
+'use client';
 
-
-
+import { useGlobalContext } from "@/context/globlaContext";
 import { Ingredient } from "@/utils/model";
 import getUserIngredients from "@/app/ingredients/api"
 import Link from "next/link";
-//import { addIngredient } from "../api/ingredients/api";
-
-//import { useQuery } from "@tanstack/react-query";
-
-
-const usrIngredient:Ingredient[] = getUserIngredients(1);
-
-
-/*
-
-const IngTEST:Ingredient = {
-  id: 123456,
-  idUser: 1,
-  name: "test ajout",
-  price: 123,
-  unit: "gram",
-  description: "test d'ajout"
-};
-
-
-*/
 
 export default function Home() {
 
+//const { userID,initUser,getUserName,getUserNameByID } = useGlobalContext();
+const { userID,getUserName } = useGlobalContext();
 
-console.log("usrIngredient: ", usrIngredient);
-
+const usrIngredient:Ingredient[] = getUserIngredients(userID);
 
 
   return (
    <div >
     
-      <h1>Liste de ingerdients de user 1.</h1>
+    <h1>Liste ingerdients de user {getUserName()} ({userID})</h1>
       <ul>
         <br />
             <li >
-                <Link href={`/ingredients/new`}>Nouvel ingrédient!</Link>
+                <Link href={`/ingredients/new`}>+ Nouvel ingrédient.</Link>
             </li>
             <br />
         {usrIngredient.map((r) => {
             return (
               <li key={r.id}>
-                <Link href={`/ingredients/${r.id}`}>{r.name}(id:{r.id}): {r.description} </Link>__________<Link href={`/ingredients/${r.id}/edit`}>Modif</Link>
+                <Link href={`/ingredients/${r.id}`}>- {r.name}(id:{r.id}): {r.description} </Link>__________<Link href={`/ingredients/${r.id}/edit`}>Modif</Link>
               </li>
             );
           })}

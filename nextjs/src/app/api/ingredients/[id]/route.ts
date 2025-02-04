@@ -21,7 +21,7 @@ type ResponseData = {
 }
  
 
-
+/*
 //export const GET = async (request: Request, context: { params: Promise<{ id: number }> }) => {
 export const GET = async (context: { params: Promise<{ id: number }> }) => {
   const params = await context.params;
@@ -35,7 +35,7 @@ export const GET = async (context: { params: Promise<{ id: number }> }) => {
   return NextResponse.json({ message: `Hello ${params.id}`,additionalData });
 };
 
-
+*/
 
 
 

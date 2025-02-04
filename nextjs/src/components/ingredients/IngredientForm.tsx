@@ -1,3 +1,24 @@
+
+
+import React from "react";
+//import Link from "next/link";
+
+//const NavBar: React.FC = ({ ...props }) => {
+const IngredientForm: React.FC = () => {
+  return (
+
+
+    <h1>Formulaire ingredient soon (add/update)</h1>
+
+
+  );
+};
+
+export default IngredientForm;
+
+
+
+
 /*
 
 'use client';
@@ -51,5 +72,8 @@ export default function IngredientForm({ initialData, onSubmit }: IngredientForm
 }
 
 */
+
+
+
 
 

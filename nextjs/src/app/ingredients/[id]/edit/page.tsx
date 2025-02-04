@@ -4,54 +4,17 @@
 import { Ingredient } from "@/utils/model";
 import getUserIngredients from "@/app/ingredients/api"
 import Link from "next/link";
-//import { addIngredient } from "../api/ingredients/api";
+import IngredientForm from "@/components/ingredients/IngredientForm";
 
-//import { useQuery } from "@tanstack/react-query";
-
-
-const usrIngredient:Ingredient[] = getUserIngredients(1);
-
-
-/*
-
-const IngTEST:Ingredient = {
-  id: 123456,
-  idUser: 1,
-  name: "test ajout",
-  price: 123,
-  unit: "gram",
-  description: "test d'ajout"
-};
-
-
-*/
 
 export default function Home() {
-
-
-console.log("usrIngredient: ", usrIngredient);
 
 
 
   return (
    <div >
-    
-      <h1>Liste de ingerdients de user 1.</h1>
-      <ul>
-        <br />
-            <li >
-                <Link href={`/ingredients/new`}>Nouvel ingrédient!</Link>
-            </li>
-            <br />
-        {usrIngredient.map((r) => {
-            return (
-              <li key={r.id}>
-                <Link href={`/ingredients/${r.id}`}>{r.name}(id:{r.id}): {r.description} </Link>__________<Link href={`/ingredients/${r.id}/edit`}>Modif</Link>
-              </li>
-            );
-          })}
-
-      </ul>
+      Update d'un ingrédient:
+      <IngredientForm/>
   </div>
   );
 }

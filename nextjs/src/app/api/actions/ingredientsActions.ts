@@ -41,7 +41,7 @@ export async function getIngredientsByIDold(input: { p_idIng: number }) {
 }
 
 
-export async function getIngredientsByID(id: number) {
+export async function getIngredientByID(id: number) {
   const ingredient = recipeData.ingredients.find(r => r.id === id);
   if (!ingredient) {
     return { error: "Ingrédient non trouvé", status: 404 }; // Retourne un objet d'erreur

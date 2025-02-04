@@ -1,16 +1,15 @@
 
 'use client';
 
-import { getIngredient } from '@/app/api/ingredients/api';
+//import { getIngredient } from '@/app/api/ingredients/api';
 import { Ingredient } from '@/utils/model';
 //import { useRouter } from "next/router";
 //import { useRouter } from 'next/navigation';
-import { useSearchParams } from "next/navigation";
+//import { useSearchParams } from "next/navigation";
 //import { use, useEffect, useState } from 'react';
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
-
-import { getIngredientsByID } from '@/app/api/actions/ingredientsActions';
+import { getIngredientByID } from '@/app/api/actions/ingredientsActions';
 
 
 
@@ -19,11 +18,66 @@ import { getIngredientsByID } from '@/app/api/actions/ingredientsActions';
 //export default async function IngredientPage({ params }: { params: { id: string } }) {
 export default function IngredientPage() {
 
-  console.log("IngredientPage");
+  const param = useParams() // Récupère l'ID depuis l'URL
+  const id:number = Number(useParams().id); // Récupère l'ID depuis l'URL
+  console.log("IngredientPage: ID récupéré depuis useParams id   :", id);
+  console.log("IngredientPage: ID récupéré depuis useParams param:", param);
+
+  const [ingredient, setIngredient] = useState<Ingredient | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
 
 
-  const { id } = useParams(); // Récupère l'ID depuis l'URL
-  console.log("ID récupéré depuis useParams:", id);
+  useEffect(() => {
+    async function fetchIngredient() {
+      setLoading(true); // Indique que la requête est en cours
+      const result = await getIngredientByID(id);
+
+      if (result.error) {
+        setError(result.error);
+      } else {
+        setIngredient(result.data?? null);//si undefined, on remplace par null
+      }
+      setLoading(false); // Fin du chargement
+    }
+
+    fetchIngredient();
+  }, [id]);
+
+  if (loading) {
+    return <p>⏳ Chargement...</p>;
+  }
+
+  if (error) {
+    return <p>⚠️ Erreur : {error}</p>;
+  }
+
+  if (!ingredient) {
+    return <p>❌ Ingrédient introuvable.</p>;
+  }
+
+  return (
+    <div>
+      <h2>🧂 Titre: {ingredient.name}</h2>
+      <p>Description: {ingredient.description}</p>
+      <p>User: {ingredient.idUser}</p>
+      <p>Prix: {ingredient.price}</p>
+      <p>Unitté: {ingredient.unit}</p>
+    </div>
+  );
+
+
+
+
+
+
+
+
+
+
+}
+
+/*
   const [data, setData] = useState<{ id: number; name: string } | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
@@ -55,11 +109,16 @@ export default function IngredientPage() {
     </div>
   );
 
+*/
 
 
-  //return NextResponse.json({ message: `Hello ${params.id}`,additionalData });
 
-}
+
+
+
+
+
+
 
 /*
 
@@ -67,16 +126,6 @@ export default function IngredientPage() {
   const [data, setData] = useState<{ id: number; name: string } | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
-
-
-
-
-
-
-
-
-
-
 
 
 

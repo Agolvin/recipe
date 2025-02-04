@@ -3,12 +3,13 @@
 //OK API accessible depuis http://localhost:3000/api/ingredients/[id]  
 
 
-import { NextRequest, NextResponse } from "next/server";
+//import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import recipeData from '@/utils/bdd.json';
 import { Ingredient } from "@/utils/model";
 
-import type { NextApiRequest, NextApiResponse } from 'next'
-import { request } from "http";
+//import type { NextApiRequest, NextApiResponse } from 'next'
+//import { request } from "http";
 
 const allIngredients:Ingredient[] = recipeData.ingredients;
 
@@ -21,13 +22,10 @@ type ResponseData = {
  
 
 
-export const GET = async (request: Request, context: { params: Promise<{ id: number }> }) => {
+//export const GET = async (request: Request, context: { params: Promise<{ id: number }> }) => {
+export const GET = async (context: { params: Promise<{ id: number }> }) => {
   const params = await context.params;
-
-  const ingret:Ingredient = allIngredients[1];
-
   const ingRetour:Ingredient|undefined = allIngredients.find(item => item.id === params.id);
-
   const additionalData:ResponseData = {
     bOK: true,
     message: 'dbdbrds',

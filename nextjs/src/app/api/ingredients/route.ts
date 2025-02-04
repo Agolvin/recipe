@@ -5,7 +5,8 @@
 // retour: Ingredient[]
 
 
-import { NextRequest, NextResponse } from "next/server";
+//import { NextRequest, NextResponse } from "next/server";
+import { NextRequest } from "next/server";
 import recipeData from '@/utils/bdd.json';
 import { Ingredient } from "@/utils/model";
 
@@ -17,7 +18,7 @@ import { Ingredient } from "@/utils/model";
 
 
 
-var allIngredients:Ingredient[] = recipeData.ingredients;
+let allIngredients:Ingredient[] = recipeData.ingredients;
 
 export async function GET(request:NextRequest) {
     

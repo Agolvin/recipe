@@ -36,7 +36,7 @@ export async function addIngredient(p_ing: Ingredient) {
 export async function getIngredientsByIDold(input: { p_idIng: number }) {
   //let allIngredient:Ingredient[] = recipeData.ingredients; 
   //let ingredient:Ingredient|undefined = allIngredient.find(ing => ing.id === input.p_idIng)
-  let ingredient:Ingredient|undefined = recipeData.ingredients.find(ing => ing.id === input.p_idIng)
+  const ingredient:Ingredient|undefined = recipeData.ingredients.find(ing => ing.id === input.p_idIng)
   return ingredient
 }
 
@@ -47,4 +47,17 @@ export async function getIngredientByID(id: number) {
     return { error: "Ingrédient non trouvé", status: 404 }; // Retourne un objet d'erreur
   }
   return { data: ingredient, status: 200 }; // Toujours un objet structuré
+}
+
+
+export async function saveIngredient(formData: FormData) {
+
+/*
+  const ingredient = recipeData.ingredients.find(r => r.id === id);
+  if (!ingredient) {
+    return { error: "Ingrédient non trouvé", status: 404 }; // Retourne un objet d'erreur
+  }
+  return { data: ingredient, status: 200 }; // Toujours un objet structuré
+*/
+
 }

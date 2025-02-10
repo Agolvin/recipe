@@ -41,6 +41,7 @@ export async function getIngredientsByIDold(input: { p_idIng: number }) {
 }
 
 
+/*
 export async function getIngredientByID(id: number) {
   const ingredient = recipeData.ingredients.find(r => r.id === id);
   if (!ingredient) {
@@ -49,7 +50,15 @@ export async function getIngredientByID(id: number) {
   return { data: ingredient, status: 200 }; // Toujours un objet structuré
 }
 
+*/
 
+export async function getIngredientByID(id: number): Promise<Ingredient> {
+  const ingredient = recipeData.ingredients.find(r => r.id === id);
+  if (!ingredient) {
+    throw new Error("Ingrédient non trouvé");
+  }
+  return ingredient;
+}
 
 
 

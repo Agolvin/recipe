@@ -1,21 +1,22 @@
 
-'use client';
-
-//import { getIngredient } from '@/app/api/ingredients/api';
-import { Ingredient } from '@/utils/model';
 //import { useRouter } from "next/router";
 //import { useRouter } from 'next/navigation';
 //import { useSearchParams } from "next/navigation";
 //import { use, useEffect, useState } from 'react';
+//import { getIngredient } from '@/app/api/ingredients/api';
+
+
+
+
+'use client';
+
+import { Ingredient } from '@/utils/model';
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { getIngredientByID } from '@/actions/ingredientsActions';
 
 
 
-
-
-//export default async function IngredientPage({ params }: { params: { id: string } }) {
 export default function IngredientPage() {
 
   const param = useParams() // Récupère l'ID depuis l'URL
@@ -29,6 +30,30 @@ export default function IngredientPage() {
 
 
   useEffect(() => {
+
+
+
+
+
+
+
+
+    async function fetchIngredient() {
+      setLoading(true);
+      setError(null); // Réinitialise l'erreur au début de chaque fetch
+      try {
+        const data = await getIngredientByID(id); // Appelle la fonction
+        setIngredient(data); // Met à jour l'état avec l'ingrédient récupéré
+      } catch (err: any) {
+        setError(err.message || "Une erreur s'est produite."); // Gère les exceptions
+      } finally {
+        setLoading(false); // Arrête le chargement
+      }
+    }
+
+
+
+    /*
     async function fetchIngredient() {
       setLoading(true);
       const result = await getIngredientByID(id);
@@ -40,9 +65,19 @@ export default function IngredientPage() {
       }
       setLoading(false); 
     }
+*/
+
+
+
 
     fetchIngredient();
   }, [id]);
+
+
+
+
+
+
 
   if (loading) {
     return <p>⏳ Chargement...</p>;

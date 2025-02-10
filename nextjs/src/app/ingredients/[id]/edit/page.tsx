@@ -1,4 +1,7 @@
 
+//import { getIngredient } from "./api";
+//import IngredientForm from "@/components/ingredients/IngredientForm";
+
 'use client';
 
 import IngredientForm from "@/components/ingredients/IngredientForm";
@@ -10,9 +13,6 @@ import { useParams } from "next/navigation";
 import { saveIngredient } from "@/actions/ingredientsActions";
 
 
-//import { getIngredient } from "./api";
-
-//import IngredientForm from "@/components/ingredients/IngredientForm";
 
 
 export default function Home() {
@@ -55,7 +55,7 @@ export default function Home() {
       </div>
     );
   }
-
+/*
   if (!data) {
     return <p>Aucune donnée trouvée pour cet ingrédient.</p>;
   }
@@ -63,7 +63,22 @@ export default function Home() {
   if (data===undefined) {
     return <p>Aucune donnée trouvée pour cet ingrédient.</p>;
   }
+*/
+  if (!data || !data.data) {
+    return <p>Aucune donnée trouvée pour cet ingrédient.</p>;
+  }
 
+
+
+  const processedDefaultsIngredient: Ingredient = {
+    id: data.data.id || 0,
+    idUser: data.data.idUser || 0,
+    unit: data.data.unit || 'gramme',
+    name: data.data.name || "",
+    description: data.data.description || "",
+    price: data.data.price || 0,
+  };
+/*
 
   const processedDefaultsIngredient: Ingredient = {
     id: data.data?.id || 0,
@@ -73,6 +88,8 @@ export default function Home() {
     description: data.data?.description || "",
     price: data.data?.price || 0,
   };
+*/
+
 
 
   return (

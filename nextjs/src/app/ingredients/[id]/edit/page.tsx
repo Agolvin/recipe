@@ -1,26 +1,29 @@
 
+'use client';
 
 import IngredientForm from "@/components/ingredients/IngredientForm";
 import { Ingredient, Units } from "@/utils/model";
-
 import { getIngredientByID } from "@/actions/ingredientsActions";
 
 import { useQuery } from "@tanstack/react-query";
+import { useParams } from "next/navigation";
+import { saveIngredient } from "@/actions/ingredientsActions";
+
 
 //import { getIngredient } from "./api";
-
-import { useParams } from "react-router-dom";
-
-import { saveIngredient } from "../IngredientForm/api";
-
-
 
 //import IngredientForm from "@/components/ingredients/IngredientForm";
 
 
 export default function Home() {
 
-  const { id } = useParams();
+
+  const param = useParams() // Récupère l'ID depuis l'URL
+  const id:number = Number(param.id); // Récupère l'ID depuis l'URL
+
+  console.log("IngredientPage: ID récupéré depuis useParams id   :", id);
+  console.log("IngredientPage: ID récupéré depuis useParams param:", param);
+
 
   const RELOAD_QUERY_OPTIONS = {
     cacheTime: 0,                 // Supprimer les données immédiatement après le démontage
@@ -57,13 +60,18 @@ export default function Home() {
     return <p>Aucune donnée trouvée pour cet ingrédient.</p>;
   }
 
+  if (data===undefined) {
+    return <p>Aucune donnée trouvée pour cet ingrédient.</p>;
+  }
+
+
   const processedDefaultsIngredient: Ingredient = {
-    id: data.id,
-    idUser: data.idUser || 0,          
-    unit: data.unit || 'gramme',
-    name: data.name || "",
-    description: data.description || "",
-    price: data.price || 0,
+    id: data.data?.id || 0,
+    idUser: data.data?.idUser || 0,          
+    unit: data.data?.unit || 'gramme',
+    name: data.data?.name || "",
+    description: data.data?.description || "",
+    price: data.data?.price || 0,
   };
 
 
@@ -74,18 +82,7 @@ export default function Home() {
     />
   );
 
-
-/*
-  return (
-   <div >
-      Update ingrédient:
-      <IngredientForm/>
-  </div>
-  );
-
-*/
 }
-
 
 
 

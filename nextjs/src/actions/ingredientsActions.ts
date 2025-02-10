@@ -50,6 +50,41 @@ export async function getIngredientByID(id: number) {
 }
 
 
+
+
+
+
+
+export async function updateIngredient(p_ing: Ingredient) {
+
+  const bdd:Bdd = getBDD();
+  const ind = bdd.ingredients.findIndex((elt) => elt.id === p_ing.id);
+  bdd.ingredients[ind] = p_ing;   
+  saveBDD(bdd);                              
+  return p_ing;
+
+}
+
+export async function saveIngredient(p_ing: Ingredient) {
+
+  if (p_ing.id > 0) {
+    updateIngredient(p_ing);
+  } else {
+    //insertIngredient(p_ing);
+  }
+  return p_ing;
+}
+
+
+
+
+
+
+
+
+
+
+
 //export async function saveIngredient(formData: FormData) {
 
 /*

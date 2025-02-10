@@ -1,18 +1,104 @@
 
+'use client';
+
+
 
 import React from "react";
 //import Link from "next/link";
 
+
+
+import { Ingredient, UnitEnum, Units } from "@/utils/model";
+import { useForm } from "react-hook-form";
+
+
+
+
+import { useGlobalContext } from "@/context/globlaContext";
+
+
+
+
+const { userID,getUserName } = useGlobalContext();
+
+
+
+
+
+
+type IngredientFormProps = {
+  fn_ingredient : any;
+  defaultValues : any;
+}
+
+const IngredientForm = ({ fn_ingredient, defaultValues }:IngredientFormProps):React.JSX.Element => {
+
+  const { userID } = useGlobalContext();
+
+  const processedDefaultsIngredient: Ingredient | undefined =
+    defaultValues && "ingredient" in defaultValues
+      ? (defaultValues as { ingredient: Ingredient }).ingredient
+      : defaultValues;
+
+  const {
+    //control,
+    register,
+    handleSubmit,
+    setValue,
+    setError,
+    formState: { errors },
+  } = useForm<Ingredient>({
+    defaultValues: processedDefaultsIngredient || {
+        id: 0,
+        idUser: userID,
+        unit: UnitEnum.GRAM,
+        name: "",
+        description: "", 
+        price: 0  
+    },
+  });
+
+  const onSubmit = async (data: Ingredient) => {
+    console.log("onSubmit",data);
+    try {
+      const id = processedDefaultsIngredient?.id || 0;
+      await fn_ingredient({ ...data, id, idUser:userID });
+      setValue("name", "");
+      setValue("description", "");
+      setValue("price", 0);
+      setValue("unit", UnitEnum.GRAM);
+    } catch (error) {
+      const err = error as Error;
+      setError("root", { message: err.message });
+    }
+  };
+
+
+
+
+  return (
+    <h1>Formulaire ingredient soon HERE (add/update)</h1>
+  );
+
+
+
+
+};
+
+
+
+/*
+
+
+
 //const NavBar: React.FC = ({ ...props }) => {
 const IngredientForm: React.FC = () => {
   return (
-
-
     <h1>Formulaire ingredient soon (add/update)</h1>
-
-
   );
 };
+*/
+
 
 export default IngredientForm;
 

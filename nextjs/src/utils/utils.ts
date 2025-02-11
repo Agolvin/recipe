@@ -1,5 +1,5 @@
 
-
+'use server';
 
 import { Bdd } from "@/models/models";
 import fs from "fs";
@@ -12,8 +12,74 @@ const pathBDD = path.resolve(process.cwd(), 'src/utils/bdd.json'); // Assurez-vo
 //const pathBDD = path.resolve(process.cwd(), 'src/utils/bdd_prod.json'); // Assurez-vous que ce chemin est correct
 
 
+
+
+
+
+
+export async function getBDD(): Promise<Bdd> {
+  try {
+
+/*
+    const data = await fs.readFile(pathBDD, "utf8"); // Lecture asynchrone
+    return JSON.parse(data) as Bdd; // Parsing JSON
+*/
+
+const data = await fs.promises.readFile(pathBDD, "utf8"); //recuperation données depuis bdd.json
+const bdd:Bdd = JSON.parse(data) as Bdd; //transfert en json dans variable
+return bdd;
+
+
+
+/*
+    const data = fs.readFileSync(pathBDD, "utf8"); //recuperation données depuis bdd.json
+    const bdd:Bdd = JSON.parse(data) as Bdd; //transfert en json dans variable
+    return bdd;
+    
+    */
+
+  } catch (error) {
+    console.error(`❌ Erreur de lecture de la BDD: ${error}`);
+    throw new Error("Impossible de charger les données.");
+  }
+}
+
+
+
+
+export async function saveBDD(bdd: Bdd): Promise<void> {
+  try {
+
+
+/*
+
+    const jsonData = JSON.stringify(bdd, null, 2); // Formatage JSON propre
+    await fs.writeFile(pathBDD, jsonData, "utf8"); // Écriture asynchrone
+*/
+
+    const jsonData = JSON.stringify(bdd, null, 2); // Formatage JSON propre
+    await fs.promises.writeFile(pathBDD, jsonData, "utf8"); // Écriture asynchrone
+
+
+
+  //  fs.writeFileSync(pathBDD, JSON.stringify(bdd)); //enregistrement de tte la bdd.json   
+
+
+  } catch (error) {
+    console.error(`❌ Erreur de sauvegarde de la BDD: ${error}`);
+    throw new Error("Impossible d'enregistrer les données.");
+  }
+}
+
+
+
+
+
+
+
+
+/*
 export const getBDD = () => {
-  if (!fs.existsSync(pathBDD)) {console.error(`File not found at path: ${pathBDD}`);}
   if(!fs.existsSync(pathBDD))
     {
       console.error(`File not found at path: ${pathBDD}`);      //renvoyer une erreur au front??
@@ -28,16 +94,23 @@ export const getBDD = () => {
 };
 
 export const saveBDD = (bdd: Bdd) => {
-  if (!fs.existsSync(pathBDD)) {console.error(`File not found at path: ${pathBDD}`);}   //renvoyer erreur
   if(!fs.existsSync(pathBDD))
   {
     console.error(`File not found at path: ${pathBDD}`);
-  }
+    throw new Error(`File not found at path: ${pathBDD}`);
+ }
   else
   {
     fs.writeFileSync(pathBDD, JSON.stringify(bdd)); //enregistrement de tte la bdd.json     
   }
 };
+
+*/
+
+
+
+
+
 
 
 

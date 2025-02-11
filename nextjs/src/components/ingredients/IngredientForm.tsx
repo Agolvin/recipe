@@ -53,7 +53,7 @@ const IngredientForm = ({ fn_ingredient, pin_ingredientID }: IngredientFormProps
       reset({
         id: 0,
         idUser: userID,
-        unit: UnitEnum.GRAM,
+        unit: "", //UnitEnum.GRAM
         name: "",
         description: "",
         price: 0,
@@ -102,15 +102,11 @@ const IngredientForm = ({ fn_ingredient, pin_ingredientID }: IngredientFormProps
         />
         {errors.price && <p>{errors.price.message}</p>}
 
-        <label>Unité de mesure :</label>
-        <select {...register("unit", { required: "Veuillez sélectionner une unité" })}>
-          <option value="">Sélectionnez une unité</option>
-          {Object.values(UnitEnum).map((unitKey) => (
-            <option key={unitKey} value={unitKey}>
-              {Units[unitKey].name} ({Units[unitKey].symbol})
-            </option>
-          ))}
-        </select>
+
+
+
+
+
         {errors.unit && <p>{errors.unit.message}</p>}
 
         <button type="submit">Soumettre</button>
@@ -123,4 +119,32 @@ const IngredientForm = ({ fn_ingredient, pin_ingredientID }: IngredientFormProps
 
 export default IngredientForm;
 
-//<button onClick={incrementCpt}>Btn test context cpt: {cpt}</button>
+
+
+
+
+        /*
+
+        
+<label>Unité de mesure :</label>
+<select {...register("unit", { required: "Veuillez sélectionner une unité" })}>
+<option value="">Sélectionnez une unité</option>
+{Object.values(UnitEnum).map((unitKey) => (
+  <option key={unitKey} value={unitKey}>
+    {Units[unitKey].name} ({Units[unitKey].symbol})
+  </option>
+))}
+</select>
+*/
+
+/*
+<label>Unité de mesure :</label>
+<input
+  {...register("unit", {
+    required: "Ce champ est requis",
+    maxLength: { value: 100, message: "Max 100 caractères" },
+    minLength: { value: 5, message: "Min 5 caractères" },
+  })}
+  placeholder="Nom"
+/>
+*/

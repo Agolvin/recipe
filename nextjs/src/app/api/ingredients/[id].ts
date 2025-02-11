@@ -12,8 +12,6 @@ import { Ingredient } from "@/utils/model";
 const allIngredients:Ingredient[] = recipeData.ingredients;
 
 
-
-
 export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
   const ingredient:Ingredient|undefined = allIngredients.find((item) => item.id === Number(params.id));
 

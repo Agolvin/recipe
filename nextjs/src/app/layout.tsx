@@ -1,4 +1,5 @@
 
+import ReactQueryProvider from "@/components/ReactQueryProvider";
 
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
@@ -44,7 +45,12 @@ export default function RootLayout({
 
         <NavBar/>
 
-        <ClientLayout>{children}</ClientLayout>
+        
+        <ReactQueryProvider>
+          <ClientLayout>
+          {children}
+        </ClientLayout>
+        </ReactQueryProvider>
 
         <Footer/>
 
@@ -53,11 +59,6 @@ export default function RootLayout({
         </main>
   
   </div>
-
-
-
-
-
 
 
 

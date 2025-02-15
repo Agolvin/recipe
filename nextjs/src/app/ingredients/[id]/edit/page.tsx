@@ -20,6 +20,7 @@ export default function IngredientUpdate({ params }: { params: { id: string } })
     Bug 2 (ok): erreur 'Turbopack HMR': résolu <br /> 
     Bug 3 (ok): un peu lent à la validation, met du temps à recharger sans bloquer la saisie: optimistic update <br />
     Ajouter retour à la liste et message "update ok" ?<br />
+    soon: gestion unités (gr/kg/L...) <br />
     <br />
     <IngredientForm pin_ingredientID={id} fn_ingredient={saveIngredient} />
   </div>

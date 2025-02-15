@@ -43,33 +43,8 @@ export default function IngredientPage() {
         setLoading(false); // Arrête le chargement
       }
     }
-
-
-
-    /*
-    async function fetchIngredient() {
-      setLoading(true);
-      const result = await getIngredientByID(id);
-
-      if (result.error) {
-        setError(result.error);
-      } else {
-        setIngredient(result.data?? null);  //si undefined, on remplace par null
-      }
-      setLoading(false); 
-    }
-*/
-
-
-
-
     fetchIngredient();
   }, [id]);
-
-
-
-
-
 
 
   if (loading) {
@@ -90,7 +65,7 @@ export default function IngredientPage() {
       <p>Description: {ingredient.description}</p>
       <p>User: {ingredient.idUser}</p>
       <p>Prix: {ingredient.price}</p>
-      <p>Unitté: {ingredient.unit}</p>
+      <p>Unité: {ingredient.unit} (next update maybe...)</p>
     </div>
   );
 

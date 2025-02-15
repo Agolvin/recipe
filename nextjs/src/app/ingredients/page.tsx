@@ -39,6 +39,7 @@ useEffect(() => {
    <div >
     
     <h1>Liste ingerdients de user {getUserName()} ({userID})</h1>
+    soon: gestion unités (gr/kg/L...) <br />
       <ul>
         <br />
             <li >

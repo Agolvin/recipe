@@ -254,7 +254,7 @@
       "idUser": 3,
       "unit": "GRAM",
       "name": "test dfgdh2.4",
-      "description": "le mien 2.8",
+      "description": "le mien 2.9",
       "price": 17.02
     },
     {
@@ -295,6 +295,30 @@
       "name": "test de addIngredient server action",
       "description": "desc",
       "price": 137
+    },
+    {
+      "id": 14,
+      "idUser": 3,
+      "name": "fsegsdeg",
+      "description": "tyjhvghdr",
+      "price": 42542,
+      "unit": ""
+    },
+    {
+      "id": 15,
+      "idUser": 3,
+      "name": "nouvel ing",
+      "description": "desc add",
+      "price": 666,
+      "unit": ""
+    },
+    {
+      "id": 16,
+      "idUser": 4,
+      "name": "Ingredient test",
+      "description": "Description test",
+      "price": 10.5,
+      "unit": ""
     }
   ],
   "ingredientstmp": []

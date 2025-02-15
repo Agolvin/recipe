@@ -1,13 +1,13 @@
+
+
+
+export {};
+
 /*
-
-
 
 import { NextRequest } from "next/server";
 import recipeData from '@/utils/bdd.json';
 import { Ingredient } from "@/utils/model";
-
-
-
 
 let allIngredients:Ingredient[] = recipeData.ingredients;
 

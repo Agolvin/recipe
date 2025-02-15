@@ -1,12 +1,21 @@
+
+
+'use client';
+
+
+import { useGlobalContext } from "@/context/globlaContext";
 import Image from "next/image";
 
 export default function Home() {
+
+
+
+
+  const { userID,initUser,getUserName,getUserNameByID } = useGlobalContext();
+
+
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        
-
-
 
         <Image
           className="dark:invert"
@@ -17,79 +26,35 @@ export default function Home() {
           priority
         />
 
+<div>Utilisateur actuel: {getUserName()}({userID})</div>
 
-       
-<p> Page Accueil NextJS </p>
-
+<div style={{ display: "flex", gap: "10px" }}>
+Sélectionner un utilisateur:
+<button onClick={() => initUser(1)}>{getUserNameByID(1)}</button>
+<button onClick={() => initUser(2)}>{getUserNameByID(2)}</button>
+<button onClick={() => initUser(3)}>{getUserNameByID(3)}</button>
+<button onClick={() => initUser(4)}>{getUserNameByID(4)}</button>
+</div>
 <p> Migration Node/React vers fullstack NextJS (15.1.4) en cours</p>
 
 <p> 
 Fonctionnalités disponnibles: <br />
-- Ingrédients: Liste <br />
+- Utilisateurs: Sélection <br />
+- Gestion données par utilisateur <br />
+- Ingrédients: Liste/add/update <br />
 - Recettes: Liste <br />
 </p> 
 
 <p> 
 A venir rapidement: <br />
-- Ingrédients: Ajout/Modification <br />
+- Ingrédients: unité ?? <br />
 </p> 
 
 <p> 
 Un peu après: <br />
-- Utilisateurs: Sélection <br />
-- Gestion données par utilisateur <br />
-</p>   
-        
+- Gestion Recettes: add/update <br />
+</p>  
+</div>
 
-   
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
   );
 }

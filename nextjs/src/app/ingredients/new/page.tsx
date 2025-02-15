@@ -1,70 +1,42 @@
-'use client';
 
-import { useGlobalContext } from "@/context/globlaContext";
-import { Ingredient } from "@/utils/model";
-import Link from "next/link";
-import { getIngredientsUser } from "@/actions/ingredientsActions";
-import { useEffect, useState } from "react";
+"use client";
+import IngredientForm from "@/components/ingredients/IngredientForm";
+import { addIngredient } from "@/actions/ingredientsActions";
+
+export default function Home() {
+//export default function Home({ params }: { params: { id: string } }) {
+  
+  const id:number = 0; // Récupère l'ID depuis l'URL
+
+  return (
+  <div>
+    add en test<br />
+    soon: gestion unités (gr/kg/L...) <br />
+
+    <br />
+    <IngredientForm pin_ingredientID={id} fn_ingredient={addIngredient} />
+  </div>
+  
+  );
+}
+
+
+
+/*
+import { addIngredient } from "@/actions/ingredientsActions";
 
 export default function Home() {
 
-const { userID,getUserName } = useGlobalContext();
+  const id = 0;
 
-const [usrIngredients, setUsrIngredients] = useState<Ingredient[]>([]);
-/* avec rechargement en fonction de modif de userID
-useEffect(() => {
-  getIngredientsUser(userID).then((data) => {
-    setUsrIngredients(data);
-  });
-}, [userID]); 
-*/
-
-
-useEffect(() => {
-    getIngredientsUser(userID).then((data) => {
-      setUsrIngredients(data);
-    });
-  }); 
-
-
-
-
-
-
-  if(!userID)
-    return (<div>Veuillez séletionner un utilisateur dans la page accueil.</div>)
-
-  else
   return (
    <div >
-    
-    <h1>Liste ingerdients de user {getUserName()} ({userID})</h1>
-      <ul>
-        <br />
-            <li >
-                <Link href={`/ingredients/new`}>+ Nouvel ingrédient.</Link>
-            </li>
-            <br />
-        {usrIngredients.map((r) => {
-            return (
-              <li key={r.id}>
-                <Link href={`/ingredients/${r.id}`}>- {r.name}(id:{r.id}): {r.description} </Link>__________<Link href={`/ingredients/${r.id}/edit`}>Modif</Link>
-              </li>
-            );
-          })}
-
-      </ul>
+      Nouvel ingrédient:
+    <IngredientForm fn_ingredient={addIngredient} />
   </div>
   );
-
-
-
-
-
-
-
 }
-
+*/
 
 
 

@@ -1,5 +1,5 @@
 
-
+/*
 
 import { Ingredient } from "@/utils/model";
 import recipeData from '@/utils/bdd.json';
@@ -16,7 +16,7 @@ export function addIngredient(p_Ing:Ingredient){
   allIngredients.push(p_Ing);
   return p_Ing;
 }
-
+*/
 
 
 

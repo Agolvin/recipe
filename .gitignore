@@ -1,2 +1,4 @@
 node_modules
 nextjs/src/utils/bdd_prod.json
+backend/**/*
+frontend/**/*

@@ -203,9 +203,9 @@
   "ingredients": [
     {
       "id": 1,
-      "idUser": 1,
+      "idUser": 0,
       "unit": "GRAM",
-      "name": "Sucre ",
+      "name": "Sucre..",
       "description": "Fine granulated white sugar",
       "price": 3
     },
@@ -251,19 +251,18 @@
     },
     {
       "id": 7,
+      "idUser": 3,
       "unit": "GRAM",
-      "name": "test dfgdh2.3",
-      "description": "le mien",
-      "price": 17,
-      "idUser": 3
+      "name": "test dfgdh2.4",
+      "description": "le mien 2.8",
+      "price": 17.02
     },
     {
       "id": 8,
-      "idUser": 3,
       "unit": "KILOGRAM",
       "name": "Farine",
       "description": "Farine de blé standard",
-      "price": 1.37
+      "price": 1.39
     },
     {
       "id": 9,

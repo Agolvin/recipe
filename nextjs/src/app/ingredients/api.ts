@@ -1,12 +1,16 @@
 
+/*
+
+
 import {Ingredient} from "@/utils/model";
-import recipeData from '@/utils/bdd.json';
+//import recipeData from '@/utils/bdd.json';
+import { getAllIngredients } from "@/actions/ingredientsActions";
 
+//code exporté dans les serverActions
 
-
-const getUserIngredients = (p_idUser:number) => {//remettre async???
+const getUserIngredients = (p_idUser:number) => {
   console.log("debut getUserIngredients");
-  let usrIngredient:Ingredient[] = recipeData.ingredients;   //A faire remettre le unit(string) en unitEnum 
+  let usrIngredient:Ingredient[] = getAllIngredients;   
   console.log("ingredients complet",usrIngredient);
   usrIngredient = usrIngredient.filter(ing => ing.idUser == p_idUser)
   console.log("ingredients filtré",usrIngredient);
@@ -14,7 +18,7 @@ const getUserIngredients = (p_idUser:number) => {//remettre async???
 };
 
 export default getUserIngredients ;
-
+*/
 
 
 

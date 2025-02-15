@@ -6,10 +6,10 @@ import { getBDD } from "@/utils/utils";
 import { saveBDD } from "@/utils/utils";
 import { Bdd } from "@/models/models";
 
-export async function getIngredientsUser(input: { p_idUser: number }) {
+export async function getIngredientsUser(p_idUser: number) {
         const bdd:Bdd = await getBDD();
         let usrIngredient:Ingredient[] = bdd.ingredients; 
-        usrIngredient = usrIngredient.filter(ing => ing.idUser === input.p_idUser)
+        usrIngredient = usrIngredient.filter(ing => ing.idUser === p_idUser)
         return usrIngredient
   }
 
@@ -18,6 +18,11 @@ export async function getIngredientsUser(input: { p_idUser: number }) {
 export async function getAllIngredientsTEST() {
     const bdd:Bdd = await getBDD();
     return bdd.ingredients;
+}
+
+export async function getAllIngredients() {
+  const bdd:Bdd = await getBDD();
+  return bdd.ingredients;
 }
 
 export async function addIngredient(p_ing: Ingredient) {

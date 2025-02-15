@@ -6,6 +6,18 @@ const nextConfig: NextConfig = {
 
     serverActions: {}, // Activation de serverActions
     
+
+    turbo: {
+      rules: {
+        resolveAlias: {
+          "src/utils": false, // Empêche Turbopack d'inclure ce dossier
+        },
+      }
+    }
+
+
+
+
   },
 
   webpack(config) {
@@ -17,6 +29,8 @@ const nextConfig: NextConfig = {
     return config;
   }
 
+
+  
 
 };
 

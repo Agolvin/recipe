@@ -1,20 +1,45 @@
 
+"use client";
 
+import { useParams } from "next/navigation";
 import IngredientForm from "@/components/ingredients/IngredientForm";
+import { addIngredient } from "@/actions/ingredientsActions";
 
+export default function Home({ params }: { params: { id: string } }) {
+
+  const param = useParams() // Récupère l'ID depuis l'URL
+  const id:number = Number(param.id); // Récupère l'ID depuis l'URL
+
+  if (!id) return <p>Erreur : ID manquant.</p>;
+
+  return (
+  
+  <div>
+    add en test<br />
+    <br />
+    <IngredientForm pin_ingredientID={id} fn_ingredient={addIngredient} />
+  </div>
+  
+  );
+}
+
+
+
+/*
+import { addIngredient } from "@/actions/ingredientsActions";
 
 export default function Home() {
 
-
+  const id = 0;
 
   return (
    <div >
       Nouvel ingrédient:
-      <IngredientForm/>
+    <IngredientForm fn_ingredient={addIngredient} />
   </div>
   );
 }
-
+*/
 
 
 

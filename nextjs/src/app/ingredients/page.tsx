@@ -2,17 +2,39 @@
 
 import { useGlobalContext } from "@/context/globlaContext";
 import { Ingredient } from "@/utils/model";
-import getUserIngredients from "@/app/ingredients/api"
 import Link from "next/link";
+import { getIngredientsUser } from "@/actions/ingredientsActions";
+import { useEffect, useState } from "react";
 
 export default function Home() {
 
-//const { userID,initUser,getUserName,getUserNameByID } = useGlobalContext();
 const { userID,getUserName } = useGlobalContext();
 
-const usrIngredient:Ingredient[] = getUserIngredients(userID);
+const [usrIngredients, setUsrIngredients] = useState<Ingredient[]>([]);
+/* avec rechargement en fonction de modif de userID
+useEffect(() => {
+  getIngredientsUser(userID).then((data) => {
+    setUsrIngredients(data);
+  });
+}, [userID]); 
+*/
 
 
+useEffect(() => {
+    getIngredientsUser(userID).then((data) => {
+      setUsrIngredients(data);
+    });
+  }, []); 
+
+
+
+
+
+
+  if(!userID)
+    return (<div>Veuillez séletionner un utilisateur dans la page d'accueil.</div>)
+
+  else
   return (
    <div >
     
@@ -23,7 +45,7 @@ const usrIngredient:Ingredient[] = getUserIngredients(userID);
                 <Link href={`/ingredients/new`}>+ Nouvel ingrédient.</Link>
             </li>
             <br />
-        {usrIngredient.map((r) => {
+        {usrIngredients.map((r) => {
             return (
               <li key={r.id}>
                 <Link href={`/ingredients/${r.id}`}>- {r.name}(id:{r.id}): {r.description} </Link>__________<Link href={`/ingredients/${r.id}/edit`}>Modif</Link>
@@ -34,6 +56,13 @@ const usrIngredient:Ingredient[] = getUserIngredients(userID);
       </ul>
   </div>
   );
+
+
+
+
+
+
+
 }
 
 

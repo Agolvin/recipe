@@ -31,13 +31,6 @@ export default function IngredientPage() {
 
   useEffect(() => {
 
-
-
-
-
-
-
-
     async function fetchIngredient() {
       setLoading(true);
       setError(null); // Réinitialise l'erreur au début de chaque fetch

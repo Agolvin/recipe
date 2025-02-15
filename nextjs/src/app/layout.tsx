@@ -42,17 +42,14 @@ export default function RootLayout({
         
 
 
-
-        <NavBar/>
-
-        
         <ReactQueryProvider>
           <ClientLayout>
-          {children}
-        </ClientLayout>
+            <NavBar/>
+            {children}
+            <Footer/>
+          </ClientLayout>
         </ReactQueryProvider>
 
-        <Footer/>
 
 
 

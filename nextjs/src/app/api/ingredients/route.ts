@@ -1,20 +1,11 @@
+/*
 
 
 
-// permet de récupérer une liste d'ingredient ave filtres optionnels (user, categorie, prix...) mais pas l'id
-// retour: Ingredient[]
-
-
-//import { NextRequest, NextResponse } from "next/server";
 import { NextRequest } from "next/server";
 import recipeData from '@/utils/bdd.json';
 import { Ingredient } from "@/utils/model";
 
-
-//== comparaison en convertissnt des types potentiellement differents A BANNIR
-//=== comparaison sur meme types, erreur sinon A UTILISER
-
-//accessible depuis http://localhost:3000/api/ingredients
 
 
 
@@ -47,6 +38,10 @@ export async function GET(request:NextRequest) {
     return Response.json({ allIngredients });
 
 }
+*/
+
+
+
 
 
 

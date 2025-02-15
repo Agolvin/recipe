@@ -2,7 +2,7 @@
 'use client'
 
 import { testAction } from "../../actions/testActions";
-import { getIngredientsUser } from "../../actions/ingredientsActions";
+//import { getIngredientsUser } from "../../actions/ingredientsActions";
 import { addIngredient } from "../../actions/ingredientsActions";
 import { Ingredient } from "@/utils/model";
 import { getAllIngredientsTEST } from "../../actions/ingredientsActions";
@@ -15,12 +15,13 @@ export default function Home() {
     alert(result); // Affiche le message retourné par le serveur
   };
 
+  /*
   const handleSubmit2 = async () => {
     const input = { p_idUser: 1};
     const result = await getIngredientsUser(input); // Appel à la Server Action
     alert(result); // Affiche le message retourné par le serveur
   };
-
+*/
 
 
 
@@ -69,13 +70,15 @@ export default function Home() {
 
 
       <button onClick={handleSubmit}>Test server action</button>
-      <button onClick={handleSubmit2}>Test ingredients user 1</button>
       <button onClick={handleSubmit3}>Test addIngredient (ne pas spamer please), test désactivé</button>
       <button onClick={handleSubmit4}>getAllIngredientsTEST</button>
       </main>
     </div>
   );
 }
+
+
+//<button onClick={handleSubmit2}>Test ingredients user 1</button>
 
 
 //<button onClick={handleSubmit3}>Test addIngredient (ne pas spamer please), test désactivé</button>

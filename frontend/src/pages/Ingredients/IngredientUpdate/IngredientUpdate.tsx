@@ -9,6 +9,10 @@ import { saveIngredient } from "../IngredientForm/api";
 
 
 function IngredientUpdate() {
+
+
+
+
   const { id } = useParams();
 
   const RELOAD_QUERY_OPTIONS = {
@@ -46,6 +50,8 @@ function IngredientUpdate() {
     return <p>Aucune donnée trouvée pour cet ingrédient.</p>;
   }
 
+
+
   const processedDefaultsIngredient: Ingredient = {
     id: data.id,
     idUser: data.idUser || 0,          
@@ -62,7 +68,12 @@ function IngredientUpdate() {
     />
   );
 
+
+
+
 }
 
 export default IngredientUpdate;
 
+
+//return (<h1>formulaire soon</h1>)

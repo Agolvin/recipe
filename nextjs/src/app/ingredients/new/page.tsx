@@ -3,14 +3,10 @@
 import IngredientForm from "@/components/ingredients/IngredientForm";
 import { addIngredient } from "@/actions/ingredientsActions";
 
-export default function Home({ params }: { params: { id: string } }) {
-
- // const param = useParams() // Récupère l'ID depuis l'URL
-  //const id:number = Number(param.id); // Récupère l'ID depuis l'URL
-
+export default function Home() {
+//export default function Home({ params }: { params: { id: string } }) {
+  
   const id:number = 0; // Récupère l'ID depuis l'URL
-
-  //if (!id) return <p>Erreur : ID manquant.</p>;
 
   return (
   <div>

@@ -37,8 +37,12 @@ export default function IngredientPage() {
       try {
         const data = await getIngredientByID(id); // Appelle la fonction
         setIngredient(data); // Met à jour l'état avec l'ingrédient récupéré
-      } catch (err: any) {
-        setError(err.message || "Une erreur s'est produite."); // Gère les exceptions
+      } catch (err) {
+        if (err instanceof Error) {
+          setError(err.message); // Gère les exceptions en utilisant `message`
+        } else {
+          setError("Une erreur s'est produite."); // Si ce n'est pas une erreur standard
+        }
       } finally {
         setLoading(false); // Arrête le chargement
       }

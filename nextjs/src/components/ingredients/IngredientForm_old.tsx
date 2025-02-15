@@ -1,27 +1,12 @@
-
+/*
 'use client';
 
-
-
 import React from "react";
-//import Link from "next/link";
-
-
-
 import { Ingredient, UnitEnum, Units } from "@/utils/model";
 import { useForm } from "react-hook-form";
-
-
-
-
 import { useGlobalContext } from "@/context/globlaContext";
 
-
-
-
 const { userID,getUserName } = useGlobalContext();
-
-
 
 
 type IngredientFormProps = {
@@ -83,22 +68,16 @@ const IngredientForm = ({ fn_ingredient, defaultValues }:IngredientFormProps):Re
 
 };
 
+export default IngredientForm;
 
-
-/*
-
-
-
-//const NavBar: React.FC = ({ ...props }) => {
-const IngredientForm: React.FC = () => {
-  return (
-    <h1>Formulaire ingredient soon (add/update)</h1>
-  );
-};
 */
 
 
-export default IngredientForm;
+
+
+
+
+
 
 
 

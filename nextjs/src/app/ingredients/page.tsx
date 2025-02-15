@@ -24,7 +24,7 @@ useEffect(() => {
     getIngredientsUser(userID).then((data) => {
       setUsrIngredients(data);
     });
-  }, []); 
+  }); 
 
 
 
@@ -32,14 +32,13 @@ useEffect(() => {
 
 
   if(!userID)
-    return (<div>Veuillez séletionner un utilisateur dans la page d'accueil.</div>)
+    return (<div>Veuillez séletionner un utilisateur dans la page accueil.</div>)
 
   else
   return (
    <div >
     
     <h1>Liste ingerdients de user {getUserName()} ({userID})</h1>
-    soon: gestion unités (gr/kg/L...) <br />
       <ul>
         <br />
             <li >

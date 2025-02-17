@@ -11,24 +11,23 @@ export default function Home() {
 const { userID,getUserName } = useGlobalContext();
 
 const [usrIngredients, setUsrIngredients] = useState<Ingredient[]>([]);
-/* avec rechargement en fonction de modif de userID
+
+
+// avec rechargement en fonction de modif de userID
 useEffect(() => {
   getIngredientsUser(userID).then((data) => {
     setUsrIngredients(data);
   });
 }, [userID]); 
-*/
 
 
+/*
 useEffect(() => {
     getIngredientsUser(userID).then((data) => {
       setUsrIngredients(data);
     });
   }); 
-
-
-
-
+*/
 
 
   if(!userID)
@@ -56,13 +55,6 @@ useEffect(() => {
       </ul>
   </div>
   );
-
-
-
-
-
-
-
 }
 
 

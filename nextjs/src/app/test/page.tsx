@@ -10,7 +10,7 @@ import Link from "next/link";
 export default function Home() {
 
   const handleSubmit = async () => {
-    const input = { name: "Ale Candas"};
+    const input = { name: "name test"};
     const result = await testAction(input); // Appel à la Server Action
     alert(result); // Affiche le message retourné par le serveur
   };

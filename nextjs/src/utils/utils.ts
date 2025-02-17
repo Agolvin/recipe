@@ -72,9 +72,8 @@ export async function getBDDa(): Promise<Bdd> {
 // Lecture des données depuis Redis
 export async function getBDD(): Promise<Bdd> {
   try {
-    var data = await redis.get("bdd"); // Récupère le JSON stocké
+    let data = await redis.get("bdd"); // Récupère le JSON stocké
     if (!data) throw new Error("Aucune donnée trouvée dans Redis.");
-    const bddsting = data as string;
     if (!data) {
       throw new Error("No data");
     }

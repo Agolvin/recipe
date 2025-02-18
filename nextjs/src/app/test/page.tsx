@@ -3,8 +3,8 @@
 
 import { testAction } from "../../actions/testActions";
 //import { getIngredientsUser } from "../../actions/ingredientsActions";
-import { addIngredient } from "../../actions/ingredientsActions";
-import { Ingredient } from "@/utils/model";
+//import { addIngredient } from "../../actions/ingredientsActions";
+//import { Ingredient } from "@/utils/model";
 import { getAllIngredientsTEST } from "../../actions/ingredientsActions";
 import Link from "next/link";
 export default function Home() {
@@ -25,7 +25,7 @@ export default function Home() {
 
 
 
-
+/*
   const handleSubmit3 = async () => {
     const input:Ingredient = {
       id: 1851684,
@@ -39,7 +39,7 @@ export default function Home() {
     alert(result); 
   };
 
-
+*/
 
   const handleSubmit4 = async () => {
     const result = await getAllIngredientsTEST(); // Appel à la Server Action
@@ -70,7 +70,6 @@ export default function Home() {
 
 
       <button onClick={handleSubmit}>Test server action</button>
-      <button onClick={handleSubmit3}>Test addIngredient (ne pas spamer please), test désactivé</button>
       <button onClick={handleSubmit4}>getAllIngredientsTEST</button>
       </main>
     </div>
@@ -80,5 +79,6 @@ export default function Home() {
 
 //<button onClick={handleSubmit2}>Test ingredients user 1</button>
 
+//<button onClick={handleSubmit3}>Test addIngredient (ne pas spamer please), test désactivé</button>
 
 //<button onClick={handleSubmit3}>Test addIngredient (ne pas spamer please), test désactivé</button>

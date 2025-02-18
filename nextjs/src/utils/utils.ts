@@ -1,7 +1,7 @@
 
 'use server';
 
-import { Bdd } from "@/models/models";
+import { Bdd } from "./model";
 import fs from "fs";
 import path from "path";
 import { Redis } from "@upstash/redis";

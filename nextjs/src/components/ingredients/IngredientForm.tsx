@@ -1,3 +1,7 @@
+
+
+
+
 "use client";
 
 import { getIngredientByID } from "@/actions/ingredientsActions";
@@ -58,21 +62,26 @@ const IngredientForm = ({ fn_ingredient, pin_ingredientID }: IngredientFormProps
   const onSubmit = async (formData: Ingredient) => {
     try {
       await fn_ingredient({ ...formData, idUser: userID });
-
+      alert("Ingrédient enregistré");
       // Invalider le cache pour recharger les données, à retirer si nécessaire
       if (ingredientID && ingredientID !== "0") {
         queryClient.invalidateQueries({ queryKey: ["ingredient", ingredientID] });
       }
+
     } catch (err) {
       setError("root", { message: (err as Error).message });
     }
   };
 
-  if (isLoading) return <p>Chargement des données...</p>;
-  if (isError) return <p>Erreur : {error?.message}</p>;
+  //if (isLoading) return <p>Chargement des données...</p>;
+  //if (isError) return <p>Erreur : {error?.message}</p>;
 
   return (
     <form className="grid gap-2" onSubmit={handleSubmit(onSubmit)}>
+
+    {isLoading && <p>Loading...</p>}
+    {isError && <p>Erreur : {error?.message}</p>}
+
       <h2>{pin_ingredientID === 0 ? "Ajouter un ingrédient" : "Modifier un ingrédient"}</h2>
 
       <label>Nom :</label>

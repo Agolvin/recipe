@@ -5,9 +5,8 @@ import { createContext, useState, useContext, ReactNode } from "react";
 //import { Ingredient } from "@/utils/model";
 
 
-import { useGlobalContext } from "@/context/globlaContext";
-const { userID } = useGlobalContext();
-
+//import { useGlobalContext } from "@/context/globlaContext";
+//const { userID } = useGlobalContext();
 
 
 interface IngredientContextType {

@@ -3,8 +3,8 @@
 
 import { testAction } from "../../actions/testActions";
 //import { getIngredientsUser } from "../../actions/ingredientsActions";
-import { addIngredient } from "../../actions/ingredientsActions";
-import { Ingredient } from "@/utils/model";
+//import { addIngredient } from "../../actions/ingredientsActions";
+//import { Ingredient } from "@/utils/model";
 import { getAllIngredientsTEST } from "../../actions/ingredientsActions";
 import Link from "next/link";
 export default function Home() {

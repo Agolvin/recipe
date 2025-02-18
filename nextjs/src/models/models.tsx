@@ -1,4 +1,6 @@
-//interface = structure
+
+/*
+
 
 export interface Bdd {
   recipes: Recipe[];
@@ -47,24 +49,12 @@ export const Units: Record<UnitEnum, { name: string; symbol: string }> = {
 };
 
 
-/*PARCOURS
-Object.entries(Units).forEach(([key, unit]) => {
-  console.log(`${key}: ${unit.name} (${unit.abbreviation})`);
-});
-*/
-
-
-/*
-export function isRecipe (obj: any) : obj is Recipe {
-  return(
-    typeof obj === "object" &&
-    obj !== null &&
-    typeof obj.id=== "number" &&
-    typeof obj.name=== "string" &&
-    typeof obj.description=== "string"
-  );
+export interface Step {
+  // id: number;        // pour passage un jour sur une vrai bdd
+  name: string;         // optionnel??
+  description: string; 
 }
-*/
+
 
 
 
@@ -120,34 +110,59 @@ export interface IngredientQte {
 }
 
 
+*/
 
-/*
-export function isRecipe (obj: any) : obj is Recipe {
-  return(
-    typeof obj === "object" &&
-    obj !== null &&
-    typeof obj.id === "number" &&
-    typeof obj.name === "string" &&
-    typeof obj.description === "string" &&
 
-    Array.isArray(obj.steps) && 
-    obj.steps.every(isStep) //&&
+
+
+
+
+
+
+
+
+
+
+
+
+//export function isRecipe (obj: any) : obj is Recipe {
+//  return(
+//    typeof obj === "object" &&
+//    obj !== null &&
+//    typeof obj.id=== "number" &&
+//    typeof obj.name=== "string" &&
+//    typeof obj.description=== "string"
+//  );
+//}
+
+
+
+//export function isRecipe (obj: any) : obj is Recipe {
+// return(
+//    typeof obj === "object" &&
+//    obj !== null &&
+//    typeof obj.id === "number" &&
+//    typeof obj.name === "string" &&
+//    typeof obj.description === "string" &&
+//
+//    Array.isArray(obj.steps) && 
+//    obj.steps.every(isStep) //&&
 
     
-    Array.isArray(obj.ingredientsQte) && 
-    obj.ingredientsQte.every((elm: any) => {
-      return (
-        typeof elm === "object" &&
-        elm !== null &&
-        typeof elm.quantity === "number" && 
-        typeof elm.ingredient === "object" &&
-        isIngredient(elm.ingredient)
-      );
-    })
-  )
-  ;
-}
-*/
+//    Array.isArray(obj.ingredientsQte) && 
+//    obj.ingredientsQte.every((elm: any) => {
+//      return (
+//        typeof elm === "object" &&
+//        elm !== null &&
+//        typeof elm.quantity === "number" && 
+//        typeof elm.ingredient === "object" &&
+//        isIngredient(elm.ingredient)
+//      );
+//    })
+//  )
+//  ;
+//}
+
 
 
 
@@ -184,11 +199,6 @@ export function isIngredient (obj: any) : obj is Ingredient {
 }
 */
 
-export interface Step {
-  // id: number;        // pour passage un jour sur une vrai bdd
-  name: string;         // optionnel??
-  description: string; 
-}
 
 
 /*

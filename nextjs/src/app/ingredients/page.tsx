@@ -30,13 +30,27 @@ useEffect(() => {
 */
 
 
-  if(!userID)
-    return (<div>Veuillez séletionner un utilisateur dans la page accueil.</div>)
+
+
+//{isLoading && <p>Loading...</p>}
+//{isError && <p>Erreur : {error?.message}</p>}
+/*
+if(!userID)
+  return (<div>Veuillez séletionner un utilisateur dans la page accueil.</div>)
+
+{isLoading && <p>Loading...</p>}
+*/
+
+
+
+if(!userID)
+  return (<div>Veuillez séletionner un utilisateur dans la page accueil.</div>)
+
+
 
   else
   return (
    <div >
-    
     <h1>Liste ingerdients de user {getUserName()} ({userID})</h1>
       <ul>
         <br />
@@ -44,7 +58,7 @@ useEffect(() => {
                 <Link href={`/ingredients/new`}>+ Nouvel ingrédient.</Link>
             </li>
             <br />
-        {usrIngredients.map((r) => {
+            {usrIngredients.map((r) => {
             return (
               <li key={r.id}>
                 <Link href={`/ingredients/${r.id}`}>- {r.name}(id:{r.id}): {r.description} </Link>__________<Link href={`/ingredients/${r.id}/edit`}>Modif</Link>

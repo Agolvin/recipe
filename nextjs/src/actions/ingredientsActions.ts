@@ -60,7 +60,6 @@ export async function updateIngredient(p_ing: Ingredient) {
 
 
 export async function saveIngredient(p_ing: Ingredient) {
-
   if (p_ing.id > 0) {
     await updateIngredient(p_ing);
   } else {

@@ -6,7 +6,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
-import ClientLayout from "./clientLayout";
+import ClientLayout from "./clientLayout";    //inclu les differents contextes
+
 
 
 
@@ -40,24 +41,15 @@ export default function RootLayout({
 <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
         
-
-
         <ReactQueryProvider>
-          <ClientLayout>
+          <ClientLayout>    
             <NavBar/>
             {children}
             <Footer/>
           </ClientLayout>
         </ReactQueryProvider>
-
-
-
-
         </main>
-  
   </div>
-
-
 
 
       </body>

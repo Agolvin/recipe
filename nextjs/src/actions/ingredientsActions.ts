@@ -4,7 +4,8 @@
 import { Ingredient } from "@/utils/model";
 import { getBDD } from "@/utils/utils";
 import { saveBDD } from "@/utils/utils";
-import { Bdd } from "@/models/models";
+//import { Bdd } from "@/utils/models";
+import { Bdd } from "@/utils/model";
 
 export async function getIngredientsUser(p_idUser: number) {
         const bdd:Bdd = await getBDD();
@@ -60,7 +61,6 @@ export async function updateIngredient(p_ing: Ingredient) {
 
 
 export async function saveIngredient(p_ing: Ingredient) {
-
   if (p_ing.id > 0) {
     await updateIngredient(p_ing);
   } else {

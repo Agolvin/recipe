@@ -2,66 +2,61 @@
 'use server'
 
 import { Ingredient } from "@/utils/model";
+import { Recipe } from "@/utils/model";
 import { getBDD } from "@/utils/utils";
 import { saveBDD } from "@/utils/utils";
 import { Bdd } from "@/utils/model";
 
-export async function getIngredientsUser(p_idUser: number) {
-  const bdd:Bdd = await getBDD();
-  let usrIngredient:Ingredient[] = bdd.ingredients; 
-  usrIngredient = usrIngredient.filter(ing => ing.idUser === p_idUser)
-  return usrIngredient
-}
 
-export async function getAllIngredientsTEST() {
+
+export async function getRecipesUser(p_idUser: number) {
     const bdd:Bdd = await getBDD();
-    return bdd.ingredients;
+    let usrRecipes:Recipe[] = bdd.recipes; 
+    usrRecipes = usrRecipes.filter(ing => ing.idUser === p_idUser)
+    return usrRecipes
 }
 
-export async function getAllIngredients() {
-  const bdd:Bdd = await getBDD();
-  return bdd.ingredients;
-}
-
-export async function addIngredient(p_ing: Ingredient) {
+export async function getAllRecipes() {
     const bdd:Bdd = await getBDD();
-    const maxId = bdd.ingredients.reduce(       
+    return bdd.recipes;
+}
+
+export async function getRecipeByID(id: number): Promise<Recipe> {
+    const bdd:Bdd = await getBDD();
+    const recipe = bdd.recipes.find(r => r.id === id);
+    if (!recipe) {
+      throw new Error("Recette non trouvée");
+    }
+    return recipe;
+}
+
+export async function addRecipe(p_rec: Recipe) {
+    const bdd:Bdd = await getBDD();
+    const maxId = bdd.recipes.reduce(       
       (max, item) => Math.max(max, item.id), 0
     );
-    p_ing.id = maxId + 1;
-    console.log(p_ing);
-    bdd.ingredients.push(p_ing);       
+    p_rec.id = maxId + 1;
+    console.log(p_rec);
+    bdd.recipes.push(p_rec);       
     saveBDD(bdd);                              
-    return p_ing;
+    return p_rec;
 }
 
-
-export async function getIngredientByID(id: number): Promise<Ingredient> {
+export async function updateRecipe(p_rec: Recipe) {
   const bdd:Bdd = await getBDD();
-  const ingredient = bdd.ingredients.find(r => r.id === id);
-  if (!ingredient) {
-    throw new Error("Ingrédient non trouvé");
-  }
-  return ingredient;
-}
-
-
-export async function updateIngredient(p_ing: Ingredient) {
-  const bdd:Bdd = await getBDD();
-  const ind = bdd.ingredients.findIndex((elt) => elt.id === p_ing.id);
-  bdd.ingredients[ind] = p_ing;   
+  const ind = bdd.recipes.findIndex((elt) => elt.id === p_rec.id);
+  bdd.recipes[ind] = p_rec;   
   saveBDD(bdd);                              
-  return p_ing;
+  return p_rec;
 }
 
-
-export async function saveIngredient(p_ing: Ingredient) {
-  if (p_ing.id > 0) {
-    await updateIngredient(p_ing);
+export async function saveRecipe(p_rec: Recipe) {
+  if (p_rec.id > 0) {
+    await updateRecipe(p_rec);
   } else {
-    await addIngredient(p_ing);
+    await addRecipe(p_rec);
   }
-  return p_ing;
+  return p_rec;
 }
 
 

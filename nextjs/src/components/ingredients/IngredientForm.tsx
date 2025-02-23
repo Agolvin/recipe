@@ -14,6 +14,84 @@ import { useGlobalContext } from "@/context/globlaContext";
 type IngredientFormProps = {
   
   onSubmit: (data: Ingredient) => void;
+  initialData?: Ingredient| null;
+  //fn_ingredient: (p_ingredient: Ingredient) => Promise<Ingredient>;
+};
+
+const IngredientForm = ({ onSubmit, initialData }: IngredientFormProps) => {
+
+  const { userID } = useGlobalContext();
+
+  const { register, handleSubmit, setValue } = useForm<Ingredient>({
+    defaultValues: initialData || { 
+      id: 0,
+      idUser: userID,  
+      unit: "",      
+      name: "",
+      description: "", 
+      price: 0,   
+    },
+  });
+
+
+  useEffect(() => {
+    if (initialData) {
+      // Remplir le formulaire avec les données d'édition
+      setValue("name", initialData.name);
+      setValue("description", initialData.description);
+      setValue("price", initialData.price);
+      setValue("unit", initialData.unit);
+    }
+  }, [initialData, setValue]);
+
+
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)} className="grid gap-4">
+    <label>Nom</label>
+    <input {...register("name", { required: "Nom est requis" })} />
+
+
+    <label>Description</label>
+    <input {...register("description")} />
+
+
+    <label>Unit</label>
+    <input {...register("unit")} />
+
+
+    <label>price</label>
+    <input {...register("price")} />
+
+
+    <button type="submit">Enregistrer</button>
+  </form>
+  );
+};
+
+export default IngredientForm;
+
+
+
+
+/*
+
+
+"use client";
+
+//import { getIngredientByID } from "@/actions/ingredientsActions";
+import { Ingredient } from "@/utils/model";
+import { useForm } from "react-hook-form";
+import React, { useEffect } from "react";
+import { useGlobalContext } from "@/context/globlaContext";
+//import { useQuery, useQueryClient } from "@tanstack/react-query";
+//import { useGlobalContext } from "@/context/globlaContext";
+//import { useRouter } from "next/navigation";
+
+
+type IngredientFormProps = {
+  
+  onSubmit: (data: Ingredient) => void;
   initialData?: Ingredient;
   //fn_ingredient: (p_ingredient: Ingredient) => Promise<Ingredient>;
 };
@@ -70,6 +148,12 @@ const IngredientForm = ({ onSubmit, initialData }: IngredientFormProps) => {
 };
 
 export default IngredientForm;
+
+
+
+*/
+
+
 
 
 

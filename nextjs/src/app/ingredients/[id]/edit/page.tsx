@@ -43,7 +43,7 @@ const EditIngredient = () => {
       alert("Ingrédient mis à jour avec succès!");
       router.push(`/ingredients/${id}/edit`);
     } else {
-      alert("Erreur lors de la mise à jour de l'ingrédient.");
+      alert("Erreur lors de la mise à jour de ingrédient.");
     }
   };
 

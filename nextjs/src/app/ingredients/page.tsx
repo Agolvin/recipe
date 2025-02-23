@@ -4,7 +4,8 @@ import { useGlobalContext } from "@/context/globlaContext";
 import { Ingredient } from "@/utils/model";
 import Link from "next/link";
 import { getIngredientsUser } from "@/actions/ingredientsActions";
-import { startTransition, useEffect, useState, useTransition } from "react";
+//import { startTransition, useEffect, useState, useTransition } from "react";
+import { useEffect, useState, useTransition } from "react";
 
 import { deleteIngredientByID } from "@/actions/ingredientsActions";
 

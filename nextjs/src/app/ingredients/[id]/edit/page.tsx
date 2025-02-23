@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useParams } from "next/navigation";
@@ -16,14 +15,15 @@ const EditIngredient = () => {
 
   // Déclaration du hook useState avant toute logique conditionnelle
   const [ingredient, setIngredient] = useState<Ingredient | null>(null);
+  const [loading, setLoading] = useState(true); // Indicateur de chargement
 
-  // Si l'ID est manquant, retourner un message d'erreur tout de suite
-  if (!id) {
-    return <p>Erreur : ID manquant.</p>;
-  }
-
-  // Charger l'ingrédient de manière asynchrone
   useEffect(() => {
+    if (!id) {
+      setLoading(false); // Arrêter le chargement si l'ID est manquant
+      return;
+    }
+
+    // Charger l'ingrédient de manière asynchrone
     const fetchIngredient = async () => {
       const result = await getIngredientByID(id);
       if (result) {
@@ -31,6 +31,7 @@ const EditIngredient = () => {
       } else {
         alert("Ingrédient non trouvé");
       }
+      setLoading(false); // Arrêter le chargement après récupération
     };
 
     fetchIngredient(); // Appel à la fonction asynchrone
@@ -47,9 +48,14 @@ const EditIngredient = () => {
     }
   };
 
-  // Affiche un message de chargement tant que l'ingrédient n'est pas récupéré
-  if (!ingredient) {
+  // Affiche un message de chargement tant que l'ingrédient n'est pas récupéré ou ID manquant
+  if (loading) {
     return <p>Chargement...</p>;
+  }
+
+  // Si l'ID est manquant, afficher un message d'erreur après avoir arrêté le chargement
+  if (!id) {
+    return <p>Erreur : ID manquant.</p>;
   }
 
   return (
@@ -61,7 +67,6 @@ const EditIngredient = () => {
 };
 
 export default EditIngredient;
-
 /*
 
 "use client";

@@ -1,7 +1,6 @@
 
 'use server'
 
-import { Ingredient } from "@/utils/model";
 import { Recipe } from "@/utils/model";
 import { getBDD } from "@/utils/utils";
 import { saveBDD } from "@/utils/utils";

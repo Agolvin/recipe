@@ -4,7 +4,10 @@ import { useGlobalContext } from "@/context/globlaContext";
 import { Ingredient } from "@/utils/model";
 import Link from "next/link";
 import { getIngredientsUser } from "@/actions/ingredientsActions";
-import { useEffect, useState } from "react";
+//import { startTransition, useEffect, useState, useTransition } from "react";
+import { useEffect, useState, useTransition } from "react";
+
+import { deleteIngredientByID } from "@/actions/ingredientsActions";
 
 export default function Home() {
 
@@ -21,27 +24,7 @@ useEffect(() => {
 }, [userID]); 
 
 
-/*
-useEffect(() => {
-    getIngredientsUser(userID).then((data) => {
-      setUsrIngredients(data);
-    });
-  }); 
-*/
-
-
-
-
-//{isLoading && <p>Loading...</p>}
-//{isError && <p>Erreur : {error?.message}</p>}
-/*
-if(!userID)
-  return (<div>Veuillez séletionner un utilisateur dans la page accueil.</div>)
-
-{isLoading && <p>Loading...</p>}
-*/
-
-
+const [isPending, startTransition] = useTransition();
 
 if(!userID)
   return (<div>Veuillez séletionner un utilisateur dans la page accueil.</div>)
@@ -61,7 +44,17 @@ if(!userID)
             {usrIngredients.map((r) => {
             return (
               <li key={r.id}>
-                <Link href={`/ingredients/${r.id}`}>- {r.name}(id:{r.id}): {r.description} </Link>__________<Link href={`/ingredients/${r.id}/edit`}>Modif</Link>
+                <Link href={`/ingredients/${r.id}`}>- {r.name}(id:{r.id}): {r.description} </Link>__<Link href={`/ingredients/${r.id}/edit`}>Modif</Link>__
+                
+                <button
+                  onClick={() => startTransition(async() =>{ 
+                    await deleteIngredientByID(r.id);
+                    setUsrIngredients((prev) => prev.filter((item) => item.id !== r.id));
+                  }) }
+                  disabled={isPending}
+                  className="bg-red-500 text-white px-3 py-1 rounded disabled:opacity-50"
+                >Delete</button>
+             
               </li>
             );
           })}
@@ -75,7 +68,7 @@ if(!userID)
 
 
 
-
+//<button onClick={() => deleteIngredientByID(r.id)}>Deleteold</button>
 
 
 

@@ -65,9 +65,22 @@ export async function saveIngredient(p_ing: Ingredient) {
 }
 
 
+export async function deleteIngredient(p_ing: Ingredient) {
+  const bdd:Bdd = await getBDD();
+  const ind = bdd.ingredients.findIndex((elt) => elt.id === p_ing.id);
+  bdd.ingredients.splice(ind,1)
+  saveBDD(bdd);                              
+  return p_ing;
+}
 
 
-
+export async function deleteIngredientByID(p_ingID: number) {
+  const bdd:Bdd = await getBDD();
+  const ind = bdd.ingredients.findIndex((elt) => elt.id === p_ingID);
+  bdd.ingredients.splice(ind,1)
+  saveBDD(bdd);                              
+  return 1;
+}
 
 
 

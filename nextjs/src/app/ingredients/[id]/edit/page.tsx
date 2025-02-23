@@ -1,5 +1,5 @@
 
-"use client"
+"use client";
 
 import { useParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -14,9 +14,13 @@ const EditIngredient = () => {
   const param = useParams(); // Récupère l'ID depuis l'URL
   const id: number = Number(param.id); // Récupère l'ID depuis l'URL
 
-  if (!id) return <p>Erreur : ID manquant.</p>;
-
+  // Déclaration du hook useState avant toute logique conditionnelle
   const [ingredient, setIngredient] = useState<Ingredient | null>(null);
+
+  // Si l'ID est manquant, retourner un message d'erreur tout de suite
+  if (!id) {
+    return <p>Erreur : ID manquant.</p>;
+  }
 
   // Charger l'ingrédient de manière asynchrone
   useEffect(() => {
@@ -37,17 +41,15 @@ const EditIngredient = () => {
     const response: Ingredient = await saveIngredient(data);
     if (response) {
       alert("Ingrédient mis à jour avec succès!");
-      
       router.push(`/ingredients/${id}/edit`);
-
-      //router.push(`/ingredients/${response.id}`); // Rediriger vers la page de l'ingrédient après la mise à jour
     } else {
       alert("Erreur lors de la mise à jour de l'ingrédient.");
     }
   };
 
+  // Affiche un message de chargement tant que l'ingrédient n'est pas récupéré
   if (!ingredient) {
-    return <p>Chargement...</p>; // Affiche un message de chargement tant que l'ingrédient n'est pas récupéré
+    return <p>Chargement...</p>;
   }
 
   return (
@@ -59,9 +61,6 @@ const EditIngredient = () => {
 };
 
 export default EditIngredient;
-
-
-
 
 /*
 

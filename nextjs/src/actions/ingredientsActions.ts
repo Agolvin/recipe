@@ -46,6 +46,20 @@ export async function getIngredientByID(id: number): Promise<Ingredient> {
   return ingredient;
 }
 
+/*
+export function syncGetIngredientByID(id: number, callback: (ingredient: Ingredient | null) => void) {
+  getBDD().then((bdd: Bdd) => {
+    const ingredient = bdd.ingredients.find(r => r.id === id);
+    if (!ingredient) {
+      callback(null);
+      return;
+    }
+    callback(ingredient);
+  }).catch(err => {
+    callback(null); // Gestion d'erreur si nécessaire
+  });
+}
+*/
 
 export async function updateIngredient(p_ing: Ingredient) {
   const bdd:Bdd = await getBDD();
@@ -83,37 +97,3 @@ export async function deleteIngredientByID(p_ingID: number) {
   return 1;
 }
 
-
-
-/*
-export async function getIngredientsByIDold(input: { p_idIng: number }) {
-  const ingredient:Ingredient|undefined = recipeData.ingredients.find(ing => ing.id === input.p_idIng)
-  return ingredient
-}
-*/
-
-/*
-export async function getIngredientByID(id: number) {
-  const ingredient = recipeData.ingredients.find(r => r.id === id);
-  if (!ingredient) {
-    return { error: "Ingrédient non trouvé", status: 404 }; // Retourne un objet d'erreur
-  }
-  return { data: ingredient, status: 200 }; // Toujours un objet structuré
-}
-
-*/
-
-
-
-
-//export async function saveIngredient(formData: FormData) {
-
-/*
-  const ingredient = recipeData.ingredients.find(r => r.id === id);
-  if (!ingredient) {
-    return { error: "Ingrédient non trouvé", status: 404 }; // Retourne un objet d'erreur
-  }
-  return { data: ingredient, status: 200 }; // Toujours un objet structuré
-*/
-
-//}

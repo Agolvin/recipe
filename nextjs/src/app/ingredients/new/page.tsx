@@ -14,11 +14,15 @@ const AddItem = () => {
 
   const handleAddItem = async (data: Ingredient) => {
 
-    const response = await addIngredient(data)
+    const response:Ingredient = await addIngredient(data)
 
-    // Redirection vers la page de modification après ajout
-    
-    router.push(`/ingredients/${data.id}/edit`);
+
+    console.log("response front: " , response);
+
+
+    // Redirection vers la page de modification après ajout => liste car pb avec l'ID
+    router.push(`/ingredients`);
+    //router.push(`/ingredients/${response.id}/edit`);
 
   };
 

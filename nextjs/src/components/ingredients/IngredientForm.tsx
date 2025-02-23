@@ -168,7 +168,6 @@ const IngredientForm = ({ fn_ingredient, pin_ingredientID }: IngredientFormProps
   
         if (formData.id === 0) {
           // 🎯 Rediriger vers la page de modification après un ajout
-          router.push(`/ingredients/${savedIngredient.id}/edit`);
         } else {
           queryClient.invalidateQueries({ queryKey: ["ingredient", ingredientID] });
         }

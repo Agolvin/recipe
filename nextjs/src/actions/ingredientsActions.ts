@@ -29,9 +29,10 @@ export async function addIngredient(p_ing: Ingredient) {
       (max, item) => Math.max(max, item.id), 0
     );
     p_ing.id = maxId + 1;
-    console.log(p_ing);
     bdd.ingredients.push(p_ing);       
-    saveBDD(bdd);                              
+    console.log("serveaction addIngredient avantSaveBDD:",p_ing);   
+    saveBDD(bdd);    
+    console.log("serveaction addIngredient retour :",p_ing);       
     return p_ing;
 }
 

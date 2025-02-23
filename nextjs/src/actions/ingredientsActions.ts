@@ -4,18 +4,15 @@
 import { Ingredient } from "@/utils/model";
 import { getBDD } from "@/utils/utils";
 import { saveBDD } from "@/utils/utils";
-//import { Bdd } from "@/utils/models";
 import { Bdd } from "@/utils/model";
 
 export async function getIngredientsUser(p_idUser: number) {
-        const bdd:Bdd = await getBDD();
-        let usrIngredient:Ingredient[] = bdd.ingredients; 
-        usrIngredient = usrIngredient.filter(ing => ing.idUser === p_idUser)
-        return usrIngredient
-  }
+  const bdd:Bdd = await getBDD();
+  let usrIngredient:Ingredient[] = bdd.ingredients; 
+  usrIngredient = usrIngredient.filter(ing => ing.idUser === p_idUser)
+  return usrIngredient
+}
 
-
-//export async function getAllIngredientsTEST(input: { p_idUser: number }) {
 export async function getAllIngredientsTEST() {
     const bdd:Bdd = await getBDD();
     return bdd.ingredients;
@@ -50,13 +47,11 @@ export async function getIngredientByID(id: number): Promise<Ingredient> {
 
 
 export async function updateIngredient(p_ing: Ingredient) {
-
   const bdd:Bdd = await getBDD();
   const ind = bdd.ingredients.findIndex((elt) => elt.id === p_ing.id);
   bdd.ingredients[ind] = p_ing;   
   saveBDD(bdd);                              
   return p_ing;
-
 }
 
 
@@ -64,15 +59,28 @@ export async function saveIngredient(p_ing: Ingredient) {
   if (p_ing.id > 0) {
     await updateIngredient(p_ing);
   } else {
-    //insertIngredient(p_ing);
+    await addIngredient(p_ing);
   }
   return p_ing;
 }
 
 
+export async function deleteIngredient(p_ing: Ingredient) {
+  const bdd:Bdd = await getBDD();
+  const ind = bdd.ingredients.findIndex((elt) => elt.id === p_ing.id);
+  bdd.ingredients.splice(ind,1)
+  saveBDD(bdd);                              
+  return p_ing;
+}
 
 
-
+export async function deleteIngredientByID(p_ingID: number) {
+  const bdd:Bdd = await getBDD();
+  const ind = bdd.ingredients.findIndex((elt) => elt.id === p_ingID);
+  bdd.ingredients.splice(ind,1)
+  saveBDD(bdd);                              
+  return 1;
+}
 
 
 

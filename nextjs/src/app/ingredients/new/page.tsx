@@ -9,21 +9,15 @@ import { addIngredient } from "@/actions/ingredientsActions";
 import { Ingredient } from "@/utils/model";
 
 
+
+
+
 const AddItem = () => {
   const router = useRouter();
-
   const handleAddItem = async (data: Ingredient) => {
-
     const response:Ingredient = await addIngredient(data)
-
-
     console.log("response front: " , response);
-
-
-    // Redirection vers la page de modification après ajout => liste car pb avec l'ID
     router.push(`/ingredients`);
-    //router.push(`/ingredients/${response.id}/edit`);
-
   };
 
   return (
@@ -32,7 +26,29 @@ const AddItem = () => {
       <IngredientForm onSubmit={handleAddItem} />
     </div>
   );
+
 };
+/*
+const AddItem = () => {
+  const router = useRouter();
+  const handleAddItem = async (data: Ingredient) => {
+    const response:Ingredient = await addIngredient(data)
+    console.log("response front: " , response);
+    router.push(`/ingredients`);
+  };
+
+  return (
+    <div>
+      <h1>Ajouter un nouvel ingredient</h1>
+      <IngredientForm onSubmit={handleAddItem} />
+    </div>
+  );
+  
+};*/
+
+
+
+
 
 export default AddItem;
 

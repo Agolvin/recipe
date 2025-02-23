@@ -60,7 +60,7 @@ const EditIngredient = () => {
 
   return (
     <div>
-      <h1>Modifier l'ingrédient</h1>
+      <h1>Modifier ingrédient</h1>
       <IngredientForm onSubmit={handleUpdateItem} initialData={ingredient} /> {/* Passer initialData avec l'ingrédient */}
     </div>
   );

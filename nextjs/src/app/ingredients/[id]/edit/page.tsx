@@ -61,7 +61,7 @@ const EditIngredient = () => {
   return (
     <div>
       <h1>Modifier ingrédient</h1>
-      <IngredientForm onSubmit={handleUpdateItem} initialData={ingredient} /> {/* Passer initialData avec l'ingrédient */}
+      <IngredientForm onSubmit={handleUpdateItem} ingredientID={id}  /> {/* Passer initialData avec l'ingrédient */}
       <br />
       <br />
       La modification semble foncionner correctement. <br />

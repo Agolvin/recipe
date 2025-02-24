@@ -1,35 +1,37 @@
 
-"use client"
+'use client'
 
-
-import React from "react";
-import { useRouter } from "next/navigation";
-import IngredientForm from "@/components/ingredients/IngredientForm";
 import { addIngredient } from "@/actions/ingredientsActions";
+import IngredientForm from "@/components/ingredients/IngredientForm";
 import { Ingredient } from "@/utils/model";
-
-
-
-
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useRouter } from "next/navigation";
 
 const AddItem = () => {
   const router = useRouter();
+  const queryClient = useQueryClient(); // Accéder au cache React Query
+
+  const mutation = useMutation({
+    mutationFn: addIngredient,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["ingredients"] });// Force le refresh
+      router.push(`/ingredients`);
+    },
+  });
+
   const handleAddItem = async (data: Ingredient) => {
-    const response:Ingredient = await addIngredient(data)
-    console.log("response front: " , response);
-    router.push(`/ingredients`);
+    mutation.mutate(data);
   };
 
   return (
     <div>
-      <h1>Ajouter un nouvel ingredient</h1>
+      <h1>Ajouter un nouvel ingrédient</h1>
       <IngredientForm onSubmit={handleAddItem} />
       <br />
       <br />
-      Ajout semble fonctionner correctement mais n apparait pas dans la liste au premier affichage, ok si on retourne sur la liste après.
+      Ajout semble fonctionner correctement.
     </div>
   );
-
 };
 /*
 const AddItem = () => {

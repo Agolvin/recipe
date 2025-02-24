@@ -15,7 +15,8 @@ const EditIngredient = () => {
   const ingredientID = Number(id); // Convertir l'ID en nombre
 
   // Récupération de l'ingrédient avec React Query
-  const { data: ingredient, isLoading, error } = useQuery({
+  //const { data: ingredient, isLoading, error } = useQuery({
+  const { isLoading, error } = useQuery({
     queryKey: ["ingredient", ingredientID],
     queryFn: () => getIngredientByID(ingredientID),
     enabled: !!ingredientID, // Exécuter la requête seulement si l'ID est valide
@@ -30,7 +31,7 @@ const EditIngredient = () => {
       router.push(`/ingredients`);
     },
     onError: () => {
-      alert("Erreur lors de la mise à jour de l'ingrédient.");
+      alert("Erreur lors de la mise à jour de l ingrédient.");
     },
   });
 

@@ -31,7 +31,7 @@ const EditIngredient = () => {
       router.push(`/ingredients`);
     },
     onError: () => {
-      alert("Erreur lors de la mise à jour de l ingrédient.");
+      alert("Erreur lors de la mise à jour de l&apos;ingrédient.");
     },
   });
 
@@ -42,7 +42,7 @@ const EditIngredient = () => {
 
   // Gestion du chargement et des erreurs
   if (isLoading) return <p>Chargement...</p>;
-  if (error) return <p>Erreur lors du chargement de l'ingrédient.</p>;
+  if (error) return <p>Erreur lors du chargement de l ingrédient.</p>;
 
   return (
     <div>

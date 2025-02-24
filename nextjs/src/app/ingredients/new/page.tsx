@@ -3,18 +3,21 @@
 
 import { addIngredient } from "@/actions/ingredientsActions";
 import IngredientForm from "@/components/ingredients/IngredientForm";
+import { useGlobalContext } from "@/context/globlaContext";
 import { Ingredient } from "@/utils/model";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 
 const AddItem = () => {
+  
+  const { userID } = useGlobalContext();
   const router = useRouter();
   const queryClient = useQueryClient(); // Accéder au cache React Query
 
   const mutation = useMutation({
     mutationFn: addIngredient,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["ingredients"] });// Force le refresh
+      queryClient.invalidateQueries({ queryKey: ["ingredients"],userID });// Force le refresh
       router.push(`/ingredients`);
     },
   });

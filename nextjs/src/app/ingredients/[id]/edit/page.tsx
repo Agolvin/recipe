@@ -7,8 +7,10 @@ import IngredientForm from "@/components/ingredients/IngredientForm";
 import { saveIngredient, getIngredientByID } from "@/actions/ingredientsActions";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Ingredient } from "@/utils/model";
+import { useGlobalContext } from "@/context/globlaContext";
 
 const EditIngredient = () => {
+  const { userID } = useGlobalContext();
   const router = useRouter();
   const queryClient = useQueryClient();
   const { id } = useParams();
@@ -26,7 +28,7 @@ const EditIngredient = () => {
   const mutation = useMutation({
     mutationFn: saveIngredient,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["ingredients"] });// Force le refresh
+      queryClient.invalidateQueries({ queryKey: ["ingredients",userID] });// Force le refresh
       alert("Ingrédient mis à jour avec succès!");
       router.push(`/ingredients`);
     },

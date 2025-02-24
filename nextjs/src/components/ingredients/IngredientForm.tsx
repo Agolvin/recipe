@@ -1,77 +1,71 @@
 
 "use client";
 
-//import { getIngredientByID } from "@/actions/ingredientsActions";
 import { Ingredient } from "@/utils/model";
 import { useForm } from "react-hook-form";
-import React, { useEffect } from "react";
 import { useGlobalContext } from "@/context/globlaContext";
-//import { useQuery, useQueryClient } from "@tanstack/react-query";
-//import { useGlobalContext } from "@/context/globlaContext";
-//import { useRouter } from "next/navigation";
-
+import { useQuery } from "@tanstack/react-query";
+import { getIngredientByID } from "@/actions/ingredientsActions";
+import React from "react";
 
 type IngredientFormProps = {
-  
   onSubmit: (data: Ingredient) => void;
-  initialData?: Ingredient| null;
-  //fn_ingredient: (p_ingredient: Ingredient) => Promise<Ingredient>;
+  ingredientID?: number; // ID de l'ingrédient à modifier (optionnel)
 };
 
-const IngredientForm = ({ onSubmit, initialData }: IngredientFormProps) => {
-
+const IngredientForm = ({ onSubmit, ingredientID }: IngredientFormProps) => {
   const { userID } = useGlobalContext();
 
+  // Récupération de l'ingrédient si on est en mode édition
+  const { data: ingredient, isLoading } = useQuery({
+    queryKey: ["ingredient", ingredientID],
+    queryFn: () => (ingredientID ? getIngredientByID(ingredientID) : null),
+    enabled: !!ingredientID, // N'exécute la requête que si l'ID est défini
+  });
+
   const { register, handleSubmit, setValue } = useForm<Ingredient>({
-    defaultValues: initialData || { 
-      id: 0,
-      idUser: userID,  
-      unit: "",      
+    defaultValues: {
+      id: ingredientID || 0,
+      idUser: userID,
+      unit: "",
       name: "",
-      description: "", 
-      price: 0,   
+      description: "",
+      price: 0,
     },
   });
 
-
-  useEffect(() => {
-    if (initialData) {
-      // Remplir le formulaire avec les données d'édition
-      setValue("name", initialData.name);
-      setValue("description", initialData.description);
-      setValue("price", initialData.price);
-      setValue("unit", initialData.unit);
+  // Met à jour le formulaire lorsque l'ingrédient est chargé
+  React.useEffect(() => {
+    if (ingredient) {
+      setValue("name", ingredient.name);
+      setValue("description", ingredient.description);
+      setValue("price", ingredient.price);
+      setValue("unit", ingredient.unit);
     }
-  }, [initialData, setValue]);
+  }, [ingredient, setValue]);
 
-
+  if (isLoading) return <p>Chargement...</p>;
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="grid gap-4">
-    <label>Nom</label>
-    <input {...register("name", { required: "Nom est requis" })} />
+      <label>Nom</label>
+      <input {...register("name", { required: "Nom est requis" })} />
 
+      <label>Description</label>
+      <input {...register("description")} />
 
-    <label>Description</label>
-    <input {...register("description")} />
+      <label>Unit</label>
+      <input {...register("unit")} />
 
+      <label>Prix</label>
+      <input type="number" {...register("price")} />
 
-    <label>Unit</label>
-    <input {...register("unit")} />
-
-
-    <label>price</label>
-    <input {...register("price")} />
-
-
-    <button type="submit">Enregistrer</button>
-  </form>
+      <button type="submit">Enregistrer</button>
+    </form>
   );
 };
 
 export default IngredientForm;
-
-
 
 
 /*

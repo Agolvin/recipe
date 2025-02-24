@@ -1,3 +1,70 @@
+
+'use client';
+
+import { useGlobalContext } from "@/context/globlaContext";
+//import { Ingredient } from "@/utils/model";
+import Link from "next/link";
+import { getIngredientsUser, deleteIngredientByID } from "@/actions/ingredientsActions";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+
+export default function Home() {
+  const { userID, getUserName } = useGlobalContext();
+  const queryClient = useQueryClient();
+
+  // Utilisation de useQuery pour charger les ingrédients
+  const { data: usrIngredients = [], isLoading, error } = useQuery({
+    queryKey: ["ingredients", userID],  // Cache en fonction du userID
+    queryFn: () => getIngredientsUser(userID), 
+    enabled: !!userID,  // Ne charge que si userID est défini
+  });
+
+  // Mutation pour suppression d'ingrédient
+  const deleteMutation = useMutation({
+    mutationFn: deleteIngredientByID,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["ingredients", userID] }); // Force la mise à jour des ingrédients
+    },
+  });
+
+  if (!userID) {
+    return <div>Veuillez sélectionner un utilisateur dans la page accueil.</div>;
+  }
+
+  if (isLoading) return <div>Chargement...</div>;
+  if (error) return <div>Erreur lors du chargement des ingrédients.</div>;
+
+  return (
+    <div>
+      <h1>Liste ingrédients de user {getUserName()} ({userID})</h1>
+      <ul>
+        <br />
+        <li>
+          <Link href={`/ingredients/new`}>+ Nouvel ingrédient.</Link>
+        </li>
+        <br />
+        {usrIngredients.map((r) => (
+          <li key={r.id}>
+            <Link href={`/ingredients/${r.id}`}>- {r.name} (id:{r.id}): {r.description} </Link>__
+            <Link href={`/ingredients/${r.id}/edit`}>Modif</Link>__
+            
+            <button
+              onClick={() => deleteMutation.mutate(r.id)}
+              disabled={deleteMutation.isPending}
+              className="bg-red-500 text-white px-3 py-1 rounded disabled:opacity-50"
+            >
+              Delete
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+/*
+
+
+
 'use client';
 
 import { useGlobalContext } from "@/context/globlaContext";
@@ -68,13 +135,28 @@ if(!userID)
 
 
 
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //<button onClick={() => deleteIngredientByID(r.id)}>Deleteold</button>
-
-
-
-
-
-
 
 
 

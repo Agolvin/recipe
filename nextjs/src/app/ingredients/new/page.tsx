@@ -24,6 +24,9 @@ const AddItem = () => {
     <div>
       <h1>Ajouter un nouvel ingredient</h1>
       <IngredientForm onSubmit={handleAddItem} />
+      <br />
+      <br />
+      Ajout semble fonctionner correctement mais n apparait pas dans la liste au premier affichage, ok si on retourne sur la liste après.
     </div>
   );
 

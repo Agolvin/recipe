@@ -11,6 +11,9 @@ export default function Home() {
   const { userID, getUserName } = useGlobalContext();
   const queryClient = useQueryClient();
 
+
+  //queryClient.invalidateQueries({ queryKey: ["ingredients", userID] });
+
   // Utilisation de useQuery pour charger les ingrédients
   const { data: usrIngredients = [], isLoading, error } = useQuery({
     queryKey: ["ingredients", userID],  // Cache en fonction du userID

@@ -1,4 +1,3 @@
-
 "use client";
 
 import { Ingredient } from "@/utils/model";
@@ -66,6 +65,13 @@ const IngredientForm = ({ onSubmit, ingredientID }: IngredientFormProps) => {
 };
 
 export default IngredientForm;
+
+
+
+
+
+
+
 
 
 /*

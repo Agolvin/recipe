@@ -1,3 +1,64 @@
+
+"use client";
+
+import { useParams, useRouter } from "next/navigation";
+import React from "react";
+import IngredientForm from "@/components/ingredients/IngredientForm";
+import { saveIngredient, getIngredientByID } from "@/actions/ingredientsActions";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { Ingredient } from "@/utils/model";
+
+const EditIngredient = () => {
+  const router = useRouter();
+  const queryClient = useQueryClient();
+  const { id } = useParams();
+  const ingredientID = Number(id); // Convertir l'ID en nombre
+
+  // Récupération de l'ingrédient avec React Query
+  const { data: ingredient, isLoading, error } = useQuery({
+    queryKey: ["ingredient", ingredientID],
+    queryFn: () => getIngredientByID(ingredientID),
+    enabled: !!ingredientID, // Exécuter la requête seulement si l'ID est valide
+  });
+
+  // Mutation pour mettre à jour l’ingrédient
+  const mutation = useMutation({
+    mutationFn: saveIngredient,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["ingredients"] });// Force le refresh
+      alert("Ingrédient mis à jour avec succès!");
+      router.push(`/ingredients`);
+    },
+    onError: () => {
+      alert("Erreur lors de la mise à jour de l'ingrédient.");
+    },
+  });
+
+  // Fonction de mise à jour
+  const handleUpdateItem = (data: Ingredient) => {
+    mutation.mutate(data);
+  };
+
+  // Gestion du chargement et des erreurs
+  if (isLoading) return <p>Chargement...</p>;
+  if (error) return <p>Erreur lors du chargement de l'ingrédient.</p>;
+
+  return (
+    <div>
+      <h1>Modifier ingrédient</h1>
+      <IngredientForm onSubmit={handleUpdateItem} ingredientID={ingredientID} />
+    </div>
+  );
+};
+
+export default EditIngredient;
+
+
+
+
+
+/*
+
 "use client";
 
 import { useParams } from "next/navigation";
@@ -61,7 +122,7 @@ const EditIngredient = () => {
   return (
     <div>
       <h1>Modifier ingrédient</h1>
-      <IngredientForm onSubmit={handleUpdateItem} ingredientID={id}  /> {/* Passer initialData avec l'ingrédient */}
+      <IngredientForm onSubmit={handleUpdateItem} initialData={ingredient}  /> { Passer initialData avec l'ingrédient }
       <br />
       <br />
       La modification semble foncionner correctement. <br />
@@ -70,6 +131,13 @@ const EditIngredient = () => {
 };
 
 export default EditIngredient;
+
+
+*/
+
+
+
+
 /*
 
 "use client";

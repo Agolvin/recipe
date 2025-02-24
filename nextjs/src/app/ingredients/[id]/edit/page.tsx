@@ -16,6 +16,9 @@ const EditIngredient = () => {
   const { id } = useParams();
   const ingredientID = Number(id); // Convertir l'ID en nombre
 
+
+/*
+
   // Récupération de l'ingrédient avec React Query
   //const { data: ingredient, isLoading, error } = useQuery({
   const { isLoading, error } = useQuery({
@@ -24,11 +27,16 @@ const EditIngredient = () => {
     enabled: !!ingredientID, // Exécuter la requête seulement si l'ID est valide
   });
 
+*/
+
+
+
   // Mutation pour mettre à jour l’ingrédient
   const mutation = useMutation({
     mutationFn: saveIngredient,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["ingredients",userID] });// Force le refresh
+      queryClient.invalidateQueries({ queryKey: ["ingredients",userID] });
+      queryClient.invalidateQueries({ queryKey: ["ingredient",id] });
       alert("Ingrédient mis à jour avec succès!");
       router.push(`/ingredients`);
     },
@@ -42,9 +50,11 @@ const EditIngredient = () => {
     mutation.mutate(data);
   };
 
+/*
   // Gestion du chargement et des erreurs
   if (isLoading) return <p>Chargement...</p>;
   if (error) return <p>Erreur lors du chargement de l ingrédient.</p>;
+*/
 
   return (
     <div>

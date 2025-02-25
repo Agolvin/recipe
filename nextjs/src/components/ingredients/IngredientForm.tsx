@@ -3,23 +3,24 @@
 import { Ingredient } from "@/utils/model";
 import { useForm } from "react-hook-form";
 import { useGlobalContext } from "@/context/globlaContext";
-import { useQuery } from "@tanstack/react-query";
-import { getIngredientByID } from "@/actions/ingredientsActions";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { getIngredientByID, saveIngredient } from "@/actions/ingredientsActions";
 import React from "react";
 
 type IngredientFormProps = {
-  onSubmit: (data: Ingredient) => void;
+  onSubmit?: (data: Ingredient) => void; // Rendu optionnel
   ingredientID?: number; // ID de l'ingrédient à modifier (optionnel)
 };
 
 const IngredientForm = ({ onSubmit, ingredientID }: IngredientFormProps) => {
   const { userID } = useGlobalContext();
+  const queryClient = useQueryClient();
 
-  // Récupération de l'ingrédient si on est en mode édition
+  // Récupération de l'ingrédient si en mode édition
   const { data: ingredient, isLoading } = useQuery({
     queryKey: ["ingredient", ingredientID],
     queryFn: () => (ingredientID ? getIngredientByID(ingredientID) : null),
-    enabled: !!ingredientID, // N'exécute la requête que si l'ID est défini
+    enabled: !!ingredientID, // Ne charge que si ingredientID existe
   });
 
   const { register, handleSubmit, setValue } = useForm<Ingredient>({
@@ -43,10 +44,28 @@ const IngredientForm = ({ onSubmit, ingredientID }: IngredientFormProps) => {
     }
   }, [ingredient, setValue]);
 
+  // Mutation pour sauvegarder l’ingrédient
+  const mutation = useMutation({
+    mutationFn: saveIngredient,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["ingredients", userID] }); // Rafraîchir la liste
+      alert("Ingrédient enregistré avec succès !");
+    },
+    onError: () => {
+      alert("Erreur lors de l'enregistrement de l'ingrédient.");
+    },
+  });
+
+  // Gestion de l’envoi du formulaire
+  const handleFormSubmit = (data: Ingredient) => {
+    mutation.mutate(data);
+    onSubmit?.(data); // Appelle la fonction parent si fournie
+  };
+
   if (isLoading) return <p>Chargement...</p>;
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="grid gap-4">
+    <form onSubmit={handleSubmit(handleFormSubmit)} className="grid gap-4">
       <label>Nom</label>
       <input {...register("name", { required: "Nom est requis" })} />
 
@@ -59,15 +78,12 @@ const IngredientForm = ({ onSubmit, ingredientID }: IngredientFormProps) => {
       <label>Prix</label>
       <input type="number" {...register("price")} />
 
-      <button type="submit">Enregistrer</button>
+      <button type="submit" disabled={mutation.isPending}>Enregistrer</button>
     </form>
   );
 };
 
 export default IngredientForm;
-
-
-
 
 
 

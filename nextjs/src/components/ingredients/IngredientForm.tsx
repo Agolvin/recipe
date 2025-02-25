@@ -49,6 +49,9 @@ const IngredientForm = ({ onSubmit, ingredientID }: IngredientFormProps) => {
     }
   }, [ingredient, setValue]);
 
+
+
+/*
   // Mutation pour sauvegarder l’ingrédient
   const mutation = useMutation({
     mutationFn: saveIngredient,
@@ -60,6 +63,76 @@ const IngredientForm = ({ onSubmit, ingredientID }: IngredientFormProps) => {
       alert("Erreur lors de l'enregistrement de l'ingrédient.");
     },
   });
+*/
+/*
+const mutation = useMutation({
+  mutationFn: saveIngredient,
+  onMutate: async (newIngredient) => {
+    // Annule les requêtes en cours sur "ingredients"
+    await queryClient.cancelQueries({ queryKey: ["ingredients", userID] });
+
+    // Sauvegarde l'état actuel du cache
+    const previousIngredients = queryClient.getQueryData(["ingredients", userID]);
+
+    // Met à jour immédiatement le cache avec la version modifiée
+    queryClient.setQueryData(["ingredients", userID], (old: Ingredient[] | undefined) => {
+      if (!old) return [];
+      return old.map((item) => (item.id === newIngredient.id ? newIngredient : item));
+    });
+
+    // Retourne l'état précédent en cas d'erreur
+    return { previousIngredients };
+  },
+  onError: (err, _, context) => {
+    // Annule l'update optimiste si l'API renvoie une erreur
+    queryClient.setQueryData(["ingredients", userID], context?.previousIngredients);
+    alert("Erreur lors de l'enregistrement.");
+  },
+  onSettled: () => {
+    // Force un refetch après la mutation (si besoin)
+    queryClient.invalidateQueries({ queryKey: ["ingredients", userID] });
+    onSubmit?.();
+  },
+});
+*/
+
+const mutation = useMutation({
+  mutationFn: saveIngredient,
+  onMutate: async (newIngredient) => {
+    await queryClient.cancelQueries({ queryKey: ["ingredients", userID] });
+
+    // Sauvegarde l’état actuel
+    const previousIngredients = queryClient.getQueryData(["ingredients", userID]);
+
+    // Mise à jour instantanée du cache avec la version modifiée
+    queryClient.setQueryData(["ingredients", userID], (old: Ingredient[] = []) => {
+      const exists = old.find((item) => item.id === newIngredient.id);
+      if (exists) {
+        return old.map((item) => (item.id === newIngredient.id ? newIngredient : item));
+      }
+      return [...old, newIngredient]; // Ajoute s'il n'existait pas (cas d'un nouvel ingrédient)
+    });
+
+    return { previousIngredients };
+  },
+  onError: (_, __, context) => {
+    queryClient.setQueryData(["ingredients", userID], context?.previousIngredients);
+  },
+  onSettled: () => {
+    queryClient.invalidateQueries({ queryKey: ["ingredients", userID] });
+    onSubmit?.();
+  },
+});
+
+
+
+
+
+
+
+
+
+
 
   // Gestion de l’envoi du formulaire
   const handleFormSubmit = (data: Ingredient) => {

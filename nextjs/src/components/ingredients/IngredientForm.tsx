@@ -8,7 +8,7 @@ import { getIngredientByID, saveIngredient } from "@/actions/ingredientsActions"
 import React from "react";
 
 type IngredientFormProps = {
-  onSubmit?: (data: Ingredient) => void; // Rendu optionnel
+  onSubmit?: () => void; // Rendu optionnel
   ingredientID?: number; // ID de l'ingrédient à modifier (optionnel)
 };
 
@@ -16,12 +16,17 @@ const IngredientForm = ({ onSubmit, ingredientID }: IngredientFormProps) => {
   const { userID } = useGlobalContext();
   const queryClient = useQueryClient();
 
+
+
   // Récupération de l'ingrédient si en mode édition
   const { data: ingredient, isLoading } = useQuery({
     queryKey: ["ingredient", ingredientID],
     queryFn: () => (ingredientID ? getIngredientByID(ingredientID) : null),
     enabled: !!ingredientID, // Ne charge que si ingredientID existe
+    staleTime: 0, // Force toujours un refetch immédiat
+    placeholderData: undefined, // Évite l'affichage des anciennes données
   });
+
 
   const { register, handleSubmit, setValue } = useForm<Ingredient>({
     defaultValues: {
@@ -47,9 +52,9 @@ const IngredientForm = ({ onSubmit, ingredientID }: IngredientFormProps) => {
   // Mutation pour sauvegarder l’ingrédient
   const mutation = useMutation({
     mutationFn: saveIngredient,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["ingredients", userID] }); // Rafraîchir la liste
-      alert("Ingrédient enregistré avec succès !");
+    onSettled: async () => {
+      await queryClient.refetchQueries({ queryKey: ["ingredients", userID] });
+      onSubmit?.(); // Redirige seulement après la mise à jour de la liste
     },
     onError: () => {
       alert("Erreur lors de l'enregistrement de l'ingrédient.");
@@ -59,7 +64,6 @@ const IngredientForm = ({ onSubmit, ingredientID }: IngredientFormProps) => {
   // Gestion de l’envoi du formulaire
   const handleFormSubmit = (data: Ingredient) => {
     mutation.mutate(data);
-    onSubmit?.(data); // Appelle la fonction parent si fournie
   };
 
   if (isLoading) return <p>Chargement...</p>;
@@ -88,6 +92,14 @@ export default IngredientForm;
 
 
 
+
+    
+/*
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["ingredients", userID] }); // Rafraîchir la liste
+      alert("Ingrédient enregistré avec succès !");
+    },
+*/
 
 
 /*

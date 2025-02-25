@@ -1,19 +1,20 @@
 "use client";
 
 //import { useParams, useRouter } from "next/navigation";
-import { useParams } from "next/navigation";
+import { useParams,useRouter  } from "next/navigation";
 import React from "react";
 import IngredientForm from "@/components/ingredients/IngredientForm";
 
 
 const EditIngredient = () => {
   const { id } = useParams();
+  const router = useRouter();
   const ingredientID = Number(id); // Convertir l'ID en nombre
 
   return (
     <div>
       <h1>Modifier ingrédient</h1>
-      <IngredientForm ingredientID={ingredientID} />
+      <IngredientForm ingredientID={ingredientID} onSubmit={() => router.push("/ingredients")} />
     </div>
   );
 };

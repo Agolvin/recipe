@@ -1,5 +1,33 @@
 "use client";
 
+//import { useParams, useRouter } from "next/navigation";
+import { useParams,useRouter  } from "next/navigation";
+import React from "react";
+import IngredientForm from "@/components/ingredients/IngredientForm";
+
+
+const EditIngredient = () => {
+  const { id } = useParams();
+  const router = useRouter();
+  const ingredientID = Number(id); // Convertir l'ID en nombre
+
+  return (
+    <div>
+      <h1>Modifier ingrédient</h1>
+      <IngredientForm ingredientID={ingredientID} onSubmit={() => router.push("/ingredients")} />
+    </div>
+  );
+};
+
+export default EditIngredient;
+
+
+
+
+/*
+
+"use client";
+
 import { useParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -61,7 +89,7 @@ const EditIngredient = () => {
   return (
     <div>
       <h1>Modifier ingrédient</h1>
-      <IngredientForm onSubmit={handleUpdateItem} ingredientID={id}  /> {/* Passer initialData avec l'ingrédient */}
+      <IngredientForm onSubmit={handleUpdateItem} initialData={ingredient}  /> { Passer initialData avec l'ingrédient }
       <br />
       <br />
       La modification semble foncionner correctement. <br />
@@ -70,6 +98,13 @@ const EditIngredient = () => {
 };
 
 export default EditIngredient;
+
+
+*/
+
+
+
+
 /*
 
 "use client";

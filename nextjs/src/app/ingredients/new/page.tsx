@@ -1,38 +1,30 @@
+"use client";
 
-'use client'
-
-import { addIngredient } from "@/actions/ingredientsActions";
 import IngredientForm from "@/components/ingredients/IngredientForm";
-import { Ingredient } from "@/utils/model";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 
 const AddItem = () => {
   const router = useRouter();
-  const queryClient = useQueryClient(); // Accéder au cache React Query
 
-  const mutation = useMutation({
-    mutationFn: addIngredient,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["ingredients"] });// Force le refresh
-      router.push(`/ingredients`);
-    },
-  });
-
-  const handleAddItem = async (data: Ingredient) => {
-    mutation.mutate(data);
+  // Redirige après l'ajout
+  const handleSuccess = () => {
+    router.push(`/ingredients`);
   };
 
   return (
     <div>
       <h1>Ajouter un nouvel ingrédient</h1>
-      <IngredientForm onSubmit={handleAddItem} />
-      <br />
-      <br />
-      Ajout semble fonctionner correctement.
+      <IngredientForm onSubmit={handleSuccess} />
     </div>
   );
 };
+
+export default AddItem;
+
+
+
+
+
 /*
 const AddItem = () => {
   const router = useRouter();
@@ -53,9 +45,6 @@ const AddItem = () => {
 
 
 
-
-
-export default AddItem;
 
 
 

@@ -1,27 +1,32 @@
-
 "use client";
 
 import { Ingredient } from "@/utils/model";
 import { useForm } from "react-hook-form";
 import { useGlobalContext } from "@/context/globlaContext";
-import { useQuery } from "@tanstack/react-query";
-import { getIngredientByID } from "@/actions/ingredientsActions";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { getIngredientByID, saveIngredient } from "@/actions/ingredientsActions";
 import React from "react";
 
 type IngredientFormProps = {
-  onSubmit: (data: Ingredient) => void;
+  onSubmit?: () => void; // Rendu optionnel
   ingredientID?: number; // ID de l'ingrédient à modifier (optionnel)
 };
 
 const IngredientForm = ({ onSubmit, ingredientID }: IngredientFormProps) => {
   const { userID } = useGlobalContext();
+  const queryClient = useQueryClient();
 
-  // Récupération de l'ingrédient si on est en mode édition
+
+
+  // Récupération de l'ingrédient si en mode édition
   const { data: ingredient, isLoading } = useQuery({
     queryKey: ["ingredient", ingredientID],
     queryFn: () => (ingredientID ? getIngredientByID(ingredientID) : null),
-    enabled: !!ingredientID, // N'exécute la requête que si l'ID est défini
+    enabled: !!ingredientID, // Ne charge que si ingredientID existe
+    staleTime: 0, // Force toujours un refetch immédiat
+    placeholderData: undefined, // Évite l'affichage des anciennes données
   });
+
 
   const { register, handleSubmit, setValue } = useForm<Ingredient>({
     defaultValues: {
@@ -44,10 +49,100 @@ const IngredientForm = ({ onSubmit, ingredientID }: IngredientFormProps) => {
     }
   }, [ingredient, setValue]);
 
+
+
+/*
+  // Mutation pour sauvegarder l’ingrédient
+  const mutation = useMutation({
+    mutationFn: saveIngredient,
+    onSettled: async () => {
+      await queryClient.refetchQueries({ queryKey: ["ingredients", userID] });
+      onSubmit?.(); // Redirige seulement après la mise à jour de la liste
+    },
+    onError: () => {
+      alert("Erreur lors de l'enregistrement de l'ingrédient.");
+    },
+  });
+*/
+/*
+const mutation = useMutation({
+  mutationFn: saveIngredient,
+  onMutate: async (newIngredient) => {
+    // Annule les requêtes en cours sur "ingredients"
+    await queryClient.cancelQueries({ queryKey: ["ingredients", userID] });
+
+    // Sauvegarde l'état actuel du cache
+    const previousIngredients = queryClient.getQueryData(["ingredients", userID]);
+
+    // Met à jour immédiatement le cache avec la version modifiée
+    queryClient.setQueryData(["ingredients", userID], (old: Ingredient[] | undefined) => {
+      if (!old) return [];
+      return old.map((item) => (item.id === newIngredient.id ? newIngredient : item));
+    });
+
+    // Retourne l'état précédent en cas d'erreur
+    return { previousIngredients };
+  },
+  onError: (err, _, context) => {
+    // Annule l'update optimiste si l'API renvoie une erreur
+    queryClient.setQueryData(["ingredients", userID], context?.previousIngredients);
+    alert("Erreur lors de l'enregistrement.");
+  },
+  onSettled: () => {
+    // Force un refetch après la mutation (si besoin)
+    queryClient.invalidateQueries({ queryKey: ["ingredients", userID] });
+    onSubmit?.();
+  },
+});
+*/
+
+const mutation = useMutation({
+  mutationFn: saveIngredient,
+  onMutate: async (newIngredient) => {
+    await queryClient.cancelQueries({ queryKey: ["ingredients", userID] });
+
+    // Sauvegarde l’état actuel
+    const previousIngredients = queryClient.getQueryData(["ingredients", userID]);
+
+    // Mise à jour instantanée du cache avec la version modifiée
+    queryClient.setQueryData(["ingredients", userID], (old: Ingredient[] = []) => {
+      const exists = old.find((item) => item.id === newIngredient.id);
+      if (exists) {
+        return old.map((item) => (item.id === newIngredient.id ? newIngredient : item));
+      }
+      return [...old, newIngredient]; // Ajoute s'il n'existait pas (cas d'un nouvel ingrédient)
+    });
+
+    return { previousIngredients };
+  },
+  onError: (_, __, context) => {
+    queryClient.setQueryData(["ingredients", userID], context?.previousIngredients);
+  },
+  onSettled: () => {
+    queryClient.invalidateQueries({ queryKey: ["ingredients", userID] });
+    onSubmit?.();
+  },
+});
+
+
+
+
+
+
+
+
+
+
+
+  // Gestion de l’envoi du formulaire
+  const handleFormSubmit = (data: Ingredient) => {
+    mutation.mutate(data);
+  };
+
   if (isLoading) return <p>Chargement...</p>;
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="grid gap-4">
+    <form onSubmit={handleSubmit(handleFormSubmit)} className="grid gap-4">
       <label>Nom</label>
       <input {...register("name", { required: "Nom est requis" })} />
 
@@ -60,12 +155,24 @@ const IngredientForm = ({ onSubmit, ingredientID }: IngredientFormProps) => {
       <label>Prix</label>
       <input type="number" {...register("price")} />
 
-      <button type="submit">Enregistrer</button>
+      <button type="submit" disabled={mutation.isPending}>Enregistrer</button>
     </form>
   );
 };
 
 export default IngredientForm;
+
+
+
+
+
+    
+/*
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["ingredients", userID] }); // Rafraîchir la liste
+      alert("Ingrédient enregistré avec succès !");
+    },
+*/
 
 
 /*

@@ -1,6 +1,7 @@
 "use client";
 
-import { useParams, useRouter } from "next/navigation";
+//import { useParams, useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
 import React from "react";
 import IngredientForm from "@/components/ingredients/IngredientForm";
 

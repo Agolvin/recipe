@@ -1,161 +1,85 @@
+
+
 "use client";
 
-import { Ingredient } from "@/utils/model";
-import { useForm } from "react-hook-form";
-import { useGlobalContext } from "@/context/globlaContext";
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { getIngredientByID, saveIngredient } from "@/actions/ingredientsActions";
-import React from "react";
-
-type IngredientFormProps = {
-  onSubmit?: () => void; // Rendu optionnel
-  ingredientID?: number; // ID de l'ingrédient à modifier (optionnel)
-};
-
-const IngredientForm = ({ onSubmit, ingredientID }: IngredientFormProps) => {
-  const { userID } = useGlobalContext();
-  const queryClient = useQueryClient();
+import React, { useState, useEffect } from 'react';
+import { getIngredientByID } from "@/actions/ingredientsActions";
 
 
+interface IngredientFormProps {
+  initialData?: any;
+  onSubmit: (data: any) => void;
+  ingredientID?: number;
+}
 
-  // Récupération de l'ingrédient si en mode édition
-  const { data: ingredient, isLoading } = useQuery({
-    queryKey: ["ingredient", ingredientID],
-    queryFn: () => (ingredientID ? getIngredientByID(ingredientID) : null),
-    enabled: !!ingredientID, // Ne charge que si ingredientID existe
-    staleTime: 0, // Force toujours un refetch immédiat
-    placeholderData: undefined, // Évite l'affichage des anciennes données
-  });
+const IngredientForm = ({ initialData, onSubmit, ingredientID }: IngredientFormProps) => {
+  const [data, setData] = useState(initialData || {});
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
+  console.log("id reçu par le formulaire:", ingredientID);
 
-  const { register, handleSubmit, setValue } = useForm<Ingredient>({
-    defaultValues: {
-      id: ingredientID || 0,
-      idUser: userID,
-      unit: "",
-      name: "",
-      description: "",
-      price: 0,
-    },
-  });
+  const fetchData = async () => {
+    if (ingredientID) {
+      try {
+        const response = await getIngredientByID(ingredientID);
+        //setData(response.data);
+        setData(response);
+      } catch (error) {
 
-  // Met à jour le formulaire lorsque l'ingrédient est chargé
-  React.useEffect(() => {
-    if (ingredient) {
-      setValue("name", ingredient.name);
-      setValue("description", ingredient.description);
-      setValue("price", ingredient.price);
-      setValue("unit", ingredient.unit);
-    }
-  }, [ingredient, setValue]);
+        
+        //setError(error);
 
 
-
-/*
-  // Mutation pour sauvegarder l’ingrédient
-  const mutation = useMutation({
-    mutationFn: saveIngredient,
-    onSettled: async () => {
-      await queryClient.refetchQueries({ queryKey: ["ingredients", userID] });
-      onSubmit?.(); // Redirige seulement après la mise à jour de la liste
-    },
-    onError: () => {
-      alert("Erreur lors de l'enregistrement de l'ingrédient.");
-    },
-  });
-*/
-/*
-const mutation = useMutation({
-  mutationFn: saveIngredient,
-  onMutate: async (newIngredient) => {
-    // Annule les requêtes en cours sur "ingredients"
-    await queryClient.cancelQueries({ queryKey: ["ingredients", userID] });
-
-    // Sauvegarde l'état actuel du cache
-    const previousIngredients = queryClient.getQueryData(["ingredients", userID]);
-
-    // Met à jour immédiatement le cache avec la version modifiée
-    queryClient.setQueryData(["ingredients", userID], (old: Ingredient[] | undefined) => {
-      if (!old) return [];
-      return old.map((item) => (item.id === newIngredient.id ? newIngredient : item));
-    });
-
-    // Retourne l'état précédent en cas d'erreur
-    return { previousIngredients };
-  },
-  onError: (err, _, context) => {
-    // Annule l'update optimiste si l'API renvoie une erreur
-    queryClient.setQueryData(["ingredients", userID], context?.previousIngredients);
-    alert("Erreur lors de l'enregistrement.");
-  },
-  onSettled: () => {
-    // Force un refetch après la mutation (si besoin)
-    queryClient.invalidateQueries({ queryKey: ["ingredients", userID] });
-    onSubmit?.();
-  },
-});
-*/
-
-const mutation = useMutation({
-  mutationFn: saveIngredient,
-  onMutate: async (newIngredient) => {
-    await queryClient.cancelQueries({ queryKey: ["ingredients", userID] });
-
-    // Sauvegarde l’état actuel
-    const previousIngredients = queryClient.getQueryData(["ingredients", userID]);
-
-    // Mise à jour instantanée du cache avec la version modifiée
-    queryClient.setQueryData(["ingredients", userID], (old: Ingredient[] = []) => {
-      const exists = old.find((item) => item.id === newIngredient.id);
-      if (exists) {
-        return old.map((item) => (item.id === newIngredient.id ? newIngredient : item));
+      } finally {
+        setLoading(false);
       }
-      return [...old, newIngredient]; // Ajoute s'il n'existait pas (cas d'un nouvel ingrédient)
-    });
-
-    return { previousIngredients };
-  },
-  onError: (_, __, context) => {
-    queryClient.setQueryData(["ingredients", userID], context?.previousIngredients);
-  },
-  onSettled: () => {
-    queryClient.invalidateQueries({ queryKey: ["ingredients", userID] });
-    onSubmit?.();
-  },
-});
-
-
-
-
-
-
-
-
-
-
-
-  // Gestion de l’envoi du formulaire
-  const handleFormSubmit = (data: Ingredient) => {
-    mutation.mutate(data);
+    } else {
+      setLoading(false);
+    }
   };
 
-  if (isLoading) return <p>Chargement...</p>;
+  useEffect(() => {
+    fetchData();
+  }, [ingredientID]);
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    onSubmit(data);
+  };
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setData({ ...data, [name]: value });
+  };
+
+  if (loading) {
+    return <div>Chargement...</div>;
+  }
+
+  if (error) {
+    return <div>Erreur : </div>;
+    //return <div>Erreur : {error.message}</div>;
+  }
 
   return (
-    <form onSubmit={handleSubmit(handleFormSubmit)} className="grid gap-4">
-      <label>Nom</label>
-      <input {...register("name", { required: "Nom est requis" })} />
-
-      <label>Description</label>
-      <input {...register("description")} />
-
-      <label>Unit</label>
-      <input {...register("unit")} />
-
-      <label>Prix</label>
-      <input type="number" {...register("price")} />
-
-      <button type="submit" disabled={mutation.isPending}>Enregistrer</button>
+    <form onSubmit={handleSubmit}>
+      <label>
+        Nom :
+        <input type="text" name="name" value={data.name} onChange={handleChange} />
+      </label>
+      <br />
+      <label>
+        Unité :
+        <input type="text" name="unit" value={data.unit} onChange={handleChange} />
+      </label>
+      <br />
+      <label>
+        Prix :
+        <input type="number" name="price" value={data.price} onChange={handleChange} />
+      </label>
+      <br />
+      <button type="submit">Enregistrer</button>
     </form>
   );
 };
@@ -165,30 +89,129 @@ export default IngredientForm;
 
 
 
-
-    
 /*
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["ingredients", userID] }); // Rafraîchir la liste
-      alert("Ingrédient enregistré avec succès !");
-    },
+import { useState, useEffect } from 'react';
+
+const IngredientEditPage = () => {
+  const [ingredient, setIngredient] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchIngredient = async () => {
+      const ingredientData = await getIngredientByID(ingredientID);
+      setIngredient(ingredientData);
+      setLoading(false);
+    };
+    fetchIngredient();
+  }, [ingredientID]);
+
+  if (loading) {
+    return <div>Chargement...</div>;
+  }
+
+  return (
+    <div>
+      <h1>Édition de l'ingredient</h1>
+      <IngredientForm initialData={ingredient} onSubmit={handleSubmit} />
+    </div>
+  );
+};
+
 */
 
 
+
 /*
 
+import { Ingredient } from "@/utils/model";
+import { useForm } from "react-hook-form";
+import React, { useEffect, useState } from "react";
+import { useGlobalContext } from "@/context/globlaContext";
 
+type IngredientFormProps = {
+  onSubmit: (data: Ingredient) => void;
+  initialData?: Ingredient;
+  //fn_ingredient: (p_ingredient: Ingredient) => Promise<Ingredient>;
+};
+
+const IngredientForm = ({ onSubmit, initialData }: IngredientFormProps) => {
+  const { userID } = useGlobalContext();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const { register, handleSubmit, setValue, reset } = useForm<Ingredient>({
+    defaultValues: initialData || {
+      id: 0,
+      idUser: userID,
+      unit: "",
+      name: "",
+      description: "",
+      price: 0,
+    },
+  });
+
+  useEffect(() => {
+    if (initialData) {
+      // Remplir le formulaire avec les données d'édition
+      setValue("name", initialData.name);
+      setValue("description", initialData.description);
+      setValue("price", initialData.price);
+      setValue("unit", initialData.unit);
+    }
+  }, [initialData, setValue]);
+
+
+
+const handleOptimisticUpdate = async (data: Ingredient) => {
+  setIsSubmitting(true);
+  try {
+    // Simuler une mise à jour optimiste
+    const updatedIngredient = initialData
+      ? { ...data, id: initialData.id }
+      : { ...data, id: 0 }; 
+    onSubmit(updatedIngredient);
+    reset(updatedIngredient);
+  } catch (error) {
+    console.error(error);
+  } finally {
+    setIsSubmitting(false);
+  }
+};
+
+
+
+  return (
+    <form onSubmit={handleSubmit(handleOptimisticUpdate)} className="grid gap-4">
+      <label>Nom</label>
+      <input {...register("name", { required: "Nom est requis" })} />
+
+      <label>Description</label>
+      <input {...register("description")} />
+
+      <label>Unit</label>
+      <input {...register("unit")} />
+
+      <label>price</label>
+      <input {...register("price")} />
+
+      <button type="submit" disabled={isSubmitting}>
+        {isSubmitting ? "Enregistrement en cours..." : "Enregistrer"}
+      </button>
+    </form>
+  );
+};
+
+export default IngredientForm;
+*/
+
+
+
+/*
 "use client";
 
-//import { getIngredientByID } from "@/actions/ingredientsActions";
 import { Ingredient } from "@/utils/model";
 import { useForm } from "react-hook-form";
 import React, { useEffect } from "react";
 import { useGlobalContext } from "@/context/globlaContext";
-//import { useQuery, useQueryClient } from "@tanstack/react-query";
-//import { useGlobalContext } from "@/context/globlaContext";
-//import { useRouter } from "next/navigation";
-
 
 type IngredientFormProps = {
   
@@ -250,9 +273,73 @@ const IngredientForm = ({ onSubmit, initialData }: IngredientFormProps) => {
 
 export default IngredientForm;
 
+*/
 
+
+
+
+/*
+import React from 'react';
+import { useForm } from 'react-hook-form';
+//import { useMutation } from 'react-query';
+import { useMutation,useQueryClient  } from '@tanstack/react-query';
+import { saveIngredient } from '@/actions/ingredientsActions';
+import { Ingredient } from '@/utils/model';
+
+
+
+const IngredientForm = () => {
+  const { register, handleSubmit } = useForm();
+  const { mutate, status } = useMutation(saveIngredient);
+
+  const isLoading = status === 'loading';
+
+  const handleFormSubmit = async (data: Ingredient) => {
+    mutate({ variables: data });
+  };
+
+  return (
+    <form onSubmit={handleSubmit(handleFormSubmit)} className="grid gap-4">
+      <label>Nom</label>
+      <input {...register("name", { required: "Nom est requis" })} />
+
+      <label>Description</label>
+      <input {...register("description")} />
+
+      <label>Unit</label>
+      <input {...register("unit")} />
+
+      <label>Prix</label>
+      <input type="number" {...register("price")} />
+
+      <button type="submit" disabled={isLoading}>Enregistrer</button>
+    </form>
+  );
+};
+
+export default IngredientForm;
 
 */
+
+
+
+
+
+
+
+/*
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["ingredients", userID] }); // Rafraîchir la liste
+      alert("Ingrédient enregistré avec succès !");
+    },
+*/
+
+
+
+
+
+
+
 
 
 

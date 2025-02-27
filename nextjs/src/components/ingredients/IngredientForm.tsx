@@ -1,19 +1,131 @@
 
+'use client'
 
-"use client";
 
 import React, { useState, useEffect } from 'react';
 import { getIngredientByID } from "@/actions/ingredientsActions";
-
+import { Ingredient } from '@/utils/model';
+import { useForm } from 'react-hook-form';
 
 interface IngredientFormProps {
-  initialData?: any;
-  onSubmit: (data: any) => void;
+  initialData?: Ingredient;
+  onSubmit: (data: Ingredient) => void;
   ingredientID?: number;
 }
 
 const IngredientForm = ({ initialData, onSubmit, ingredientID }: IngredientFormProps) => {
-  const [data, setData] = useState(initialData || {});
+  const { register, handleSubmit,setValue } = useForm<Ingredient>({
+    defaultValues: initialData,
+  });
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      if (ingredientID) {
+        try {
+          const response:Ingredient = await getIngredientByID(ingredientID);
+          setValue("id", response.id);
+          setValue("idUser", response.idUser);
+          setValue("unit", response.unit);
+          setValue("name", response.name);
+          setValue("description", response.description);
+          setValue("price", response.price);
+        } catch (error) {
+          console.error(error);
+        } finally {
+          setLoading(false);
+        }
+      } else {
+
+        setLoading(false);
+        return {
+          id: 0,
+          idUser: 3, // valeur par défaut pour le champ idUser
+          name: '',
+          description: '',
+          unit: '',
+          price: 0,
+        };
+
+      }
+    };
+    fetchData();
+  }, [ingredientID]);
+
+  if (loading) {
+    return <div>Chargement...</div>;
+  }
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <label>
+        Nom :
+        <input  {...register("name")} />
+      </label>
+      <br />
+      <label>
+        Description :
+        <input {...register("description")} />
+      </label>
+      <br />
+      <label>
+        Unité :
+        <input  {...register("unit")} />
+      </label>
+      <br />
+      <label>
+        Prix :
+        <input type="number" {...register("price")} />
+      </label>
+      <br />
+      <button type="submit">Enregistrer</button>
+    </form>
+  );
+};
+
+export default IngredientForm;
+
+
+
+/*
+
+import React, { useState, useEffect } from 'react';
+import { getIngredientByID } from "@/actions/ingredientsActions";
+import { Ingredient } from '@/utils/model';
+import { useForm } from 'react-hook-form';
+
+
+
+interface IngredientFormProps {
+  initialData?: Ingredient;
+  onSubmit: (data: Ingredient) => void;
+  ingredientID?: number;
+}
+
+const IngredientForm = ({ initialData, onSubmit, ingredientID }: IngredientFormProps) => {
+ // const { register, handleSubmit } = useForm();
+  const [data, setData] = useState<Ingredient | null>(initialData ?? null);
+ 
+  const { register } = useForm();
+
+
+
+  useEffect(() => {
+    if (!data) {
+      setData({
+        id: 0,
+        idUser: 0,
+        unit: '',
+        name: '',
+        description: '',
+        price: 0,
+      });
+    }
+  }, [data]);
+    
+
+
   const [loading, setLoading] = useState(true);
   const [error] = useState(null);
   //const [error, setError] = useState(null);
@@ -44,12 +156,26 @@ const IngredientForm = ({ initialData, onSubmit, ingredientID }: IngredientFormP
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    onSubmit(data);
+    if (data !== null) {
+      onSubmit(data);
+    } else {
+      // Handle the case where data is null
+      console.error("Data is null");
+    }
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
-    setData({ ...data, [name]: value });
+    setData({
+      ...data,
+      [name]: value ?? '',
+      id: data?.id ?? 0,
+      idUser: data?.idUser ?? 0,
+      unit: data?.unit ?? '',
+      name: data?.name ?? '',
+      description: data?.description ?? '',
+      price: data?.price ?? 0,
+    });
   };
 
   if (loading) {
@@ -65,17 +191,22 @@ const IngredientForm = ({ initialData, onSubmit, ingredientID }: IngredientFormP
     <form onSubmit={handleSubmit}>
       <label>
         Nom :
-        <input type="text" name="name" value={data.name} onChange={handleChange} />
+        <input {...register("name")} />
+      </label>
+      <br />
+      <label>
+        Description :
+        <input {...register("description")} value={data?.description} />
       </label>
       <br />
       <label>
         Unité :
-        <input type="text" name="unit" value={data.unit} onChange={handleChange} />
+        <input type="text" name="unit" value={data?.unit} onChange={handleChange} />
       </label>
       <br />
       <label>
         Prix :
-        <input type="number" name="price" value={data.price} onChange={handleChange} />
+        <input type="number" name="price" value={data?.price} onChange={handleChange} />
       </label>
       <br />
       <button type="submit">Enregistrer</button>
@@ -84,6 +215,14 @@ const IngredientForm = ({ initialData, onSubmit, ingredientID }: IngredientFormP
 };
 
 export default IngredientForm;
+
+
+*/
+
+
+
+
+
 
 
 

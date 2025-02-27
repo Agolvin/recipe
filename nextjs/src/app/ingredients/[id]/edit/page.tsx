@@ -34,7 +34,7 @@ const IngredientEditPage = () => {
   return (
     <div>
       <h1>Édition de ingrédient</h1>
-      <IngredientForm initialData={null} onSubmit={handleSubmit} ingredientID={ingredientID} />
+      <IngredientForm initialData={undefined} onSubmit={handleSubmit} ingredientID={ingredientID} />
     </div>
   );
 };

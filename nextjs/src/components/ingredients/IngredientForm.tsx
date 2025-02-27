@@ -15,7 +15,8 @@ interface IngredientFormProps {
 const IngredientForm = ({ initialData, onSubmit, ingredientID }: IngredientFormProps) => {
   const [data, setData] = useState(initialData || {});
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error] = useState(null);
+  //const [error, setError] = useState(null);
 
   console.log("id reçu par le formulaire:", ingredientID);
 
@@ -26,10 +27,8 @@ const IngredientForm = ({ initialData, onSubmit, ingredientID }: IngredientFormP
         //setData(response.data);
         setData(response);
       } catch (error) {
-
-        
+        console.error(error);
         //setError(error);
-
 
       } finally {
         setLoading(false);

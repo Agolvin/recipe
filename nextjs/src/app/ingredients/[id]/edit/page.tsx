@@ -3,8 +3,9 @@
 
 
 
-import React, { useState, useEffect } from 'react';
-import { getIngredientByID } from "@/actions/ingredientsActions";
+import React from 'react';
+//import React, { useState, useEffect } from 'react';
+//import { getIngredientByID } from "@/actions/ingredientsActions";
 
 
 import { saveIngredient } from "@/actions/ingredientsActions";
@@ -32,7 +33,7 @@ const IngredientEditPage = () => {
 
   return (
     <div>
-      <h1>Édition de l'ingrédient</h1>
+      <h1>Édition de ingrédient</h1>
       <IngredientForm initialData={null} onSubmit={handleSubmit} ingredientID={ingredientID} />
     </div>
   );

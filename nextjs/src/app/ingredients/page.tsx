@@ -6,26 +6,30 @@ import { useGlobalContext } from "@/context/globlaContext";
 import Link from "next/link";
 import { getIngredientsUser, deleteIngredientByID } from "@/actions/ingredientsActions";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { useState } from "react"; // Importer useState
+
 
 export default function Home() {
   const { userID, getUserName } = useGlobalContext();
   const queryClient = useQueryClient();
+  const [cacheVersion, setCacheVersion] = useState(0); // Gérer l'état du cache
 
+  const handleUpdate = () => {
+    setCacheVersion((prev) => prev + 1); // Incrémenter la version du cache
+  };
 
-  //queryClient.invalidateQueries({ queryKey: ["ingredients", userID] });
-
-  // Utilisation de useQuery pour charger les ingrédients
   const { data: usrIngredients = [], isLoading, error } = useQuery({
-    queryKey: ["ingredients", userID],  // Cache en fonction du userID
-    queryFn: () => getIngredientsUser(userID), 
-    enabled: !!userID,  // Ne charge que si userID est défini
+    queryKey: ["ingredients", userID, cacheVersion],
+    queryFn: () => getIngredientsUser(userID),
+    enabled: !!userID,
+    initialData: () => queryClient.getQueryData(["ingredients", userID]) || [],
   });
 
-  // Mutation pour suppression d'ingrédient
   const deleteMutation = useMutation({
     mutationFn: deleteIngredientByID,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["ingredients", userID] }); // Force la mise à jour des ingrédients
+      queryClient.invalidateQueries({ queryKey: ["ingredients", userID] });
+      handleUpdate(); // Mettre à jour le cache après suppression
     },
   });
 
@@ -38,7 +42,7 @@ export default function Home() {
 
   return (
     <div>
-      <h1>Liste ingrédients de user {getUserName()} ({userID})</h1>
+      <h1>Liste ingrédients de {getUserName()} ({userID})</h1>
       <ul>
         <br />
         <li>

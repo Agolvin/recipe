@@ -1,5 +1,104 @@
 "use client";
 
+
+
+
+import React from 'react';
+//import React, { useState, useEffect } from 'react';
+//import { getIngredientByID } from "@/actions/ingredientsActions";
+
+
+import { saveIngredient } from "@/actions/ingredientsActions";
+
+import IngredientForm from '@/components/ingredients/IngredientForm';
+import { useParams } from 'next/navigation';
+import { Ingredient } from '@/utils/model';
+
+//import IngredientForm from './IngredientForm';
+
+const IngredientEditPage = () => {
+  
+  
+  const  id  = useParams();
+  
+  console.log("useParams id=",id)
+  //const router = useRouter();
+  const ingredientID = Number(id.id);
+  console.log("appel formulaire id=",ingredientID)
+  //const ingredientID = 1; // ID de l'ingrédient à modifier
+
+  const handleSubmit = (data: Ingredient) => {
+    // Enregistrer les modifications
+    saveIngredient(data);
+  };
+
+  return (
+    <div>
+      <h1>Édition de ingrédient</h1>
+      <IngredientForm initialData={undefined} onSubmit={handleSubmit} ingredientID={ingredientID} />
+    </div>
+  );
+};
+
+export default IngredientEditPage;
+
+
+
+
+
+
+
+
+
+/*
+
+import React from "react";
+import IngredientForm from "@/components/ingredients/IngredientForm";
+import { Ingredient } from "@/utils/model";
+import { saveIngredient } from "@/actions/ingredientsActions";
+
+import { getIngredientByID } from "@/actions/ingredientsActions";
+import { useParams,useRouter  } from "next/navigation";
+const IngredientEditPage = () => {
+
+  const { id } = useParams();
+  //const router = useRouter();
+  const ingredientID = Number(id);
+/*
+
+  const ingredient = getIngredientByID(ingredientID);
+
+
+
+  const handleSubmit = (data: Ingredient) => {
+    console.log("Soumission du formulaire :", data);
+    saveIngredient(data);
+    // Appeler l'API pour mettre à jour l'ingredient
+  };
+
+  return (
+    <div>
+      <h1>Édition de l'ingredient</h1>
+      <IngredientForm initialData={ingredient} onSubmit={handleSubmit} />
+    </div>
+  );
+};
+export default IngredientEditPage;
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 //import { useParams, useRouter } from "next/navigation";
 import { useParams,useRouter  } from "next/navigation";
 import React from "react";
@@ -21,7 +120,7 @@ const EditIngredient = () => {
 
 export default EditIngredient;
 
-
+*/
 
 
 /*

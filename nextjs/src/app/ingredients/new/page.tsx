@@ -1,50 +1,28 @@
-"use client";
 
-import IngredientForm from "@/components/ingredients/IngredientForm";
+"use client"
+
+import React from "react";
 import { useRouter } from "next/navigation";
+import IngredientForm from "@/components/ingredients/IngredientForm";
 
 const AddItem = () => {
   const router = useRouter();
-
-  // Redirige après l'ajout
-  const handleSuccess = () => {
-    router.push(`/ingredients`);
-  };
-
-  return (
-    <div>
-      <h1>Ajouter un nouvel ingrédient</h1>
-      <IngredientForm onSubmit={handleSuccess} />
-    </div>
-  );
-};
-
-export default AddItem;
-
-
-
-
-
-/*
-const AddItem = () => {
-  const router = useRouter();
-  const handleAddItem = async (data: Ingredient) => {
-    const response:Ingredient = await addIngredient(data)
-    console.log("response front: " , response);
+  const handleAddItem = async () => {
+    //const response:Ingredient = await addIngredient(data)
+    //console.log("response front: " , response);
     router.push(`/ingredients`);
   };
 
   return (
     <div>
       <h1>Ajouter un nouvel ingredient</h1>
-      <IngredientForm onSubmit={handleAddItem} />
+      <IngredientForm pin_ingredientID={0} onSubmit={handleAddItem} />
     </div>
   );
-  
-};*/
 
+};
 
-
+export default AddItem;
 
 
 

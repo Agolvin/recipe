@@ -1,38 +1,20 @@
 "use client";
 
-
-
 import { useRouter } from "next/navigation";
-
 import React from 'react';
-//import React, { useState, useEffect } from 'react';
-//import { getIngredientByID } from "@/actions/ingredientsActions";
-
-
-import { saveIngredient } from "@/actions/ingredientsActions";
-
 import IngredientForm from '@/components/ingredients/IngredientForm';
 import { useParams } from 'next/navigation';
-import { Ingredient } from '@/utils/model';
-
-//import IngredientForm from './IngredientForm';
 
 const IngredientEditPage = () => {
   
-  
   const  id  = useParams();
-  
   console.log("useParams id=",id)
-  //const router = useRouter();
   const ingredientID = Number(id.id);
   console.log("appel formulaire id=",ingredientID)
-  //const ingredientID = 1; // ID de l'ingrédient à modifier
 
   const handleSubmit = () => {
     const router = useRouter();
     router.push(`/ingredients`);
-    // Enregistrer les modifications
-    //saveIngredient(data);
   };
 
   return (
@@ -44,12 +26,6 @@ const IngredientEditPage = () => {
 };
 
 export default IngredientEditPage;
-
-
-
-
-
-
 
 
 

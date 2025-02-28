@@ -2,6 +2,7 @@
 
 
 
+import { useRouter } from "next/navigation";
 
 import React from 'react';
 //import React, { useState, useEffect } from 'react';
@@ -27,15 +28,17 @@ const IngredientEditPage = () => {
   console.log("appel formulaire id=",ingredientID)
   //const ingredientID = 1; // ID de l'ingrédient à modifier
 
-  const handleSubmit = (data: Ingredient) => {
+  const handleSubmit = () => {
+    const router = useRouter();
+    router.push(`/ingredients`);
     // Enregistrer les modifications
-    saveIngredient(data);
+    //saveIngredient(data);
   };
 
   return (
     <div>
       <h1>Édition de ingrédient</h1>
-      <IngredientForm initialData={undefined} onSubmit={handleSubmit} ingredientID={ingredientID} />
+      <IngredientForm pin_ingredientID = {ingredientID} onSubmit={handleSubmit} />
     </div>
   );
 };

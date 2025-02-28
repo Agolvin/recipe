@@ -1,4 +1,124 @@
 
+
+'use client'
+
+
+import React, { useState, useEffect } from 'react';
+import { getIngredientByID, saveIngredient } from "@/actions/ingredientsActions";
+import { Ingredient } from '@/utils/model';
+import { useForm } from 'react-hook-form';
+
+import { useGlobalContext } from "@/context/globlaContext";
+
+interface IngredientFormProps {
+  pin_ingredientID: number;
+  onSubmit?: () => void;
+}
+
+const IngredientForm = ({ pin_ingredientID, onSubmit: onSubmitCallback }: IngredientFormProps) => {
+  const { register, handleSubmit,setValue } = useForm<Ingredient>({
+    defaultValues: {},
+  });
+
+
+  const { userID, getUserName } = useGlobalContext();
+  const [loading, setLoading] = useState(true);
+
+
+  useEffect(() => {
+
+    const fetchData = async () => {
+
+      if (pin_ingredientID) {
+        try {
+          const response:Ingredient = await getIngredientByID(pin_ingredientID);
+          setValue("id", response.id);
+          setValue("idUser", response.idUser);
+          setValue("unit", response.unit);
+          setValue("name", response.name);
+          setValue("description", response.description);
+          setValue("price", response.price);
+        } catch (error) {
+          console.error(error);
+        } finally {
+          setLoading(false);
+        }
+      } else {
+      
+        const newIngredient = {
+          id: 0,
+          idUser: userID,
+          unit: '',
+          name: '',
+          description: '',
+          price: 0,
+        };
+        setValue("id", newIngredient.id);
+        setValue("idUser", newIngredient.idUser);
+        setValue("unit", newIngredient.unit);
+        setValue("name", newIngredient.name);
+        setValue("description", newIngredient.description);
+        setValue("price", newIngredient.price);
+        setLoading(false);
+
+      }
+    };
+
+    fetchData();
+  }, [pin_ingredientID]);
+
+
+  const onSubmit = async (data: Ingredient) => {
+    await saveIngredient(data);
+    if (onSubmitCallback) { onSubmitCallback();}
+  };
+
+
+
+  if (loading) {
+    return <div>Chargement...</div>;
+  }
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      user: {getUserName()}({userID})
+      <label>
+        Nom :
+        <input  {...register("name")} />
+      </label>
+      <br />
+      <label>
+        Description :
+        <input {...register("description")} />
+      </label>
+      <br />
+      <label>
+        Unité :
+        <input  {...register("unit")} />
+      </label>
+      <br />
+      <label>
+        Prix :
+        <input type="number" {...register("price")} />
+      </label>
+      <br />
+      <button type="submit">Enregistrer</button>
+    </form>
+  );
+};
+
+export default IngredientForm;
+
+
+
+
+
+
+
+
+
+
+/*
 'use client'
 
 
@@ -89,6 +209,14 @@ const IngredientForm = ({ initialData, onSubmit, ingredientID }: IngredientFormP
 };
 
 export default IngredientForm;
+
+*/
+
+
+
+
+
+
 
 
 

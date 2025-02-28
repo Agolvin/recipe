@@ -70,7 +70,7 @@ export default function Home() {
       <h1>Ingrédients</h1>
       <ul>
         {data.ingredients.map((ingredient, index) => (
-          <div>
+          <div key={ingredient.id}>
           <li key={index}>nom: {ingredient.name}/{ingredient.id}</li>
           <li>desc: {ingredient.description}</li>
           <li>user: {ingredient.idUser}</li>

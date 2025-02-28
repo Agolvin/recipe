@@ -65,7 +65,7 @@ const IngredientForm = ({ pin_ingredientID, onSubmit: onSubmitCallback }: Ingred
     };
 
     fetchData();
-  }, [pin_ingredientID]);
+  }, [pin_ingredientID,setValue, userID]);
 
 
   const onSubmit = async (data: Ingredient) => {

@@ -7,13 +7,14 @@ import { useParams } from 'next/navigation';
 
 const IngredientEditPage = () => {
   
+  const router = useRouter();
   const  id  = useParams();
+  
   console.log("useParams id=",id)
   const ingredientID = Number(id.id);
   console.log("appel formulaire id=",ingredientID)
 
   const handleSubmit = () => {
-    const router = useRouter();
     router.push(`/ingredients`);
   };
 

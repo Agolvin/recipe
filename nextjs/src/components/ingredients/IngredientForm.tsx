@@ -7,6 +7,8 @@ import { getIngredientByID } from "@/actions/ingredientsActions";
 import { Ingredient } from '@/utils/model';
 import { useForm } from 'react-hook-form';
 
+import { useGlobalContext } from "@/context/globlaContext";
+
 interface IngredientFormProps {
   initialData?: Ingredient;
   onSubmit: (data: Ingredient) => void;
@@ -18,6 +20,7 @@ const IngredientForm = ({ initialData, onSubmit, ingredientID }: IngredientFormP
     defaultValues: initialData,
   });
 
+  const { userID, getUserName } = useGlobalContext();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -41,7 +44,7 @@ const IngredientForm = ({ initialData, onSubmit, ingredientID }: IngredientFormP
         setLoading(false);
         return {
           id: 0,
-          idUser: 3, // valeur par défaut pour le champ idUser
+          idUser: userID, // valeur par défaut pour le champ idUser
           name: '',
           description: '',
           unit: '',
@@ -59,6 +62,7 @@ const IngredientForm = ({ initialData, onSubmit, ingredientID }: IngredientFormP
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
+      user: {getUserName()}({userID})
       <label>
         Nom :
         <input  {...register("name")} />

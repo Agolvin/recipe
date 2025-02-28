@@ -1,5 +1,5 @@
 
-
+'use client'
 
 /*
 import { Recipe } from "@/utils/model";
@@ -62,6 +62,10 @@ export default function Home() {
         ))}
       </ul>
 
+          <br />
+          <br />
+          <br />
+          <br />
 
       <h1>Ingrédients</h1>
       <ul>
@@ -72,6 +76,7 @@ export default function Home() {
           <li>user: {ingredient.idUser}</li>
           <li>prix: {ingredient.price}</li>
           <li>unité: {ingredient.unit}</li>
+          <br />
           </div>
         ))}
       </ul>

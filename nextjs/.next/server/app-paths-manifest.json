@@ -1,7 +1,8 @@
 {
   "/page": "app/page.js",
-  "/ingredients/page": "app/ingredients/page.js",
+  "/tools/page": "app/tools/page.js",
   "/recettes/page": "app/recettes/page.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/accueil/page": "app/accueil/page.js"
+  "/ingredients/page": "app/ingredients/page.js",
+  "/accueil/page": "app/accueil/page.js",
+  "/ingredients/new/page": "app/ingredients/new/page.js"
 }

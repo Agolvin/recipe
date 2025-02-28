@@ -517,8 +517,22 @@ img, video {
   background-color: #0000000d;
 }
 
+.bg-blue-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(59 130 246 / var(--tw-bg-opacity, 1));
+}
+
 .bg-foreground {
   background-color: var(--foreground);
+}
+
+.bg-red-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(239 68 68 / var(--tw-bg-opacity, 1));
+}
+
+.p-2 {
+  padding: .5rem;
 }
 
 .p-8 {
@@ -530,6 +544,11 @@ img, video {
   padding-right: .25rem;
 }
 
+.px-3 {
+  padding-left: .75rem;
+  padding-right: .75rem;
+}
+
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
@@ -538,6 +557,16 @@ img, video {
 .py-0\.5 {
   padding-top: .125rem;
   padding-bottom: .125rem;
+}
+
+.py-1 {
+  padding-top: .25rem;
+  padding-bottom: .25rem;
+}
+
+.py-2 {
+  padding-top: .5rem;
+  padding-bottom: .5rem;
 }
 
 .pb-20 {
@@ -567,6 +596,16 @@ img, video {
 
 .text-background {
   color: var(--background);
+}
+
+.text-red-500 {
+  --tw-text-opacity: 1;
+  color: rgb(239 68 68 / var(--tw-text-opacity, 1));
+}
+
+.text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
 .antialiased {
@@ -622,6 +661,10 @@ body {
 
 .hover\:underline-offset-4:hover {
   text-underline-offset: 4px;
+}
+
+.disabled\:opacity-50:disabled {
+  opacity: .5;
 }
 
 @media (width >= 640px) {

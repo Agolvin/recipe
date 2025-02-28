@@ -12,6 +12,7 @@ import { saveIngredient } from "@/actions/ingredientsActions";
 
 import IngredientForm from '@/components/ingredients/IngredientForm';
 import { useParams } from 'next/navigation';
+import { Ingredient } from '@/utils/model';
 
 //import IngredientForm from './IngredientForm';
 
@@ -26,7 +27,7 @@ const IngredientEditPage = () => {
   console.log("appel formulaire id=",ingredientID)
   //const ingredientID = 1; // ID de l'ingrédient à modifier
 
-  const handleSubmit = (data: any) => {
+  const handleSubmit = (data: Ingredient) => {
     // Enregistrer les modifications
     saveIngredient(data);
   };

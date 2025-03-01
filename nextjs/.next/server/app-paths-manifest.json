@@ -2,6 +2,6 @@
   "/page": "app/page.js",
   "/accueil/page": "app/accueil/page.js",
   "/ingredients/page": "app/ingredients/page.js",
-  "/ingredients/new/page": "app/ingredients/new/page.js",
-  "/ingredients/[id]/edit/page": "app/ingredients/[id]/edit/page.js"
+  "/ingredients/[id]/edit/page": "app/ingredients/[id]/edit/page.js",
+  "/ingredients/new/page": "app/ingredients/new/page.js"
 }

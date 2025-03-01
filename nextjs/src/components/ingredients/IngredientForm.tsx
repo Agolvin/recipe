@@ -16,6 +16,7 @@ interface IngredientFormProps {
 }
 
 const IngredientForm = ({ pin_ingredientID, onSubmit: onSubmitCallback }: IngredientFormProps) => {
+ 
   const { register, handleSubmit,setValue } = useForm<Ingredient>({
     defaultValues: {},
   });
@@ -25,47 +26,41 @@ const IngredientForm = ({ pin_ingredientID, onSubmit: onSubmitCallback }: Ingred
   const [loading, setLoading] = useState(true);
 
 
-  useEffect(() => {
-
-    const fetchData = async () => {
-
-      if (pin_ingredientID) {
-        try {
-          const response:Ingredient = await getIngredientByID(pin_ingredientID);
-          setValue("id", response.id);
-          setValue("idUser", response.idUser);
-          setValue("unit", response.unit);
-          setValue("name", response.name);
-          setValue("description", response.description);
-          setValue("price", response.price);
-        } catch (error) {
-          console.error(error);
-        } finally {
-          setLoading(false);
-        }
-      } else {
-      
-        const newIngredient = {
-          id: 0,
-          idUser: userID,
-          unit: '',
-          name: '',
-          description: '',
-          price: 0,
-        };
-        setValue("id", newIngredient.id);
-        setValue("idUser", newIngredient.idUser);
-        setValue("unit", newIngredient.unit);
-        setValue("name", newIngredient.name);
-        setValue("description", newIngredient.description);
-        setValue("price", newIngredient.price);
+  const fetchData = async () => {
+    if (pin_ingredientID) {
+      try {
+        const response:Ingredient = await getIngredientByID(pin_ingredientID);
+        setValue("id", response.id);
+        setValue("idUser", response.idUser);
+        setValue("unit", response.unit);
+        setValue("name", response.name);
+        setValue("description", response.description);
+        setValue("price", response.price);
+      } catch (error) {
+        console.error(error);
+      } finally {
         setLoading(false);
-
       }
-    };
+    } else {
+    
+      const newIngredient = {
+        id: 0,
+        idUser: userID,
+        unit: '',
+        name: '',
+        description: '',
+        price: 0,
+      };
+      setValue("id", newIngredient.id);
+      setValue("idUser", newIngredient.idUser);
+      setValue("unit", newIngredient.unit);
+      setValue("name", newIngredient.name);
+      setValue("description", newIngredient.description);
+      setValue("price", newIngredient.price);
+      setLoading(false);
 
-    fetchData();
-  }, [pin_ingredientID,setValue, userID]);
+    }
+  };
 
 
   const onSubmit = async (data: Ingredient) => {
@@ -73,6 +68,13 @@ const IngredientForm = ({ pin_ingredientID, onSubmit: onSubmitCallback }: Ingred
     if (onSubmitCallback) { onSubmitCallback();}
   };
 
+
+
+
+  
+  useEffect(() => {
+    fetchData();
+  }, [pin_ingredientID,setValue, userID]);
 
 
   if (loading) {

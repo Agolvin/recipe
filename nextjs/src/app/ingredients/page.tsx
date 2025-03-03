@@ -12,7 +12,8 @@ import { useState } from "react"; // Importer useState
 export default function Home() {
   const { userID, getUserName } = useGlobalContext();
   const queryClient = useQueryClient();
-  const [cacheVersion, setCacheVersion] = useState(0); // Gérer l'état du cache
+  const [cacheVersion ] = useState(0); // Gérer l'état du cache
+  //const [cacheVersion, setCacheVersion] = useState(0); // Gérer l'état du cache
 
   /*
   const handleUpdate = () => {

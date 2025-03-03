@@ -4,10 +4,10 @@
 'use client';
 
 
-import { Recipe } from "@/utils/model";
+//import { Recipe } from "@/utils/model";
 
 
-import getUserRecipes from "@/app/recettes/api"
+//import getUserRecipes from "@/app/recettes/api"
 import { useGlobalContext } from "@/context/globlaContext";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { deleteRecipeByID, getRecipesUser } from "@/actions/recipesActions";
@@ -20,12 +20,11 @@ export default function Home() {
 
   const queryClient = useQueryClient();
   const { userID, getUserName } = useGlobalContext();
-  const usrRecipe:Recipe[] = getUserRecipes(userID);
-  const [cacheVersion, setCacheVersion] = useState(0); // Gérer l'état du cache
+  //const usrRecipe:Recipe[] = getUserRecipes(userID);
+  const [cacheVersion] = useState(0); // Gérer l'état du cache
+  //const [cacheVersion, setCacheVersion] = useState(0); // Gérer l'état du cache
 
-  
-
-  const { data: usrIngredients = [], isLoading, error } = useQuery({
+  const { data: usrRecipes = [], isLoading, error } = useQuery({
     queryKey: ["recipes", userID, cacheVersion],
     queryFn: () => getRecipesUser(userID),
     enabled: !!userID,
@@ -41,6 +40,12 @@ export default function Home() {
     },
   });
 
+  if (!userID) {
+    return <div>Veuillez sélectionner un utilisateur dans la page accueil.</div>;
+  }
+
+  if (isLoading) return <div>Chargement...</div>;
+  if (error) return <div>Erreur lors du chargement des recettes.</div>;
 
   return (
    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
@@ -48,9 +53,9 @@ export default function Home() {
       
 
       
-      <h1>Liste de recttes de user {getUserName()}</h1>
+      <h1>Liste de recettes de user {getUserName()}</h1>
       <ul>
-        {usrRecipe.map((r) => {
+        {usrRecipes.map((r) => {
             return (
               <li key={r.id}>
 

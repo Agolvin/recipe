@@ -1,33 +1,70 @@
 
 
 
+'use client';
+
 
 import { Recipe } from "@/utils/model";
 
 
 import getUserRecipes from "@/app/recettes/api"
-
-
-
-const usrRecipe:Recipe[] = getUserRecipes(1);
+import { useGlobalContext } from "@/context/globlaContext";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { deleteRecipeByID, getRecipesUser } from "@/actions/recipesActions";
+import { useState } from "react";
 
 
 
 
 export default function Home() {
+
+  const queryClient = useQueryClient();
+  const { userID, getUserName } = useGlobalContext();
+  const usrRecipe:Recipe[] = getUserRecipes(userID);
+  const [cacheVersion, setCacheVersion] = useState(0); // Gérer l'état du cache
+
+  
+
+  const { data: usrIngredients = [], isLoading, error } = useQuery({
+    queryKey: ["recipes", userID, cacheVersion],
+    queryFn: () => getRecipesUser(userID),
+    enabled: !!userID,
+    initialData: () => queryClient.getQueryData(["recipes", userID]) || [],
+  });
+
+  
+  const deleteMutation = useMutation({
+    mutationFn: deleteRecipeByID,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["recipes", userID] });
+     // handleUpdate(); // Mettre à jour le cache après suppression
+    },
+  });
+
+
   return (
    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
     <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
       
 
       
-      <h1>Liste de recttes de user 1</h1>
+      <h1>Liste de recttes de user {getUserName()}</h1>
       <ul>
         {usrRecipe.map((r) => {
             return (
               <li key={r.id}>
 
-                Titre: {r.id}: {r.name} <br />
+                Titre: {r.name} ({r.id})   
+
+
+
+                <button
+                  onClick={() => deleteMutation.mutate(r.id)}
+                  disabled={deleteMutation.isPending}
+                  className="bg-red-500 text-white px-3 py-1 rounded disabled:opacity-50"
+                  >
+                  Delete
+                </button>
 
               </li>
             );

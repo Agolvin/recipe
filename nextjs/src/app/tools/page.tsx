@@ -80,6 +80,25 @@ export default function Home() {
           </div>
         ))}
       </ul>
+
+
+
+
+      <h1>Recettes</h1>
+      <ul>
+        {data.recipes.map((recipe, index) => (
+          <div key={recipe.id}>
+          <li key={index}>nom: {recipe.name}/{recipe.id}</li>
+          <li>desc: {recipe.description}</li>
+          <li>user: {recipe.idUser}</li>
+          <br />
+          </div>
+        ))}
+      </ul>
+
+
+
+
     </div>
 
     </div>

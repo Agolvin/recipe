@@ -3,7 +3,6 @@
 import { createContext, useState, useContext, ReactNode } from "react";
 
 
-
 interface GlobalContextType {
     userID: number,
     initUser: (pinUserID:number) => void;
@@ -55,10 +54,6 @@ const getUserNameByID = (ID_User:number) => {
             return "Unknown User";
     }
 };
-
-
-
-
 
 
     return (

@@ -1,121 +1,73 @@
 
-/*
-"use client";
+/*"use client";
 
-import { getIngredientByID } from "@/actions/ingredientsActions";
 import { Ingredient } from "@/utils/model";
 import { useForm } from "react-hook-form";
-import React, { useEffect, useRef, useTransition } from "react";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useGlobalContext } from "@/context/globlaContext";
+import { useQuery } from "@tanstack/react-query";
+import { getIngredientByID } from "@/actions/ingredientsActions";
+import React from "react";
 
 type IngredientFormProps = {
-  fn_ingredient: (ingredient: Ingredient) => Promise<Ingredient>;
-  pin_ingredientID?: number; // ID facultatif : utilisé pour l'update
+  onSubmit: (data: Ingredient) => void;
+  ingredientID?: number; // ID de l'ingrédient à modifier (optionnel)
 };
 
-const IngredientForm = ({ fn_ingredient, pin_ingredientID }: IngredientFormProps) => {
+const IngredientForm = ({ onSubmit, ingredientID }: IngredientFormProps) => {
   const { userID } = useGlobalContext();
-  const ingredientID = pin_ingredientID?.toString();
-  const queryClient = useQueryClient();
 
-  const [isPending, startTransition] = useTransition();
-
-  // 🔄 Chargement de l'ingrédient si `ingredientID` est fourni (mode update)
-  const { isLoading, data, isError, error } = useQuery({
+  // Récupération de l'ingrédient si on est en mode édition
+  const { data: ingredient, isLoading } = useQuery({
     queryKey: ["ingredient", ingredientID],
-    queryFn: () => (ingredientID && ingredientID !== "0" ? getIngredientByID(Number(ingredientID)) : null),
-    enabled: Boolean(ingredientID && ingredientID !== "0"),
+    queryFn: () => (ingredientID ? getIngredientByID(ingredientID) : null),
+    enabled: !!ingredientID, // N'exécute la requête que si l'ID est défini
   });
 
-  const {
-    register,
-    handleSubmit,
-    setError,
-    formState: { errors },
-    reset,
-  } = useForm<Ingredient>();
+  const { register, handleSubmit, setValue } = useForm<Ingredient>({
+    defaultValues: {
+      id: ingredientID || 0,
+      idUser: userID,
+      unit: "",
+      name: "",
+      description: "",
+      price: 0,
+    },
+  });
 
-  // ⚡ Mettre à jour les valeurs du formulaire quand les données sont disponibles
-  useEffect(() => {
-    if (data !== undefined || pin_ingredientID === 0) {
-      reset({
-        id: data?.id ?? 0,
-        idUser: userID,
-        name: data?.name ?? "",
-        description: data?.description ?? "",
-        price: data?.price ?? 0,
-        unit: data?.unit ?? "",
-      });
+  // Met à jour le formulaire lorsque l'ingrédient est chargé
+  React.useEffect(() => {
+    if (ingredient) {
+      setValue("name", ingredient.name);
+      setValue("description", ingredient.description);
+      setValue("price", ingredient.price);
+      setValue("unit", ingredient.unit);
     }
-  }, [data, reset, pin_ingredientID, userID]);
+  }, [ingredient, setValue]);
 
-  // 📌 Soumission du formulaire
-  const onSubmit = (formData: Ingredient) => {
-    startTransition(async () => {
-      try {
-        await fn_ingredient({ ...formData, idUser: userID });
-        alert("Ingrédient enregistré");
-
-        // 🔄 Mise à jour du cache pour afficher la dernière version
-        queryClient.invalidateQueries({ queryKey: ["ingredients", userID] });
-
-        // Réinitialiser le formulaire après succès
-        reset({
-          id: 0,
-          idUser: userID,
-          name: "",
-          description: "",
-          price: 0,
-          unit: "",
-        });
-      } catch (err) {
-        setError("root", { message: (err as Error).message });
-      }
-    });
-  };
+  if (isLoading) return <p>Chargement...</p>;
 
   return (
-    <form className="grid gap-2" onSubmit={handleSubmit(onSubmit)}>
-      {isLoading && <p>Chargement...</p>}
-      {isError && <p className="text-red-500">Erreur : {error?.message}</p>}
+    <form onSubmit={handleSubmit(onSubmit)} className="grid gap-4">
+      <label>Nom</label>
+      <input {...register("name", { required: "Nom est requis" })} />
 
-      <h2>{pin_ingredientID === 0 ? "Ajouter un ingrédient" : "Modifier un ingrédient"}</h2>
+      <label>Description</label>
+      <input {...register("description")} />
 
-      <label>Nom :</label>
-      <input
-        {...register("name", {
-          required: "Ce champ est requis",
-          maxLength: { value: 50, message: "Max 50 caractères" },
-          minLength: { value: 3, message: "Min 3 caractères" },
-        })}
-        placeholder="Nom"
-      />
-      {errors.name && <p className="text-red-500">{errors.name.message}</p>}
+      <label>Unit</label>
+      <input {...register("unit")} />
 
-      <label>Description (optionelle):</label>
-      <input {...register("description")} placeholder="Description" />
-      {errors.description && <p className="text-red-500">{errors.description.message}</p>}
+      <label>Prix</label>
+      <input type="number" {...register("price")} />
 
-      <label>Prix :</label>
-      <input
-        type="number"
-        {...register("price", { required: "Ce champ est requis", valueAsNumber: true })}
-        placeholder="Prix"
-        step="0.01"
-      />
-      {errors.price && <p className="text-red-500">{errors.price.message}</p>}
-
-      <button type="submit" disabled={isPending} className="bg-blue-500 text-white px-4 py-2 rounded disabled:opacity-50">
-        {isPending ? "En cours..." : "Enregistrer"}
-      </button>
-
-      {errors.root && <p className="text-red-500">{errors.root.message}</p>}
+      <button type="submit">Enregistrer</button>
     </form>
   );
 };
 
 export default IngredientForm;
+
+
 
 
 */

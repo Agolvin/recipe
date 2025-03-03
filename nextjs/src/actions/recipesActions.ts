@@ -60,6 +60,15 @@ export async function saveRecipe(p_rec: Recipe) {
 
 
 
+export async function deleteRecipeByID(p_recID: number) {
+  const bdd:Bdd = await getBDD();
+  const ind = bdd.recipes.findIndex((elt) => elt.id === p_recID);
+  bdd.recipes.splice(ind,1)
+  saveBDD(bdd);                              
+  return 1;
+}
+
+
 
 
 

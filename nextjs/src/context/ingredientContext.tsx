@@ -47,10 +47,6 @@ export const IngredientProvider = ({ children }: { children: ReactNode }) => {
 
 
 
-
-
-
-
 const getUserName = () => {
     switch (userID) {
         case 1:

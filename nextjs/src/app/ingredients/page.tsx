@@ -12,12 +12,14 @@ import { useState } from "react"; // Importer useState
 export default function Home() {
   const { userID, getUserName } = useGlobalContext();
   const queryClient = useQueryClient();
-  const [cacheVersion, setCacheVersion] = useState(0); // Gérer l'état du cache
+  const [cacheVersion ] = useState(0); // Gérer l'état du cache
+  //const [cacheVersion, setCacheVersion] = useState(0); // Gérer l'état du cache
 
+  /*
   const handleUpdate = () => {
     setCacheVersion((prev) => prev + 1); // Incrémenter la version du cache
   };
-
+*/
   const { data: usrIngredients = [], isLoading, error } = useQuery({
     queryKey: ["ingredients", userID, cacheVersion],
     queryFn: () => getIngredientsUser(userID),
@@ -29,7 +31,7 @@ export default function Home() {
     mutationFn: deleteIngredientByID,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["ingredients", userID] });
-      handleUpdate(); // Mettre à jour le cache après suppression
+     /* handleUpdate(); // Mettre à jour le cache après suppression*/
     },
   });
 

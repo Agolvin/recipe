@@ -35,7 +35,8 @@ Sélectionner un utilisateur:
 <button onClick={() => initUser(3)}>{getUserNameByID(3)}</button>
 <button onClick={() => initUser(4)}>{getUserNameByID(4)}</button>
 </div>
-<p> Migration Node/React vers fullstack NextJS (15.1.4) en cours</p>
+<p> Migration Node/React vers fullstack NextJS (15.1.4)</p>
+
 
 <p> 
 Fonctionnalités disponnibles: <br />

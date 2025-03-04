@@ -48,7 +48,8 @@ Fonctionnalités disponnibles: <br />
 
 <p> 
 A venir rapidement: <br />
-- Ingrédients: unité ?? <br />
+- Recettes: add/update/delete... <br />
+- Ingrédients: ghanger gestion unité ?? <br />
 </p> 
 
 <p> 

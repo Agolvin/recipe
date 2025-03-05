@@ -60,7 +60,7 @@ Plus tard (à définir): <br />
 - Sécurisation par mdp? <br />
 - Optimisation (optimistic update?) <br />
 - Ingrédients: changer gestion unité :  sélection gr/kg/L...?? <br />
-- Selection d'ingrédients par recette <br />
+- Selection ingrédients par recette <br />
 - Impression recette <br />
 - Et tout le reste <br />
 

@@ -39,7 +39,7 @@ Sélectionner un utilisateur:
  Migration Node/React vers fullstack NextJS (15.1.4) <br />
 
  Prochaine MAJ (recettes?): début avril? <br />
- Retard suite à la migration qui n'était pas prévue au départ mais ça avance (doucement) <br />
+ Retard suite à la migration imprévue au départ mais ça avance (doucement) <br />
 
 <p>
 Fonctionnalités disponnibles: <br />

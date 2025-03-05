@@ -30,32 +30,45 @@ export default function Home() {
 
 <div style={{ display: "flex", gap: "10px" }}>
 Sélectionner un utilisateur:
-<button onClick={() => initUser(1)}>{getUserNameByID(1)}</button>
-<button onClick={() => initUser(2)}>{getUserNameByID(2)}</button>
-<button onClick={() => initUser(3)}>{getUserNameByID(3)}</button>
-<button onClick={() => initUser(4)}>{getUserNameByID(4)}</button>
+<button onClick={() => initUser(1)} className="bg-gray-300 hover:bg-gray-400 text-gray-700 font-bold py-2 px-4 rounded">{getUserNameByID(1)}</button>
+<button onClick={() => initUser(2)} className="bg-gray-300 hover:bg-gray-400 text-gray-700 font-bold py-2 px-4 rounded">{getUserNameByID(2)}</button>
+<button onClick={() => initUser(3)} className="bg-gray-300 hover:bg-gray-400 text-gray-700 font-bold py-2 px-4 rounded">{getUserNameByID(3)}</button>
+<button onClick={() => initUser(4)} className="bg-gray-300 hover:bg-gray-400 text-gray-700 font-bold py-2 px-4 rounded">{getUserNameByID(4)}</button>
 </div>
-<p> Migration Node/React vers fullstack NextJS (15.1.4)</p>
 
 
-<p> 
+ Migration Node/React vers fullstack NextJS (15.1.4) <br />
+
+ Prochaine MAJ (recettes?): début avril? <br />
+
+
+<p>
 Fonctionnalités disponnibles: <br />
-- Utilisateurs: Sélection <br />
+- Utilisateurs: Sélection (Aucun sécurité ni mdp pour l'instant) <br />
 - Gestion données par utilisateur <br />
-- Ingrédients: Liste/add/update <br />
+- Ingrédients: Liste/ajout/maj <br />
 - Recettes: Liste <br />
 </p> 
 
 <p> 
-A venir rapidement: <br />
-- Recettes: add/update/delete... <br />
-- Ingrédients: ghanger gestion unité ?? <br />
+A venir (relativement) rapidement: <br />
+- Recettes: ajout/maj/delete... <br />
 </p> 
 
 <p> 
-Un peu après: <br />
-- Gestion Recettes: add/update <br />
+Plus tard (à définir): <br />
+- Sécurisation par mdp? <br />
+- Optimisation (optimistic update?) <br />
+- Ingrédients: changer gestion unité :  sélection gr/kg/L...?? <br />
+- Selection d'ingrédients par recette <br />
+- Impression recette <br />
+- Et tout le reste <br />
+
+
 </p>  
+
+
+
 </div>
 
   );

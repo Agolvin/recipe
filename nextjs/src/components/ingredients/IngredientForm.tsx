@@ -21,7 +21,7 @@ const IngredientForm = ({ pin_ingredientID, onSubmit: onSubmitCallback }: Ingred
   });
 
 
-  const { userID, getUserName } = useGlobalContext();
+  const { userID } = useGlobalContext();
   const [loading, setLoading] = useState(true);
 
 

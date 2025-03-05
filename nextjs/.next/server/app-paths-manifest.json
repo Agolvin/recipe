@@ -1,11 +1,4 @@
 {
   "/page": "app/page.js",
-  "/accueil/page": "app/accueil/page.js",
-  "/ingredients/page": "app/ingredients/page.js",
-  "/recettes/page": "app/recettes/page.js",
-  "/tools/page": "app/tools/page.js",
-  "/test/page": "app/test/page.js",
-  "/ingredients/new/page": "app/ingredients/new/page.js",
-  "/ingredients/[id]/edit/page": "app/ingredients/[id]/edit/page.js",
-  "/ingredients/[id]/page": "app/ingredients/[id]/page.js"
+  "/accueil/page": "app/accueil/page.js"
 }

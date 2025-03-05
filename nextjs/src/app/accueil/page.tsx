@@ -44,7 +44,7 @@ Sélectionner un utilisateur:
 
 <p>
 Fonctionnalités disponnibles: <br />
-- Utilisateurs: Sélection (Aucun sécurité ni mdp pour l'instant) <br />
+- Utilisateurs: Sélection (Aucun sécurité ni mdp pour le moment) <br />
 - Gestion données par utilisateur <br />
 - Ingrédients: Liste/ajout/maj <br />
 - Recettes: Liste <br />

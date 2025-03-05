@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 
 
@@ -15,8 +16,9 @@ export default function Home() {
           priority
         />
 
-       <h1> Migration Node/React vers NextJS (15.1.4)</h1>
-       
+       <h1> Migration Node vers NextJS (15.1.4)</h1>
+       <br />
+       <Link href="/accueil">Accueil</Link>
        </div>
 
   );

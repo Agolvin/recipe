@@ -53,9 +53,10 @@ export default function Home() {
         <br />
         {usrIngredients.map((r) => (
           <li key={r.id}>
-            <Link href={`/ingredients/${r.id}`}>- {r.name} (id:{r.id}): {r.description} </Link>__
-            <Link href={`/ingredients/${r.id}/edit`}>Modif</Link>__
-            
+            <Link href={`/ingredients/${r.id}`}>- {r.name} (id:{r.id}): {r.description} </Link>
+            <button  className="bg-gray-300 hover:bg-gray-400 text-gray-700 font-bold py-2 px-4 rounded">
+            <Link href={`/ingredients/${r.id}/edit`}>Modif</Link>
+            </button>
             <button
               onClick={() => deleteMutation.mutate(r.id)}
               disabled={deleteMutation.isPending}
@@ -71,8 +72,6 @@ export default function Home() {
 }
 
 /*
-
-
 
 'use client';
 
@@ -104,8 +103,6 @@ const [isPending, startTransition] = useTransition();
 
 if(!userID)
   return (<div>Veuillez séletionner un utilisateur dans la page accueil.</div>)
-
-
 
   else
   return (
@@ -141,20 +138,7 @@ if(!userID)
 }
 
 
-
-
-
 */
-
-
-
-
-
-
-
-
-
-
 
 
 

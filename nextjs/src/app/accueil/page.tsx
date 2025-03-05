@@ -36,11 +36,10 @@ Sélectionner un utilisateur:
 <button onClick={() => initUser(4)} className="bg-gray-300 hover:bg-gray-400 text-gray-700 font-bold py-2 px-4 rounded">{getUserNameByID(4)}</button>
 </div>
 
-
  Migration Node/React vers fullstack NextJS (15.1.4) <br />
 
  Prochaine MAJ (recettes?): début avril? <br />
-
+ Retard suite à la migration qui n'était pas prévue au départ mais ça avance (doucement) <br />
 
 <p>
 Fonctionnalités disponnibles: <br />

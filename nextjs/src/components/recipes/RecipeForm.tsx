@@ -1,7 +1,11 @@
 
 
 
-/* 
+
+/*
+
+
+
 //exemple de codeium
 
 import React, { useState, useEffect } from 'react';
@@ -47,7 +51,6 @@ const RecipeForm = ({ pin_recipeID, onSubmit: onSubmitCallback }: RecipeFormProp
           idUser: userID,
           name: '',
           description: '',
-          ingredients: [],
           ingredientsQte: [],
         };
         setValue("id", newRecipe.id);
@@ -125,6 +128,6 @@ const RecipeForm = ({ pin_recipeID, onSubmit: onSubmitCallback }: RecipeFormProp
 
 export default RecipeForm;
 
-*/
 
+*/
  

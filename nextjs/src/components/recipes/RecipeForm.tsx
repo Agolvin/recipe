@@ -1,7 +1,7 @@
 
 
 
-/*
+/* 
 //exemple de codeium
 
 import React, { useState, useEffect } from 'react';
@@ -9,6 +9,9 @@ import { getRecipeByID, saveRecipe } from "@/actions/recipesActions";
 import { Recipe } from '@/utils/model';
 import { useForm } from 'react-hook-form';
 import { useGlobalContext } from "@/context/globlaContext";
+import { IngredientQte } from '@/utils/model';
+
+
 
 interface RecipeFormProps {
   pin_recipeID: number;
@@ -32,7 +35,7 @@ const RecipeForm = ({ pin_recipeID, onSubmit: onSubmitCallback }: RecipeFormProp
           setValue("idUser", response.idUser);
           setValue("name", response.name);
           setValue("description", response.description);
-          setValue("ingredients", response.ingredients);
+          setValue("ingredientsQte", response.ingredientsQte);
         } catch (error) {
           console.error(error);
         } finally {
@@ -45,12 +48,13 @@ const RecipeForm = ({ pin_recipeID, onSubmit: onSubmitCallback }: RecipeFormProp
           name: '',
           description: '',
           ingredients: [],
+          ingredientsQte: [],
         };
         setValue("id", newRecipe.id);
         setValue("idUser", newRecipe.idUser);
         setValue("name", newRecipe.name);
         setValue("description", newRecipe.description);
-        setValue("ingredients", newRecipe.ingredients);
+        setValue("ingredientsQte", newRecipe.ingredientsQte);
         setLoading(false);
       }
     };
@@ -68,13 +72,14 @@ const RecipeForm = ({ pin_recipeID, onSubmit: onSubmitCallback }: RecipeFormProp
       ingredient: { id: 0, name: '', description: '', price: 0 },
       quantity: 0,
     };
-    setValue("ingredients", [...getValue("ingredients"), newIngredient]);
+    setValue("ingredientsQte", [...getValue("ingredientsQte"), newIngredient]);
   };
 
+
   const handleRemoveIngredient = (index: number) => {
-    const ingredients = getValue("ingredients");
+    const ingredients = getValue("ingredientsQte");
     ingredients.splice(index, 1);
-    setValue("ingredients", ingredients);
+    setValue("ingredientsQte", ingredients);
   };
 
   if (loading) {
@@ -97,15 +102,15 @@ const RecipeForm = ({ pin_recipeID, onSubmit: onSubmitCallback }: RecipeFormProp
       <label>
         Ingrédients :
         <ul>
-          {getValue("ingredients").map((ingredient, index) => (
+          {getValue("ingredients").map((ingredientsQte:IngredientQte[], index:number) => (
             <li key={index}>
-              <select {...register(`ingredients.${index}.ingredient.id`)} >
+              <select {...register(`ingredientsQte.${index}.ingredient.id`)} >
                 <option value="0">Sélectionnez un ingrédient</option>
-                {ingredients.map((ingredient) => (
-                  <option value={ingredient.id}>{ingredient.name}</option>
+                {ingredientsQte.map((ingredient:IngredientQte) => (
+                  <option value={ingredient.ingredient.id}>{ingredient.ingredient.name}</option>
                 ))}
               </select>
-              <input type="number" {...register(`ingredients.${index}.quantity`)} />
+              <input type="number" {...register(`ingredientsQte.${index}.quantity`)} />
               <button type="button" onClick={() => handleRemoveIngredient(index)}>Supprimer</button>
             </li>
           ))}
@@ -120,6 +125,6 @@ const RecipeForm = ({ pin_recipeID, onSubmit: onSubmitCallback }: RecipeFormProp
 
 export default RecipeForm;
 
+*/
 
-
- */
+ 
